@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#12372A">
+<title>Derivadas parciais | GCT054</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/mathjax.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
+<button class="menu-btn" aria-label="Abrir menu">☰</button>
+<nav class="nav">
+<a href="../index.html#multivariavel">Multivariável</a>
+<a href="../index.html#integrais">Integrais</a>
+<a href="../index.html#vetorial">Vetorial</a>
+<a href="../index.html#series">Séries</a>
+<a href="../conteudos/referencias.html">Referências</a>
+</nav></header><main class="content">
+<div class="breadcrumbs"><a href="../index.html">Início</a> / Derivadas parciais</div>
+<p class="eyebrow">PARTE 2 · AULAS 09–15</p><h1>Derivadas parciais</h1><p class="lead">Derivadas parciais, planos tangentes, aproximações lineares, regra da cadeia e derivação implícita.</p>
+<h2>Derivadas parciais</h2>
+<div class="mathbox">
+\[
+f_x(a,b)=\lim_{h\to0}\frac{f(a+h,b)-f(a,b)}{h}
+\]
+\[
+f_y(a,b)=\lim_{h\to0}\frac{f(a,b+h)-f(a,b)}{h}
+\]
+</div>
+<p>Ao calcular \(f_x\), \(y\) é mantido constante; ao calcular \(f_y\), \(x\) é mantido constante.</p>
+<h2>Plano tangente e linearização</h2>
+<div class="mathbox">
+\[
+z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)
+\]
+\[
+L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)
+\]
+</div>
+<p>A linearização fornece a aproximação \(f(x,y)\approx L(x,y)\) perto de \((a,b)\).</p>
+<h2>Diferenciabilidade</h2>
+<p>A existência das derivadas parciais isoladamente não garante diferenciabilidade. Uma condição suficiente muito usada é: se \(f_x\) e \(f_y\) existem e são contínuas em uma vizinhança do ponto, então \(f\) é diferenciável nesse ponto.</p>
+<h2>Regra da cadeia</h2>
+<div class="mathbox">
+\[
+\frac{dz}{dt}=f_x\frac{dx}{dt}+f_y\frac{dy}{dt}
+\]
+</div>
+<h2>Derivação implícita</h2>
+<p>Se \(F(x,y,z)=0\) define localmente \(z=z(x,y)\) e \(F_z\neq0\), então</p>
+<div class="mathbox">
+\[
+z_x=-\frac{F_x}{F_z},\qquad z_y=-\frac{F_y}{F_z}.
+\]
+</div>
+
+<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
+</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
+<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
+<script src="../assets/script.js"></script></body></html>

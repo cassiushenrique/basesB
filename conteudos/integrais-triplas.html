@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#12372A">
+<title>Integrais triplas e mudança de variáveis | GCT054</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/mathjax.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
+<button class="menu-btn" aria-label="Abrir menu">☰</button>
+<nav class="nav">
+<a href="../index.html#multivariavel">Multivariável</a>
+<a href="../index.html#integrais">Integrais</a>
+<a href="../index.html#vetorial">Vetorial</a>
+<a href="../index.html#series">Séries</a>
+<a href="../conteudos/referencias.html">Referências</a>
+</nav></header><main class="content">
+<div class="breadcrumbs"><a href="../index.html">Início</a> / Integrais triplas e mudança de variáveis</div>
+<p class="eyebrow">PARTE 3 · AULAS 39–43</p><h1>Integrais triplas e mudança de variáveis</h1><p class="lead">Volumes, coordenadas cilíndricas e esféricas e o papel do Jacobiano em integrais múltiplas.</p>
+<h2>Integral tripla</h2>
+<div class="mathbox">\[\iiint_E f(x,y,z)\,dV.\]</div>
+<p>Quando \(f=1\), a integral fornece o volume de \(E\). Com densidade \(\rho\), fornece a massa.</p>
+<h2>Coordenadas cilíndricas</h2>
+<div class="mathbox">
+\[
+x=r\cos\theta,\qquad y=r\sin\theta,\qquad z=z
+\]
+\[
+dV=r\,dz\,dr\,d\theta.
+\]
+</div>
+<h2>Coordenadas esféricas</h2>
+<div class="mathbox">
+\[
+x=\rho\sin\phi\cos\theta,\qquad
+y=\rho\sin\phi\sin\theta,\qquad
+z=\rho\cos\phi
+\]
+\[
+dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta.
+\]
+</div>
+<h2>Jacobiano</h2>
+<p>Em uma transformação \((u,v)\mapsto(x,y)\), o elemento de área é corrigido pelo módulo do determinante jacobiano:</p>
+<div class="mathbox">
+\[
+dA=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|du\,dv.
+\]
+</div>
+
+<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
+</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
+<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
+<script src="../assets/script.js"></script></body></html>

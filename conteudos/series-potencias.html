@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#12372A">
+<title>Séries de potências | GCT054</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/mathjax.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
+<button class="menu-btn" aria-label="Abrir menu">☰</button>
+<nav class="nav">
+<a href="../index.html#multivariavel">Multivariável</a>
+<a href="../index.html#integrais">Integrais</a>
+<a href="../index.html#vetorial">Vetorial</a>
+<a href="../index.html#series">Séries</a>
+<a href="../conteudos/referencias.html">Referências</a>
+</nav></header><main class="content">
+<div class="breadcrumbs"><a href="../index.html">Início</a> / Séries de potências</div>
+<p class="eyebrow">PARTE 4 · AULAS 69–71</p><h1>Séries de potências</h1><p class="lead">Centro, raio e intervalo de convergência de séries de potências.</p>
+<h2>Definição</h2>
+<div class="mathbox">
+\[
+\sum_{n=0}^{\infty}c_n(x-a)^n.
+\]
+</div>
+<p>Para cada \(x\), a expressão torna-se uma série numérica. Uma série de potências centrada em \(a\) sempre converge em \(x=a\).</p>
+<h2>Raio de convergência</h2>
+<p>Existe um número \(R\in[0,\infty]\) tal que a série converge para \(|x-a|&lt;R\) e diverge para \(|x-a|&gt;R\). Os extremos \(x=a\pm R\) devem ser analisados separadamente.</p>
+<div class="example"><strong>Exemplo.</strong> Para \(\sum_{n=1}^\infty (x-3)^n/n\), o Teste da Razão fornece \(|x-3|&lt;1\), isto é, \(2&lt;x&lt;4\). Em \(x=4\) surge a série harmônica, que diverge; em \(x=2\) surge a série harmônica alternada, que converge. Logo, o intervalo é \([2,4)\).</div>
+<h2>Séries como funções</h2>
+<div class="mathbox">
+\[
+f(x)=\sum_{n=0}^{\infty}c_n(x-a)^n
+\]
+</div>
+<p>No intervalo de convergência, a soma define uma função. Somas parciais fornecem aproximações sucessivas dessa função.</p>
+
+<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
+</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
+<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
+<script src="../assets/script.js"></script></body></html>

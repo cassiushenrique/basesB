@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#12372A">
+<title>Otimização multivariável | GCT054</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script src="../assets/mathjax.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body><header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
+<button class="menu-btn" aria-label="Abrir menu">☰</button>
+<nav class="nav">
+<a href="../index.html#multivariavel">Multivariável</a>
+<a href="../index.html#integrais">Integrais</a>
+<a href="../index.html#vetorial">Vetorial</a>
+<a href="../index.html#series">Séries</a>
+<a href="../conteudos/referencias.html">Referências</a>
+</nav></header><main class="content">
+<div class="breadcrumbs"><a href="../index.html">Início</a> / Otimização multivariável</div>
+<p class="eyebrow">PARTE 2 · AULAS 19–23</p><h1>Otimização multivariável</h1><p class="lead">Máximos e mínimos absolutos, pontos críticos e otimização com restrições por multiplicadores de Lagrange.</p>
+<h2>Pontos críticos</h2>
+<p>Para \(f(x,y)\), pontos interiores em que \(f_x=f_y=0\), ou nos quais alguma derivada parcial não existe, são candidatos a extremos.</p>
+<h3>Teste da segunda derivada</h3>
+<div class="mathbox">\[D=f_{xx}f_{yy}-(f_{xy})^2.\]</div>
+<table><thead><tr><th>Condição</th><th>Conclusão</th></tr></thead><tbody>
+<tr><td>\(D&gt;0,\ f_{xx}&gt;0\)</td><td>mínimo local</td></tr>
+<tr><td>\(D&gt;0,\ f_{xx}&lt;0\)</td><td>máximo local</td></tr>
+<tr><td>\(D&lt;0\)</td><td>ponto de sela</td></tr>
+<tr><td>\(D=0\)</td><td>teste inconclusivo</td></tr>
+</tbody></table>
+<h2>Extremos absolutos</h2>
+<p>Em uma região fechada e limitada, compare valores nos pontos críticos interiores e na fronteira.</p>
+<h2>Multiplicadores de Lagrange</h2>
+<p>Para otimizar \(f\) sujeito a \(g(x,y)=c\), procuramos pontos nos quais os gradientes são paralelos:</p>
+<div class="mathbox">
+\[
+\nabla f=\lambda\nabla g,\qquad g(x,y)=c.
+\]
+</div>
+<p>Em três variáveis, o princípio é o mesmo. A restrição deve ser incorporada ao sistema; resolver apenas as equações de gradientes não encerra o problema.</p>
+
+<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
+</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
+<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
+<script src="../assets/script.js"></script></body></html>
