@@ -1,71 +1,22 @@
 
-:root{
-  --green:#12372A;
-  --green2:#1f5b43;
-  --lime:#dff36a;
-  --paper:#f6f6f1;
-  --ink:#17201c;
-  --muted:#64706a;
-  --white:#fff;
-  --line:rgba(18,55,42,.14);
-  --shadow:0 18px 50px rgba(18,55,42,.10);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.68}
-a{color:inherit}
-img{max-width:100%;display:block}
-.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px max(24px,calc((100vw - 1180px)/2));background:rgba(246,246,241,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
-.brand-mark{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--green);color:var(--lime);font-family:"Manrope";font-weight:800;font-size:1.25rem}
-.brand strong,.brand small{display:block}.brand strong{font-family:"Manrope";font-size:.98rem}.brand small{font-size:.72rem;color:var(--muted)}
-.nav{display:flex;gap:22px;align-items:center}.nav a{text-decoration:none;font-size:.88rem;font-weight:700;color:#435049}.nav a:hover{color:var(--green2)}
-.menu-btn{display:none;border:0;background:transparent;font-size:1.5rem;color:var(--green)}
-.hero{max-width:1180px;margin:0 auto;padding:88px 24px 64px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,.75fr);gap:48px;align-items:center}
-.eyebrow,.section-label{font-size:.74rem;font-weight:800;letter-spacing:.13em;color:var(--green2)}
-.hero h1{font-family:"Manrope";font-size:clamp(3rem,7vw,6.3rem);line-height:.92;letter-spacing:-.055em;margin:12px 0 25px;max-width:850px}
-.hero h1 span{color:var(--green2)}
-.hero .lead{font-size:1.08rem;max-width:760px;color:#536059}
-.hero-panel{background:var(--green);color:#fff;padding:34px;border-radius:28px;box-shadow:var(--shadow)}
-.hero-panel .mini{color:var(--lime);font-weight:800;letter-spacing:.1em;font-size:.72rem}
-.hero-panel h2{font-family:"Manrope";font-size:1.6rem;line-height:1.2;margin:10px 0 18px}
-.hero-panel p{color:#dce8e2;font-size:.93rem}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:800;font-size:.88rem;background:var(--lime);color:var(--green)}
-.btn.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
-.section{max-width:1180px;margin:0 auto;padding:50px 24px 78px}
-.section-head{max-width:780px;margin-bottom:34px}.section h2,.content h2{font-family:"Manrope";letter-spacing:-.025em}
-.section-head h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:10px 0 12px}
-.section-head p{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.card{display:flex;flex-direction:column;min-height:245px;padding:26px;border:1px solid var(--line);background:#fff;border-radius:22px;text-decoration:none;transition:.22s ease}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(18,55,42,.3)}
-.card .num{font-size:.72rem;font-weight:800;letter-spacing:.1em;color:var(--green2);margin-bottom:22px}
-.card h3{font-family:"Manrope";font-size:1.25rem;line-height:1.2;margin:0 0 12px;color:var(--green)}
-.card p{font-size:.93rem;color:var(--muted);margin:0 0 20px}.card .go{margin-top:auto;font-weight:800;color:var(--green)}
-.band{background:var(--green);color:#fff}.band .section-head p{color:#d8e3dd}.band .section-label{color:var(--lime)}
-.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.timeline div{padding:22px;border:1px solid rgba(255,255,255,.16);border-radius:18px}.timeline strong{display:block;color:var(--lime);font-family:"Manrope";margin-bottom:8px}.timeline span{font-size:.9rem;color:#dce7e1}
-.professor-card{display:grid;grid-template-columns:180px minmax(0,1fr);gap:34px;align-items:center;padding:34px;background:#fff;border:1px solid var(--line);border-radius:26px}
-.professor-card img{width:180px;height:180px;object-fit:cover;border-radius:22px;background:#e7ece9}.professor-card h3{font-family:"Manrope";font-size:1.6rem;margin:5px 0}.professor-card p{color:var(--muted)}
-.content{max-width:920px;margin:0 auto;padding:58px 24px 90px}
-.breadcrumbs{font-size:.83rem;color:var(--muted);margin-bottom:28px}.breadcrumbs a{color:var(--green2)}
-.content h1{font-family:"Manrope";font-size:clamp(2.5rem,6vw,4.7rem);line-height:1;letter-spacing:-.045em;margin:8px 0 20px}
-.content .lead{font-size:1.08rem;color:var(--muted);margin-bottom:38px}
-.content h2{font-size:1.75rem;margin:50px 0 14px;color:var(--green)}
-.content h3{font-family:"Manrope";font-size:1.18rem;margin:32px 0 8px}
-.mathbox,.theorem,.note,.example{margin:22px 0;padding:20px 22px;border-radius:17px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.mathbox{background:#fff;border:1px solid var(--line)}
-.theorem{background:#eaf1ed;border-left:5px solid var(--green2)}
-.note{background:#f1f4d5;border-left:5px solid #a6bb2f}
-.example{background:#fff;border:1px dashed rgba(18,55,42,.3)}
-.theorem strong,.note strong,.example strong{color:var(--green)}
-.topic-nav{display:flex;flex-wrap:wrap;gap:9px;margin:26px 0 38px}.topic-nav a{padding:8px 12px;background:#fff;border:1px solid var(--line);border-radius:999px;text-decoration:none;font-size:.8rem;font-weight:700}
-.checklist{padding-left:20px}.checklist li{margin:8px 0}
-.refbox{margin-top:54px;padding:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
-footer{display:flex;justify-content:space-between;gap:30px;padding:34px max(24px,calc((100vw - 1180px)/2));background:#0d2a20;color:#dbe6e0;font-size:.82rem}
-footer strong{color:#fff}
-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-table{width:100%;border-collapse:collapse;margin:22px 0;background:#fff;border-radius:14px;overflow:hidden}
-th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#eaf1ed;color:var(--green)}
-@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.timeline{grid-template-columns:1fr 1fr}}
-@media(max-width:700px){.nav{display:none;position:absolute;top:69px;left:16px;right:16px;flex-direction:column;align-items:stretch;background:#fff;padding:16px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.nav.open{display:flex}.menu-btn{display:block}.hero{padding-top:58px}.grid,.timeline{grid-template-columns:1fr}.professor-card{grid-template-columns:1fr}.professor-card img{width:130px;height:130px}.content{padding-top:38px}footer{flex-direction:column}.mathbox mjx-container[display="true"]{min-width:max-content}}
+:root{--green:#12372A;--green2:#1f5b43;--lime:#dff36a;--paper:#f6f6f1;--ink:#17201c;--muted:#5f6b65;--line:rgba(18,55,42,.14);--soft:#eaf1ed;--yellow:#f2f5d8;--shadow:0 18px 42px rgba(18,55,42,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;line-height:1.7}a{color:inherit}img{max-width:100%;display:block}
+.topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px max(24px,calc((100vw - 1180px)/2));background:rgba(246,246,241,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}.brand-mark{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--green);color:var(--lime);font-family:"Manrope";font-weight:800;font-size:1.2rem}.brand strong,.brand small{display:block}.brand strong{font-family:"Manrope";font-size:.97rem}.brand small{font-size:.72rem;color:var(--muted)}
+.nav{display:flex;gap:20px;align-items:center}.nav a{text-decoration:none;font-size:.86rem;font-weight:700;color:#435049}.nav a:hover{color:var(--green2)}.menu-btn{display:none;border:0;background:transparent;font-size:1.5rem;color:var(--green)}
+.hero{max-width:1180px;margin:0 auto;padding:84px 24px 72px;display:grid;grid-template-columns:minmax(0,1.45fr) minmax(310px,.75fr);gap:50px;align-items:center}.eyebrow,.section-label{font-size:.74rem;font-weight:800;letter-spacing:.13em;color:var(--green2)}
+.hero h1{font-family:"Manrope";font-size:clamp(2.8rem,6vw,5.6rem);line-height:.96;letter-spacing:-.05em;margin:12px 0 24px}.hero h1 span{color:var(--green2)}.hero .lead{font-size:1.08rem;max-width:770px;color:#536059}
+.hero-panel{background:var(--green);color:#fff;padding:34px;border-radius:28px;box-shadow:var(--shadow)}.hero-panel .mini{color:var(--lime);font-weight:800;letter-spacing:.1em;font-size:.72rem}.hero-panel h2{font-family:"Manrope";font-size:1.65rem;line-height:1.2;margin:10px 0 18px}.hero-panel p{color:#dce8e2;font-size:.94rem}
+.btns,.page-tools{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:800;font-size:.88rem;border:1px solid transparent}.btn.primary{background:var(--green);color:#fff}.btn.lime{background:var(--lime);color:var(--green)}.btn.secondary{background:#fff;color:var(--green);border-color:var(--line)}
+.section{max-width:1180px;margin:0 auto;padding:52px 24px 82px}.section-head{max-width:800px;margin-bottom:34px}.section-head h2{font-family:"Manrope";font-size:clamp(2rem,4vw,3.1rem);line-height:1.08;letter-spacing:-.03em;margin:10px 0 12px}.section-head p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.card{display:flex;flex-direction:column;min-height:250px;padding:27px;border:1px solid var(--line);background:#fff;border-radius:22px;text-decoration:none;transition:.22s ease}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(18,55,42,.3)}.card .num{font-size:.72rem;font-weight:800;letter-spacing:.1em;color:var(--green2);margin-bottom:22px}.card h3{font-family:"Manrope";font-size:1.28rem;line-height:1.2;margin:0 0 12px;color:var(--green)}.card p{font-size:.94rem;color:var(--muted);margin:0 0 20px}.card .go{margin-top:auto;font-weight:800;color:var(--green)}
+.professor-section{width:100%;max-width:1180px;margin:0 auto;padding:30px 24px 90px}.professor-card{display:grid;grid-template-columns:190px minmax(0,1fr);gap:38px;align-items:center;width:100%;padding:38px;background:var(--green);color:#fff;border-radius:28px;text-decoration:none;transition:.25s ease}.professor-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(18,55,42,.18)}.professor-photo{width:190px;height:190px;object-fit:cover;object-position:center;border-radius:22px}.professor-info{max-width:720px}.professor-label{display:inline-block;margin-bottom:16px;font-size:.74rem;font-weight:700;letter-spacing:.12em;color:var(--lime)}.professor-info h2{margin:0 0 8px;font-family:"Manrope";font-size:clamp(1.65rem,3vw,2.35rem);line-height:1.12}.professor-cargo{margin:0 0 18px;font-weight:600;color:var(--lime)}.professor-descricao{margin:0 0 24px;color:rgba(255,255,255,.88)}.professor-link{font-weight:700}
+.content{max-width:940px;margin:0 auto;padding:52px 24px 90px}.breadcrumbs{font-size:.82rem;color:var(--muted);margin-bottom:28px}.breadcrumbs a{color:var(--green2)}.content h1{font-family:"Manrope";font-size:clamp(2.45rem,5.5vw,4.6rem);line-height:1;letter-spacing:-.045em;margin:8px 0 20px}.content>.lead{font-size:1.08rem;color:var(--muted);margin-bottom:22px}.content h2{font-family:"Manrope";font-size:1.8rem;line-height:1.2;letter-spacing:-.025em;margin:50px 0 14px;color:var(--green)}.content h3{font-family:"Manrope";font-size:1.18rem;margin:30px 0 9px}
+.mathbox,.definition,.theorem,.note,.example,.symbols,.steps{margin:22px 0;padding:20px 22px;border-radius:17px;overflow-x:auto;-webkit-overflow-scrolling:touch}.mathbox{background:#fff;border:1px solid var(--line)}.definition{background:var(--soft);border-left:5px solid var(--green2)}.theorem{background:#e8efea;border:1px solid rgba(18,55,42,.15)}.note{background:var(--yellow);border-left:5px solid #a5b932}.example{background:#fff;border:1px dashed rgba(18,55,42,.35)}.symbols{background:#f8faf8;border:1px solid var(--line)}.steps{background:#fff;border-left:5px solid var(--green)}.definition strong,.theorem strong,.note strong,.example strong,.symbols strong,.steps strong{color:var(--green)}
+.mathline{margin:12px 0;overflow-x:auto}.mathline mjx-container[display="true"]{margin:.65em 0!important}.property-list{padding-left:21px}.property-list li{margin:9px 0}
+.figure{margin:30px auto;max-width:720px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:20px}.figure img{margin:auto;max-height:500px;object-fit:contain}.figure figcaption{margin-top:12px;font-size:.82rem;line-height:1.5;color:var(--muted);text-align:center}
+.geo-card{margin:34px 0;padding:24px;background:var(--green);color:#fff;border-radius:20px;display:flex;justify-content:space-between;align-items:center;gap:24px}.geo-card p{margin:5px 0 0;color:#dce8e2;font-size:.9rem}.geo-card strong{font-family:"Manrope";font-size:1.1rem}.geo-card .btn{flex:0 0 auto;background:var(--lime);color:var(--green)}
+.refbox{margin-top:54px;padding:20px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}table{width:100%;border-collapse:collapse;margin:22px 0;background:#fff;border-radius:14px;overflow:hidden}th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:var(--soft);color:var(--green)}
+footer{display:flex;justify-content:space-between;gap:30px;padding:34px max(24px,calc((100vw - 1180px)/2));background:#0d2a20;color:#dbe6e0;font-size:.82rem}footer strong{color:#fff}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.nav{display:none;position:absolute;top:69px;left:16px;right:16px;flex-direction:column;align-items:stretch;background:#fff;padding:16px;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.nav.open{display:flex}.menu-btn{display:block}.hero{padding:56px 20px}.section{padding-left:20px;padding-right:20px}.grid{grid-template-columns:1fr}.professor-section{padding:20px 20px 65px}.professor-card{grid-template-columns:1fr;gap:25px;padding:28px}.professor-photo{width:150px;height:150px}.content{padding:38px 18px 70px}.content h1{font-size:2.5rem}.mathbox,.definition,.theorem,.note,.example,.symbols,.steps{padding:17px 15px}.geo-card{align-items:flex-start;flex-direction:column}.figure{padding:10px}footer{flex-direction:column}mjx-container[display="true"]{max-width:100%;overflow-x:auto;overflow-y:hidden;padding-bottom:3px}}

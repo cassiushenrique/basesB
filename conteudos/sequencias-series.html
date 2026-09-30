@@ -1,51 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Sequências e séries | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Sequências e séries</div>
-<p class="eyebrow">PARTE 4 · AULAS 56–60</p><h1>Sequências e séries</h1><p class="lead">Sequências, monotonicidade, limitação, séries infinitas, somas parciais, série geométrica e série harmônica.</p>
-<h2>Sequências</h2>
-<p>Uma sequência é uma função cujo domínio é tipicamente \(\mathbb N\). Dizemos que \(a_n\to L\) quando os termos se aproximam arbitrariamente de \(L\).</p>
-<div class="mathbox">\[\lim_{n\to\infty}a_n=L.\]</div>
-<div class="theorem"><strong>Convergência monótona.</strong> Toda sequência crescente e limitada superiormente converge; analogamente, toda sequência decrescente e limitada inferiormente converge.</div>
-<h2>Séries infinitas</h2>
-<div class="mathbox">
-\[
-\sum_{n=1}^{\infty}a_n
-=
-\lim_{N\to\infty}\sum_{n=1}^{N}a_n.
-\]
-</div>
-<div class="note"><strong>Condição necessária.</strong> Se \(\sum a_n\) converge, então \(a_n\to0\). A recíproca é falsa.</div>
-<h2>Série geométrica</h2>
-<div class="mathbox">
-\[
-\sum_{n=0}^{\infty}ar^n=\frac{a}{1-r},\qquad |r|&lt;1.
-\]
-</div>
-<h2>Série harmônica</h2>
-<div class="mathbox">\[\sum_{n=1}^{\infty}\frac1n\quad\text{diverge}.\]</div>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Sequências e séries infinitas | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Sequências e séries infinitas</div><p class="eyebrow">PARTE 4 · AULAS 56–60</p><h1>Sequências e séries infinitas</h1><p class="lead">Limites de sequências, monotonicidade, limitação, somas parciais, série geométrica e série harmônica.</p><h2>1. Sequências</h2><div class="mathline">\[\{a_n\}_{n=1}^{\infty}=a_1,a_2,a_3,\ldots\]</div><figure class="figure"><img src="../assets/img/aulas/sequencia-grafico.png" alt="Representação gráfica dos termos de uma sequência."><figcaption>Representação gráfica dos termos de uma sequência. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>2. Convergência</h2><div class="mathline">\[\lim_{n\to\infty}a_n=L.\]</div><ul class="property-list"><li>Toda sequência convergente é limitada.</li><li>Uma sequência monótona e limitada converge.</li><li>As regras algébricas de limites permanecem válidas.</li></ul>
+<div class="example"><strong>Exemplo resolvido.</strong><p>Para</p><div class="mathline">\[a_n=\frac{2n+1}{n+3},\]</div><p>dividindo por \(n\),</p><div class="mathline">\[a_n=\frac{2+1/n}{1+3/n}\longrightarrow2.\]</div></div>
+<h2>3. Séries</h2><div class="mathbox"><div class="mathline">\[s_N=\sum_{n=1}^{N}a_n.\]</div><div class="mathline">\[\sum_{n=1}^{\infty}a_n=\lim_{N\to\infty}s_N.\]</div></div><div class="note"><strong>Condição necessária.</strong> Se a série converge, então \(a_n\to0\). A recíproca é falsa.</div>
+<h2>4. Série geométrica</h2><div class="mathbox"><div class="mathline">\[\sum_{n=0}^{\infty}ar^n=\frac{a}{1-r}.\]</div><div class="mathline">\[|r|&lt;1.\]</div></div><figure class="figure"><img src="../assets/img/aulas/serie-geometrica.png" alt="Interpretação geométrica de uma soma infinita."><figcaption>Interpretação geométrica de uma soma infinita. Figura do material das aulas da GCT054.</figcaption></figure>
+<div class="example"><strong>Exemplo.</strong><p>\(3+3/2+3/4+\cdots\) tem \(a=3\), \(r=1/2\), portanto sua soma é \(6\).</p></div>
+<h2>5. Série harmônica</h2><div class="mathline">\[\sum_{n=1}^{\infty}\frac1n\]</div><p>diverge, embora \(1/n\to0\).</p><figure class="figure"><img src="../assets/img/aulas/serie-harmonica.png" alt="Comportamento de somas parciais de uma série divergente de crescimento lento."><figcaption>Comportamento de somas parciais de uma série divergente de crescimento lento. Figura do material das aulas da GCT054.</figcaption></figure><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>

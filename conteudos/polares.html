@@ -1,53 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Coordenadas polares e área de superfície | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Coordenadas polares e área de superfície</div>
-<p class="eyebrow">PARTE 3 · AULAS 36–38</p><h1>Coordenadas polares e área de superfície</h1><p class="lead">Mudança de coordenadas em integrais duplas e aplicações geométricas.</p>
-<h2>Transformação polar</h2>
-<div class="mathbox">
-\[
-x=r\cos\theta,\qquad y=r\sin\theta,\qquad dA=r\,dr\,d\theta.
-\]
-</div>
-<p>O fator \(r\) é o Jacobiano da transformação e não pode ser omitido.</p>
-<div class="mathbox">
-\[
-\iint_D f(x,y)\,dA
-=
-\int_\alpha^\beta\int_{r_1(\theta)}^{r_2(\theta)}
-f(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta.
-\]
-</div>
-<h2>Área de uma superfície</h2>
-<p>Para \(z=f(x,y)\) sobre uma região \(D\),</p>
-<div class="mathbox">
-\[
-A(S)=\iint_D\sqrt{1+[f_x(x,y)]^2+[f_y(x,y)]^2}\,dA.
-\]
-</div>
-<div class="note"><strong>Estratégia.</strong> Antes de integrar, desenhe a região. Em domínios circulares, anulares ou setoriais, coordenadas polares frequentemente simplificam os limites.</div>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Integrais duplas em coordenadas polares | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Integrais duplas em coordenadas polares</div><p class="eyebrow">PARTE 3 · AULAS 36–38</p><h1>Integrais duplas em coordenadas polares</h1><p class="lead">Transformação polar, elemento de área, descrição de regiões circulares e área de superfícies.</p><h2>1. Transformação</h2><div class="mathbox"><div class="mathline">\[x=r\cos\theta.\]</div><div class="mathline">\[y=r\sin\theta.\]</div><div class="mathline">\[x^2+y^2=r^2.\]</div></div><figure class="figure"><img src="../assets/img/aulas/polares.png" alt="Relação entre coordenadas cartesianas e polares."><figcaption>Relação entre coordenadas cartesianas e polares. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>2. Elemento de área</h2><div class="mathline">\[dA=r\,dr\,d\theta.\]</div><div class="note"><strong>Atenção.</strong> O fator \(r\) é o Jacobiano da transformação e não pode ser omitido.</div>
+<h2>3. Integral em polares</h2><div class="mathbox"><div class="mathline">\[\iint_Df(x,y)\,dA=\int_\alpha^\beta\int_{r_1(\theta)}^{r_2(\theta)}f(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta.\]</div></div><figure class="figure"><img src="../assets/img/aulas/polares-regiao.png" alt="Região descrita por limites angulares e radiais."><figcaption>Região descrita por limites angulares e radiais. Figura do material das aulas da GCT054.</figcaption></figure>
+<div class="example"><strong>Exemplo resolvido — área do disco.</strong><div class="mathline">\[0\leq r\leq R.\]</div><div class="mathline">\[0\leq\theta\leq2\pi.\]</div><div class="mathline">\[A=\int_0^{2\pi}\int_0^Rr\,dr\,d\theta.\]</div><div class="mathline">\[A=\pi R^2.\]</div></div>
+<h2>4. Área de superfície</h2><div class="mathline">\[A(S)=\iint_D\sqrt{1+[f_x]^2+[f_y]^2}\,dA.\]</div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>

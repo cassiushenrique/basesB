@@ -1,47 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Campos vetoriais e integrais de linha | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Campos vetoriais e integrais de linha</div>
-<p class="eyebrow">CÁLCULO VETORIAL · AULAS 49–50</p><h1>Campos vetoriais e integrais de linha</h1><p class="lead">Campos vetoriais, campos gradientes, curvas parametrizadas e integrais de linha escalares e vetoriais.</p>
-<h2>Campos vetoriais</h2>
-<div class="mathbox">\[\mathbf F(x,y)=P(x,y)\mathbf i+Q(x,y)\mathbf j.\]</div>
-<p>Um campo gradiente tem a forma \(\mathbf F=\nabla f\), em que \(f\) é uma função potencial.</p>
-<h2>Curvas parametrizadas</h2>
-<div class="mathbox">\[\mathbf r(t)=\langle x(t),y(t),z(t)\rangle,\qquad a\le t\le b.\]</div>
-<h3>Comprimento de arco</h3>
-<div class="mathbox">\[L=\int_a^b\|\mathbf r'(t)\|\,dt.\]</div>
-<h2>Integral de linha de uma função escalar</h2>
-<div class="mathbox">\[\int_C f\,ds=\int_a^b f(\mathbf r(t))\|\mathbf r'(t)\|\,dt.\]</div>
-<h2>Integral de linha de um campo vetorial</h2>
-<div class="mathbox">
-\[
-\int_C\mathbf F\cdot d\mathbf r
-=
-\int_a^b\mathbf F(\mathbf r(t))\cdot\mathbf r'(t)\,dt.
-\]
-</div>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Campos vetoriais e integrais de linha | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Campos vetoriais e integrais de linha</div><p class="eyebrow">CÁLCULO VETORIAL · AULAS 49–50</p><h1>Campos vetoriais e integrais de linha</h1><p class="lead">Campos vetoriais, curvas parametrizadas, comprimento de arco e integrais de linha escalares e vetoriais.</p><h2>1. Campo vetorial</h2><div class="mathline">\[\mathbf F(x,y)=P(x,y)\mathbf i+Q(x,y)\mathbf j.\]</div><p>\(P\) e \(Q\) são as componentes do campo nas direções coordenadas.</p><figure class="figure"><img src="../assets/img/aulas/campo-vetorial.png" alt="Representação de um campo vetorial no plano."><figcaption>Representação de um campo vetorial no plano. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>2. Curva parametrizada</h2><div class="mathline">\[\mathbf r(t)=\langle x(t),y(t),z(t)\rangle.\]</div><p>\(\mathbf r'(t)\) é tangente à curva.</p>
+<h2>3. Comprimento</h2><div class="mathline">\[L=\int_a^b\|\mathbf r'(t)\|\,dt.\]</div>
+<h2>4. Integral escalar</h2><div class="mathline">\[\int_Cf\,ds=\int_a^bf(\mathbf r(t))\|\mathbf r'(t)\|\,dt.\]</div>
+<h2>5. Integral de campo vetorial</h2><div class="mathline">\[\int_C\mathbf F\cdot d\mathbf r=\int_a^b\mathbf F(\mathbf r(t))\cdot\mathbf r'(t)\,dt.\]</div>
+<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(\mathbf F=\langle x,y\rangle\) e \(\mathbf r(t)=\langle t,t\rangle\), \(0\leq t\leq1\),</p><div class="mathline">\[\mathbf r'(t)=\langle1,1\rangle.\]</div><div class="mathline">\[\mathbf F(\mathbf r(t))=\langle t,t\rangle.\]</div><div class="mathline">\[\mathbf F\cdot\mathbf r'=2t.\]</div><div class="mathline">\[\int_0^12t\,dt=1.\]</div></div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>

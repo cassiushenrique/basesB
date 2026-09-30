@@ -1,57 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Campos conservativos e Teorema de Green | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Campos conservativos e Teorema de Green</div>
-<p class="eyebrow">CÁLCULO VETORIAL · AULAS 51–55</p><h1>Campos conservativos e Teorema de Green</h1><p class="lead">Teorema Fundamental das Integrais de Linha, independência do caminho, Green, rotacional e divergente.</p>
-<h2>Teorema Fundamental das Integrais de Linha</h2>
-<p>Se \(\mathbf F=\nabla f\) e \(C\) vai de \(A\) a \(B\), então</p>
-<div class="mathbox">\[\int_C\nabla f\cdot d\mathbf r=f(B)-f(A).\]</div>
-<p>Consequentemente, em condições apropriadas, a integral é independente do caminho.</p>
-<h2>Teorema de Green</h2>
-<p>Para uma curva simples, fechada e positivamente orientada \(C=\partial D\),</p>
-<div class="mathbox">
-\[
-\oint_C P\,dx+Q\,dy
-=
-\iint_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dA.
-\]
-</div>
-<h2>Rotacional e divergente</h2>
-<div class="mathbox">
-\[
-\nabla\times\mathbf F
-\]
-\[
-\nabla\cdot\mathbf F
-=
-\frac{\partial P}{\partial x}+
-\frac{\partial Q}{\partial y}+
-\frac{\partial R}{\partial z}.
-\]
-</div>
-<p>O rotacional descreve tendência local de rotação; a divergência mede a tendência de fonte ou sumidouro do campo.</p>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Campos conservativos, rotacional, divergente e Teorema de Green | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Campos conservativos, rotacional, divergente e Teorema de Green</div><p class="eyebrow">CÁLCULO VETORIAL · AULAS 51–55</p><h1>Campos conservativos, rotacional, divergente e Teorema de Green</h1><p class="lead">Potenciais, independência do caminho, Teorema Fundamental das Integrais de Linha, Green, rotacional e divergente.</p><h2>1. Campo conservativo</h2><div class="mathline">\[\mathbf F=\nabla f.\]</div><p>A função \(f\) é chamada potencial.</p>
+<h2>2. Teorema Fundamental das Integrais de Linha</h2><div class="mathline">\[\int_C\nabla f\cdot d\mathbf r=f(B)-f(A).\]</div><p>O resultado depende apenas dos extremos.</p><figure class="figure"><img src="../assets/img/aulas/green-caminhos.png" alt="Caminhos diferentes com os mesmos extremos."><figcaption>Caminhos diferentes com os mesmos extremos. Figura do material das aulas da GCT054.</figcaption></figure>
+<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(\mathbf F=\langle2x,2y\rangle\), um potencial é \(f=x^2+y^2\). De \((0,0)\) a \((1,2)\),</p><div class="mathline">\[\int_C\mathbf F\cdot d\mathbf r=5.\]</div></div>
+<h2>3. Teorema de Green</h2><div class="mathbox"><div class="mathline">\[\oint_CP\,dx+Q\,dy=\iint_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dA.\]</div></div><figure class="figure"><img src="../assets/img/aulas/green-curvas.png" alt="Curva fechada e região interior no Teorema de Green."><figcaption>Curva fechada e região interior no Teorema de Green. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>4. Rotacional</h2><p>Mede a tendência local de rotação do campo.</p><div class="mathline">\[\nabla\times\mathbf F.\]</div>
+<h2>5. Divergência</h2><div class="mathline">\[\nabla\cdot\mathbf F=\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}.\]</div><p>Valores positivos sugerem fonte local; negativos, sumidouro.</p><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>

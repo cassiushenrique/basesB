@@ -1,60 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Integrais triplas e mudança de variáveis | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Integrais triplas e mudança de variáveis</div>
-<p class="eyebrow">PARTE 3 · AULAS 39–43</p><h1>Integrais triplas e mudança de variáveis</h1><p class="lead">Volumes, coordenadas cilíndricas e esféricas e o papel do Jacobiano em integrais múltiplas.</p>
-<h2>Integral tripla</h2>
-<div class="mathbox">\[\iiint_E f(x,y,z)\,dV.\]</div>
-<p>Quando \(f=1\), a integral fornece o volume de \(E\). Com densidade \(\rho\), fornece a massa.</p>
-<h2>Coordenadas cilíndricas</h2>
-<div class="mathbox">
-\[
-x=r\cos\theta,\qquad y=r\sin\theta,\qquad z=z
-\]
-\[
-dV=r\,dz\,dr\,d\theta.
-\]
-</div>
-<h2>Coordenadas esféricas</h2>
-<div class="mathbox">
-\[
-x=\rho\sin\phi\cos\theta,\qquad
-y=\rho\sin\phi\sin\theta,\qquad
-z=\rho\cos\phi
-\]
-\[
-dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta.
-\]
-</div>
-<h2>Jacobiano</h2>
-<p>Em uma transformação \((u,v)\mapsto(x,y)\), o elemento de área é corrigido pelo módulo do determinante jacobiano:</p>
-<div class="mathbox">
-\[
-dA=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|du\,dv.
-\]
-</div>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Integrais triplas e mudança de variáveis | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Integrais triplas e mudança de variáveis</div><p class="eyebrow">PARTE 3 · AULAS 39–43</p><h1>Integrais triplas e mudança de variáveis</h1><p class="lead">Volumes, massas, coordenadas cilíndricas e esféricas e o papel do Jacobiano.</p><h2>1. Integral tripla</h2><div class="mathline">\[\iiint_E f(x,y,z)\,dV.\]</div><p>Para \(f=1\), obtemos o volume; para \(f=\rho\), a massa.</p><figure class="figure"><img src="../assets/img/aulas/tripla-regiao.png" alt="Sólido entre superfícies sobre uma região do plano."><figcaption>Sólido entre superfícies sobre uma região do plano. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>2. Descrição iterada</h2><div class="mathbox"><div class="mathline">\[u_1(x,y)\leq z\leq u_2(x,y).\]</div><div class="mathline">\[\iiint_Ef\,dV=\iint_D\left[\int_{u_1}^{u_2}f\,dz\right]dA.\]</div></div><figure class="figure"><img src="../assets/img/aulas/tripla-limites.png" alt="Limites inferior e superior para uma integral tripla."><figcaption>Limites inferior e superior para uma integral tripla. Figura do material das aulas da GCT054.</figcaption></figure>
+<div class="example"><strong>Exemplo resolvido.</strong><p>Na caixa \(0\leq x\leq1\), \(0\leq y\leq2\), \(0\leq z\leq3\),</p><div class="mathline">\[V=\int_0^1\int_0^2\int_0^3 1\,dz\,dy\,dx=6.\]</div></div>
+<h2>3. Cilíndricas</h2><div class="mathbox"><div class="mathline">\[x=r\cos\theta.\]</div><div class="mathline">\[y=r\sin\theta.\]</div><div class="mathline">\[dV=r\,dz\,dr\,d\theta.\]</div></div><figure class="figure"><img src="../assets/img/aulas/cilindricas.png" alt="Geometria das coordenadas cilíndricas."><figcaption>Geometria das coordenadas cilíndricas. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>4. Esféricas</h2><div class="mathbox"><div class="mathline">\[x=\rho\sin\phi\cos\theta.\]</div><div class="mathline">\[y=\rho\sin\phi\sin\theta.\]</div><div class="mathline">\[z=\rho\cos\phi.\]</div><div class="mathline">\[dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta.\]</div></div><figure class="figure"><img src="../assets/img/aulas/esfericas.png" alt="Geometria das coordenadas esféricas."><figcaption>Geometria das coordenadas esféricas. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>5. Jacobiano</h2><p>O Jacobiano mede o fator local de deformação da mudança de coordenadas.</p><div class="mathline">\[dA=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|du\,dv.\]</div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>

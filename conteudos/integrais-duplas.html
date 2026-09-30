@@ -1,60 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Integrais duplas | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Integrais duplas</div>
-<p class="eyebrow">PARTE 3 · AULAS 29–35</p><h1>Integrais duplas</h1><p class="lead">Somas de Riemann, Teorema de Fubini, regiões gerais e aplicações a volume, massa, momentos e probabilidade.</p>
-<h2>Definição por somas de Riemann</h2>
-<div class="mathbox">\[\iint_R f(x,y)\,dA=\lim_{m,n\to\infty}\sum_i\sum_j f(x_{ij}^*,y_{ij}^*)\,\Delta A.\]</div>
-<h2>Teorema de Fubini</h2>
-<p>Para funções contínuas em um retângulo \(R=[a,b]\times[c,d]\), a integral dupla pode ser calculada por integrais iteradas.</p>
-<div class="mathbox">
-\[
-\iint_R f\,dA=\int_a^b\int_c^d f(x,y)\,dy\,dx
-=\int_c^d\int_a^b f(x,y)\,dx\,dy.
-\]
-</div>
-<h2>Regiões gerais</h2>
-<div class="mathbox">
-\[
-D=\{(x,y):a\le x\le b,\ g_1(x)\le y\le g_2(x)\}
-\]
-\[
-\iint_D f\,dA=\int_a^b\int_{g_1(x)}^{g_2(x)}f(x,y)\,dy\,dx.
-\]
-</div>
-<h2>Aplicações</h2>
-<div class="mathbox">
-\[
-m=\iint_D\rho(x,y)\,dA
-\]
-\[
-\bar x=\frac{1}{m}\iint_D x\rho(x,y)\,dA,\qquad
-\bar y=\frac{1}{m}\iint_D y\rho(x,y)\,dA.
-\]
-</div>
-<p>Quando \(f\) é uma densidade conjunta, integrais duplas também representam probabilidades e valores esperados.</p>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Integrais duplas e Teorema de Fubini | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Integrais duplas e Teorema de Fubini</div><p class="eyebrow">PARTE 3 · AULAS 29–35</p><h1>Integrais duplas e Teorema de Fubini</h1><p class="lead">Somas de Riemann, integrais iteradas, regiões gerais e aplicações a volume, massa, momentos, centro de massa e probabilidade.</p><h2>1. Soma dupla de Riemann</h2><div class="mathbox"><div class="mathline">\[\iint_R f(x,y)\,dA=\lim\sum_i\sum_j f(x_{ij}^*,y_{ij}^*)\,\Delta A.\]</div></div><figure class="figure"><img src="../assets/img/aulas/integral-riemann.png" alt="Particionamento da região para construção da soma dupla de Riemann."><figcaption>Particionamento da região para construção da soma dupla de Riemann. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>2. Interpretação como volume</h2><p>Se \(f\geq0\), a integral representa o volume abaixo de \(z=f(x,y)\) e acima da região \(R\).</p><figure class="figure"><img src="../assets/img/aulas/integral-volume.png" alt="Volume sob uma superfície sobre uma região plana."><figcaption>Volume sob uma superfície sobre uma região plana. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>3. Fubini</h2><div class="mathbox"><div class="mathline">\[\iint_Rf\,dA=\int_a^b\left[\int_c^d f(x,y)\,dy\right]dx.\]</div><div class="mathline">\[\iint_Rf\,dA=\int_c^d\left[\int_a^b f(x,y)\,dx\right]dy.\]</div></div>
+<div class="example"><strong>Exemplo resolvido.</strong><div class="mathline">\[\int_0^1\int_0^2(x+2y)\,dy\,dx.\]</div><p>A integral interna é \(2x+4\). Então</p><div class="mathline">\[\int_0^1(2x+4)\,dx=5.\]</div></div>
+<h2>4. Regiões gerais</h2><div class="mathbox"><div class="mathline">\[D=\{(x,y):a\leq x\leq b,\ g_1(x)\leq y\leq g_2(x)\}.\]</div><div class="mathline">\[\iint_Df\,dA=\int_a^b\int_{g_1(x)}^{g_2(x)}f(x,y)\,dy\,dx.\]</div></div>
+<h2>5. Propriedades</h2><ul class="property-list"><li>Linearidade.</li><li>Aditividade em regiões.</li><li>Preservação de ordem: se \(f\leq g\), então a integral de \(f\) não excede a de \(g\).</li><li>Se \(f\geq0\), a integral é não negativa.</li></ul>
+<h2>6. Massa e centro de massa</h2><div class="mathbox"><div class="mathline">\[m=\iint_D\rho(x,y)\,dA.\]</div><div class="mathline">\[\bar x=\frac1m\iint_Dx\rho(x,y)\,dA.\]</div><div class="mathline">\[\bar y=\frac1m\iint_Dy\rho(x,y)\,dA.\]</div></div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>

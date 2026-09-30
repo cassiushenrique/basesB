@@ -1,40 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Funções de várias variáveis | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Funções de várias variáveis</div>
-<p class="eyebrow">PARTE 2 · AULAS 06–08</p><h1>Funções de várias variáveis</h1><p class="lead">Domínio, gráficos, superfícies, curvas de nível, limites e continuidade em duas ou mais variáveis.</p>
-<h2>Funções de duas variáveis</h2>
-<p>Uma função \(f:D\subset\mathbb{R}^2\to\mathbb{R}\) associa a cada ponto \((x,y)\in D\) um único valor \(z=f(x,y)\). Seu gráfico é uma superfície no espaço.</p>
-<div class="mathbox">\[S=\{(x,y,z)\in\mathbb{R}^3:z=f(x,y)\}.\]</div>
-<h3>Curvas de nível</h3><p>Fixando \(z=k\), obtém-se a curva de nível \(f(x,y)=k\). O conjunto dessas curvas fornece uma representação bidimensional da superfície.</p>
-<h2>Limites em duas variáveis</h2>
-<div class="mathbox">\[\lim_{(x,y)\to(a,b)}f(x,y)=L.\]</div>
-<p>O limite só existe se o mesmo valor for obtido independentemente do caminho usado para aproximar \((a,b)\). Caminhos diferentes com limites diferentes provam a inexistência do limite.</p>
-<div class="note"><strong>Atenção.</strong> Verificar apenas retas não prova a existência de um limite multivariável. Para provar existência, são necessários argumentos gerais, como confronto, estimativas ou mudança para coordenadas polares.</div>
-<h2>Continuidade</h2>
-<div class="mathbox">\[\lim_{(x,y)\to(a,b)}f(x,y)=f(a,b).\]</div>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Funções de várias variáveis | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Funções de várias variáveis</div><p class="eyebrow">PARTE 2 · AULAS 06–08</p><h1>Funções de várias variáveis</h1><p class="lead">Definição, domínio, imagem, gráficos, curvas de nível, limites e continuidade em duas ou mais variáveis.</p><h2>1. Definição e notação</h2><div class="definition"><strong>Definição.</strong> Uma função de duas variáveis associa a cada \((x,y)\) de um domínio \(D\subseteq\mathbb R^2\) um único número real \(z=f(x,y)\).</div>
+<div class="mathbox"><div class="mathline">\[f:D\subseteq\mathbb R^2\longrightarrow\mathbb R.\]</div></div>
+<div class="symbols"><strong>Elementos da notação.</strong><p>\(D\) é o domínio; \(x,y\) são variáveis independentes; \(z=f(x,y)\) é a variável dependente; a imagem é o conjunto de valores efetivamente assumidos por \(f\).</p></div>
+<h2>2. Domínio</h2><p>Quando o domínio não é dado, procuramos o maior conjunto onde a expressão faz sentido. Denominadores devem ser diferentes de zero, radicandos de raízes pares devem ser não negativos e argumentos de logaritmos devem ser positivos.</p>
+<div class="example"><strong>Exemplo resolvido — domínio.</strong><p>Para</p><div class="mathline">\[f(x,y)=\sqrt{4-x^2-y^2},\]</div><p>devemos impor</p><div class="mathline">\[4-x^2-y^2\geq0.\]</div><p>Logo,</p><div class="mathline">\[x^2+y^2\leq4.\]</div><p>O domínio é o disco fechado de raio \(2\).</p></div><figure class="figure"><img src="../assets/img/aulas/funcoes-dominio.png" alt="Região plana associada ao domínio de uma função."><figcaption>Região plana associada ao domínio de uma função. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>3. Gráfico</h2><div class="mathbox"><div class="mathline">\[S=\{(x,y,z)\in\mathbb R^3:z=f(x,y)\}.\]</div></div><p>O gráfico é, em geral, uma superfície no espaço.</p><figure class="figure"><img src="../assets/img/aulas/funcoes-superficie.png" alt="Representação de uma função de duas variáveis sobre seu domínio."><figcaption>Representação de uma função de duas variáveis sobre seu domínio. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>4. Curvas de nível</h2><p>Fixando \(f(x,y)=k\), obtemos uma curva no plano. Para \(f(x,y)=x^2+y^2\), as curvas de nível são</p><div class="mathline">\[x^2+y^2=k,\]</div><p>isto é, circunferências de raio \(\sqrt{k}\), para \(k\geq0\).</p>
+<h2>5. Limites</h2><div class="mathbox"><div class="mathline">\[\lim_{(x,y)\to(a,b)}f(x,y)=L.\]</div></div><p>O mesmo valor deve ser obtido independentemente do caminho de aproximação.</p>
+<div class="example"><strong>Exemplo resolvido — limite inexistente.</strong><p>Para</p><div class="mathline">\[f(x,y)=\frac{x^2-y^2}{x^2+y^2},\]</div><p>pelo caminho \(y=0\), o limite é \(1\); pelo caminho \(x=0\), é \(-1\). Portanto, o limite em \((0,0)\) não existe.</p></div>
+<div class="note"><strong>Importante.</strong> Dois caminhos com limites diferentes provam que o limite não existe. Muitos caminhos com o mesmo limite não bastam, em geral, para provar existência.</div>
+<h2>6. Continuidade</h2><p>Em \((a,b)\), exigimos que \(f(a,b)\) esteja definida, que o limite exista e que</p><div class="mathline">\[\lim_{(x,y)\to(a,b)}f(x,y)=f(a,b).\]</div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>

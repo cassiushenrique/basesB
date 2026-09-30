@@ -1,42 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Derivadas direcionais e gradiente | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Derivadas direcionais e gradiente</div>
-<p class="eyebrow">PARTE 2 · AULAS 16–18</p><h1>Derivadas direcionais e gradiente</h1><p class="lead">Taxas de variação em direções arbitrárias, vetor gradiente e planos tangentes a superfícies de nível.</p>
-<h2>Derivada direcional</h2>
-<p>Para um vetor unitário \(\mathbf u=\langle u_1,u_2\rangle\), a derivada direcional de uma função diferenciável é</p>
-<div class="mathbox">\[D_{\mathbf u}f(a,b)=\nabla f(a,b)\cdot\mathbf u.\]</div>
-<h2>Vetor gradiente</h2>
-<div class="mathbox">\[\nabla f(x,y)=\left\langle f_x(x,y),f_y(x,y)\right\rangle.\]</div>
-<div class="theorem"><strong>Direção de crescimento máximo.</strong> Se \(\nabla f\neq\mathbf0\), o crescimento máximo ocorre na direção de \(\nabla f\), e a taxa máxima é \(\|\nabla f\|\).</div>
-<p>O gradiente é perpendicular às curvas de nível de \(f\). Para uma superfície de nível \(F(x,y,z)=k\), \(\nabla F\) é normal à superfície.</p>
-<div class="mathbox">
-\[
-\nabla F(P)\cdot\langle x-x_0,y-y_0,z-z_0\rangle=0
-\]
-</div>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Derivadas direcionais e vetor gradiente | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Derivadas direcionais e vetor gradiente</div><p class="eyebrow">PARTE 2 · AULAS 16–18</p><h1>Derivadas direcionais e vetor gradiente</h1><p class="lead">A derivada direcional generaliza as derivadas parciais para qualquer direção. O gradiente identifica a direção de crescimento máximo e é normal às curvas e superfícies de nível.</p><h2>1. Normalização da direção</h2><p>Uma derivada direcional usa um vetor unitário. Para \(\mathbf v\neq\mathbf0\),</p><div class="mathline">\[\mathbf u=\frac{\mathbf v}{\|\mathbf v\|}.\]</div><figure class="figure"><img src="../assets/img/aulas/gradiente-direcao.png" alt="Vetor unitário e suas componentes."><figcaption>Vetor unitário e suas componentes. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>2. Derivada direcional</h2><div class="mathbox"><div class="mathline">\[D_{\mathbf u}f(a,b)=\lim_{h\to0}\frac{f(a+hu_1,b+hu_2)-f(a,b)}{h}.\]</div></div><p>Se \(f\) é diferenciável,</p><div class="mathline">\[D_{\mathbf u}f(a,b)=\nabla f(a,b)\cdot\mathbf u.\]</div>
+<h2>3. Gradiente</h2><div class="mathbox"><div class="mathline">\[\nabla f(x,y)=\langle f_x(x,y),f_y(x,y)\rangle.\]</div></div>
+<ul class="property-list"><li>Aponta na direção de crescimento mais rápido.</li><li>A taxa máxima é \(\|\nabla f\|\).</li><li>O vetor oposto aponta para o decrescimento mais rápido.</li><li>É perpendicular às curvas de nível.</li></ul>
+<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(f=x^2+2y^2\), em \(P=(1,1)\),</p><div class="mathline">\[\nabla f(P)=\langle2,4\rangle.\]</div><p>Na direção \(\mathbf v=\langle3,4\rangle\),</p><div class="mathline">\[\mathbf u=\left\langle\frac35,\frac45\right\rangle.\]</div><div class="mathline">\[D_{\mathbf u}f(P)=\frac{22}{5}.\]</div></div>
+<h2>4. Superfícies de nível</h2><p>Para \(F(x,y,z)=k\), \(\nabla F(P)\) é normal à superfície.</p><div class="mathline">\[\nabla F(P)\cdot\langle x-x_0,y-y_0,z-z_0\rangle=0.\]</div><figure class="figure"><img src="../assets/img/aulas/gradiente-superficie.png" alt="Gradiente normal à superfície de nível e plano tangente."><figcaption>Gradiente normal à superfície de nível e plano tangente. Figura do material das aulas da GCT054.</figcaption></figure><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>

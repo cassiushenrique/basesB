@@ -1,65 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Derivadas parciais | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Derivadas parciais</div>
-<p class="eyebrow">PARTE 2 · AULAS 09–15</p><h1>Derivadas parciais</h1><p class="lead">Derivadas parciais, planos tangentes, aproximações lineares, regra da cadeia e derivação implícita.</p>
-<h2>Derivadas parciais</h2>
-<div class="mathbox">
-\[
-f_x(a,b)=\lim_{h\to0}\frac{f(a+h,b)-f(a,b)}{h}
-\]
-\[
-f_y(a,b)=\lim_{h\to0}\frac{f(a,b+h)-f(a,b)}{h}
-\]
-</div>
-<p>Ao calcular \(f_x\), \(y\) é mantido constante; ao calcular \(f_y\), \(x\) é mantido constante.</p>
-<h2>Plano tangente e linearização</h2>
-<div class="mathbox">
-\[
-z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)
-\]
-\[
-L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)
-\]
-</div>
-<p>A linearização fornece a aproximação \(f(x,y)\approx L(x,y)\) perto de \((a,b)\).</p>
-<h2>Diferenciabilidade</h2>
-<p>A existência das derivadas parciais isoladamente não garante diferenciabilidade. Uma condição suficiente muito usada é: se \(f_x\) e \(f_y\) existem e são contínuas em uma vizinhança do ponto, então \(f\) é diferenciável nesse ponto.</p>
-<h2>Regra da cadeia</h2>
-<div class="mathbox">
-\[
-\frac{dz}{dt}=f_x\frac{dx}{dt}+f_y\frac{dy}{dt}
-\]
-</div>
-<h2>Derivação implícita</h2>
-<p>Se \(F(x,y,z)=0\) define localmente \(z=z(x,y)\) e \(F_z\neq0\), então</p>
-<div class="mathbox">
-\[
-z_x=-\frac{F_x}{F_z},\qquad z_y=-\frac{F_y}{F_z}.
-\]
-</div>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Derivadas parciais, plano tangente e regra da cadeia | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Derivadas parciais, plano tangente e regra da cadeia</div><p class="eyebrow">PARTE 2 · AULAS 09–15</p><h1>Derivadas parciais, plano tangente e regra da cadeia</h1><p class="lead">Taxas de variação coordenadas, derivadas de ordem superior, diferenciabilidade, aproximação linear, regra da cadeia e derivação implícita.</p><h2>1. Derivadas parciais</h2><p>Para calcular a variação em relação a uma variável, mantemos as demais fixas.</p><div class="mathbox"><div class="mathline">\[f_x(a,b)=\lim_{h\to0}\frac{f(a+h,b)-f(a,b)}{h}.\]</div><div class="mathline">\[f_y(a,b)=\lim_{h\to0}\frac{f(a,b+h)-f(a,b)}{h}.\]</div></div><figure class="figure"><img src="../assets/img/aulas/parciais-superficie.png" alt="Interpretação geométrica das derivadas parciais por cortes da superfície."><figcaption>Interpretação geométrica das derivadas parciais por cortes da superfície. Figura do material das aulas da GCT054.</figcaption></figure>
+<h3>Derivadas de ordem superior</h3><div class="mathbox"><div class="mathline">\[f_{xx}=\frac{\partial^2f}{\partial x^2}.\]</div><div class="mathline">\[f_{yy}=\frac{\partial^2f}{\partial y^2}.\]</div><div class="mathline">\[f_{xy}=\frac{\partial^2f}{\partial y\,\partial x}.\]</div><div class="mathline">\[f_{yx}=\frac{\partial^2f}{\partial x\,\partial y}.\]</div></div>
+<div class="theorem"><strong>Clairaut.</strong> Se as derivadas mistas são contínuas em uma vizinhança do ponto, então \(f_{xy}=f_{yx}\).</div>
+<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(f(x,y)=x^2y+e^{xy}\),</p><div class="mathline">\[f_x=2xy+ye^{xy}.\]</div><div class="mathline">\[f_y=x^2+xe^{xy}.\]</div><p>Em \((1,0)\),</p><div class="mathline">\[f_x(1,0)=0.\]</div><div class="mathline">\[f_y(1,0)=2.\]</div></div>
+<h2>2. Plano tangente e linearização</h2><div class="mathbox"><div class="mathline">\[L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b).\]</div><div class="mathline">\[z=L(x,y).\]</div></div><figure class="figure"><img src="../assets/img/aulas/plano-tangente.png" alt="Plano tangente construído a partir das direções tangentes coordenadas."><figcaption>Plano tangente construído a partir das direções tangentes coordenadas. Figura do material das aulas da GCT054.</figcaption></figure>
+<div class="example"><strong>Exemplo resolvido — plano tangente.</strong><p>Para \(f=x^2+2y^2\), em \((1,1)\),</p><div class="mathline">\[f(1,1)=3.\]</div><div class="mathline">\[f_x(1,1)=2.\]</div><div class="mathline">\[f_y(1,1)=4.\]</div><p>Logo,</p><div class="mathline">\[z=3+2(x-1)+4(y-1).\]</div></div><figure class="figure"><img src="../assets/img/aulas/linearizacao.png" alt="Aproximação local de uma superfície por seu plano tangente."><figcaption>Aproximação local de uma superfície por seu plano tangente. Figura do material das aulas da GCT054.</figcaption></figure>
+<h2>3. Diferenciabilidade</h2><p>A existência das derivadas parciais não garante diferenciabilidade. Uma condição suficiente útil é a continuidade de \(f_x\) e \(f_y\) em uma vizinhança do ponto.</p>
+<h2>4. Regra da cadeia</h2><p>Se \(z=f(x,y)\), \(x=x(t)\) e \(y=y(t)\),</p><div class="mathline">\[\frac{dz}{dt}=f_x\frac{dx}{dt}+f_y\frac{dy}{dt}.\]</div>
+<div class="example"><strong>Exemplo.</strong><p>Se \(z=x^2+y^2\), \(x=t^2\) e \(y=e^t\),</p><div class="mathline">\[\frac{dz}{dt}=4t^3+2e^{2t}.\]</div></div>
+<h2>5. Derivação implícita</h2><p>Se \(F(x,y,z)=0\) define localmente \(z=z(x,y)\) e \(F_z\neq0\),</p><div class="mathbox"><div class="mathline">\[z_x=-\frac{F_x}{F_z}.\]</div><div class="mathline">\[z_y=-\frac{F_y}{F_z}.\]</div></div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>

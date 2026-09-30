@@ -1,60 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#12372A">
-<title>Testes de convergência | GCT054</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/style.css">
-<script src="../assets/mathjax.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-</head><body><header class="topbar">
-<a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a>
-<button class="menu-btn" aria-label="Abrir menu">☰</button>
-<nav class="nav">
-<a href="../index.html#multivariavel">Multivariável</a>
-<a href="../index.html#integrais">Integrais</a>
-<a href="../index.html#vetorial">Vetorial</a>
-<a href="../index.html#series">Séries</a>
-<a href="../conteudos/referencias.html">Referências</a>
-</nav></header><main class="content">
-<div class="breadcrumbs"><a href="../index.html">Início</a> / Testes de convergência</div>
-<p class="eyebrow">PARTE 4 · AULAS 61–68</p><h1>Testes de convergência</h1><p class="lead">Teste da integral, comparação, comparação pelo limite, séries alternadas, convergência absoluta, razão e raiz.</p>
-<h2>Teste da integral</h2>
-<p>Se \(f\) é contínua, positiva e decrescente e \(a_n=f(n)\), então \(\sum a_n\) e \(\int_1^\infty f(x)\,dx\) têm o mesmo comportamento quanto à convergência.</p>
-<h2>Comparação direta</h2>
-<p>Para \(0\le a_n\le b_n\): se \(\sum b_n\) converge, então \(\sum a_n\) converge; se \(\sum a_n\) diverge, então \(\sum b_n\) diverge.</p>
-<h2>Comparação pelo limite</h2>
-<div class="mathbox">
-\[
-\lim_{n\to\infty}\frac{a_n}{b_n}=c,\qquad 0&lt;c&lt;\infty.
-\]
-</div>
-<p>Nesse caso, \(\sum a_n\) e \(\sum b_n\) convergem ou divergem juntas.</p>
-<h2>Séries alternadas</h2>
-<div class="mathbox">\[\sum_{n=1}^{\infty}(-1)^{n-1}b_n.\]</div>
-<p>Se \(b_n\) é decrescente e \(b_n\to0\), a série alternada converge.</p>
-<h2>Convergência absoluta</h2>
-<p>Se \(\sum |a_n|\) converge, então \(\sum a_n\) converge absolutamente e, portanto, converge.</p>
-<h2>Teste da razão</h2>
-<div class="mathbox">
-\[
-L=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|.
-\]
-</div>
-<p>Se \(L&lt;1\), converge absolutamente; se \(L&gt;1\) (ou \(L=\infty\)), diverge; se \(L=1\), o teste é inconclusivo.</p>
-<h2>Teste da raiz</h2>
-<div class="mathbox">
-\[
-L=\lim_{n\to\infty}\sqrt[n]{|a_n|}.
-\]
-</div>
-<p>As conclusões são as mesmas do Teste da Razão.</p>
-
-<div class="refbox">Referência principal para o desenvolvimento conceitual: Stewart, J. <em>Cálculo</em>. O conteúdo desta página foi organizado como material didático de apoio à GCT054.</div>
-</main><footer><div><strong>GCT054 · Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div>
-<div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer>
-<script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Testes de convergência | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Testes de convergência</div><p class="eyebrow">PARTE 4 · AULAS 61–68</p><h1>Testes de convergência</h1><p class="lead">Teste da integral, comparação, comparação pelo limite, séries alternadas, convergência absoluta, razão e raiz.</p><h2>1. Teste da integral</h2><p>Se \(f\) é contínua, positiva e decrescente e \(a_n=f(n)\), então a série e a integral imprópria têm o mesmo comportamento.</p><div class="mathline">\[\sum_{n=1}^{\infty}a_n\quad\longleftrightarrow\quad\int_1^\infty f(x)\,dx.\]</div><figure class="figure"><img src="../assets/img/aulas/teste-integral.png" alt="Comparação geométrica entre soma de termos e área sob uma curva."><figcaption>Comparação geométrica entre soma de termos e área sob uma curva. Figura do material das aulas da GCT054.</figcaption></figure>
+<div class="example"><strong>Exemplo — série \(p\).</strong><div class="mathline">\[\sum_{n=1}^{\infty}\frac1{n^p}\]</div><p>converge se \(p&gt;1\) e diverge se \(p\leq1\).</p></div>
+<h2>2. Comparação direta</h2><p>Se \(0\leq a_n\leq b_n\), uma série convergente maior força a menor a convergir; uma série divergente menor força a maior a divergir.</p>
+<h2>3. Comparação pelo limite</h2><div class="mathline">\[\lim_{n\to\infty}\frac{a_n}{b_n}=c,\qquad0&lt;c&lt;\infty.\]</div><p>As duas séries têm o mesmo comportamento.</p>
+<h2>4. Alternadas</h2><div class="mathline">\[\sum_{n=1}^{\infty}(-1)^{n-1}b_n.\]</div><p>Se \(b_n\) decresce e tende a zero, a série converge.</p>
+<h2>5. Convergência absoluta</h2><p>Se \(\sum|a_n|\) converge, então \(\sum a_n\) converge.</p>
+<h2>6. Razão</h2><div class="mathline">\[L=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|.\]</div><p>\(L&lt;1\): converge absolutamente; \(L&gt;1\): diverge; \(L=1\): inconclusivo.</p>
+<h2>7. Raiz</h2><div class="mathline">\[L=\lim_{n\to\infty}\sqrt[n]{|a_n|}.\]</div><p>As conclusões são as mesmas do Teste da Razão.</p><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
