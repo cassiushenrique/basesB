@@ -1,5 +1,2494 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Revisão de cálculo de uma variável | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Revisão de cálculo de uma variável</div><p class="eyebrow">PARTE 1 · AULAS 01–05</p><h1>Revisão de cálculo de uma variável</h1><p class="lead">Síntese dos pré-requisitos utilizados ao longo da disciplina: funções, limites, derivadas, aplicações e integrais.</p><h2>1. Funções</h2><p>Revise domínio, imagem, composição, funções definidas por partes, simetria, crescimento e as famílias algébricas, racionais, trigonométricas, exponenciais e logarítmicas.</p>
-<h2>2. Limites e continuidade</h2><div class="mathbox"><div class="mathline">\[\lim_{x\to a}f(x)=L.\]</div></div><p>Limites laterais, infinitos, no infinito, assíntotas e propriedades algébricas serão usados repetidamente.</p>
-<h2>3. Derivadas</h2><div class="mathbox"><div class="mathline">\[f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}.\]</div></div><p>A derivada representa taxa instantânea de variação e inclinação da reta tangente.</p>
-<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(f(x)=x^3-3x\),</p><div class="mathline">\[f'(x)=3x^2-3.\]</div><p>Os pontos críticos satisfazem</p><div class="mathline">\[3x^2-3=0,\]</div><div class="mathline">\[x=\pm1.\]</div></div>
-<h2>4. Integrais</h2><div class="mathbox"><div class="mathline">\[\int_a^b f(x)\,dx=F(b)-F(a).\]</div><div class="mathline">\[F'(x)=f(x).\]</div></div><p>Revise substituição, integração por partes, integrais trigonométricas, substituição trigonométrica e frações parciais.</p><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <meta
+        name="theme-color"
+        content="#12372A"
+    >
+
+    <title>
+        Revisão de cálculo de uma variável | GCT054
+    </title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../assets/style.css"
+    >
+
+    <script src="../assets/mathjax.js"></script>
+
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    ></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         CABEÇALHO
+         ========================================================= -->
+
+    <header class="topbar">
+
+        <a
+            class="brand"
+            href="../index.html"
+        >
+
+            <span class="brand-mark">
+                ∫
+            </span>
+
+            <span>
+
+                <strong>
+                    Bases Matemáticas B
+                </strong>
+
+                <small>
+                    GCT054 · UFLA
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <button
+            class="menu-btn"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+
+        <nav class="nav">
+
+            <a href="../index.html#multivariavel">
+                Multivariável
+            </a>
+
+            <a href="../index.html#integrais">
+                Integrais
+            </a>
+
+            <a href="../index.html#vetorial">
+                Vetorial
+            </a>
+
+            <a href="../index.html#series">
+                Séries
+            </a>
+
+            <a href="../conteudos/referencias.html">
+                Referências
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         CONTEÚDO
+         ========================================================= -->
+
+    <main class="content">
+
+
+        <div class="breadcrumbs">
+
+            <a href="../index.html">
+                Início
+            </a>
+
+            /
+
+            Revisão de cálculo de uma variável
+
+        </div>
+
+
+        <p class="eyebrow">
+            PARTE 1 · AULAS 01–05
+        </p>
+
+
+        <h1>
+            Revisão de cálculo de uma variável
+        </h1>
+
+
+        <p class="lead">
+            Revisão dos principais conceitos de cálculo diferencial
+            e integral de uma variável necessários para o estudo de
+            funções de várias variáveis: funções, limites,
+            continuidade, derivadas, análise de gráficos,
+            otimização e integrais.
+        </p>
+
+
+
+        <!-- =====================================================
+             1. FUNÇÕES
+             ===================================================== -->
+
+        <h2>
+            1. Funções de uma variável
+        </h2>
+
+
+        <p>
+            Uma função descreve uma relação na qual cada elemento
+            admissível do domínio está associado a exatamente um
+            valor no contradomínio.
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                f:A\longrightarrow B
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                x\longmapsto f(x)
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            O conjunto \(A\) é o <strong>domínio</strong> da função.
+            A imagem é o conjunto dos valores efetivamente assumidos
+            por \(f(x)\).
+        </p>
+
+
+        <h3>
+            1.1 Formas de representar uma função
+        </h3>
+
+
+        <p>
+            Uma mesma função pode ser representada de diferentes
+            maneiras. Nas aulas, consideramos quatro representações
+            fundamentais:
+        </p>
+
+
+        <div class="mathbox">
+
+            <p>
+                <strong>Verbal:</strong> a relação entre as variáveis
+                é descrita por palavras.
+            </p>
+
+            <p>
+                <strong>Numérica:</strong> os valores são apresentados
+                em uma tabela.
+            </p>
+
+            <p>
+                <strong>Visual:</strong> a relação é apresentada por
+                meio de um gráfico.
+            </p>
+
+            <p>
+                <strong>Algébrica:</strong> a função é representada
+                por uma expressão matemática.
+            </p>
+
+        </div>
+
+
+        <h3>
+            1.2 Domínio
+        </h3>
+
+
+        <p>
+            Determinar o domínio significa identificar os valores de
+            \(x\) para os quais a expressão que define a função possui
+            significado no conjunto dos números reais.
+        </p>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 1 — Determinação do domínio
+            </strong>
+
+            <p>
+                Considere
+            </p>
+
+            <div class="mathline">
+                \[
+                f(x)=
+                \frac{\sqrt{x-1}}{x-3}.
+                \]
+            </div>
+
+            <p>
+                A raiz quadrada exige
+            </p>
+
+            <div class="mathline">
+                \[
+                x-1\geq 0,
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                x\geq 1.
+                \]
+            </div>
+
+            <p>
+                Além disso, o denominador não pode ser nulo:
+            </p>
+
+            <div class="mathline">
+                \[
+                x\neq 3.
+                \]
+            </div>
+
+            <p>
+                Portanto,
+            </p>
+
+            <div class="mathline">
+                \[
+                D_f=[1,3)\cup(3,\infty).
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            1.3 Simetria
+        </h3>
+
+
+        <p>
+            A simetria de uma função pode ser investigada
+            substituindo \(x\) por \(-x\).
+        </p>
+
+
+        <div class="mathbox">
+
+            <p>
+                Uma função é <strong>par</strong> quando
+            </p>
+
+            <div class="mathline">
+                \[
+                f(-x)=f(x).
+                \]
+            </div>
+
+            <p>
+                Nesse caso, seu gráfico é simétrico em relação
+                ao eixo \(y\).
+            </p>
+
+            <p>
+                Uma função é <strong>ímpar</strong> quando
+            </p>
+
+            <div class="mathline">
+                \[
+                f(-x)=-f(x).
+                \]
+            </div>
+
+            <p>
+                Nesse caso, o gráfico apresenta simetria em relação
+                à origem.
+            </p>
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 2 — Simetria
+            </strong>
+
+            <p>
+                Para
+            </p>
+
+            <div class="mathline">
+                \[
+                f(x)=x^3,
+                \]
+            </div>
+
+            <p>
+                temos
+            </p>
+
+            <div class="mathline">
+                \[
+                f(-x)=(-x)^3,
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                f(-x)=-x^3,
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                f(-x)=-f(x).
+                \]
+            </div>
+
+            <p>
+                Portanto, \(f\) é uma função ímpar.
+            </p>
+
+        </div>
+
+
+        <h3>
+            1.4 Crescimento e decrescimento
+        </h3>
+
+
+        <p>
+            Uma função é crescente em um intervalo quando valores
+            maiores da variável independente produzem valores maiores
+            da função. Analogamente, é decrescente quando ocorre o
+            comportamento oposto.
+        </p>
+
+
+        <p>
+            Posteriormente, veremos que a derivada fornece uma forma
+            sistemática de estudar esse comportamento:
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                f'(x)>0
+                \]
+            </div>
+
+            <p>
+                indica crescimento local, enquanto
+            </p>
+
+            <div class="mathline">
+                \[
+                f'(x)<0
+                \]
+            </div>
+
+            <p>
+                indica decrescimento local.
+            </p>
+
+        </div>
+
+
+        <h3>
+            1.5 Composição de funções
+        </h3>
+
+
+        <p>
+            Se \(f\) e \(g\) são funções compatíveis, a composição
+            \(f\circ g\) é definida por
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                (f\circ g)(x)=f(g(x)).
+                \]
+            </div>
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 3 — Composição
+            </strong>
+
+            <p>
+                Considere
+            </p>
+
+            <div class="mathline">
+                \[
+                f(x)=x^2
+                \]
+            </div>
+
+            <p>
+                e
+            </p>
+
+            <div class="mathline">
+                \[
+                g(x)=x+1.
+                \]
+            </div>
+
+            <p>
+                Então
+            </p>
+
+            <div class="mathline">
+                \[
+                (f\circ g)(x)
+                =
+                f(x+1),
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                (f\circ g)(x)
+                =
+                (x+1)^2.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             2. LIMITES
+             ===================================================== -->
+
+        <h2>
+            2. Limites
+        </h2>
+
+
+        <p>
+            O limite descreve o comportamento de uma função quando
+            a variável independente se aproxima de determinado valor,
+            sem exigir necessariamente que a função esteja definida
+            nesse ponto.
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}f(x)=L.
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            Essa expressão significa que os valores de \(f(x)\)
+            podem ser tornados arbitrariamente próximos de \(L\)
+            quando \(x\) é tomado suficientemente próximo de \(a\).
+        </p>
+
+
+        <h3>
+            2.1 Limites laterais
+        </h3>
+
+
+        <p>
+            Podemos estudar a aproximação a \(a\) pela esquerda
+            ou pela direita.
+        </p>
+
+
+        <div class="mathbox">
+
+            <p>
+                Limite pela esquerda:
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a^-}f(x).
+                \]
+            </div>
+
+            <p>
+                Limite pela direita:
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a^+}f(x).
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            O limite bilateral existe quando os dois limites
+            laterais existem e são iguais.
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a^-}f(x)=L
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a^+}f(x)=L
+                \]
+            </div>
+
+            <p>
+                implicam
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}f(x)=L.
+                \]
+            </div>
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 4 — Limites laterais
+            </strong>
+
+            <p>
+                Considere
+            </p>
+
+            <div class="mathline">
+                \[
+                f(x)=
+                \begin{cases}
+                x+1, & x<1,\\
+                3-x, & x\geq 1.
+                \end{cases}
+                \]
+            </div>
+
+            <p>
+                Pela esquerda,
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to1^-}f(x)=2.
+                \]
+            </div>
+
+            <p>
+                Pela direita,
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to1^+}f(x)=2.
+                \]
+            </div>
+
+            <p>
+                Logo,
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to1}f(x)=2.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             3. PROPRIEDADES DOS LIMITES
+             ===================================================== -->
+
+        <h2>
+            3. Propriedades dos limites
+        </h2>
+
+
+        <p>
+            Suponha que
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}f(x)=L
+                \]
+            </div>
+
+            <p>
+                e
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}g(x)=M.
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            Então valem as seguintes propriedades.
+        </p>
+
+
+        <h3>
+            3.1 Soma e diferença
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}
+                [f(x)+g(x)]
+                =
+                L+M.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}
+                [f(x)-g(x)]
+                =
+                L-M.
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            3.2 Multiplicação por constante
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}
+                c f(x)
+                =
+                cL.
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            3.3 Produto
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}
+                f(x)g(x)
+                =
+                LM.
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            3.4 Quociente
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}
+                \frac{f(x)}{g(x)}
+                =
+                \frac{L}{M},
+                \]
+            </div>
+
+            <p>
+                desde que
+            </p>
+
+            <div class="mathline">
+                \[
+                M\neq0.
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            3.5 Potências
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}
+                [f(x)]^n
+                =
+                L^n.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             4. CONTINUIDADE
+             ===================================================== -->
+
+        <h2>
+            4. Continuidade
+        </h2>
+
+
+        <p>
+            Uma função \(f\) é contínua em \(x=a\) quando três
+            condições são satisfeitas:
+        </p>
+
+
+        <div class="mathbox">
+
+            <p>
+                1. \(f(a)\) está definida;
+            </p>
+
+            <p>
+                2. o limite existe;
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}f(x)
+                \]
+            </div>
+
+            <p>
+                3. o limite coincide com o valor da função:
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}f(x)=f(a).
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            Geometricamente, uma função contínua pode ser entendida
+            como uma função cujo gráfico não apresenta uma ruptura
+            naquele ponto.
+        </p>
+
+
+
+        <!-- =====================================================
+             5. LIMITES INFINITOS E ASSÍNTOTAS
+             ===================================================== -->
+
+        <h2>
+            5. Limites infinitos e assíntotas
+        </h2>
+
+
+        <h3>
+            5.1 Assíntotas verticais
+        </h3>
+
+
+        <p>
+            Se pelo menos um dos limites laterais de \(f(x)\)
+            tende a \(+\infty\) ou \(-\infty\) quando \(x\)
+            se aproxima de \(a\), então a reta
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                x=a
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            é uma assíntota vertical.
+        </p>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 5 — Assíntota vertical
+            </strong>
+
+            <p>
+                Para
+            </p>
+
+            <div class="mathline">
+                \[
+                f(x)=\frac{1}{x-2},
+                \]
+            </div>
+
+            <p>
+                temos
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to2^+}
+                \frac{1}{x-2}
+                =
+                +\infty,
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to2^-}
+                \frac{1}{x-2}
+                =
+                -\infty.
+                \]
+            </div>
+
+            <p>
+                Portanto,
+            </p>
+
+            <div class="mathline">
+                \[
+                x=2
+                \]
+            </div>
+
+            <p>
+                é uma assíntota vertical.
+            </p>
+
+        </div>
+
+
+        <h3>
+            5.2 Assíntotas horizontais
+        </h3>
+
+
+        <p>
+            Se
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to\infty}f(x)=L
+                \]
+            </div>
+
+            <p>
+                ou
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to-\infty}f(x)=L,
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            então a reta
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                y=L
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            é uma assíntota horizontal.
+        </p>
+
+
+
+        <!-- =====================================================
+             6. LIMITES FUNDAMENTAIS
+             ===================================================== -->
+
+        <h2>
+            6. Alguns limites fundamentais
+        </h2>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to0}
+                \frac{\sin x}{x}
+                =
+                1.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to0}
+                \frac{1-\cos x}{x}
+                =
+                0.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to\infty}
+                \frac{1}{x^p}
+                =
+                0,
+                \qquad p>0.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to\infty}
+                e^{-x}
+                =
+                0.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to\infty}
+                \frac{\ln x}{x^p}
+                =
+                0,
+                \qquad p>0.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             7. L'HÔPITAL
+             ===================================================== -->
+
+        <h2>
+            7. Formas indeterminadas e Regra de L’Hôpital
+        </h2>
+
+
+        <p>
+            A substituição direta pode produzir expressões
+            indeterminadas, como
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \frac{0}{0}
+                \]
+            </div>
+
+            <p>
+                ou
+            </p>
+
+            <div class="mathline">
+                \[
+                \frac{\infty}{\infty}.
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            Nessas situações, sob as hipóteses apropriadas,
+            a Regra de L’Hôpital permite substituir o quociente
+            das funções pelo quociente de suas derivadas:
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \lim_{x\to a}
+                \frac{f(x)}{g(x)}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                \lim_{x\to a}
+                \frac{f'(x)}{g'(x)}.
+                \]
+            </div>
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 6 — Regra de L’Hôpital
+            </strong>
+
+            <p>
+                Calcule
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to1}
+                \frac{\ln x}{x-1}.
+                \]
+            </div>
+
+            <p>
+                A substituição direta produz a forma
+                indeterminada \(0/0\). Assim,
+            </p>
+
+            <div class="mathline">
+                \[
+                \lim_{x\to1}
+                \frac{\ln x}{x-1}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                \lim_{x\to1}
+                \frac{1/x}{1}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =1.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             8. DERIVADAS
+             ===================================================== -->
+
+        <h2>
+            8. Derivadas e taxas de variação
+        </h2>
+
+
+        <p>
+            A derivada mede a taxa instantânea de variação de uma
+            função. Geometricamente, representa a inclinação da
+            reta tangente ao gráfico.
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                f'(a)
+                =
+                \lim_{h\to0}
+                \frac{f(a+h)-f(a)}{h}.
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            O quociente
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \frac{f(a+h)-f(a)}{h}
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            representa uma taxa média de variação. Quando
+            \(h\to0\), obtemos a taxa instantânea.
+        </p>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 7 — Derivada pela definição
+            </strong>
+
+            <p>
+                Para
+            </p>
+
+            <div class="mathline">
+                \[
+                f(x)=x^2,
+                \]
+            </div>
+
+            <p>
+                temos
+            </p>
+
+            <div class="mathline">
+                \[
+                f'(x)
+                =
+                \lim_{h\to0}
+                \frac{(x+h)^2-x^2}{h}.
+                \]
+            </div>
+
+            <p>
+                Expandindo,
+            </p>
+
+            <div class="mathline">
+                \[
+                (x+h)^2-x^2
+                =
+                2xh+h^2.
+                \]
+            </div>
+
+            <p>
+                Logo,
+            </p>
+
+            <div class="mathline">
+                \[
+                f'(x)
+                =
+                \lim_{h\to0}
+                \frac{2xh+h^2}{h}.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                f'(x)
+                =
+                \lim_{h\to0}
+                (2x+h).
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                f'(x)=2x.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             9. REGRAS DE DERIVAÇÃO
+             ===================================================== -->
+
+        <h2>
+            9. Regras de derivação
+        </h2>
+
+
+        <h3>
+            9.1 Regra da potência
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}x^n
+                =
+                nx^{n-1}.
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            9.2 Regra do produto
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                (fg)'
+                =
+                f'g+fg'.
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            9.3 Regra do quociente
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \left(\frac{f}{g}\right)'
+                =
+                \frac{f'g-fg'}{g^2}.
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            9.4 Regra da cadeia
+        </h3>
+
+
+        <p>
+            A Regra da Cadeia é fundamental para derivar
+            funções compostas.
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}f(g(x))
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                f'(g(x))g'(x).
+                \]
+            </div>
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 8 — Regra da cadeia
+            </strong>
+
+            <p>
+                Considere
+            </p>
+
+            <div class="mathline">
+                \[
+                f(x)=\sin(x^2).
+                \]
+            </div>
+
+            <p>
+                A função externa é o seno e a função interna
+                é \(x^2\). Portanto,
+            </p>
+
+            <div class="mathline">
+                \[
+                f'(x)
+                =
+                \cos(x^2)\cdot 2x.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                f'(x)
+                =
+                2x\cos(x^2).
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             10. DERIVADAS IMPORTANTES
+             ===================================================== -->
+
+        <h2>
+            10. Derivadas importantes
+        </h2>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}e^x=e^x.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}\ln x=\frac{1}{x}.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}\sin x=\cos x.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}\cos x=-\sin x.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}\tan x=\sec^2x.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             11. APLICAÇÕES DA DERIVADA
+             ===================================================== -->
+
+        <h2>
+            11. Aplicações da derivada
+        </h2>
+
+
+        <h3>
+            11.1 Pontos críticos
+        </h3>
+
+
+        <p>
+            Um número \(c\) pertencente ao domínio de \(f\)
+            é um número crítico quando
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                f'(c)=0
+                \]
+            </div>
+
+            <p>
+                ou quando \(f'(c)\) não existe.
+            </p>
+
+        </div>
+
+
+        <h3>
+            11.2 Crescimento e decrescimento
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                f'(x)>0
+                \]
+            </div>
+
+            <p>
+                indica que \(f\) é crescente no intervalo.
+            </p>
+
+            <div class="mathline">
+                \[
+                f'(x)<0
+                \]
+            </div>
+
+            <p>
+                indica que \(f\) é decrescente no intervalo.
+            </p>
+
+        </div>
+
+
+        <h3>
+            11.3 Concavidade
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                f''(x)>0
+                \]
+            </div>
+
+            <p>
+                indica concavidade para cima.
+            </p>
+
+            <div class="mathline">
+                \[
+                f''(x)<0
+                \]
+            </div>
+
+            <p>
+                indica concavidade para baixo.
+            </p>
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 9 — Análise de uma função
+            </strong>
+
+            <p>
+                Considere
+            </p>
+
+            <div class="mathline">
+                \[
+                f(x)=x^3-3x.
+                \]
+            </div>
+
+            <p>
+                A primeira derivada é
+            </p>
+
+            <div class="mathline">
+                \[
+                f'(x)=3x^2-3.
+                \]
+            </div>
+
+            <p>
+                Os pontos críticos satisfazem
+            </p>
+
+            <div class="mathline">
+                \[
+                3x^2-3=0.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                x^2=1.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                x=-1
+                \quad\text{ou}\quad
+                x=1.
+                \]
+            </div>
+
+            <p>
+                A segunda derivada é
+            </p>
+
+            <div class="mathline">
+                \[
+                f''(x)=6x.
+                \]
+            </div>
+
+            <p>
+                Em \(x=-1\),
+            </p>
+
+            <div class="mathline">
+                \[
+                f''(-1)=-6<0,
+                \]
+            </div>
+
+            <p>
+                portanto há um máximo local.
+            </p>
+
+            <p>
+                Em \(x=1\),
+            </p>
+
+            <div class="mathline">
+                \[
+                f''(1)=6>0,
+                \]
+            </div>
+
+            <p>
+                portanto há um mínimo local.
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             12. INTEGRAIS
+             ===================================================== -->
+
+        <h2>
+            12. Integrais
+        </h2>
+
+
+        <p>
+            A integral definida surge, geometricamente, do problema
+            de calcular áreas por meio da soma de contribuições
+            infinitesimais.
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int_a^b f(x)\,dx.
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            Quando \(f(x)\geq0\) em \([a,b]\), essa integral
+            representa a área entre o gráfico de \(f\), o eixo
+            \(x\) e as retas \(x=a\) e \(x=b\).
+        </p>
+
+
+        <h3>
+            12.1 Soma de Riemann
+        </h3>
+
+
+        <p>
+            A integral definida pode ser interpretada como o limite
+            de somas de áreas de retângulos.
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int_a^b f(x)\,dx
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                \lim_{n\to\infty}
+                \sum_{i=1}^{n}
+                f(x_i^*)\Delta x.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             13. PROPRIEDADES DAS INTEGRAIS
+             ===================================================== -->
+
+        <h2>
+            13. Propriedades da integral definida
+        </h2>
+
+
+        <h3>
+            13.1 Linearidade
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int_a^b
+                [f(x)+g(x)]\,dx
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                \int_a^b f(x)\,dx
+                +
+                \int_a^b g(x)\,dx.
+                \]
+            </div>
+
+        </div>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int_a^b
+                c f(x)\,dx
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                c
+                \int_a^b
+                f(x)\,dx.
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            13.2 Inversão dos limites
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int_a^b f(x)\,dx
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                -
+                \int_b^a f(x)\,dx.
+                \]
+            </div>
+
+        </div>
+
+
+        <h3>
+            13.3 Aditividade do intervalo
+        </h3>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int_a^b f(x)\,dx
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                \int_a^c f(x)\,dx
+                +
+                \int_c^b f(x)\,dx.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             14. TEOREMA FUNDAMENTAL
+             ===================================================== -->
+
+        <h2>
+            14. Teorema Fundamental do Cálculo
+        </h2>
+
+
+        <p>
+            O Teorema Fundamental do Cálculo estabelece a conexão
+            entre derivação e integração.
+        </p>
+
+
+        <p>
+            Se
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                F'(x)=f(x),
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            então
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int_a^b f(x)\,dx
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                F(b)-F(a).
+                \]
+            </div>
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 10 — Teorema Fundamental do Cálculo
+            </strong>
+
+            <p>
+                Calcule
+            </p>
+
+            <div class="mathline">
+                \[
+                \int_0^2 x^2\,dx.
+                \]
+            </div>
+
+            <p>
+                Uma primitiva de \(x^2\) é
+            </p>
+
+            <div class="mathline">
+                \[
+                F(x)=\frac{x^3}{3}.
+                \]
+            </div>
+
+            <p>
+                Portanto,
+            </p>
+
+            <div class="mathline">
+                \[
+                \int_0^2 x^2\,dx
+                =
+                F(2)-F(0).
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                \frac{8}{3}.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             15. INTEGRAL INDEFINIDA
+             ===================================================== -->
+
+        <h2>
+            15. Integrais indefinidas
+        </h2>
+
+
+        <p>
+            Uma função \(F\) é uma primitiva de \(f\) quando
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                F'(x)=f(x).
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            A integral indefinida representa a família de todas
+            as primitivas:
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int f(x)\,dx
+                =
+                F(x)+C.
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            A constante \(C\) é necessária porque funções que
+            diferem apenas por uma constante possuem a mesma
+            derivada.
+        </p>
+
+
+
+        <!-- =====================================================
+             16. SUBSTITUIÇÃO
+             ===================================================== -->
+
+        <h2>
+            16. Integração por substituição
+        </h2>
+
+
+        <p>
+            O método da substituição é a contraparte da Regra da
+            Cadeia para integrais.
+        </p>
+
+
+        <p>
+            Quando fazemos
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                u=g(x),
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                du=g'(x)\,dx,
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            podemos transformar a integral original em uma integral
+            mais simples na variável \(u\).
+        </p>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 11 — Substituição
+            </strong>
+
+            <p>
+                Calcule
+            </p>
+
+            <div class="mathline">
+                \[
+                \int 2x
+                \cos(x^2)\,dx.
+                \]
+            </div>
+
+            <p>
+                Faça
+            </p>
+
+            <div class="mathline">
+                \[
+                u=x^2.
+                \]
+            </div>
+
+            <p>
+                Então
+            </p>
+
+            <div class="mathline">
+                \[
+                du=2x\,dx.
+                \]
+            </div>
+
+            <p>
+                Logo,
+            </p>
+
+            <div class="mathline">
+                \[
+                \int 2x
+                \cos(x^2)\,dx
+                =
+                \int\cos u\,du.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                \sin u+C.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                \sin(x^2)+C.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             17. INTEGRAÇÃO POR PARTES
+             ===================================================== -->
+
+        <h2>
+            17. Integração por partes
+        </h2>
+
+
+        <p>
+            A integração por partes decorre da Regra do Produto
+            para derivadas.
+        </p>
+
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int u\,dv
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                uv-\int v\,du.
+                \]
+            </div>
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>
+                Exemplo 12 — Integração por partes
+            </strong>
+
+            <p>
+                Calcule
+            </p>
+
+            <div class="mathline">
+                \[
+                \int xe^x\,dx.
+                \]
+            </div>
+
+            <p>
+                Escolha
+            </p>
+
+            <div class="mathline">
+                \[
+                u=x,
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                dv=e^x\,dx.
+                \]
+            </div>
+
+            <p>
+                Então
+            </p>
+
+            <div class="mathline">
+                \[
+                du=dx
+                \]
+            </div>
+
+            <p>
+                e
+            </p>
+
+            <div class="mathline">
+                \[
+                v=e^x.
+                \]
+            </div>
+
+            <p>
+                Aplicando a fórmula,
+            </p>
+
+            <div class="mathline">
+                \[
+                \int xe^x\,dx
+                =
+                xe^x-\int e^x\,dx.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                =
+                xe^x-e^x+C.
+                \]
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             18. OUTRAS TÉCNICAS
+             ===================================================== -->
+
+        <h2>
+            18. Outras técnicas de integração
+        </h2>
+
+
+        <p>
+            Nem toda integral pode ser resolvida diretamente.
+            A escolha da técnica depende da estrutura do integrando.
+        </p>
+
+
+        <div class="mathbox">
+
+            <p>
+                <strong>Integrais trigonométricas:</strong>
+                exploram identidades trigonométricas para
+                simplificar produtos e potências de funções
+                trigonométricas.
+            </p>
+
+            <p>
+                <strong>Substituição trigonométrica:</strong>
+                é especialmente útil quando aparecem expressões
+                envolvendo raízes quadradas de formas como
+            </p>
+
+            <div class="mathline">
+                \[
+                \sqrt{a^2-x^2},
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \sqrt{a^2+x^2},
+                \]
+            </div>
+
+            <p>
+                ou
+            </p>
+
+            <div class="mathline">
+                \[
+                \sqrt{x^2-a^2}.
+                \]
+            </div>
+
+            <p>
+                <strong>Frações parciais:</strong>
+                permitem decompor determinadas funções racionais
+                em somas de frações mais simples.
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             19. ESTRATÉGIA
+             ===================================================== -->
+
+        <h2>
+            19. Estratégia para resolver integrais
+        </h2>
+
+
+        <p>
+            Antes de iniciar os cálculos, examine a estrutura
+            do integrando. Uma sequência útil de decisões é:
+        </p>
+
+
+        <div class="mathbox">
+
+            <p>
+                <strong>1.</strong>
+                Verifique se a integral pode ser calculada
+                diretamente por uma fórmula conhecida.
+            </p>
+
+            <p>
+                <strong>2.</strong>
+                Procure uma composição acompanhada da derivada
+                da função interna. Nesse caso, considere
+                substituição.
+            </p>
+
+            <p>
+                <strong>3.</strong>
+                Se houver produto de funções de naturezas
+                diferentes, considere integração por partes.
+            </p>
+
+            <p>
+                <strong>4.</strong>
+                Se houver potências ou produtos trigonométricos,
+                examine identidades trigonométricas.
+            </p>
+
+            <p>
+                <strong>5.</strong>
+                Se houver radicais quadráticos característicos,
+                considere substituição trigonométrica.
+            </p>
+
+            <p>
+                <strong>6.</strong>
+                Para funções racionais, investigue simplificação,
+                divisão polinomial e frações parciais.
+            </p>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             20. CONEXÃO COM CÁLCULO MULTIVARIÁVEL
+             ===================================================== -->
+
+        <h2>
+            20. Por que esta revisão é importante?
+        </h2>
+
+
+        <p>
+            Os conceitos desta revisão reaparecem diretamente no
+            cálculo de várias variáveis. A principal mudança será
+            permitir que uma função dependa de duas ou mais
+            variáveis independentes.
+        </p>
+
+
+        <div class="mathbox">
+
+            <p>
+                No cálculo de uma variável:
+            </p>
+
+            <div class="mathline">
+                \[
+                y=f(x).
+                \]
+            </div>
+
+            <p>
+                No cálculo de duas variáveis:
+            </p>
+
+            <div class="mathline">
+                \[
+                z=f(x,y).
+                \]
+            </div>
+
+        </div>
+
+
+        <p>
+            Limites serão estendidos para aproximações no plano,
+            derivadas darão origem às derivadas parciais e
+            direcionais, a Regra da Cadeia será generalizada e
+            integrais de uma variável serão ampliadas para
+            integrais duplas e triplas.
+        </p>
+
+
+
+        <!-- =====================================================
+             GEOGEBRA
+             ===================================================== -->
+
+        <div class="geo-card">
+
+            <div>
+
+                <strong>
+                    Visualização no GeoGebra
+                </strong>
+
+                <p>
+                    Utilize o GeoGebra para explorar gráficos,
+                    retas tangentes, comportamento de funções,
+                    extremos e interpretações geométricas dos
+                    conceitos revisados nesta página.
+                </p>
+
+            </div>
+
+
+            <a
+                class="btn"
+                href="https://www.geogebra.org/graphing"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Abrir GeoGebra ↗
+            </a>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             REFERÊNCIA
+             ===================================================== -->
+
+        <div class="refbox">
+
+            Material organizado a partir das Aulas 01 a 05 da
+            GCT054 — Bases Matemáticas para Ciência e Tecnologia B
+            e da bibliografia indicada no Plano de Ensino,
+            especialmente Stewart, Anton, Bivens e Davis e Thomas,
+            Weir e Hass.
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================================================
+         RODAPÉ
+         ========================================================= -->
+
+    <footer>
+
+        <div>
+
+            <strong>
+                Bases Matemáticas para Ciência e Tecnologia B
+            </strong>
+
+            <br>
+
+            Material de apoio · ICTIN/UFLA
+
+        </div>
+
+
+        <div>
+
+            Prof. Dr. Cássius Henrique Xavier Oliveira
+
+            <br>
+
+            © <span id="year"></span>
+
+        </div>
+
+    </footer>
+
+
+    <script src="../assets/script.js"></script>
+
+
+</body>
+
+</html>
