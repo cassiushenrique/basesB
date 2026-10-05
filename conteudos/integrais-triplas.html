@@ -1,6 +1,1961 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Integrais triplas e mudança de variáveis | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Integrais triplas e mudança de variáveis</div><p class="eyebrow">PARTE 3 · AULAS 39–43</p><h1>Integrais triplas e mudança de variáveis</h1><p class="lead">Volumes, massas, coordenadas cilíndricas e esféricas e o papel do Jacobiano.</p><h2>1. Integral tripla</h2><div class="mathline">\[\iiint_E f(x,y,z)\,dV.\]</div><p>Para \(f=1\), obtemos o volume; para \(f=\rho\), a massa.</p><figure class="figure"><img src="../assets/img/aulas/tripla-regiao.png" alt="Sólido entre superfícies sobre uma região do plano."><figcaption>Sólido entre superfícies sobre uma região do plano. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>2. Descrição iterada</h2><div class="mathbox"><div class="mathline">\[u_1(x,y)\leq z\leq u_2(x,y).\]</div><div class="mathline">\[\iiint_Ef\,dV=\iint_D\left[\int_{u_1}^{u_2}f\,dz\right]dA.\]</div></div><figure class="figure"><img src="../assets/img/aulas/tripla-limites.png" alt="Limites inferior e superior para uma integral tripla."><figcaption>Limites inferior e superior para uma integral tripla. Figura do material das aulas da GCT054.</figcaption></figure>
-<div class="example"><strong>Exemplo resolvido.</strong><p>Na caixa \(0\leq x\leq1\), \(0\leq y\leq2\), \(0\leq z\leq3\),</p><div class="mathline">\[V=\int_0^1\int_0^2\int_0^3 1\,dz\,dy\,dx=6.\]</div></div>
-<h2>3. Cilíndricas</h2><div class="mathbox"><div class="mathline">\[x=r\cos\theta.\]</div><div class="mathline">\[y=r\sin\theta.\]</div><div class="mathline">\[dV=r\,dz\,dr\,d\theta.\]</div></div><figure class="figure"><img src="../assets/img/aulas/cilindricas.png" alt="Geometria das coordenadas cilíndricas."><figcaption>Geometria das coordenadas cilíndricas. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>4. Esféricas</h2><div class="mathbox"><div class="mathline">\[x=\rho\sin\phi\cos\theta.\]</div><div class="mathline">\[y=\rho\sin\phi\sin\theta.\]</div><div class="mathline">\[z=\rho\cos\phi.\]</div><div class="mathline">\[dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta.\]</div></div><figure class="figure"><img src="../assets/img/aulas/esfericas.png" alt="Geometria das coordenadas esféricas."><figcaption>Geometria das coordenadas esféricas. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>5. Jacobiano</h2><p>O Jacobiano mede o fator local de deformação da mudança de coordenadas.</p><div class="mathline">\[dA=\left|\frac{\partial(x,y)}{\partial(u,v)}\right|du\,dv.\]</div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#12372A">
+
+<title>Integrais triplas e mudança de variáveis | GCT054</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<link rel="stylesheet" href="../assets/style.css">
+
+<script src="../assets/mathjax.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+<header class="topbar">
+
+<a class="brand" href="../index.html">
+<span class="brand-mark">∫</span>
+<span>
+<strong>Bases Matemáticas B</strong>
+<small>GCT054 · UFLA</small>
+</span>
+</a>
+
+<button
+    class="menu-btn"
+    aria-label="Abrir menu"
+    aria-expanded="false">
+☰
+</button>
+
+<nav class="nav">
+<a href="../index.html#multivariavel">Multivariável</a>
+<a href="../index.html#integrais">Integrais</a>
+<a href="../index.html#vetorial">Vetorial</a>
+<a href="../index.html#series">Séries</a>
+<a href="../conteudos/referencias.html">Referências</a>
+</nav>
+
+</header>
+
+
+<main class="content">
+
+<div class="breadcrumbs">
+<a href="../index.html">Início</a>
+/ Integrais triplas e mudança de variáveis
+</div>
+
+<p class="eyebrow">
+PARTE 3 · AULAS 39–43
+</p>
+
+<h1>
+Integrais triplas e mudança de variáveis
+</h1>
+
+<p class="lead">
+
+As integrais triplas estendem a ideia das integrais duplas para funções de
+três variáveis definidas sobre regiões sólidas. Nesta seção, construiremos
+a integral tripla a partir de somas de Riemann, estudaremos o Teorema de
+Fubini, aprenderemos a descrever regiões sólidas e calcularemos volumes.
+Em seguida, veremos como coordenadas cilíndricas e esféricas podem
+simplificar sólidos com simetria e como o Jacobiano aparece nas mudanças
+de variáveis.
+
+</p>
+
+
+<h2>
+1. Da integral dupla para a integral tripla
+</h2>
+
+<p>
+
+Considere uma função \(f(x,y,z)\) definida em uma caixa retangular
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+B=[a,b]\times[c,d]\times[r,s].
+\]
+</div>
+
+</div>
+
+<p>
+
+Dividimos os três intervalos em subintervalos. Essa partição divide
+\(B\) em pequenas subcaixas \(B_{ijk}\), cada uma com volume
+
+</p>
+
+<div class="mathline">
+\[
+\Delta V=\Delta x\,\Delta y\,\Delta z.
+\]
+</div>
+
+<p>
+
+Escolhendo um ponto de amostragem
+\((x_i^*,y_j^*,z_k^*)\) em cada subcaixa, construímos a soma tripla
+de Riemann
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\sum_{i=1}^{l}
+\sum_{j=1}^{m}
+\sum_{k=1}^{n}
+f(x_i^*,y_j^*,z_k^*)\,\Delta V.
+\]
+</div>
+
+</div>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/tripla-riemann.png"
+    alt="Partição de uma caixa tridimensional em pequenas subcaixas."
+>
+
+<figcaption>
+Construção geométrica da integral tripla: a região é dividida em
+subcaixas de volume \(\Delta V=\Delta x\,\Delta y\,\Delta z\).
+</figcaption>
+
+</figure>
+
+
+<h2>
+2. Definição da integral tripla
+</h2>
+
+<p>
+
+A integral tripla de \(f\) sobre a caixa \(B\) é definida como o limite
+das somas triplas de Riemann:
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+\iiint_B f(x,y,z)\,dV
+=
+\lim_{l,m,n\to\infty}
+\sum_{i=1}^{l}
+\sum_{j=1}^{m}
+\sum_{k=1}^{n}
+f(x_i^*,y_j^*,z_k^*)\,\Delta V
+}.
+\]
+</div>
+
+</div>
+
+<p>
+
+Quando \(f\) é contínua em \(B\), essa integral existe. A notação
+\(dV\) representa um elemento infinitesimal de volume.
+
+</p>
+
+<div class="note">
+
+<strong>Interpretação importante.</strong>
+Assim como uma integral dupla acumula contribuições sobre uma região
+bidimensional, uma integral tripla acumula contribuições sobre uma
+região tridimensional.
+
+</div>
+
+
+<h2>
+3. Teorema de Fubini para integrais triplas
+</h2>
+
+<p>
+
+O Teorema de Fubini permite transformar uma integral tripla sobre uma
+caixa em integrais simples sucessivas.
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+\iiint_B f(x,y,z)\,dV
+=
+\int_r^s
+\int_c^d
+\int_a^b
+f(x,y,z)\,dx\,dy\,dz
+}.
+\]
+</div>
+
+</div>
+
+<p>
+
+A integral mais interna é calculada primeiro. Na expressão anterior,
+integramos inicialmente em relação a \(x\), mantendo \(y\) e \(z\)
+fixos; depois em relação a \(y\); e, finalmente, em relação a \(z\).
+
+</p>
+
+<p>
+
+Existem seis ordens possíveis:
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+dx\,dy\,dz,
+\qquad
+dx\,dz\,dy,
+\]
+</div>
+
+<div class="mathline">
+\[
+dy\,dx\,dz,
+\qquad
+dy\,dz\,dx,
+\]
+</div>
+
+<div class="mathline">
+\[
+dz\,dx\,dy,
+\qquad
+dz\,dy\,dx.
+\]
+</div>
+
+</div>
+
+<p>
+
+Quando a região é uma caixa retangular e \(f\) é contínua, qualquer
+dessas ordens produz o mesmo resultado.
+
+</p>
+
+
+<h2>
+4. Exemplo 1 — integral tripla sobre uma caixa
+</h2>
+
+<div class="example">
+
+<p>
+
+Calcule
+
+</p>
+
+<div class="mathline">
+\[
+\iiint_B \frac{xyz}{2}\,dV,
+\]
+</div>
+
+<p>
+
+onde
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+0\leq x\leq1,
+\]
+</div>
+
+<div class="mathline">
+\[
+-1\leq y\leq2,
+\]
+</div>
+
+<div class="mathline">
+\[
+0\leq z\leq3.
+\]
+</div>
+
+</div>
+
+<p>
+
+Escolhendo a ordem \(dx\,dy\,dz\),
+
+</p>
+
+<div class="mathline">
+\[
+\iiint_B \frac{xyz}{2}\,dV
+=
+\int_0^3
+\int_{-1}^{2}
+\int_0^1
+\frac{xyz}{2}
+\,dx\,dy\,dz.
+\]
+</div>
+
+<p>
+
+Primeiro,
+
+</p>
+
+<div class="mathline">
+\[
+\int_0^1
+\frac{xyz}{2}\,dx
+=
+\frac{yz}{4}.
+\]
+</div>
+
+<p>
+
+Logo,
+
+</p>
+
+<div class="mathline">
+\[
+=
+\int_0^3
+\int_{-1}^{2}
+\frac{yz}{4}
+\,dy\,dz.
+\]
+</div>
+
+<div class="mathline">
+\[
+=
+\int_0^3
+\frac{3z}{8}
+\,dz.
+\]
+</div>
+
+<div class="mathline">
+\[
+\boxed{
+\iiint_B \frac{xyz}{2}\,dV
+=
+\frac{27}{16}
+}.
+\]
+</div>
+
+</div>
+
+
+<h2>
+5. Integrais triplas sobre regiões gerais
+</h2>
+
+<p>
+
+Na prática, a região de integração raramente é uma caixa. Para um sólido
+\(E\), escrevemos
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iiint_E f(x,y,z)\,dV.
+\]
+</div>
+
+</div>
+
+<p>
+
+A estratégia central consiste em descrever geometricamente o sólido por
+meio de uma projeção em um dos planos coordenados e determinar os limites
+da variável correspondente à integral interna.
+
+</p>
+
+
+<h2>
+6. Regiões sólidas do tipo I
+</h2>
+
+<p>
+
+Uma região sólida \(E\) é do tipo I quando está compreendida entre duas
+superfícies que podem ser escritas como funções de \(x\) e \(y\):
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+E=
+\left\{
+(x,y,z):
+(x,y)\in D,\;
+u_1(x,y)\leq z\leq u_2(x,y)
+\right\}.
+\]
+</div>
+
+</div>
+
+<p>
+
+A região \(D\) é a projeção de \(E\) sobre o plano \(xy\). Para cada
+ponto \((x,y)\in D\), percorremos verticalmente o sólido desde a superfície
+
+</p>
+
+<div class="mathline">
+\[
+z=u_1(x,y)
+\]
+</div>
+
+<p>
+
+até a superfície
+
+</p>
+
+<div class="mathline">
+\[
+z=u_2(x,y).
+\]
+</div>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/tripla-regiao-tipo1.png"
+    alt="Região sólida do tipo I situada entre duas superfícies."
+>
+
+<figcaption>
+Região sólida do tipo I. Sua projeção no plano \(xy\) é \(D\), enquanto
+\(z\) varia entre \(u_1(x,y)\) e \(u_2(x,y)\).
+</figcaption>
+
+</figure>
+
+<p>
+
+Consequentemente,
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+\iiint_E f(x,y,z)\,dV
+=
+\iint_D
+\left[
+\int_{u_1(x,y)}^{u_2(x,y)}
+f(x,y,z)\,dz
+\right]dA
+}.
+\]
+</div>
+
+</div>
+
+
+<h2>
+7. Quando a projeção também precisa ser descrita
+</h2>
+
+<p>
+
+Se a projeção \(D\) no plano \(xy\) é uma região do tipo I,
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+a\leq x\leq b,
+\]
+</div>
+
+<div class="mathline">
+\[
+g_1(x)\leq y\leq g_2(x),
+\]
+</div>
+
+</div>
+
+<p>
+
+então o sólido pode ser escrito como
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+a\leq x\leq b,
+\]
+</div>
+
+<div class="mathline">
+\[
+g_1(x)\leq y\leq g_2(x),
+\]
+</div>
+
+<div class="mathline">
+\[
+u_1(x,y)\leq z\leq u_2(x,y),
+\]
+</div>
+
+</div>
+
+<p>
+
+e
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iiint_E f\,dV
+=
+\int_a^b
+\int_{g_1(x)}^{g_2(x)}
+\int_{u_1(x,y)}^{u_2(x,y)}
+f(x,y,z)\,dz\,dy\,dx.
+\]
+</div>
+
+</div>
+
+<p>
+
+Se \(D\) for do tipo II,
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+c\leq y\leq d,
+\]
+</div>
+
+<div class="mathline">
+\[
+h_1(y)\leq x\leq h_2(y),
+\]
+</div>
+
+</div>
+
+<p>
+
+podemos escrever
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iiint_E f\,dV
+=
+\int_c^d
+\int_{h_1(y)}^{h_2(y)}
+\int_{u_1(x,y)}^{u_2(x,y)}
+f(x,y,z)\,dz\,dx\,dy.
+\]
+</div>
+
+</div>
+
+
+<h2>
+8. Exemplo 2 — tetraedro
+</h2>
+
+<div class="example">
+
+<p>
+
+Considere o tetraedro limitado pelos planos
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+x=0,
+\qquad
+y=0,
+\qquad
+z=0,
+\]
+</div>
+
+<div class="mathline">
+\[
+x+y+z=1.
+\]
+</div>
+
+</div>
+
+<p>
+
+O plano superior pode ser escrito como
+
+</p>
+
+<div class="mathline">
+\[
+z=1-x-y.
+\]
+</div>
+
+<p>
+
+A projeção sobre o plano \(xy\) é o triângulo
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+0\leq x\leq1,
+\]
+</div>
+
+<div class="mathline">
+\[
+0\leq y\leq1-x.
+\]
+</div>
+
+</div>
+
+<p>
+
+Portanto,
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+E=
+\left\{
+(x,y,z):
+0\leq x\leq1,\;
+0\leq y\leq1-x,\;
+0\leq z\leq1-x-y
+\right\}.
+\]
+</div>
+
+</div>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/tripla-tetraedro-projecao.png"
+    alt="Tetraedro e sua projeção triangular sobre o plano xy."
+>
+
+<figcaption>
+A descrição de uma integral tripla é facilitada quando desenhamos o
+sólido e, separadamente, sua projeção sobre o plano coordenado.
+</figcaption>
+
+</figure>
+
+<p>
+
+Por exemplo,
+
+</p>
+
+<div class="mathline">
+\[
+\iiint_E z\,dV
+=
+\int_0^1
+\int_0^{1-x}
+\int_0^{1-x-y}
+z\,dz\,dy\,dx.
+\]
+</div>
+
+<p>
+
+Integrando sucessivamente,
+
+</p>
+
+<div class="mathline">
+\[
+=
+\frac12
+\int_0^1
+\int_0^{1-x}
+(1-x-y)^2
+\,dy\,dx,
+\]
+</div>
+
+<div class="mathline">
+\[
+=
+\frac16
+\int_0^1
+(1-x)^3
+\,dx,
+\]
+</div>
+
+<div class="mathline">
+\[
+\boxed{
+\iiint_E z\,dV
+=
+\frac{1}{24}
+}.
+\]
+</div>
+
+</div>
+
+
+<h2>
+9. Regiões sólidas dos tipos II e III
+</h2>
+
+<p>
+
+Também podemos escolher outras direções para percorrer o sólido.
+
+</p>
+
+<p>
+
+Uma região do tipo II possui projeção \(D\) no plano \(yz\) e é descrita por
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+E=
+\left\{
+(x,y,z):
+(y,z)\in D,\;
+u_1(y,z)\leq x\leq u_2(y,z)
+\right\}.
+\]
+</div>
+
+</div>
+
+<p>
+
+Nesse caso,
+
+</p>
+
+<div class="mathline">
+\[
+\iiint_E f\,dV
+=
+\iint_D
+\left[
+\int_{u_1(y,z)}^{u_2(y,z)}
+f(x,y,z)\,dx
+\right]dA.
+\]
+</div>
+
+<p>
+
+Uma região do tipo III possui projeção \(D\) no plano \(xz\):
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+E=
+\left\{
+(x,y,z):
+(x,z)\in D,\;
+u_1(x,z)\leq y\leq u_2(x,z)
+\right\}.
+\]
+</div>
+
+</div>
+
+<p>
+
+e
+
+</p>
+
+<div class="mathline">
+\[
+\iiint_E f\,dV
+=
+\iint_D
+\left[
+\int_{u_1(x,z)}^{u_2(x,z)}
+f(x,y,z)\,dy
+\right]dA.
+\]
+</div>
+
+
+<h2>
+10. Cálculo de volumes
+</h2>
+
+<p>
+
+O volume de um sólido \(E\) é obtido integrando a função constante
+\(1\):
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+V(E)=\iiint_E 1\,dV
+}.
+\]
+</div>
+
+</div>
+
+<p>
+
+Portanto, calcular o volume é um caso particular de integral tripla.
+O principal trabalho consiste em descrever corretamente a geometria
+do sólido e seus limites de integração.
+
+</p>
+
+
+<h2>
+11. Coordenadas cilíndricas
+</h2>
+
+<p>
+
+As coordenadas cilíndricas estendem as coordenadas polares para o espaço.
+Um ponto \(P\) é representado por
+
+</p>
+
+<div class="mathline">
+\[
+(r,\theta,z),
+\]
+</div>
+
+<p>
+
+onde \(r\) e \(\theta\) são as coordenadas polares da projeção de \(P\)
+no plano \(xy\), enquanto \(z\) permanece igual à coordenada cartesiana.
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+x=r\cos\theta,
+\]
+</div>
+
+<div class="mathline">
+\[
+y=r\sin\theta,
+\]
+</div>
+
+<div class="mathline">
+\[
+z=z.
+\]
+</div>
+
+</div>
+
+<p>
+
+No sentido inverso,
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+r^2=x^2+y^2,
+\]
+</div>
+
+<div class="mathline">
+\[
+\tan\theta=\frac{y}{x}.
+\]
+</div>
+
+</div>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/cilindricas.png"
+    alt="Representação geométrica das coordenadas cilíndricas."
+>
+
+<figcaption>
+Nas coordenadas cilíndricas, \((r,\theta)\) descreve a projeção de
+\(P\) no plano \(xy\), e \(z\) fornece sua altura.
+</figcaption>
+
+</figure>
+
+<div class="note">
+
+<strong>Quando usar?</strong>
+Coordenadas cilíndricas são particularmente úteis quando o sólido possui
+simetria em torno do eixo \(z\) ou quando aparecem expressões como
+\(x^2+y^2\).
+
+</div>
+
+
+<h2>
+12. Superfícies simples em coordenadas cilíndricas
+</h2>
+
+<p>
+
+O cilindro circular
+
+</p>
+
+<div class="mathline">
+\[
+x^2+y^2=c^2
+\]
+</div>
+
+<p>
+
+torna-se simplesmente
+
+</p>
+
+<div class="mathline">
+\[
+r=c.
+\]
+</div>
+
+<p>
+
+Da mesma forma,
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+x^2+y^2=z^2
+\quad\Longrightarrow\quad
+r^2=z^2,
+\]
+</div>
+
+<div class="mathline">
+\[
+z=r
+\]
+</div>
+
+</div>
+
+<p>
+
+descreve a parte superior de um cone circular.
+
+</p>
+
+
+<h2>
+13. Elemento de volume em coordenadas cilíndricas
+</h2>
+
+<p>
+
+Como a mudança ocorre no plano \(xy\), o elemento de área polar
+\(dA=r\,dr\,d\theta\) é combinado com a dimensão vertical \(dz\).
+Assim,
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+dV=r\,dz\,dr\,d\theta
+}.
+\]
+</div>
+
+</div>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/elemento-volume-cilindrico.png"
+    alt="Elemento de volume em coordenadas cilíndricas."
+>
+
+<figcaption>
+O pequeno elemento de volume cilíndrico possui o fator \(r\), herdado
+do elemento de área em coordenadas polares.
+</figcaption>
+
+</figure>
+
+
+<h2>
+14. Integral tripla em coordenadas cilíndricas
+</h2>
+
+<p>
+
+Considere uma região cuja projeção polar possa ser descrita por
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\alpha\leq\theta\leq\beta,
+\]
+</div>
+
+<div class="mathline">
+\[
+h_1(\theta)\leq r\leq h_2(\theta),
+\]
+</div>
+
+</div>
+
+<p>
+
+e cuja altura satisfaça
+
+</p>
+
+<div class="mathline">
+\[
+u_1(r\cos\theta,r\sin\theta)
+\leq z\leq
+u_2(r\cos\theta,r\sin\theta).
+\]
+</div>
+
+<p>
+
+Então
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+\iiint_E f(x,y,z)\,dV
+=
+\int_\alpha^\beta
+\int_{h_1(\theta)}^{h_2(\theta)}
+\int_{u_1}^{u_2}
+f(r\cos\theta,r\sin\theta,z)
+\,r\,dz\,dr\,d\theta
+}.
+\]
+</div>
+
+</div>
+
+<p>
+
+Portanto, para mudar para coordenadas cilíndricas:
+
+</p>
+
+<ul class="property-list">
+
+<li>
+substituímos \(x\) por \(r\cos\theta\);
+</li>
+
+<li>
+substituímos \(y\) por \(r\sin\theta\);
+</li>
+
+<li>
+mantemos \(z\);
+</li>
+
+<li>
+reescrevemos os limites em termos de \(r\), \(\theta\) e \(z\);
+</li>
+
+<li>
+substituímos \(dV\) por \(r\,dz\,dr\,d\theta\).
+</li>
+
+</ul>
+
+
+<h2>
+15. Coordenadas esféricas
+</h2>
+
+<p>
+
+Nas coordenadas esféricas, um ponto \(P\) é representado por
+
+</p>
+
+<div class="mathline">
+\[
+(\rho,\theta,\phi),
+\]
+</div>
+
+<p>
+
+em que \(\rho\) é a distância da origem ao ponto, \(\theta\) é o mesmo
+ângulo utilizado nas coordenadas cilíndricas e \(\phi\) é o ângulo entre
+o eixo \(z\) positivo e o segmento que liga a origem ao ponto.
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\rho\geq0,
+\]
+</div>
+
+<div class="mathline">
+\[
+0\leq\phi\leq\pi.
+\]
+</div>
+
+</div>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/esfericas.png"
+    alt="Representação geométrica das coordenadas esféricas."
+>
+
+<figcaption>
+Significado geométrico das coordenadas esféricas
+\((\rho,\theta,\phi)\).
+</figcaption>
+
+</figure>
+
+
+<h2>
+16. Superfícies coordenadas esféricas
+</h2>
+
+<p>
+
+Algumas superfícies importantes assumem descrições particularmente simples:
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\rho=c
+\quad\Longrightarrow\quad
+\text{esfera de raio }c,
+\]
+</div>
+
+<div class="mathline">
+\[
+\theta=c
+\quad\Longrightarrow\quad
+\text{semiplano vertical},
+\]
+</div>
+
+<div class="mathline">
+\[
+\phi=c
+\quad\Longrightarrow\quad
+\text{semicone com eixo }z.
+\]
+</div>
+
+</div>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/superficies-esfericas.png"
+    alt="Superfícies coordenadas em coordenadas esféricas."
+>
+
+<figcaption>
+As superfícies \(\rho=c\), \(\theta=c\) e \(\phi=c\) correspondem,
+respectivamente, a uma esfera, um semiplano vertical e um semicone.
+</figcaption>
+
+</figure>
+
+
+<h2>
+17. Relação entre coordenadas esféricas e cartesianas
+</h2>
+
+<p>
+
+Da geometria da transformação,
+
+</p>
+
+<div class="mathline">
+\[
+r=\rho\sin\phi
+\]
+</div>
+
+<p>
+
+e
+
+</p>
+
+<div class="mathline">
+\[
+z=\rho\cos\phi.
+\]
+</div>
+
+<p>
+
+Como \(x=r\cos\theta\) e \(y=r\sin\theta\), segue que
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{x=\rho\sin\phi\cos\theta},
+\]
+</div>
+
+<div class="mathline">
+\[
+\boxed{y=\rho\sin\phi\sin\theta},
+\]
+</div>
+
+<div class="mathline">
+\[
+\boxed{z=\rho\cos\phi}.
+\]
+</div>
+
+</div>
+
+<p>
+
+Além disso,
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+\rho^2=x^2+y^2+z^2
+}.
+\]
+</div>
+
+</div>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/relacao-esfericas-cartesianas.png"
+    alt="Relação geométrica entre coordenadas esféricas e cartesianas."
+>
+
+<figcaption>
+A decomposição geométrica mostra que
+\(r=\rho\sin\phi\) e \(z=\rho\cos\phi\), permitindo obter
+\(x\) e \(y\).
+</figcaption>
+
+</figure>
+
+<div class="note">
+
+<strong>Atenção à notação.</strong>
+Não existe uma convenção universal para coordenadas esféricas. Nesta
+disciplina, seguimos a convenção das aulas: \(\theta\) é o ângulo no
+plano \(xy\) e \(\phi\) é medido a partir do eixo \(z\) positivo.
+
+</div>
+
+
+<h2>
+18. Elemento de volume em coordenadas esféricas
+</h2>
+
+<p>
+
+Uma pequena cunha esférica possui dimensões aproximadamente iguais a
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\Delta\rho,
+\]
+</div>
+
+<div class="mathline">
+\[
+\rho\,\Delta\phi,
+\]
+</div>
+
+<div class="mathline">
+\[
+\rho\sin\phi\,\Delta\theta.
+\]
+</div>
+
+</div>
+
+<p>
+
+Assim,
+
+</p>
+
+<div class="mathline">
+\[
+\Delta V
+\approx
+(\Delta\rho)
+(\rho\,\Delta\phi)
+(\rho\sin\phi\,\Delta\theta).
+\]
+</div>
+
+<p>
+
+Portanto,
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+dV
+=
+\rho^2\sin\phi
+\,d\rho\,d\theta\,d\phi
+}.
+\]
+</div>
+
+</div>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/elemento-volume-esferico.png"
+    alt="Elemento de volume em coordenadas esféricas."
+>
+
+<figcaption>
+A geometria da pequena cunha esférica explica o fator
+\(\rho^2\sin\phi\) no elemento de volume.
+</figcaption>
+
+</figure>
+
+
+<h2>
+19. Integral tripla em coordenadas esféricas
+</h2>
+
+<p>
+
+Para uma cunha esférica
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+a\leq\rho\leq b,
+\]
+</div>
+
+<div class="mathline">
+\[
+\alpha\leq\theta\leq\beta,
+\]
+</div>
+
+<div class="mathline">
+\[
+c\leq\phi\leq d,
+\]
+</div>
+
+</div>
+
+<p>
+
+a fórmula de integração é
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iiint_E f(x,y,z)\,dV
+=
+\int_c^d
+\int_\alpha^\beta
+\int_a^b
+f(
+\rho\sin\phi\cos\theta,
+\rho\sin\phi\sin\theta,
+\rho\cos\phi
+)
+\]
+</div>
+
+<div class="mathline">
+\[
+{}\cdot
+\rho^2\sin\phi
+\,d\rho\,d\theta\,d\phi.
+\]
+</div>
+
+</div>
+
+<p>
+
+Em regiões mais gerais, o limite radial pode depender dos ângulos:
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+g_1(\theta,\phi)
+\leq
+\rho
+\leq
+g_2(\theta,\phi).
+\]
+</div>
+
+</div>
+
+<div class="note">
+
+<strong>Quando usar?</strong>
+Coordenadas esféricas são especialmente úteis quando esferas e cones
+formam as fronteiras da região de integração.
+
+</div>
+
+
+<h2>
+20. Mudança de variáveis
+</h2>
+
+<p>
+
+A ideia de coordenadas polares, cilíndricas e esféricas faz parte de um
+princípio mais geral: podemos substituir as variáveis originais por novas
+variáveis que descrevam a geometria de modo mais conveniente.
+
+</p>
+
+<p>
+
+Em duas dimensões, considere uma transformação
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+T(u,v)=(x,y),
+\]
+</div>
+
+<div class="mathline">
+\[
+x=g(u,v),
+\qquad
+y=h(u,v).
+\]
+</div>
+
+</div>
+
+<p>
+
+A transformação leva uma região \(S\) no plano \(uv\) a uma região
+\(R\) no plano \(xy\).
+
+</p>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/transformacao-regioes.png"
+    alt="Transformação de uma região do plano uv em uma região do plano xy."
+>
+
+<figcaption>
+Uma transformação \(T\) associa pontos da região \(S\), no plano
+\(uv\), a pontos da região imagem \(R\), no plano \(xy\).
+</figcaption>
+
+</figure>
+
+
+<h2>
+21. O Jacobiano
+</h2>
+
+<p>
+
+Um pequeno retângulo no plano \(uv\), com dimensões
+\(\Delta u\) e \(\Delta v\), é transformado aproximadamente em um
+paralelogramo no plano \(xy\). A área desse paralelogramo depende de
+como a transformação deforma localmente a região.
+
+</p>
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/jacobiano-geometria.png"
+    alt="Aproximação da imagem de um pequeno retângulo por um paralelogramo."
+>
+
+<figcaption>
+Localmente, a transformação leva um pequeno retângulo no plano
+\(uv\) a uma região aproximadamente paralelogramal no plano \(xy\).
+</figcaption>
+
+</figure>
+
+<p>
+
+O fator de escala local é determinado pelo Jacobiano.
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\begin{vmatrix}
+\dfrac{\partial x}{\partial u}
+&amp;
+\dfrac{\partial x}{\partial v}
+\\[6pt]
+\dfrac{\partial y}{\partial u}
+&amp;
+\dfrac{\partial y}{\partial v}
+\end{vmatrix}
+}.
+\]
+</div>
+
+</div>
+
+<p>
+
+Equivalentemente,
+
+</p>
+
+<div class="mathline">
+\[
+\frac{\partial(x,y)}{\partial(u,v)}
+=
+\frac{\partial x}{\partial u}
+\frac{\partial y}{\partial v}
+-
+\frac{\partial x}{\partial v}
+\frac{\partial y}{\partial u}.
+\]
+</div>
+
+<p>
+
+O elemento de área transforma-se segundo
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+dA
+=
+\left|
+\frac{\partial(x,y)}{\partial(u,v)}
+\right|
+du\,dv
+}.
+\]
+</div>
+
+</div>
+
+<p>
+
+O valor absoluto é necessário porque área é não negativa.
+
+</p>
+
+
+<h2>
+22. Coordenadas polares como exemplo de Jacobiano
+</h2>
+
+<p>
+
+Para
+
+</p>
+
+<div class="mathline">
+\[
+x=r\cos\theta,
+\qquad
+y=r\sin\theta,
+\]
+</div>
+
+<p>
+
+temos
+
+</p>
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\frac{\partial(x,y)}{\partial(r,\theta)}
+=
+\begin{vmatrix}
+\cos\theta &amp; -r\sin\theta
+\\
+\sin\theta &amp; r\cos\theta
+\end{vmatrix}.
+\]
+</div>
+
+</div>
+
+<div class="mathline">
+\[
+=
+r\cos^2\theta+r\sin^2\theta
+=
+r.
+\]
+</div>
+
+<p>
+
+Logo,
+
+</p>
+
+<div class="mathline">
+\[
+dA=r\,dr\,d\theta,
+\]
+</div>
+
+<p>
+
+recuperando exatamente o fator utilizado nas integrais polares.
+
+</p>
+
+
+<h2>
+23. Estratégia para escolher o sistema de coordenadas
+</h2>
+
+<ul class="property-list">
+
+<li>
+<strong>Cartesianas:</strong> regiões limitadas naturalmente por planos
+ou superfícies que podem ser isoladas como funções de duas variáveis.
+</li>
+
+<li>
+<strong>Cilíndricas:</strong> simetria em torno de um eixo, especialmente
+o eixo \(z\), e presença frequente de \(x^2+y^2\).
+</li>
+
+<li>
+<strong>Esféricas:</strong> simetria em torno de um ponto, esferas,
+cones e presença de \(x^2+y^2+z^2\).
+</li>
+
+<li>
+<strong>Mudança geral:</strong> quando uma transformação apropriada
+simplifica simultaneamente a região e o integrando.
+</li>
+
+</ul>
+
+
+<h2>
+24. Erros frequentes
+</h2>
+
+<ul class="property-list">
+
+<li>
+<strong>Montar os limites sem identificar a projeção.</strong>
+Faça primeiro um esboço do sólido e de sua projeção.
+</li>
+
+<li>
+<strong>Interpretar os limites independentemente.</strong>
+Os limites internos geralmente dependem das variáveis externas.
+</li>
+
+<li>
+<strong>Esquecer o fator \(r\) em coordenadas cilíndricas.</strong>
+O elemento correto é \(dV=r\,dz\,dr\,d\theta\), na ordem apresentada.
+</li>
+
+<li>
+<strong>Esquecer \(\rho^2\sin\phi\) em coordenadas esféricas.</strong>
+Esse fator faz parte do elemento de volume.
+</li>
+
+<li>
+<strong>Confundir \(\theta\) e \(\phi\).</strong>
+Use a convenção adotada nas aulas antes de estabelecer os limites.
+</li>
+
+<li>
+<strong>Transformar apenas o integrando.</strong>
+Uma mudança de variáveis exige transformar também a região e o elemento
+de volume ou área.
+</li>
+
+<li>
+<strong>Ignorar o valor absoluto do Jacobiano.</strong>
+O fator que multiplica o elemento de área deve representar uma escala
+geométrica não negativa.
+</li>
+
+</ul>
+
+
+<div class="geo-card">
+
+<div>
+
+<strong>
+Visualização no GeoGebra 3D
+</strong>
+
+<p>
+
+Use o ambiente 3D para representar sólidos, suas projeções nos planos
+coordenados, cilindros, cones e esferas. A visualização geométrica é
+particularmente útil para determinar corretamente os limites de uma
+integral tripla.
+
+</p>
+
+</div>
+
+<a
+    class="btn"
+    href="https://www.geogebra.org/3d"
+    target="_blank"
+    rel="noopener noreferrer">
+Abrir GeoGebra 3D ↗
+</a>
+
+</div>
+
+
+<div class="refbox">
+
+<strong>Referências</strong>
+
+<p>
+STEWART, J. <em>Cálculo</em>. Volume 2. São Paulo:
+Cengage Learning, 2013.
+</p>
+
+</div>
+
+</main>
+
+
+<footer>
+
+<div>
+
+<strong>
+Bases Matemáticas para Ciência e Tecnologia B
+</strong>
+
+<br>
+
+Material de apoio · ICTIN/UFLA
+
+</div>
+
+<div>
+
+Prof. Dr. Cássius Henrique Xavier Oliveira
+
+<br>
+
+© <span id="year"></span>
+
+</div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+
+</html>
