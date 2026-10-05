@@ -1,7 +1,2932 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Integrais duplas e Teorema de Fubini | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Integrais duplas e Teorema de Fubini</div><p class="eyebrow">PARTE 3 · AULAS 29–35</p><h1>Integrais duplas e Teorema de Fubini</h1><p class="lead">Somas de Riemann, integrais iteradas, regiões gerais e aplicações a volume, massa, momentos, centro de massa e probabilidade.</p><h2>1. Soma dupla de Riemann</h2><div class="mathbox"><div class="mathline">\[\iint_R f(x,y)\,dA=\lim\sum_i\sum_j f(x_{ij}^*,y_{ij}^*)\,\Delta A.\]</div></div><figure class="figure"><img src="../assets/img/aulas/integral-riemann.png" alt="Particionamento da região para construção da soma dupla de Riemann."><figcaption>Particionamento da região para construção da soma dupla de Riemann. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>2. Interpretação como volume</h2><p>Se \(f\geq0\), a integral representa o volume abaixo de \(z=f(x,y)\) e acima da região \(R\).</p><figure class="figure"><img src="../assets/img/aulas/integral-volume.png" alt="Volume sob uma superfície sobre uma região plana."><figcaption>Volume sob uma superfície sobre uma região plana. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>3. Fubini</h2><div class="mathbox"><div class="mathline">\[\iint_Rf\,dA=\int_a^b\left[\int_c^d f(x,y)\,dy\right]dx.\]</div><div class="mathline">\[\iint_Rf\,dA=\int_c^d\left[\int_a^b f(x,y)\,dx\right]dy.\]</div></div>
-<div class="example"><strong>Exemplo resolvido.</strong><div class="mathline">\[\int_0^1\int_0^2(x+2y)\,dy\,dx.\]</div><p>A integral interna é \(2x+4\). Então</p><div class="mathline">\[\int_0^1(2x+4)\,dx=5.\]</div></div>
-<h2>4. Regiões gerais</h2><div class="mathbox"><div class="mathline">\[D=\{(x,y):a\leq x\leq b,\ g_1(x)\leq y\leq g_2(x)\}.\]</div><div class="mathline">\[\iint_Df\,dA=\int_a^b\int_{g_1(x)}^{g_2(x)}f(x,y)\,dy\,dx.\]</div></div>
-<h2>5. Propriedades</h2><ul class="property-list"><li>Linearidade.</li><li>Aditividade em regiões.</li><li>Preservação de ordem: se \(f\leq g\), então a integral de \(f\) não excede a de \(g\).</li><li>Se \(f\geq0\), a integral é não negativa.</li></ul>
-<h2>6. Massa e centro de massa</h2><div class="mathbox"><div class="mathline">\[m=\iint_D\rho(x,y)\,dA.\]</div><div class="mathline">\[\bar x=\frac1m\iint_Dx\rho(x,y)\,dA.\]</div><div class="mathline">\[\bar y=\frac1m\iint_Dy\rho(x,y)\,dA.\]</div></div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta name="theme-color" content="#12372A">
+
+<title>Integrais duplas e Teorema de Fubini | GCT054</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<link rel="stylesheet" href="../assets/style.css">
+
+<script src="../assets/mathjax.js"></script>
+
+<script
+    defer
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
+
+<style>
+
+/* =========================================================
+   AJUSTES ESPECÍFICOS DESTA PÁGINA
+   ========================================================= */
+
+.formula-scroll {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.formula-scroll .mathline {
+    min-width: max-content;
+}
+
+.study-note {
+    margin: 24px 0;
+    padding: 20px 22px;
+
+    border-left: 4px solid #1f5b43;
+    border-radius: 0 14px 14px 0;
+
+    background: #f3f7f4;
+}
+
+.study-note strong {
+    color: #12372A;
+}
+
+.theorem-box {
+    margin: 28px 0;
+    padding: 24px;
+
+    background: #f6f6f1;
+
+    border: 1px solid rgba(18, 55, 42, 0.16);
+    border-radius: 18px;
+}
+
+.theorem-box .theorem-title {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+
+    color: #12372A;
+}
+
+.symbol-list {
+    margin: 18px 0 0;
+    padding-left: 22px;
+}
+
+.symbol-list li {
+    margin-bottom: 10px;
+    line-height: 1.65;
+}
+
+.example {
+    overflow: hidden;
+}
+
+.example h3 {
+    margin-top: 0;
+}
+
+.step {
+    margin: 20px 0;
+}
+
+.step strong {
+    color: #12372A;
+}
+
+.result {
+    margin: 22px 0;
+    padding: 16px 20px;
+
+    background: rgba(223, 243, 106, 0.22);
+
+    border-left: 4px solid #12372A;
+    border-radius: 0 12px 12px 0;
+}
+
+.two-col-study {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+
+    margin: 24px 0;
+}
+
+.study-card {
+    padding: 22px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(18, 55, 42, 0.14);
+    border-radius: 16px;
+}
+
+.study-card h3 {
+    margin-top: 0;
+    color: #12372A;
+}
+
+@media (max-width: 760px) {
+
+    .two-col-study {
+        grid-template-columns: 1fr;
+    }
+
+    .theorem-box,
+    .study-note,
+    .study-card {
+        padding: 18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+<a class="brand" href="../index.html">
+
+<span class="brand-mark">∫</span>
+
+<span>
+<strong>Bases Matemáticas B</strong>
+<small>GCT054 · UFLA</small>
+</span>
+
+</a>
+
+
+<button
+    class="menu-btn"
+    aria-label="Abrir menu"
+    aria-expanded="false">
+☰
+</button>
+
+
+<nav class="nav">
+
+<a href="../index.html#multivariavel">
+Multivariável
+</a>
+
+<a href="../index.html#integrais">
+Integrais
+</a>
+
+<a href="../index.html#vetorial">
+Vetorial
+</a>
+
+<a href="../index.html#series">
+Séries
+</a>
+
+<a href="../conteudos/referencias.html">
+Referências
+</a>
+
+</nav>
+
+</header>
+
+
+
+<main class="content">
+
+
+<div class="breadcrumbs">
+
+<a href="../index.html">
+Início
+</a>
+
+/ Integrais duplas e Teorema de Fubini
+
+</div>
+
+
+<p class="eyebrow">
+PARTE 3 · AULAS 29–35
+</p>
+
+
+<h1>
+Integrais duplas e Teorema de Fubini
+</h1>
+
+
+<p class="lead">
+
+As integrais duplas estendem a ideia de integral definida para funções
+de duas variáveis. Nesta seção, construiremos a integral dupla a partir
+de somas de Riemann, interpretaremos geometricamente seu significado,
+veremos como o Teorema de Fubini transforma um problema bidimensional
+em integrais sucessivas de uma variável e aprenderemos a integrar sobre
+regiões não retangulares.
+
+</p>
+
+
+
+<!-- =========================================================
+     1. IDEIA FUNDAMENTAL
+     ========================================================= -->
+
+
+<h2>
+1. Da integral de uma variável à integral dupla
+</h2>
+
+
+<p>
+
+Em Cálculo de uma variável, a integral definida pode ser construída
+aproximando a área sob uma curva por uma soma de áreas de retângulos.
+Quando passamos para uma função de duas variáveis,
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+z=f(x,y),
+\]
+</div>
+
+</div>
+
+
+<p>
+
+o domínio deixa de ser um intervalo da reta e passa a ser uma região
+do plano \(xy\). Consequentemente, em vez de dividir um intervalo em
+pequenos segmentos, dividimos uma região plana em pequenos
+sub-retângulos.
+
+</p>
+
+
+<p>
+
+Se a função for não negativa, cada pequeno sub-retângulo da base,
+com área \(\Delta A\), determina aproximadamente um pequeno
+paralelepípedo. Sua altura é dada pelo valor da função em um ponto
+escolhido dentro daquele sub-retângulo.
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\text{volume aproximado}
+=
+\text{altura}\times\text{área da base}.
+\]
+</div>
+
+<div class="mathline">
+\[
+\Delta V_{ij}
+\approx
+f(x_{ij}^{*},y_{ij}^{*})\,\Delta A.
+\]
+</div>
+
+</div>
+
+
+<div class="study-note">
+
+<strong>Interpretação.</strong>
+
+O termo \(f(x_{ij}^{*},y_{ij}^{*})\) fornece a altura aproximada
+da superfície sobre o pequeno sub-retângulo \(R_{ij}\), enquanto
+\(\Delta A\) representa a área de sua base. O produto dos dois é,
+portanto, uma aproximação para um pequeno volume.
+
+</div>
+
+
+
+<!-- =========================================================
+     2. PARTIÇÃO
+     ========================================================= -->
+
+
+<h2>
+2. Particionando um retângulo
+</h2>
+
+
+<p>
+
+Considere um retângulo
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+R=[a,b]\times[c,d].
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Dividimos o intervalo \([a,b]\) em \(m\) partes iguais e
+\([c,d]\) em \(n\) partes iguais. Assim,
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\Delta x=\frac{b-a}{m},
+\]
+</div>
+
+<div class="mathline">
+\[
+\Delta y=\frac{d-c}{n}.
+\]
+</div>
+
+<div class="mathline">
+\[
+\Delta A=\Delta x\,\Delta y.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Cada par de subdivisões produz um pequeno retângulo \(R_{ij}\).
+Escolhemos dentro dele um ponto
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+(x_{ij}^{*},y_{ij}^{*}).
+\]
+</div>
+
+</div>
+
+
+<p>
+
+O ponto pode, em princípio, ser qualquer ponto do sub-retângulo.
+Quando a função é integrável, uma escolha conveniente é utilizar
+o canto superior direito,
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+(x_{ij}^{*},y_{ij}^{*})=(x_i,y_j).
+\]
+</div>
+
+</div>
+
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/integral-riemann.png"
+    alt="Particionamento de uma região retangular para construção de uma soma dupla de Riemann."
+>
+
+<figcaption>
+Particionamento de uma região retangular. Cada pequena célula
+contribui com um termo para a soma dupla de Riemann.
+</figcaption>
+
+</figure>
+
+
+
+<!-- =========================================================
+     3. SOMA DUPLA
+     ========================================================= -->
+
+
+<h2>
+3. Soma dupla de Riemann
+</h2>
+
+
+<p>
+
+Somando as contribuições de todos os \(m\times n\)
+sub-retângulos, obtemos
+
+</p>
+
+
+<div class="mathbox formula-scroll">
+
+<div class="mathline">
+\[
+\sum_{i=1}^{m}
+\sum_{j=1}^{n}
+f(x_{ij}^{*},y_{ij}^{*})\,\Delta A.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Essa expressão é denominada <strong>soma dupla de Riemann</strong>.
+Quando \(f(x,y)\geq 0\), ela representa a soma dos volumes dos
+paralelepípedos usados para aproximar o sólido situado abaixo da
+superfície.
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\text{soma de Riemann}
+\approx
+\text{volume sob a superfície}.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Quanto mais fina for a partição, menores serão os sub-retângulos e,
+em condições adequadas, melhor será a aproximação.
+
+</p>
+
+
+
+<!-- =========================================================
+     4. DEFINIÇÃO
+     ========================================================= -->
+
+
+<h2>
+4. Definição da integral dupla
+</h2>
+
+
+<div class="theorem-box">
+
+<span class="theorem-title">
+Definição — Integral dupla sobre um retângulo
+</span>
+
+<p>
+
+A integral dupla de \(f\) sobre o retângulo \(R\) é definida por
+
+</p>
+
+
+<div class="formula-scroll">
+
+<div class="mathline">
+\[
+\iint_R f(x,y)\,dA
+=
+\lim_{\substack{m\to\infty\\n\to\infty}}
+\sum_{i=1}^{m}
+\sum_{j=1}^{n}
+f(x_{ij}^{*},y_{ij}^{*})\,\Delta A,
+\]
+</div>
+
+</div>
+
+
+<p>
+
+desde que esse limite exista.
+
+</p>
+
+</div>
+
+
+<p>
+
+A definição não exige que \(f\) seja positiva. A condição
+\(f\geq0\) é necessária apenas quando queremos interpretar diretamente
+a integral como um volume geométrico.
+
+</p>
+
+
+<h3>
+O que significa cada símbolo?
+</h3>
+
+
+<ul class="symbol-list">
+
+<li>
+\(\displaystyle \iint_R\) indica que a integração ocorre sobre
+uma região bidimensional \(R\).
+</li>
+
+<li>
+\(f(x,y)\) é a função que está sendo integrada.
+</li>
+
+<li>
+\(dA\) representa um elemento infinitesimal de área.
+</li>
+
+<li>
+Em coordenadas cartesianas, esse elemento será escrito como
+\(dA=dx\,dy\) ou \(dA=dy\,dx\), conforme a ordem de integração.
+</li>
+
+<li>
+Os índices \(i\) e \(j\) identificam os pequenos retângulos da
+partição.
+</li>
+
+<li>
+O limite formaliza a ideia de tornar a partição progressivamente
+mais fina.
+</li>
+
+</ul>
+
+
+<div class="study-note">
+
+<strong>Ponto conceitual importante.</strong>
+
+A integral dupla não é definida inicialmente como duas integrais
+de uma variável. Ela é definida por uma soma dupla de Riemann.
+O Teorema de Fubini é que, posteriormente, permite calculá-la
+utilizando integrais iteradas.
+
+</div>
+
+
+
+<!-- =========================================================
+     5. VOLUME
+     ========================================================= -->
+
+
+<h2>
+5. Interpretação geométrica: volume
+</h2>
+
+
+<p>
+
+Suponha que
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+f(x,y)\geq0
+\]
+</div>
+
+</div>
+
+
+<p>
+
+em toda a região \(R\). O gráfico
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+z=f(x,y)
+\]
+</div>
+
+</div>
+
+
+<p>
+
+forma uma superfície no espaço. O sólido situado acima de \(R\)
+e abaixo dessa superfície possui volume
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+V=\iint_R f(x,y)\,dA.
+\]
+</div>
+
+</div>
+
+
+<figure class="figure">
+
+<img
+    src="../assets/img/aulas/integral-volume.png"
+    alt="Volume situado abaixo de uma superfície e acima de uma região plana."
+>
+
+<figcaption>
+A integral dupla generaliza a interpretação geométrica da integral
+definida: agora a base é bidimensional e a função fornece a altura
+da superfície.
+</figcaption>
+
+</figure>
+
+
+
+<!-- =========================================================
+     6. EXEMPLO 1
+     ========================================================= -->
+
+
+<h2>
+6. Exemplo: aproximação por soma de Riemann
+</h2>
+
+
+<div class="example">
+
+<h3>
+Exemplo 1 — Aproximando o volume
+</h3>
+
+
+<p>
+
+Estime o volume do sólido situado acima do quadrado
+
+</p>
+
+
+<div class="mathline">
+\[
+R=[0,2]\times[0,2]
+\]
+</div>
+
+
+<p>
+
+e abaixo do paraboloide elíptico
+
+</p>
+
+
+<div class="mathline">
+\[
+z=16-x^2-2y^2.
+\]
+</div>
+
+
+<p>
+
+Divida \(R\) em quatro quadrados iguais e escolha como ponto
+de amostragem o canto superior direito de cada quadrado.
+
+</p>
+
+
+<div class="step">
+
+<strong>Passo 1 — Determinar as dimensões da partição.</strong>
+
+<p>
+
+Como \(m=n=2\),
+
+</p>
+
+<div class="mathline">
+\[
+\Delta x=\frac{2-0}{2}=1,
+\]
+</div>
+
+<div class="mathline">
+\[
+\Delta y=\frac{2-0}{2}=1.
+\]
+</div>
+
+<p>Logo,</p>
+
+<div class="mathline">
+\[
+\Delta A=(1)(1)=1.
+\]
+</div>
+
+</div>
+
+
+<div class="step">
+
+<strong>Passo 2 — Identificar os pontos de amostragem.</strong>
+
+<p>
+
+Os cantos superiores direitos são
+
+</p>
+
+<div class="mathline">
+\[
+(1,1),\quad(1,2),\quad(2,1),\quad(2,2).
+\]
+</div>
+
+</div>
+
+
+<div class="step">
+
+<strong>Passo 3 — Calcular as alturas.</strong>
+
+<div class="mathline">
+\[
+f(1,1)=16-1^2-2(1)^2=13.
+\]
+</div>
+
+<div class="mathline">
+\[
+f(1,2)=16-1^2-2(2)^2=7.
+\]
+</div>
+
+<div class="mathline">
+\[
+f(2,1)=16-2^2-2(1)^2=10.
+\]
+</div>
+
+<div class="mathline">
+\[
+f(2,2)=16-2^2-2(2)^2=4.
+\]
+</div>
+
+</div>
+
+
+<div class="step">
+
+<strong>Passo 4 — Construir a soma de Riemann.</strong>
+
+<div class="formula-scroll">
+
+<div class="mathline">
+\[
+V
+\approx
+13(1)+7(1)+10(1)+4(1).
+\]
+</div>
+
+</div>
+
+<div class="mathline">
+\[
+V\approx34.
+\]
+</div>
+
+</div>
+
+
+<div class="result">
+
+Com apenas quatro caixas obtemos \(V\approx34\). Essa ainda é uma
+aproximação relativamente grosseira.
+
+</div>
+
+
+<p>
+
+Refinando a partição, as aproximações apresentadas no exemplo são
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+m=n=4
+\quad\Longrightarrow\quad
+V\approx41{,}5,
+\]
+</div>
+
+<div class="mathline">
+\[
+m=n=8
+\quad\Longrightarrow\quad
+V\approx44{,}875,
+\]
+</div>
+
+<div class="mathline">
+\[
+m=n=16
+\quad\Longrightarrow\quad
+V\approx46{,}46875.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+O volume exato é
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{V=48}.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+O exemplo mostra concretamente a ideia de limite: ao aumentar o
+número de sub-retângulos, a soma de Riemann aproxima cada vez melhor
+a integral dupla.
+
+</p>
+
+</div>
+
+
+
+<!-- =========================================================
+     7. INTEGRAIS ITERADAS
+     ========================================================= -->
+
+
+<h2>
+7. Por que aparecem integrais iteradas?
+</h2>
+
+
+<p>
+
+Calcular uma integral dupla diretamente pela definição seria,
+na maioria das situações, trabalhoso. A estratégia fundamental
+consiste em reduzir o problema a duas integrações sucessivas de
+uma variável.
+
+</p>
+
+
+<p>
+
+Considere novamente
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+R=[a,b]\times[c,d].
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Fixe inicialmente um valor de \(x\). Nesse instante, \(x\) passa
+a ser tratado como constante e integramos apenas em relação a \(y\):
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+A(x)=\int_c^d f(x,y)\,dy.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Quando \(f\geq0\), \(A(x)\) pode ser interpretada como a área
+de uma seção transversal do sólido.
+
+</p>
+
+
+<p>
+
+Depois, acumulamos essas áreas enquanto \(x\) varia de \(a\) até
+\(b\):
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+V=\int_a^b A(x)\,dx.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Substituindo \(A(x)\),
+
+</p>
+
+
+<div class="mathbox formula-scroll">
+
+<div class="mathline">
+\[
+V
+=
+\int_a^b
+\left[
+\int_c^d f(x,y)\,dy
+\right]dx.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Essa é uma <strong>integral iterada</strong>: primeiro calculamos
+a integral interna e, em seguida, a integral externa.
+
+</p>
+
+
+
+<!-- =========================================================
+     8. FUBINI
+     ========================================================= -->
+
+
+<h2>
+8. Teorema de Fubini
+</h2>
+
+
+<div class="theorem-box">
+
+<span class="theorem-title">
+Teorema de Fubini
+</span>
+
+<p>
+
+Se \(f\) for contínua no retângulo
+
+</p>
+
+
+<div class="mathline">
+\[
+R=
+\{(x,y):a\leq x\leq b,\;c\leq y\leq d\},
+\]
+</div>
+
+
+<p>então</p>
+
+
+<div class="mathline">
+\[
+\iint_R f(x,y)\,dA
+=
+\int_a^b
+\left[
+\int_c^d f(x,y)\,dy
+\right]dx,
+\]
+</div>
+
+
+<p>e também</p>
+
+
+<div class="mathline">
+\[
+\iint_R f(x,y)\,dA
+=
+\int_c^d
+\left[
+\int_a^b f(x,y)\,dx
+\right]dy.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+O teorema é fundamental porque transforma uma integral dupla em
+duas integrais ordinárias sucessivas.
+
+</p>
+
+
+<div class="two-col-study">
+
+
+<div class="study-card">
+
+<h3>
+Ordem \(dy\,dx\)
+</h3>
+
+<p>
+Primeiro integramos em relação a \(y\).
+Durante essa integração, \(x\) é tratado como constante.
+</p>
+
+<div class="mathline">
+\[
+\int_a^b
+\left[
+\int_c^d f(x,y)\,dy
+\right]dx.
+\]
+</div>
+
+</div>
+
+
+<div class="study-card">
+
+<h3>
+Ordem \(dx\,dy\)
+</h3>
+
+<p>
+Primeiro integramos em relação a \(x\).
+Durante essa integração, \(y\) é tratado como constante.
+</p>
+
+<div class="mathline">
+\[
+\int_c^d
+\left[
+\int_a^b f(x,y)\,dx
+\right]dy.
+\]
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="study-note">
+
+<strong>A ordem importa para o cálculo, mas não para o valor final.</strong>
+
+Sob as hipóteses do Teorema de Fubini, as duas ordens produzem a
+mesma integral dupla. Entretanto, uma ordem pode resultar em cálculos
+muito mais simples do que a outra.
+
+</div>
+
+
+
+<!-- =========================================================
+     9. EXEMPLO 3
+     ========================================================= -->
+
+
+<h2>
+9. Exemplo: calculando nas duas ordens
+</h2>
+
+
+<div class="example">
+
+<h3>
+Exemplo 3
+</h3>
+
+
+<p>Calcule</p>
+
+
+<div class="mathline">
+\[
+\iint_R (x-3y^2)\,dA,
+\]
+</div>
+
+
+<p>onde</p>
+
+
+<div class="mathline">
+\[
+R=
+\{(x,y):0\leq x\leq2,\;1\leq y\leq2\}.
+\]
+</div>
+
+
+<h3>
+Solução 1 — Integrar primeiro em \(y\)
+</h3>
+
+
+<div class="mathline">
+\[
+\iint_R(x-3y^2)\,dA
+=
+\int_0^2
+\left[
+\int_1^2(x-3y^2)\,dy
+\right]dx.
+\]
+</div>
+
+
+<p>
+
+Na integral interna, \(x\) é constante. Portanto,
+
+</p>
+
+
+<div class="mathline">
+\[
+\int(x-3y^2)\,dy
+=
+xy-y^3.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+=
+\int_0^2
+\left[
+xy-y^3
+\right]_{y=1}^{y=2}
+dx.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+=
+\int_0^2(x-7)\,dx.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+=
+\left[
+\frac{x^2}{2}-7x
+\right]_0^2.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+\boxed{-12}.
+\]
+</div>
+
+
+<h3>
+Solução 2 — Integrar primeiro em \(x\)
+</h3>
+
+
+<div class="mathline">
+\[
+\iint_R(x-3y^2)\,dA
+=
+\int_1^2
+\left[
+\int_0^2(x-3y^2)\,dx
+\right]dy.
+\]
+</div>
+
+
+<p>
+
+Agora \(y\) é tratado como constante.
+
+</p>
+
+
+<div class="mathline">
+\[
+\int(x-3y^2)\,dx
+=
+\frac{x^2}{2}-3xy^2.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+=
+\int_1^2(2-6y^2)\,dy.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+=
+\left[
+2y-2y^3
+\right]_1^2.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+\boxed{-12}.
+\]
+</div>
+
+
+<p>
+
+As duas ordens conduzem ao mesmo resultado, como prevê o Teorema
+de Fubini.
+
+</p>
+
+</div>
+
+
+
+<!-- =========================================================
+     10. ESCOLHA DA ORDEM
+     ========================================================= -->
+
+
+<h2>
+10. A escolha da ordem de integração
+</h2>
+
+
+<p>
+
+Embora Fubini permita trocar a ordem de integração em um retângulo,
+a dificuldade algébrica pode mudar drasticamente.
+
+</p>
+
+
+<div class="example">
+
+<h3>
+Exemplo 4
+</h3>
+
+
+<p>Considere</p>
+
+
+<div class="mathline">
+\[
+\iint_R y\sin(xy)\,dA,
+\]
+</div>
+
+
+<p>com</p>
+
+
+<div class="mathline">
+\[
+R=[1,2]\times[0,\pi].
+\]
+</div>
+
+
+<p>
+
+Se integrarmos primeiro em relação a \(x\),
+
+</p>
+
+
+<div class="mathline">
+\[
+\int_0^\pi
+\left[
+\int_1^2
+y\sin(xy)\,dx
+\right]dy.
+\]
+</div>
+
+
+<p>
+
+Como \(y\) é constante,
+
+</p>
+
+
+<div class="mathline">
+\[
+\int y\sin(xy)\,dx
+=
+-\cos(xy).
+\]
+</div>
+
+
+<p>Logo,</p>
+
+
+<div class="mathline">
+\[
+=
+\int_0^\pi
+\bigl(-\cos(2y)+\cos y\bigr)\,dy.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+=
+\left[
+-\frac12\sin(2y)+\sin y
+\right]_0^\pi.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+\boxed{0}.
+\]
+</div>
+
+
+<p>
+
+Se escolhermos a ordem contrária, teremos
+
+</p>
+
+
+<div class="mathline">
+\[
+\int_1^2
+\left[
+\int_0^\pi
+y\sin(xy)\,dy
+\right]dx.
+\]
+</div>
+
+
+<p>
+
+Agora a integral interna exige integração por partes. Portanto,
+as duas ordens são matematicamente válidas, mas a primeira é
+computacionalmente mais conveniente.
+
+</p>
+
+</div>
+
+
+<div class="study-note">
+
+<strong>Estratégia.</strong>
+
+Antes de começar a integrar, examine o integrando. Pergunte:
+“qual variável devo escolher primeiro para obter uma primitiva
+mais simples?”. A ordem de integração deve ser uma decisão
+matemática, e não apenas uma leitura mecânica dos limites.
+
+</div>
+
+
+
+<!-- =========================================================
+     11. REGIÕES GERAIS
+     ========================================================= -->
+
+
+<h2>
+11. Integrais duplas sobre regiões gerais
+</h2>
+
+
+<p>
+
+Até agora consideramos principalmente regiões retangulares.
+Entretanto, em aplicações, a região \(D\) frequentemente é limitada
+por curvas.
+
+</p>
+
+
+<p>
+
+Para uma região limitada \(D\), podemos imaginar um retângulo \(R\)
+que a contenha e definir uma função auxiliar igual a \(f\) dentro
+de \(D\) e igual a zero fora de \(D\). Isso permite estender a
+definição de integral dupla para regiões gerais.
+
+</p>
+
+
+<p>
+
+Na prática, porém, o cálculo é feito descrevendo \(D\) de forma
+adequada por meio de seus limites.
+
+</p>
+
+
+
+<!-- =========================================================
+     12. TIPO I
+     ========================================================= -->
+
+
+<h2>
+12. Regiões do tipo I
+</h2>
+
+
+<p>
+
+Uma região é denominada <strong>tipo I</strong> quando pode ser
+percorrida verticalmente entre duas curvas:
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+a\leq x\leq b,
+\]
+</div>
+
+<div class="mathline">
+\[
+g_1(x)\leq y\leq g_2(x).
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Assim,
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+D=
+\{(x,y):
+a\leq x\leq b,\;
+g_1(x)\leq y\leq g_2(x)\}.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+A integral é calculada por
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iint_D f(x,y)\,dA
+=
+\int_a^b
+\left[
+\int_{g_1(x)}^{g_2(x)}
+f(x,y)\,dy
+\right]dx.
+\]
+</div>
+
+</div>
+
+
+<div class="study-note">
+
+<strong>Como ler os limites.</strong>
+
+Fixe \(x\) e imagine uma seta vertical atravessando a região.
+A seta entra em \(D\) pela curva inferior \(y=g_1(x)\) e sai
+pela curva superior \(y=g_2(x)\). Esses são exatamente os limites
+da integral interna.
+
+</div>
+
+
+
+<!-- =========================================================
+     13. TIPO II
+     ========================================================= -->
+
+
+<h2>
+13. Regiões do tipo II
+</h2>
+
+
+<p>
+
+Uma região é denominada <strong>tipo II</strong> quando pode ser
+percorrida horizontalmente:
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+c\leq y\leq d,
+\]
+</div>
+
+<div class="mathline">
+\[
+h_1(y)\leq x\leq h_2(y).
+\]
+</div>
+
+</div>
+
+
+<p>Assim,</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+D=
+\{(x,y):
+c\leq y\leq d,\;
+h_1(y)\leq x\leq h_2(y)\}.
+\]
+</div>
+
+</div>
+
+
+<p>e</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iint_D f(x,y)\,dA
+=
+\int_c^d
+\left[
+\int_{h_1(y)}^{h_2(y)}
+f(x,y)\,dx
+\right]dy.
+\]
+</div>
+
+</div>
+
+
+<div class="study-note">
+
+<strong>Regra visual.</strong>
+
+Para uma região tipo I, pense em uma <strong>seta vertical</strong>:
+de baixo para cima. Para uma região tipo II, pense em uma
+<strong>seta horizontal</strong>: da esquerda para a direita.
+
+</div>
+
+
+
+<!-- =========================================================
+     14. EXEMPLO 5
+     ========================================================= -->
+
+
+<h2>
+14. Exemplo: região limitada por duas parábolas
+</h2>
+
+
+<div class="example">
+
+<h3>
+Exemplo 5
+</h3>
+
+
+<p>Calcule</p>
+
+
+<div class="mathline">
+\[
+\iint_D(x+2y)\,dA,
+\]
+</div>
+
+
+<p>
+
+onde \(D\) é limitada pelas parábolas
+
+</p>
+
+
+<div class="mathline">
+\[
+y=2x^2
+\]
+</div>
+
+<p>e</p>
+
+<div class="mathline">
+\[
+y=1+x^2.
+\]
+</div>
+
+
+<h3>
+Passo 1 — Encontrar as interseções
+</h3>
+
+
+<p>Igualamos as duas curvas:</p>
+
+
+<div class="mathline">
+\[
+2x^2=1+x^2.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+x^2=1.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+x=\pm1.
+\]
+</div>
+
+
+<h3>
+Passo 2 — Descrever a região
+</h3>
+
+
+<p>
+
+A parábola \(y=2x^2\) é a fronteira inferior e
+\(y=1+x^2\) é a fronteira superior. Portanto,
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+-1\leq x\leq1,
+\]
+</div>
+
+<div class="mathline">
+\[
+2x^2\leq y\leq1+x^2.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+A região é naturalmente descrita como tipo I.
+
+</p>
+
+
+<h3>
+Passo 3 — Montar a integral
+</h3>
+
+
+<div class="mathline">
+\[
+\iint_D(x+2y)\,dA
+=
+\int_{-1}^{1}
+\left[
+\int_{2x^2}^{1+x^2}
+(x+2y)\,dy
+\right]dx.
+\]
+</div>
+
+
+<h3>
+Passo 4 — Calcular
+</h3>
+
+
+<div class="mathline">
+\[
+\int(x+2y)\,dy
+=
+xy+y^2.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+=
+\int_{-1}^{1}
+\left[
+xy+y^2
+\right]_{y=2x^2}^{y=1+x^2}
+dx.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+=
+\int_{-1}^{1}
+\left(
+-3x^4-x^3+2x^2+x+1
+\right)dx.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+=
+\boxed{\frac{32}{15}}.
+\]
+</div>
+
+
+<p>
+
+Observe que a parte mais importante do problema não foi calcular
+a primitiva, mas <strong>descrever corretamente a região de
+integração</strong>.
+
+</p>
+
+</div>
+
+
+
+<!-- =========================================================
+     15. MESMA REGIÃO EM DUAS FORMAS
+     ========================================================= -->
+
+
+<h2>
+15. Uma região pode admitir duas descrições
+</h2>
+
+
+<p>
+
+Uma mesma região pode, em alguns problemas, ser descrita tanto como
+tipo I quanto como tipo II. Isso permite escolher a ordem que produz
+a integral mais conveniente.
+
+</p>
+
+
+<div class="example">
+
+<h3>
+Exemplo 6 — Volume sob um paraboloide
+</h3>
+
+
+<p>
+
+Determine o volume do sólido situado abaixo do paraboloide
+
+</p>
+
+
+<div class="mathline">
+\[
+z=x^2+y^2
+\]
+</div>
+
+
+<p>
+
+e acima da região \(D\) limitada pela reta
+
+</p>
+
+
+<div class="mathline">
+\[
+y=2x
+\]
+</div>
+
+<p>e pela parábola</p>
+
+<div class="mathline">
+\[
+y=x^2.
+\]
+</div>
+
+
+<h3>
+Descrição como região tipo I
+</h3>
+
+
+<p>
+
+As curvas se encontram quando
+
+</p>
+
+
+<div class="mathline">
+\[
+x^2=2x.
+\]
+</div>
+
+
+<div class="mathline">
+\[
+x(x-2)=0.
+\]
+</div>
+
+
+<p>Portanto, \(x=0\) ou \(x=2\), e</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+0\leq x\leq2,
+\]
+</div>
+
+<div class="mathline">
+\[
+x^2\leq y\leq2x.
+\]
+</div>
+
+</div>
+
+
+<p>Assim,</p>
+
+
+<div class="mathline">
+\[
+V
+=
+\int_0^2
+\left[
+\int_{x^2}^{2x}
+(x^2+y^2)\,dy
+\right]dx.
+\]
+</div>
+
+
+<p>Calculando a integral interna,</p>
+
+
+<div class="mathline">
+\[
+\int(x^2+y^2)\,dy
+=
+x^2y+\frac{y^3}{3}.
+\]
+</div>
+
+
+<p>Após substituir os limites e integrar em \(x\), obtemos</p>
+
+
+<div class="mathline">
+\[
+\boxed{
+V=\frac{216}{35}
+}.
+\]
+</div>
+
+
+<h3>
+Descrição como região tipo II
+</h3>
+
+
+<p>
+
+Da parábola \(y=x^2\), considerando a fronteira relevante,
+
+</p>
+
+
+<div class="mathline">
+\[
+x=\sqrt{y}.
+\]
+</div>
+
+
+<p>
+
+Da reta \(y=2x\),
+
+</p>
+
+
+<div class="mathline">
+\[
+x=\frac{y}{2}.
+\]
+</div>
+
+
+<p>
+
+Como \(y\) varia de \(0\) a \(4\),
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+0\leq y\leq4,
+\]
+</div>
+
+<div class="mathline">
+\[
+\frac{y}{2}\leq x\leq\sqrt{y}.
+\]
+</div>
+
+</div>
+
+
+<p>Logo,</p>
+
+
+<div class="mathline">
+\[
+V
+=
+\int_0^4
+\left[
+\int_{y/2}^{\sqrt{y}}
+(x^2+y^2)\,dx
+\right]dy.
+\]
+</div>
+
+
+<p>
+
+Essa segunda descrição conduz ao mesmo resultado:
+
+</p>
+
+
+<div class="mathline">
+\[
+\boxed{
+V=\frac{216}{35}
+}.
+\]
+</div>
+
+</div>
+
+
+
+<!-- =========================================================
+     16. ESCOLHER DESCRIÇÃO
+     ========================================================= -->
+
+
+<h2>
+16. Nem sempre as duas descrições são igualmente simples
+</h2>
+
+
+<p>
+
+Em alguns problemas, representar \(D\) como tipo I exige dividir a
+região em duas ou mais partes, enquanto uma descrição tipo II utiliza
+apenas uma integral — ou vice-versa.
+
+</p>
+
+
+<p>
+
+Por isso, antes de montar a integral:
+
+</p>
+
+
+<ul class="property-list">
+
+<li>
+desenhe as curvas que delimitam a região;
+</li>
+
+<li>
+determine os pontos de interseção;
+</li>
+
+<li>
+teste mentalmente uma seta vertical;
+</li>
+
+<li>
+teste mentalmente uma seta horizontal;
+</li>
+
+<li>
+escolha a descrição que exige menos subdivisões e produz integrais
+mais simples.
+</li>
+
+</ul>
+
+
+<div class="study-note">
+
+<strong>Erro frequente.</strong>
+
+Os limites da integral interna geralmente dependem da variável da
+integral externa. Escrever limites sem antes representar a região
+é uma das principais fontes de erro em integrais duplas.
+
+</div>
+
+
+
+<!-- =========================================================
+     17. PROPRIEDADES
+     ========================================================= -->
+
+
+<h2>
+17. Propriedades das integrais duplas
+</h2>
+
+
+<p>
+
+As integrais duplas preservam várias propriedades familiares das
+integrais de uma variável. Essas propriedades são importantes tanto
+para manipulações algébricas quanto para estimativas.
+
+</p>
+
+
+<h3>
+17.1 Linearidade em relação à soma
+</h3>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iint_D
+\bigl[f(x,y)+g(x,y)\bigr]\,dA
+\]
+</div>
+
+<div class="mathline">
+\[
+=
+\iint_D f(x,y)\,dA
++
+\iint_D g(x,y)\,dA.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Podemos integrar separadamente os termos de uma soma.
+
+</p>
+
+
+<h3>
+17.2 Multiplicação por constante
+</h3>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iint_D c\,f(x,y)\,dA
+=
+c\iint_D f(x,y)\,dA.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Uma constante multiplicativa pode ser retirada da integral.
+
+</p>
+
+
+<h3>
+17.3 Preservação da ordem
+</h3>
+
+
+<p>Se</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+f(x,y)\geq g(x,y)
+\]
+</div>
+
+</div>
+
+
+<p>em toda a região \(D\), então</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iint_D f(x,y)\,dA
+\geq
+\iint_D g(x,y)\,dA.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Em particular, se \(f(x,y)\geq0\), então
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iint_D f(x,y)\,dA\geq0.
+\]
+</div>
+
+</div>
+
+
+<h3>
+17.4 Aditividade em relação à região
+</h3>
+
+
+<p>
+
+Se
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+D=D_1\cup D_2
+\]
+</div>
+
+</div>
+
+
+<p>
+
+e as regiões não se sobrepõem, exceto possivelmente em suas
+fronteiras, então
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\iint_D f\,dA
+=
+\iint_{D_1}f\,dA
++
+\iint_{D_2}f\,dA.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Essa propriedade é particularmente útil quando uma região não pode
+ser descrita por uma única expressão simples.
+
+</p>
+
+
+<h3>
+17.5 Área de uma região
+</h3>
+
+
+<p>
+
+Se integrarmos a função constante \(1\), obtemos a área da região:
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\boxed{
+A(D)=\iint_D1\,dA
+}.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+Geometricamente, isso pode ser interpretado como o volume de um
+cilindro de base \(D\) e altura \(1\):
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+V=A(D)\cdot1=A(D).
+\]
+</div>
+
+</div>
+
+
+<h3>
+17.6 Estimativa da integral
+</h3>
+
+
+<p>
+
+Se existem constantes \(m\) e \(M\) tais que
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+m\leq f(x,y)\leq M
+\]
+</div>
+
+</div>
+
+
+<p>em toda a região \(D\), então</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+mA(D)
+\leq
+\iint_Df(x,y)\,dA
+\leq
+MA(D).
+\]
+</div>
+
+</div>
+
+
+<p>
+
+A interpretação é direta: se a superfície permanece entre as alturas
+\(m\) e \(M\), a integral permanece entre os volumes dos cilindros
+de base \(D\) e alturas \(m\) e \(M\).
+
+</p>
+
+
+
+<!-- =========================================================
+     18. COMO RESOLVER
+     ========================================================= -->
+
+
+<h2>
+18. Estratégia geral para resolver uma integral dupla
+</h2>
+
+
+<p>
+
+Em problemas de Engenharia, o cálculo algébrico é apenas uma parte
+da solução. A etapa decisiva frequentemente é transformar corretamente
+a geometria do problema em limites de integração.
+
+</p>
+
+
+<div class="two-col-study">
+
+
+<div class="study-card">
+
+<h3>
+1. Identifique a região
+</h3>
+
+<p>
+Determine as curvas ou retas que formam sua fronteira e encontre
+os pontos de interseção relevantes.
+</p>
+
+</div>
+
+
+<div class="study-card">
+
+<h3>
+2. Faça um esboço
+</h3>
+
+<p>
+Mesmo um desenho simples costuma revelar imediatamente qual variável
+deve ser integrada primeiro.
+</p>
+
+</div>
+
+
+<div class="study-card">
+
+<h3>
+3. Escolha a ordem
+</h3>
+
+<p>
+Compare \(dy\,dx\) e \(dx\,dy\). Escolha a ordem que simplifica
+a região e o integrando.
+</p>
+
+</div>
+
+
+<div class="study-card">
+
+<h3>
+4. Escreva os limites
+</h3>
+
+<p>
+Os limites internos descrevem o percurso dentro da região; os
+externos descrevem a extensão total da variável restante.
+</p>
+
+</div>
+
+
+<div class="study-card">
+
+<h3>
+5. Calcule a integral interna
+</h3>
+
+<p>
+Durante essa etapa, trate a outra variável como uma constante.
+</p>
+
+</div>
+
+
+<div class="study-card">
+
+<h3>
+6. Calcule a integral externa
+</h3>
+
+<p>
+Depois da primeira integração, resta uma integral ordinária de
+uma variável.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     19. LEITURA DA NOTAÇÃO
+     ========================================================= -->
+
+
+<h2>
+19. Como ler corretamente uma integral iterada
+</h2>
+
+
+<p>
+
+Considere
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\int_a^b
+\left[
+\int_{g_1(x)}^{g_2(x)}
+f(x,y)\,dy
+\right]dx.
+\]
+</div>
+
+</div>
+
+
+<p>
+
+A leitura matemática correta é:
+
+</p>
+
+
+<ul class="property-list">
+
+<li>
+escolha um valor de \(x\) entre \(a\) e \(b\);
+</li>
+
+<li>
+mantenha esse \(x\) fixo;
+</li>
+
+<li>
+percorra verticalmente a região desde
+\(y=g_1(x)\) até \(y=g_2(x)\);
+</li>
+
+<li>
+acumule os valores de \(f(x,y)\) nesse percurso;
+</li>
+
+<li>
+depois faça \(x\) percorrer todo o intervalo \([a,b]\).
+</li>
+
+</ul>
+
+
+<p>
+
+Essa interpretação geométrica é muito mais útil do que simplesmente
+memorizar a posição dos diferenciais \(dy\,dx\).
+
+</p>
+
+
+
+<!-- =========================================================
+     20. ERROS COMUNS
+     ========================================================= -->
+
+
+<h2>
+20. Erros que devem ser evitados
+</h2>
+
+
+<ul class="property-list">
+
+<li>
+<strong>Trocar a ordem sem alterar os limites.</strong>
+Ao passar de \(dy\,dx\) para \(dx\,dy\), a região precisa ser
+reescrita.
+</li>
+
+<li>
+<strong>Confundir a variável da integral interna.</strong>
+Em \(dy\,dx\), integra-se primeiro em \(y\), mantendo \(x\)
+constante.
+</li>
+
+<li>
+<strong>Não desenhar regiões limitadas por curvas.</strong>
+Isso frequentemente leva à inversão dos limites superior e inferior.
+</li>
+
+<li>
+<strong>Usar Fubini mecanicamente.</strong>
+A ordem deve ser escolhida levando em consideração a dificuldade
+da primitiva.
+</li>
+
+<li>
+<strong>Interpretar qualquer integral dupla como volume.</strong>
+A interpretação direta como volume exige \(f(x,y)\geq0\).
+</li>
+
+<li>
+<strong>Confundir \(dA\) com uma nova variável.</strong>
+\(dA\) representa um elemento de área; em coordenadas cartesianas,
+ele se materializa como \(dx\,dy\) ou \(dy\,dx\).
+</li>
+
+</ul>
+
+
+
+<!-- =========================================================
+     21. SÍNTESE
+     ========================================================= -->
+
+
+<h2>
+21. Síntese conceitual
+</h2>
+
+
+<p>
+
+A sequência lógica deste conteúdo pode ser resumida da seguinte
+forma:
+
+</p>
+
+
+<div class="mathbox">
+
+<div class="mathline">
+\[
+\text{partição da região}
+\]
+</div>
+
+<div class="mathline">
+\[
+\Downarrow
+\]
+</div>
+
+<div class="mathline">
+\[
+\text{soma dupla de Riemann}
+\]
+</div>
+
+<div class="mathline">
+\[
+\Downarrow
+\]
+</div>
+
+<div class="mathline">
+\[
+\text{integral dupla}
+\]
+</div>
+
+<div class="mathline">
+\[
+\Downarrow
+\]
+</div>
+
+<div class="mathline">
+\[
+\text{Teorema de Fubini}
+\]
+</div>
+
+<div class="mathline">
+\[
+\Downarrow
+\]
+</div>
+
+<div class="mathline">
+\[
+\text{integrais iteradas}
+\]
+</div>
+
+</div>
+
+
+<p>
+
+A integral dupla é, portanto, um processo de acumulação sobre uma
+região bidimensional. O Teorema de Fubini fornece o mecanismo
+computacional que permite transformar essa acumulação bidimensional
+em integrações sucessivas de uma variável.
+
+</p>
+
+
+<p>
+
+Em regiões gerais, a dificuldade adicional consiste em traduzir a
+geometria de \(D\) em limites de integração. Essa habilidade será
+fundamental nas próximas etapas do curso, especialmente em
+coordenadas polares, integrais triplas e mudanças de variáveis.
+
+</p>
+
+
+
+<!-- =========================================================
+     GEOGEBRA
+     ========================================================= -->
+
+
+<div class="geo-card">
+
+<div>
+
+<strong>
+Visualização no GeoGebra 3D
+</strong>
+
+<p>
+
+Use o ambiente 3D para representar superfícies como
+\(z=16-x^2-2y^2\) e \(z=x^2+y^2\), observar a região no plano
+\(xy\) e relacionar geometricamente a integral dupla com o volume
+sob uma superfície.
+
+</p>
+
+</div>
+
+
+<a
+    class="btn"
+    href="https://www.geogebra.org/3d"
+    target="_blank"
+    rel="noopener noreferrer">
+Abrir GeoGebra 3D ↗
+</a>
+
+</div>
+
+
+
+<!-- =========================================================
+     REFERÊNCIAS
+     ========================================================= -->
+
+
+<div class="refbox">
+
+<strong>Referências</strong>
+
+<p>
+STEWART, J. <em>Cálculo</em>. Volume 1. São Paulo:
+Cengage Learning, 2013.
+</p>
+
+<p>
+STEWART, J. <em>Cálculo</em>. Volume 2. São Paulo:
+Cengage Learning, 2013.
+</p>
+
+</div>
+
+
+</main>
+
+
+
+<footer>
+
+
+<div>
+
+<strong>
+Bases Matemáticas para Ciência e Tecnologia B
+</strong>
+
+<br>
+
+Material de apoio · ICTIN/UFLA
+
+</div>
+
+
+<div>
+
+Prof. Dr. Cássius Henrique Xavier Oliveira
+
+<br>
+
+© <span id="year"></span>
+
+</div>
+
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+
+</body>
+
+</html>
