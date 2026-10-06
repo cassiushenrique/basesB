@@ -1,10 +1,1893 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Derivadas parciais, plano tangente e regra da cadeia | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Derivadas parciais, plano tangente e regra da cadeia</div><p class="eyebrow">PARTE 2 · AULAS 09–15</p><h1>Derivadas parciais, plano tangente e regra da cadeia</h1><p class="lead">Taxas de variação coordenadas, derivadas de ordem superior, diferenciabilidade, aproximação linear, regra da cadeia e derivação implícita.</p><h2>1. Derivadas parciais</h2><p>Para calcular a variação em relação a uma variável, mantemos as demais fixas.</p><div class="mathbox"><div class="mathline">\[f_x(a,b)=\lim_{h\to0}\frac{f(a+h,b)-f(a,b)}{h}.\]</div><div class="mathline">\[f_y(a,b)=\lim_{h\to0}\frac{f(a,b+h)-f(a,b)}{h}.\]</div></div><figure class="figure"><img src="../assets/img/aulas/parciais-superficie.png" alt="Interpretação geométrica das derivadas parciais por cortes da superfície."><figcaption>Interpretação geométrica das derivadas parciais por cortes da superfície. Figura do material das aulas da GCT054.</figcaption></figure>
-<h3>Derivadas de ordem superior</h3><div class="mathbox"><div class="mathline">\[f_{xx}=\frac{\partial^2f}{\partial x^2}.\]</div><div class="mathline">\[f_{yy}=\frac{\partial^2f}{\partial y^2}.\]</div><div class="mathline">\[f_{xy}=\frac{\partial^2f}{\partial y\,\partial x}.\]</div><div class="mathline">\[f_{yx}=\frac{\partial^2f}{\partial x\,\partial y}.\]</div></div>
-<div class="theorem"><strong>Clairaut.</strong> Se as derivadas mistas são contínuas em uma vizinhança do ponto, então \(f_{xy}=f_{yx}\).</div>
-<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(f(x,y)=x^2y+e^{xy}\),</p><div class="mathline">\[f_x=2xy+ye^{xy}.\]</div><div class="mathline">\[f_y=x^2+xe^{xy}.\]</div><p>Em \((1,0)\),</p><div class="mathline">\[f_x(1,0)=0.\]</div><div class="mathline">\[f_y(1,0)=2.\]</div></div>
-<h2>2. Plano tangente e linearização</h2><div class="mathbox"><div class="mathline">\[L(x,y)=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b).\]</div><div class="mathline">\[z=L(x,y).\]</div></div><figure class="figure"><img src="../assets/img/aulas/plano-tangente.png" alt="Plano tangente construído a partir das direções tangentes coordenadas."><figcaption>Plano tangente construído a partir das direções tangentes coordenadas. Figura do material das aulas da GCT054.</figcaption></figure>
-<div class="example"><strong>Exemplo resolvido — plano tangente.</strong><p>Para \(f=x^2+2y^2\), em \((1,1)\),</p><div class="mathline">\[f(1,1)=3.\]</div><div class="mathline">\[f_x(1,1)=2.\]</div><div class="mathline">\[f_y(1,1)=4.\]</div><p>Logo,</p><div class="mathline">\[z=3+2(x-1)+4(y-1).\]</div></div><figure class="figure"><img src="../assets/img/aulas/linearizacao.png" alt="Aproximação local de uma superfície por seu plano tangente."><figcaption>Aproximação local de uma superfície por seu plano tangente. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>3. Diferenciabilidade</h2><p>A existência das derivadas parciais não garante diferenciabilidade. Uma condição suficiente útil é a continuidade de \(f_x\) e \(f_y\) em uma vizinhança do ponto.</p>
-<h2>4. Regra da cadeia</h2><p>Se \(z=f(x,y)\), \(x=x(t)\) e \(y=y(t)\),</p><div class="mathline">\[\frac{dz}{dt}=f_x\frac{dx}{dt}+f_y\frac{dy}{dt}.\]</div>
-<div class="example"><strong>Exemplo.</strong><p>Se \(z=x^2+y^2\), \(x=t^2\) e \(y=e^t\),</p><div class="mathline">\[\frac{dz}{dt}=4t^3+2e^{2t}.\]</div></div>
-<h2>5. Derivação implícita</h2><p>Se \(F(x,y,z)=0\) define localmente \(z=z(x,y)\) e \(F_z\neq0\),</p><div class="mathbox"><div class="mathline">\[z_x=-\frac{F_x}{F_z}.\]</div><div class="mathline">\[z_y=-\frac{F_y}{F_z}.\]</div></div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Derivadas parciais, plano tangente e regra da cadeia | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a>
+        /
+        Derivadas parciais, plano tangente e regra da cadeia
+    </div>
+
+    <p class="eyebrow">PARTE 2 · AULAS 09–15</p>
+
+    <h1>Derivadas parciais, plano tangente e regra da cadeia</h1>
+
+    <p class="lead">
+        O conceito de derivada é estendido para funções de várias variáveis.
+        Estudaremos taxas de variação em diferentes direções coordenadas,
+        derivadas de ordem superior, diferenciabilidade, planos tangentes,
+        aproximações lineares, regra da cadeia e derivação implícita.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. MOTIVAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>1. Da derivada de uma variável às derivadas parciais</h2>
+
+    <p>
+        Para uma função de uma variável,
+    </p>
+
+    <div class="mathline">
+        \[
+        y=f(x),
+        \]
+    </div>
+
+    <p>
+        a derivada \(f'(a)\) mede a taxa instantânea de variação de \(f\)
+        quando \(x\) varia nas proximidades de \(a\).
+    </p>
+
+    <p>
+        Para uma função de duas variáveis,
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,y),
+        \]
+    </div>
+
+    <p>
+        existem duas variáveis independentes. Portanto, podemos estudar
+        separadamente como \(z\) varia quando modificamos \(x\) mantendo
+        \(y\) fixo, ou quando modificamos \(y\) mantendo \(x\) fixo.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Essas taxas de variação são denominadas
+            <strong>derivadas parciais</strong>.
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x=\frac{\partial f}{\partial x}
+            \]
+        </div>
+
+        <p>
+            mede a variação de \(f\) em relação a \(x\), mantendo \(y\)
+            constante.
+        </p>
+
+        <div class="mathline">
+            \[
+            f_y=\frac{\partial f}{\partial y}
+            \]
+        </div>
+
+        <p>
+            mede a variação de \(f\) em relação a \(y\), mantendo \(x\)
+            constante.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. DEFINIÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>2. Definição das derivadas parciais</h2>
+
+    <p>
+        Seja \(f\) uma função de duas variáveis definida nas proximidades
+        de \((a,b)\). A derivada parcial de \(f\) em relação a \(x\) é
+        definida por
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            f_x(a,b)
+            =
+            \lim_{h\to0}
+            \frac{f(a+h,b)-f(a,b)}{h},
+            \]
+        </div>
+
+        <p>
+            desde que esse limite exista.
+        </p>
+
+    </div>
+
+    <p>
+        Analogamente, a derivada parcial em relação a \(y\) é
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            f_y(a,b)
+            =
+            \lim_{h\to0}
+            \frac{f(a,b+h)-f(a,b)}{h}.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Observe que, ao calcular \(f_x\), a variável \(y\) é tratada como
+        constante. Ao calcular \(f_y\), a variável \(x\) é tratada como
+        constante.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. INTERPRETAÇÃO GEOMÉTRICA -->
+    <!-- ========================================================= -->
+
+    <h2>3. Interpretação geométrica</h2>
+
+    <p>
+        Considere a superfície
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,y)
+        \]
+    </div>
+
+    <p>
+        e um ponto
+    </p>
+
+    <div class="mathline">
+        \[
+        P=(a,b,f(a,b)).
+        \]
+    </div>
+
+    <p>
+        Se fixarmos \(y=b\), o plano vertical \(y=b\) corta a superfície
+        em uma curva \(C_1\). Essa curva pode ser escrita como
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,b).
+        \]
+    </div>
+
+    <p>
+        A inclinação da reta tangente a essa curva em \(P\) é
+    </p>
+
+    <div class="mathline">
+        \[
+        f_x(a,b).
+        \]
+    </div>
+
+    <p>
+        Da mesma maneira, fixando \(x=a\), obtemos uma segunda curva
+        \(C_2\), cuja reta tangente em \(P\) possui inclinação
+    </p>
+
+    <div class="mathline">
+        \[
+        f_y(a,b).
+        \]
+    </div>
+
+    <figure class="figure">
+        <img
+            src="../assets/img/aulas/parciais-superficie.png"
+            alt="Interpretação geométrica das derivadas parciais por cortes da superfície."
+        >
+
+        <figcaption>
+            Interpretação geométrica das derivadas parciais. Os planos
+            verticais coordenados produzem curvas sobre a superfície, e
+            \(f_x(a,b)\) e \(f_y(a,b)\) fornecem as inclinações das
+            respectivas retas tangentes.
+        </figcaption>
+    </figure>
+
+    <div class="theorem">
+
+        <strong>Interpretação geométrica.</strong>
+
+        <p>
+            As derivadas parciais \(f_x(a,b)\) e \(f_y(a,b)\) representam
+            as inclinações das retas tangentes às curvas obtidas
+            pela interseção da superfície \(z=f(x,y)\) com os planos
+            verticais \(y=b\) e \(x=a\), respectivamente.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. EXEMPLO -->
+    <!-- ========================================================= -->
+
+    <h2>4. Cálculo de derivadas parciais</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 1 — derivadas parciais.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2y+e^{xy}.
+            \]
+        </div>
+
+        <p>
+            Para calcular \(f_x\), consideramos \(y\) constante:
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x(x,y)
+            =
+            2xy+ye^{xy}.
+            \]
+        </div>
+
+        <p>
+            Para calcular \(f_y\), consideramos \(x\) constante:
+        </p>
+
+        <div class="mathline">
+            \[
+            f_y(x,y)
+            =
+            x^2+xe^{xy}.
+            \]
+        </div>
+
+        <p>
+            No ponto \((1,0)\),
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x(1,0)=0,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_y(1,0)=2.
+            \]
+        </div>
+
+        <p>
+            Assim, no ponto correspondente da superfície, a inclinação
+            na direção coordenada \(x\) é zero, enquanto a inclinação na
+            direção coordenada \(y\) é igual a \(2\).
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. DERIVADAS DE ORDEM SUPERIOR -->
+    <!-- ========================================================= -->
+
+    <h2>5. Derivadas parciais de ordem superior</h2>
+
+    <p>
+        Como \(f_x\) e \(f_y\) são também funções de \(x\) e \(y\),
+        podemos derivá-las novamente.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            f_{xx}
+            =
+            \frac{\partial}{\partial x}
+            \left(
+            \frac{\partial f}{\partial x}
+            \right)
+            =
+            \frac{\partial^2 f}{\partial x^2}.
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_{yy}
+            =
+            \frac{\partial}{\partial y}
+            \left(
+            \frac{\partial f}{\partial y}
+            \right)
+            =
+            \frac{\partial^2 f}{\partial y^2}.
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_{xy}
+            =
+            \frac{\partial}{\partial y}
+            \left(
+            \frac{\partial f}{\partial x}
+            \right).
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_{yx}
+            =
+            \frac{\partial}{\partial x}
+            \left(
+            \frac{\partial f}{\partial y}
+            \right).
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        As derivadas \(f_{xy}\) e \(f_{yx}\) são chamadas
+        <strong>derivadas parciais mistas</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. CLAIRAUT -->
+    <!-- ========================================================= -->
+
+    <h2>6. Teorema de Clairaut</h2>
+
+    <div class="theorem">
+
+        <strong>Teorema de Clairaut.</strong>
+
+        <p>
+            Suponha que \(f\) esteja definida em uma região aberta
+            contendo \((a,b)\). Se \(f_{xy}\) e \(f_{yx}\) forem
+            contínuas nessa região, então
+        </p>
+
+        <div class="mathline">
+            \[
+            f_{xy}(a,b)=f_{yx}(a,b).
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Portanto, sob condições adequadas de regularidade, a ordem em que
+        efetuamos as duas derivações não altera o resultado.
+    </p>
+
+    <div class="example">
+
+        <strong>Exemplo 2 — derivadas mistas.</strong>
+
+        <p>
+            Seja
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2y^3.
+            \]
+        </div>
+
+        <p>
+            Primeiro,
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x=2xy^3.
+            \]
+        </div>
+
+        <p>
+            Logo,
+        </p>
+
+        <div class="mathline">
+            \[
+            f_{xy}=6xy^2.
+            \]
+        </div>
+
+        <p>
+            Por outro lado,
+        </p>
+
+        <div class="mathline">
+            \[
+            f_y=3x^2y^2,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_{yx}=6xy^2.
+            \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            f_{xy}=f_{yx}.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. PLANO TANGENTE -->
+    <!-- ========================================================= -->
+
+    <h2>7. Plano tangente</h2>
+
+    <p>
+        Para uma função de uma variável, a reta tangente fornece uma
+        aproximação linear local da curva.
+    </p>
+
+    <p>
+        Para uma função de duas variáveis, o objeto análogo é um
+        <strong>plano tangente</strong> à superfície.
+    </p>
+
+    <p>
+        Seja
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,y)
+        \]
+    </div>
+
+    <p>
+        e considere o ponto
+    </p>
+
+    <div class="mathline">
+        \[
+        P=(a,b,f(a,b)).
+        \]
+    </div>
+
+    <p>
+        Sob condições adequadas de diferenciabilidade, a equação do plano
+        tangente é
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            z-f(a,b)
+            =
+            f_x(a,b)(x-a)
+            +
+            f_y(a,b)(y-b).
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Equivalentemente,
+    </p>
+
+    <div class="mathline">
+        \[
+        z
+        =
+        f(a,b)
+        +
+        f_x(a,b)(x-a)
+        +
+        f_y(a,b)(y-b).
+        \]
+    </div>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/plano-tangente.png"
+            alt="Plano tangente construído a partir das direções tangentes coordenadas."
+        >
+
+        <figcaption>
+            Plano tangente à superfície em um ponto. As derivadas parciais
+            determinam as inclinações do plano nas duas direções
+            coordenadas.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. EXEMPLO PLANO TANGENTE -->
+    <!-- ========================================================= -->
+
+    <h2>8. Exemplo de plano tangente</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 3 — determinação do plano tangente.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2+2y^2
+            \]
+        </div>
+
+        <p>
+            no ponto \((1,1)\).
+        </p>
+
+        <p>
+            Inicialmente,
+        </p>
+
+        <div class="mathline">
+            \[
+            f(1,1)=1^2+2(1)^2=3.
+            \]
+        </div>
+
+        <p>
+            As derivadas parciais são
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x(x,y)=2x,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_y(x,y)=4y.
+            \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x(1,1)=2,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_y(1,1)=4.
+            \]
+        </div>
+
+        <p>
+            Substituindo na equação do plano tangente,
+        </p>
+
+        <div class="mathline">
+            \[
+            z
+            =
+            3
+            +
+            2(x-1)
+            +
+            4(y-1).
+            \]
+        </div>
+
+        <p>
+            Simplificando,
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{z=2x+4y-3}.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. LINEARIZAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>9. Linearização e aproximação linear</h2>
+
+    <p>
+        Nas proximidades de \((a,b)\), uma superfície diferenciável
+        pode ser aproximada por seu plano tangente.
+    </p>
+
+    <p>
+        Definimos a <strong>linearização</strong> de \(f\) em \((a,b)\)
+        por
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            L(x,y)
+            =
+            f(a,b)
+            +
+            f_x(a,b)(x-a)
+            +
+            f_y(a,b)(y-b).
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Para pontos \((x,y)\) suficientemente próximos de \((a,b)\),
+        temos a aproximação
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y)\approx L(x,y).
+        \]
+    </div>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/linearizacao.png"
+            alt="Aproximação local de uma superfície por seu plano tangente."
+        >
+
+        <figcaption>
+            Próximo ao ponto de tangência, uma superfície diferenciável
+            é bem aproximada pelo plano tangente. Essa é a interpretação
+            geométrica da linearização.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. EXEMPLO LINEARIZAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>10. Exemplo de aproximação linear</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 4 — aproximação por linearização.</strong>
+
+        <p>
+            Para
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2+2y^2,
+            \]
+        </div>
+
+        <p>
+            já encontramos a linearização em \((1,1)\):
+        </p>
+
+        <div class="mathline">
+            \[
+            L(x,y)
+            =
+            3+2(x-1)+4(y-1).
+            \]
+        </div>
+
+        <p>
+            Podemos utilizá-la, por exemplo, para aproximar
+            \(f(1{,}02,0{,}99)\).
+        </p>
+
+        <div class="mathline">
+            \[
+            f(1{,}02,0{,}99)
+            \approx
+            L(1{,}02,0{,}99).
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            L(1{,}02,0{,}99)
+            =
+            3+2(0{,}02)+4(-0{,}01).
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            L(1{,}02,0{,}99)=3.
+            \]
+        </div>
+
+        <p>
+            Assim,
+        </p>
+
+        <div class="mathline">
+            \[
+            f(1{,}02,0{,}99)\approx3.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. DIFERENCIABILIDADE -->
+    <!-- ========================================================= -->
+
+    <h2>11. Diferenciabilidade</h2>
+
+    <p>
+        A existência das derivadas parciais em um ponto, isoladamente,
+        não é suficiente para garantir que a função seja diferenciável
+        nesse ponto.
+    </p>
+
+    <p>
+        A diferenciabilidade exige que a função seja localmente bem
+        aproximada por uma transformação linear — geometricamente, por
+        seu plano tangente.
+    </p>
+
+    <p>
+        Escrevendo
+    </p>
+
+    <div class="mathline">
+        \[
+        \Delta x=x-a,
+        \qquad
+        \Delta y=y-b,
+        \]
+    </div>
+
+    <p>
+        uma função diferenciável satisfaz localmente
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \Delta z
+            =
+            f_x(a,b)\Delta x
+            +
+            f_y(a,b)\Delta y
+            +
+            \varepsilon_1\Delta x
+            +
+            \varepsilon_2\Delta y,
+            \]
+        </div>
+
+        <p>
+            em que
+        </p>
+
+        <div class="mathline">
+            \[
+            \varepsilon_1\to0
+            \qquad\text{e}\qquad
+            \varepsilon_2\to0
+        \]
+        </div>
+
+        <p>
+            quando
+        </p>
+
+        <div class="mathline">
+            \[
+            (\Delta x,\Delta y)\to(0,0).
+            \]
+        </div>
+
+    </div>
+
+    <div class="theorem">
+
+        <strong>Condição suficiente para diferenciabilidade.</strong>
+
+        <p>
+            Se \(f_x\) e \(f_y\) existem em uma vizinhança de
+            \((a,b)\) e são contínuas em \((a,b)\), então \(f\) é
+            diferenciável em \((a,b)\).
+        </p>
+
+    </div>
+
+    <p>
+        É importante observar a direção lógica:
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            f_x,f_y\text{ contínuas}
+            \quad\Longrightarrow\quad
+            f\text{ diferenciável}.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        A simples existência das derivadas parciais não permite concluir
+        diferenciabilidade.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/diferenciabilidade-contraexemplo.png"
+            alt="Exemplo geométrico relacionado à diferenciabilidade."
+        >
+
+        <figcaption>
+            A existência de derivadas parciais em um ponto não é,
+            isoladamente, suficiente para assegurar uma boa aproximação
+            da superfície por um plano.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. DIFERENCIAIS -->
+    <!-- ========================================================= -->
+
+    <h2>12. Diferenciais</h2>
+
+    <p>
+        Se \(z=f(x,y)\) é diferenciável, definimos o diferencial total
+        de \(z\) por
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            dz
+            =
+            f_x(x,y)\,dx
+            +
+            f_y(x,y)\,dy.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Para pequenas variações \(dx\) e \(dy\), o diferencial fornece
+        uma aproximação para a variação real da função:
+    </p>
+
+    <div class="mathline">
+        \[
+        \Delta z\approx dz.
+        \]
+    </div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        \Delta z
+        \approx
+        f_x\,\Delta x
+        +
+        f_y\,\Delta y.
+        \]
+    </div>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/diferencial-geometria.png"
+            alt="Interpretação geométrica dos diferenciais."
+        >
+
+        <figcaption>
+            Interpretação geométrica do diferencial: a variação sobre o
+            plano tangente aproxima a variação correspondente sobre a
+            superfície.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. REGRA DA CADEIA -->
+    <!-- ========================================================= -->
+
+    <h2>13. Regra da cadeia</h2>
+
+    <p>
+        Em muitas aplicações, as variáveis \(x\) e \(y\) não são
+        independentes de um parâmetro externo. Suponha que
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,y),
+        \]
+    </div>
+
+    <div class="mathline">
+        \[
+        x=x(t),
+        \qquad
+        y=y(t).
+        \]
+    </div>
+
+    <p>
+        Nesse caso, \(z\) também se torna uma função de \(t\):
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x(t),y(t)).
+        \]
+    </div>
+
+    <p>
+        A regra da cadeia fornece
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \frac{dz}{dt}
+            =
+            \frac{\partial f}{\partial x}
+            \frac{dx}{dt}
+            +
+            \frac{\partial f}{\partial y}
+            \frac{dy}{dt}.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Uma forma útil de interpretar essa expressão é observar os
+        possíveis caminhos de dependência:
+    </p>
+
+    <div class="mathline">
+        \[
+        t\longrightarrow x\longrightarrow z
+        \]
+    </div>
+
+    <div class="mathline">
+        \[
+        t\longrightarrow y\longrightarrow z.
+        \]
+    </div>
+
+    <p>
+        A taxa total de variação de \(z\) é obtida somando as
+        contribuições correspondentes a esses caminhos.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/regra-cadeia-curva.png"
+            alt="Interpretação geométrica da regra da cadeia."
+        >
+
+        <figcaption>
+            Quando \(x\) e \(y\) dependem de um parâmetro \(t\), o ponto
+            \((x(t),y(t))\) percorre uma curva no domínio e sua imagem
+            percorre uma curva sobre a superfície.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. EXEMPLO REGRA DA CADEIA -->
+    <!-- ========================================================= -->
+
+    <h2>14. Exemplo da regra da cadeia</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 5.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            z=x^2+y^2,
+            \]
+        </div>
+
+        <p>
+            com
+        </p>
+
+        <div class="mathline">
+            \[
+            x=t^2
+            \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            y=e^t.
+            \]
+        </div>
+
+        <p>
+            Temos
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x=2x,
+            \qquad
+            f_y=2y,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \frac{dx}{dt}=2t,
+            \qquad
+            \frac{dy}{dt}=e^t.
+        \]
+        </div>
+
+        <p>
+            Aplicando a regra da cadeia,
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{dz}{dt}
+            =
+            2x(2t)+2y(e^t).
+            \]
+        </div>
+
+        <p>
+            Como \(x=t^2\) e \(y=e^t\),
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{dz}{dt}
+            =
+            4t^3+2e^{2t}
+            }.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. REGRA DA CADEIA GERAL -->
+    <!-- ========================================================= -->
+
+    <h2>15. Regra da cadeia com duas variáveis intermediárias</h2>
+
+    <p>
+        Considere agora
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,y),
+        \]
+    </div>
+
+    <p>
+        em que
+    </p>
+
+    <div class="mathline">
+        \[
+        x=x(s,t),
+        \qquad
+        y=y(s,t).
+        \]
+    </div>
+
+    <p>
+        Então \(z\) é uma função de \(s\) e \(t\):
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x(s,t),y(s,t)).
+        \]
+    </div>
+
+    <p>
+        Aplicando a regra da cadeia,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \frac{\partial z}{\partial s}
+            =
+            \frac{\partial z}{\partial x}
+            \frac{\partial x}{\partial s}
+            +
+            \frac{\partial z}{\partial y}
+            \frac{\partial y}{\partial s}.
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \frac{\partial z}{\partial t}
+            =
+            \frac{\partial z}{\partial x}
+            \frac{\partial x}{\partial t}
+            +
+            \frac{\partial z}{\partial y}
+            \frac{\partial y}{\partial t}.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. DIAGRAMA DE ÁRVORE -->
+    <!-- ========================================================= -->
+
+    <h2>16. Organizando a regra da cadeia</h2>
+
+    <p>
+        Quando existem várias variáveis intermediárias, é útil organizar
+        as dependências por meio de um diagrama.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Para calcular uma derivada em relação a uma variável
+            independente:
+        </p>
+
+        <p>
+            <strong>1.</strong> identifique todos os caminhos que ligam
+            essa variável à variável dependente;
+        </p>
+
+        <p>
+            <strong>2.</strong> multiplique as derivadas ao longo de cada
+            caminho;
+        </p>
+
+        <p>
+            <strong>3.</strong> some as contribuições dos diferentes
+            caminhos.
+        </p>
+
+    </div>
+
+    <p>
+        Por exemplo,
+    </p>
+
+    <div class="mathline">
+        \[
+        s\longrightarrow x\longrightarrow z
+        \]
+    </div>
+
+    <div class="mathline">
+        \[
+        s\longrightarrow y\longrightarrow z
+        \]
+    </div>
+
+    <p>
+        produz
+    </p>
+
+    <div class="mathline">
+        \[
+        z_s=z_xx_s+z_yy_s.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. DERIVAÇÃO IMPLÍCITA -->
+    <!-- ========================================================= -->
+
+    <h2>17. Derivação implícita</h2>
+
+    <p>
+        Nem sempre uma superfície é apresentada explicitamente na forma
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,y).
+        \]
+    </div>
+
+    <p>
+        Em muitos problemas, as variáveis estão relacionadas por uma
+        equação
+    </p>
+
+    <div class="mathline">
+        \[
+        F(x,y,z)=0.
+        \]
+    </div>
+
+    <p>
+        Sob condições adequadas, essa relação pode definir localmente
+        \(z\) como função de \(x\) e \(y\):
+    </p>
+
+    <div class="mathline">
+        \[
+        z=z(x,y).
+        \]
+    </div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        F(x,y,z(x,y))=0.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. DERIVAÇÃO EM X -->
+    <!-- ========================================================= -->
+
+    <h2>18. Obtendo \(z_x\)</h2>
+
+    <p>
+        Derivando
+    </p>
+
+    <div class="mathline">
+        \[
+        F(x,y,z(x,y))=0
+        \]
+    </div>
+
+    <p>
+        em relação a \(x\), com \(y\) mantido constante, obtemos pela
+        regra da cadeia
+    </p>
+
+    <div class="mathline">
+        \[
+        F_x
+        +
+        F_z z_x
+        =
+        0.
+    \]
+    </div>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        F_z\neq0,
+        \]
+    </div>
+
+    <p>
+        então
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            z_x
+            =
+            -\frac{F_x}{F_z}
+            }.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. DERIVAÇÃO EM Y -->
+    <!-- ========================================================= -->
+
+    <h2>19. Obtendo \(z_y\)</h2>
+
+    <p>
+        Derivando agora em relação a \(y\),
+    </p>
+
+    <div class="mathline">
+        \[
+        F_y
+        +
+        F_z z_y
+        =
+        0.
+    \]
+    </div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            z_y
+            =
+            -\frac{F_y}{F_z}
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Assim, quando \(F_z\neq0\),
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            z_x=-\frac{F_x}{F_z},
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            z_y=-\frac{F_y}{F_z}.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. EXEMPLO IMPLÍCITA -->
+    <!-- ========================================================= -->
+
+    <h2>20. Exemplo de derivação implícita</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 6.</strong>
+
+        <p>
+            Considere a superfície definida implicitamente por
+        </p>
+
+        <div class="mathline">
+            \[
+            x^2+y^2+z^2=9.
+            \]
+        </div>
+
+        <p>
+            Definimos
+        </p>
+
+        <div class="mathline">
+            \[
+            F(x,y,z)=x^2+y^2+z^2-9.
+            \]
+        </div>
+
+        <p>
+            Então,
+        </p>
+
+        <div class="mathline">
+            \[
+            F_x=2x,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            F_y=2y,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            F_z=2z.
+            \]
+        </div>
+
+        <p>
+            Para \(z\neq0\),
+        </p>
+
+        <div class="mathline">
+            \[
+            z_x
+            =
+            -\frac{2x}{2z}
+            =
+            -\frac{x}{z},
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            z_y
+            =
+            -\frac{2y}{2z}
+            =
+            -\frac{y}{z}.
+        \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            z_x=-\frac{x}{z}
+            }
+        \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            z_y=-\frac{y}{z}
+            }.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. RELAÇÕES ENTRE CONCEITOS -->
+    <!-- ========================================================= -->
+
+    <h2>21. Como os conceitos se relacionam</h2>
+
+    <p>
+        Os conceitos apresentados nesta sequência de aulas formam uma
+        estrutura lógica importante no cálculo multivariável.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \text{derivadas parciais}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \Downarrow
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \text{diferenciabilidade}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \Downarrow
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \text{plano tangente}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \Downarrow
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \text{linearização e diferenciais}.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        A regra da cadeia, por sua vez, permite calcular taxas de
+        variação quando as variáveis estão relacionadas por composições.
+        A derivação implícita é uma aplicação direta dessa ideia.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. ERROS FREQUENTES -->
+    <!-- ========================================================= -->
+
+    <h2>22. Erros conceituais frequentes</h2>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>1. Derivar todas as variáveis simultaneamente.</strong><br>
+            Em uma derivada parcial, as demais variáveis independentes
+            devem ser tratadas como constantes.
+        </p>
+
+        <p>
+            <strong>2. Confundir existência de derivadas parciais com
+            diferenciabilidade.</strong><br>
+            Uma função pode possuir \(f_x\) e \(f_y\) em um ponto e ainda
+            assim não ser diferenciável nesse ponto.
+        </p>
+
+        <p>
+            <strong>3. Utilizar o plano tangente sem verificar as
+            hipóteses necessárias.</strong><br>
+            A fórmula do plano tangente está associada à
+            diferenciabilidade da função.
+        </p>
+
+        <p>
+            <strong>4. Esquecer as dependências na regra da cadeia.</strong><br>
+            Cada caminho entre as variáveis deve contribuir para a
+            derivada total.
+        </p>
+
+        <p>
+            <strong>5. Esquecer o sinal negativo na derivação
+            implícita.</strong><br>
+            Das relações
+            \(F_x+F_zz_x=0\) e \(F_y+F_zz_y=0\)
+            surge o sinal negativo.
+        </p>
+
+        <p>
+            <strong>6. Dividir por \(F_z\) sem verificar se
+            \(F_z\neq0\).</strong><br>
+            Essa condição é essencial para escrever localmente
+            \(z=z(x,y)\) por essa abordagem.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 23. RESUMO -->
+    <!-- ========================================================= -->
+
+    <h2>23. Síntese das principais fórmulas</h2>
+
+    <div class="mathbox">
+
+        <p><strong>Derivadas parciais:</strong></p>
+
+        <div class="mathline">
+            \[
+            f_x(a,b)
+            =
+            \lim_{h\to0}
+            \frac{f(a+h,b)-f(a,b)}{h}.
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_y(a,b)
+            =
+            \lim_{h\to0}
+            \frac{f(a,b+h)-f(a,b)}{h}.
+            \]
+        </div>
+
+        <p><strong>Plano tangente:</strong></p>
+
+        <div class="mathline">
+            \[
+            z
+            =
+            f(a,b)
+            +
+            f_x(a,b)(x-a)
+            +
+            f_y(a,b)(y-b).
+            \]
+        </div>
+
+        <p><strong>Linearização:</strong></p>
+
+        <div class="mathline">
+            \[
+            L(x,y)
+            =
+            f(a,b)
+            +
+            f_x(a,b)(x-a)
+            +
+            f_y(a,b)(y-b).
+            \]
+        </div>
+
+        <p><strong>Diferencial:</strong></p>
+
+        <div class="mathline">
+            \[
+            dz=f_x\,dx+f_y\,dy.
+            \]
+        </div>
+
+        <p><strong>Regra da cadeia:</strong></p>
+
+        <div class="mathline">
+            \[
+            \frac{dz}{dt}
+            =
+            f_x\frac{dx}{dt}
+            +
+            f_y\frac{dy}{dt}.
+            \]
+        </div>
+
+        <p><strong>Derivação implícita:</strong></p>
+
+        <div class="mathline">
+            \[
+            z_x=-\frac{F_x}{F_z}.
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            z_y=-\frac{F_y}{F_z}.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+            <strong>Visualização no GeoGebra 3D</strong>
+
+            <p>
+                Explore superfícies, cortes coordenados e planos tangentes.
+                Uma experiência útil é representar uma superfície
+                \(z=f(x,y)\), escolher um ponto e comparar localmente a
+                superfície com seu plano tangente.
+            </p>
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/3d"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Abrir GeoGebra 3D ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIAS -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+
+        <strong>Referências.</strong>
+
+        <p>
+            STEWART, James.
+            <em>Cálculo</em>.
+            Volumes 1 e 2.
+            São Paulo: Cengage Learning.
+        </p>
+
+        <p>
+            ANTON, Howard; BIVENS, Irl; DAVIS, Stephen.
+            <em>Cálculo</em>.
+            Porto Alegre: Bookman.
+        </p>
+
+        <p>
+            THOMAS, George B.; WEIR, Maurice D.; HASS, Joel.
+            <em>Cálculo</em>.
+            São Paulo: Pearson.
+        </p>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
