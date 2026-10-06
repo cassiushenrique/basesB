@@ -1,11 +1,1586 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Funções de várias variáveis | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Funções de várias variáveis</div><p class="eyebrow">PARTE 2 · AULAS 06–08</p><h1>Funções de várias variáveis</h1><p class="lead">Definição, domínio, imagem, gráficos, curvas de nível, limites e continuidade em duas ou mais variáveis.</p><h2>1. Definição e notação</h2><div class="definition"><strong>Definição.</strong> Uma função de duas variáveis associa a cada \((x,y)\) de um domínio \(D\subseteq\mathbb R^2\) um único número real \(z=f(x,y)\).</div>
-<div class="mathbox"><div class="mathline">\[f:D\subseteq\mathbb R^2\longrightarrow\mathbb R.\]</div></div>
-<div class="symbols"><strong>Elementos da notação.</strong><p>\(D\) é o domínio; \(x,y\) são variáveis independentes; \(z=f(x,y)\) é a variável dependente; a imagem é o conjunto de valores efetivamente assumidos por \(f\).</p></div>
-<h2>2. Domínio</h2><p>Quando o domínio não é dado, procuramos o maior conjunto onde a expressão faz sentido. Denominadores devem ser diferentes de zero, radicandos de raízes pares devem ser não negativos e argumentos de logaritmos devem ser positivos.</p>
-<div class="example"><strong>Exemplo resolvido — domínio.</strong><p>Para</p><div class="mathline">\[f(x,y)=\sqrt{4-x^2-y^2},\]</div><p>devemos impor</p><div class="mathline">\[4-x^2-y^2\geq0.\]</div><p>Logo,</p><div class="mathline">\[x^2+y^2\leq4.\]</div><p>O domínio é o disco fechado de raio \(2\).</p></div><figure class="figure"><img src="../assets/img/aulas/funcoes-dominio.png" alt="Região plana associada ao domínio de uma função."><figcaption>Região plana associada ao domínio de uma função. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>3. Gráfico</h2><div class="mathbox"><div class="mathline">\[S=\{(x,y,z)\in\mathbb R^3:z=f(x,y)\}.\]</div></div><p>O gráfico é, em geral, uma superfície no espaço.</p><figure class="figure"><img src="../assets/img/aulas/funcoes-superficie.png" alt="Representação de uma função de duas variáveis sobre seu domínio."><figcaption>Representação de uma função de duas variáveis sobre seu domínio. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>4. Curvas de nível</h2><p>Fixando \(f(x,y)=k\), obtemos uma curva no plano. Para \(f(x,y)=x^2+y^2\), as curvas de nível são</p><div class="mathline">\[x^2+y^2=k,\]</div><p>isto é, circunferências de raio \(\sqrt{k}\), para \(k\geq0\).</p>
-<h2>5. Limites</h2><div class="mathbox"><div class="mathline">\[\lim_{(x,y)\to(a,b)}f(x,y)=L.\]</div></div><p>O mesmo valor deve ser obtido independentemente do caminho de aproximação.</p>
-<div class="example"><strong>Exemplo resolvido — limite inexistente.</strong><p>Para</p><div class="mathline">\[f(x,y)=\frac{x^2-y^2}{x^2+y^2},\]</div><p>pelo caminho \(y=0\), o limite é \(1\); pelo caminho \(x=0\), é \(-1\). Portanto, o limite em \((0,0)\) não existe.</p></div>
-<div class="note"><strong>Importante.</strong> Dois caminhos com limites diferentes provam que o limite não existe. Muitos caminhos com o mesmo limite não bastam, em geral, para provar existência.</div>
-<h2>6. Continuidade</h2><p>Em \((a,b)\), exigimos que \(f(a,b)\) esteja definida, que o limite exista e que</p><div class="mathline">\[\lim_{(x,y)\to(a,b)}f(x,y)=f(a,b).\]</div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Funções de várias variáveis | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a>
+        / Funções de várias variáveis
+    </div>
+
+    <p class="eyebrow">
+        PARTE 2 · AULAS 06–08
+    </p>
+
+    <h1>
+        Funções de várias variáveis
+    </h1>
+
+    <p class="lead">
+        As funções de várias variáveis generalizam as funções de uma variável
+        estudadas no Cálculo. Nesta seção, estudaremos funções de duas ou mais
+        variáveis por diferentes formas de representação, analisando domínio,
+        imagem, gráficos e curvas de nível. Em seguida, estenderemos os conceitos
+        de limite e continuidade para funções cujo domínio está contido em
+        \(\mathbb{R}^2\), \(\mathbb{R}^3\) ou, mais geralmente,
+        \(\mathbb{R}^n\).
+    </p>
+
+
+    <h2>1. Funções de várias variáveis</h2>
+
+    <p>
+        Em muitos problemas, uma quantidade depende simultaneamente de duas ou
+        mais variáveis independentes. A temperatura em uma placa, por exemplo,
+        pode depender da posição \((x,y)\). Nesse caso, podemos escrever
+    </p>
+
+    <div class="mathline">
+        \[
+        T=f(x,y).
+        \]
+    </div>
+
+    <p>
+        Em outras situações, uma quantidade pode depender de três ou mais
+        variáveis. O objetivo é estender para esses casos as ideias que já
+        conhecemos para funções de uma única variável.
+    </p>
+
+
+    <h2>2. Quatro formas de representar uma função</h2>
+
+    <p>
+        Assim como ocorre com funções de uma variável, uma função de várias
+        variáveis pode ser estudada de diferentes pontos de vista.
+    </p>
+
+    <div class="mathbox">
+
+        <p><strong>Verbalmente:</strong> por uma descrição em palavras.</p>
+
+        <p><strong>Numericamente:</strong> por uma tabela de valores.</p>
+
+        <p><strong>Algebricamente:</strong> por uma fórmula explícita.</p>
+
+        <p><strong>Visualmente:</strong> por meio de um gráfico ou de curvas de nível.</p>
+
+    </div>
+
+    <p>
+        Essas representações são complementares. Uma expressão algébrica pode
+        facilitar cálculos, enquanto gráficos e curvas de nível ajudam a
+        compreender geometricamente o comportamento da função.
+    </p>
+
+
+    <h2>3. Funções de duas variáveis</h2>
+
+    <div class="definition">
+
+        <strong>Definição.</strong>
+
+        Uma função \(f\) de duas variáveis é uma regra que associa a cada par
+        ordenado de números reais \((x,y)\), pertencente a um conjunto \(D\),
+        um único número real, denotado por \(f(x,y)\).
+
+    </div>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            f:D\subseteq\mathbb{R}^2\longrightarrow\mathbb{R}.
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            (x,y)\longmapsto z=f(x,y).
+            \]
+        </div>
+
+    </div>
+
+    <div class="symbols">
+
+        <strong>Elementos da notação.</strong>
+
+        <p>
+            \(D\) é o <strong>domínio</strong> da função;
+            \(x\) e \(y\) são as <strong>variáveis independentes</strong>;
+            \(z=f(x,y)\) é a <strong>variável dependente</strong>.
+        </p>
+
+        <p>
+            A <strong>imagem</strong> é o conjunto de todos os valores que a
+            função efetivamente assume:
+        </p>
+
+        <div class="mathline">
+            \[
+            \operatorname{Im}(f)
+            =
+            \{f(x,y):(x,y)\in D\}.
+            \]
+        </div>
+
+    </div>
+
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/funcoes-diagrama.png"
+            alt="Diagrama representando uma função de duas variáveis."
+        >
+
+        <figcaption>
+            Uma função de duas variáveis associa cada ponto
+            \((x,y)\) de seu domínio \(D\) a um único valor real
+            \(z=f(x,y)\). Adaptado de Stewart.
+        </figcaption>
+
+    </figure>
+
+
+    <h2>4. Domínio de uma função de duas variáveis</h2>
+
+    <p>
+        Quando uma função é apresentada por uma fórmula e seu domínio não é
+        especificado explicitamente, consideramos como domínio o conjunto de
+        todos os pares \((x,y)\) para os quais a expressão fornece um número
+        real bem definido.
+    </p>
+
+    <p>
+        Algumas restrições aparecem frequentemente:
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Denominadores:</strong> não podem ser iguais a zero.
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{g(x,y)}
+            \quad\Longrightarrow\quad
+            g(x,y)\neq0.
+            \]
+        </div>
+
+        <p>
+            <strong>Raízes de índice par:</strong> o radicando deve ser
+            não negativo.
+        </p>
+
+        <div class="mathline">
+            \[
+            \sqrt{g(x,y)}
+            \quad\Longrightarrow\quad
+            g(x,y)\geq0.
+            \]
+        </div>
+
+        <p>
+            <strong>Logaritmos:</strong> o argumento deve ser positivo.
+        </p>
+
+        <div class="mathline">
+            \[
+            \ln(g(x,y))
+            \quad\Longrightarrow\quad
+            g(x,y)>0.
+            \]
+        </div>
+
+    </div>
+
+
+    <h2>5. Exemplo 1 — domínio com duas restrições</h2>
+
+    <div class="example">
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)
+            =
+            \frac{\sqrt{x+y+1}}{x-1}.
+            \]
+        </div>
+
+        <p>
+            A raiz quadrada exige
+        </p>
+
+        <div class="mathline">
+            \[
+            x+y+1\geq0.
+            \]
+        </div>
+
+        <p>
+            Equivalentemente,
+        </p>
+
+        <div class="mathline">
+            \[
+            y\geq -x-1.
+            \]
+        </div>
+
+        <p>
+            Além disso, o denominador deve ser diferente de zero:
+        </p>
+
+        <div class="mathline">
+            \[
+            x-1\neq0,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            x\neq1.
+            \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \boxed{
+                D=
+                \{(x,y):
+                y\geq -x-1,\;
+                x\neq1\}
+                }.
+                \]
+            </div>
+
+        </div>
+
+        <p>
+            Geometricamente, o domínio corresponde ao semiplano situado sobre
+            a reta \(y=-x-1\), incluindo a própria reta, mas excluindo os
+            pontos pertencentes à reta vertical \(x=1\).
+        </p>
+
+    </div>
+
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/funcoes-dominio-restricoes.png"
+            alt="Domínio de uma função sujeito a restrições de raiz quadrada e denominador."
+        >
+
+        <figcaption>
+            Domínio determinado simultaneamente pelas condições
+            \(x+y+1\geq0\) e \(x\neq1\). Adaptado de Stewart.
+        </figcaption>
+
+    </figure>
+
+
+    <h2>6. Domínio e imagem</h2>
+
+    <p>
+        Determinar o domínio responde à pergunta:
+        <em>quais valores das variáveis independentes podem ser utilizados?</em>
+    </p>
+
+    <p>
+        Determinar a imagem responde a outra pergunta:
+        <em>quais valores a variável dependente pode assumir?</em>
+    </p>
+
+    <div class="example">
+
+        <strong>Exemplo 2 — domínio e imagem.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            g(x,y)=\sqrt{9-x^2-y^2}.
+            \]
+        </div>
+
+        <p>
+            Para que a raiz seja real,
+        </p>
+
+        <div class="mathline">
+            \[
+            9-x^2-y^2\geq0.
+            \]
+        </div>
+
+        <p>
+            Logo,
+        </p>
+
+        <div class="mathline">
+            \[
+            x^2+y^2\leq9.
+            \]
+        </div>
+
+        <p>
+            Portanto, o domínio é
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \boxed{
+                D=
+                \{(x,y):x^2+y^2\leq9\}
+                }.
+                \]
+            </div>
+
+        </div>
+
+        <p>
+            Geometricamente, \(D\) é o disco fechado de centro
+            \((0,0)\) e raio \(3\).
+        </p>
+
+        <p>
+            Para determinar a imagem, observamos que
+        </p>
+
+        <div class="mathline">
+            \[
+            0\leq x^2+y^2\leq9.
+            \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            0\leq9-x^2-y^2\leq9,
+        \]
+        </div>
+
+        <p>
+            e, consequentemente,
+        </p>
+
+        <div class="mathline">
+            \[
+            0\leq\sqrt{9-x^2-y^2}\leq3.
+        \]
+        </div>
+
+        <p>
+            Assim,
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \operatorname{Im}(g)=[0,3]
+            }.
+            \]
+        </div>
+
+    </div>
+
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/funcoes-dominio-disco.png"
+            alt="Disco de raio três representando o domínio de uma função."
+        >
+
+        <figcaption>
+            O domínio de \(g(x,y)=\sqrt{9-x^2-y^2}\) é o disco
+            \(x^2+y^2\leq9\). Adaptado de Stewart.
+        </figcaption>
+
+    </figure>
+
+
+    <h2>7. Gráfico de uma função de duas variáveis</h2>
+
+    <div class="definition">
+
+        <strong>Definição.</strong>
+
+        Se \(f\) é uma função de duas variáveis com domínio \(D\), então
+        o gráfico de \(f\) é o conjunto de todos os pontos
+        \((x,y,z)\in\mathbb{R}^3\) tais que
+
+        <div class="mathline">
+            \[
+            z=f(x,y)
+            \]
+        </div>
+
+        e \((x,y)\in D\).
+
+    </div>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            S=
+            \{(x,y,z)\in\mathbb{R}^3:
+            z=f(x,y),\;(x,y)\in D\}.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Há aqui uma diferença geométrica importante em relação às funções
+        de uma variável:
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            y=f(x)
+            \quad\longrightarrow\quad
+            \text{curva no plano};
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            z=f(x,y)
+            \quad\longrightarrow\quad
+            \text{superfície no espaço}.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Podemos visualizar a superfície \(S\) como situada diretamente
+        acima ou abaixo de seu domínio \(D\) no plano \(xy\).
+    </p>
+
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/funcoes-superficie.png"
+            alt="Superfície correspondente ao gráfico de uma função de duas variáveis."
+        >
+
+        <figcaption>
+            O gráfico de \(z=f(x,y)\) é uma superfície situada sobre o
+            domínio \(D\) no plano \(xy\). Adaptado de Stewart.
+        </figcaption>
+
+    </figure>
+
+
+    <h2>8. Curvas de nível</h2>
+
+    <p>
+        Nem sempre um gráfico tridimensional é a forma mais conveniente de
+        visualizar uma função. Outra possibilidade é estudar suas
+        <strong>curvas de nível</strong>.
+    </p>
+
+    <div class="definition">
+
+        <strong>Definição.</strong>
+
+        Uma curva de nível de uma função \(f(x,y)\) é uma curva no plano
+        \(xy\) formada pelos pontos nos quais a função assume um valor
+        constante \(k\).
+
+    </div>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            f(x,y)=k
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Geometricamente, podemos imaginar a interseção da superfície
+        \(z=f(x,y)\) com o plano horizontal
+    </p>
+
+    <div class="mathline">
+        \[
+        z=k.
+        \]
+    </div>
+
+    <p>
+        Projetando essa interseção sobre o plano \(xy\), obtemos uma curva
+        de nível.
+    </p>
+
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/funcoes-curvas-nivel.png"
+            alt="Superfície interceptada por planos horizontais e respectivas curvas de nível."
+        >
+
+        <figcaption>
+            Planos horizontais \(z=k\) interceptam a superfície e produzem
+            curvas que, projetadas sobre o plano \(xy\), formam as curvas
+            de nível. Adaptado de Stewart.
+        </figcaption>
+
+    </figure>
+
+
+    <h2>9. Exemplo 3 — curvas de nível</h2>
+
+    <div class="example">
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2+9y^2.
+            \]
+        </div>
+
+        <p>
+            Para determinar as curvas de nível, fazemos
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=c.
+            \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            x^2+9y^2=c.
+            \]
+        </div>
+
+        <p>
+            Como o lado esquerdo é não negativo,
+        </p>
+
+        <div class="mathline">
+            \[
+            c\geq0.
+            \]
+        </div>
+
+        <p>
+            Para \(c>0\),
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{x^2}{c}
+            +
+            \frac{y^2}{c/9}
+            =
+            1.
+            \]
+        </div>
+
+        <p>
+            Portanto, as curvas de nível são elipses centradas na origem,
+            com semieixos
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                a=\sqrt{c},
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                b=\frac{\sqrt{c}}{3}.
+                \]
+            </div>
+
+        </div>
+
+        <p>
+            Para \(c=0\), a curva de nível reduz-se ao ponto
+            \((0,0)\).
+        </p>
+
+    </div>
+
+
+    <h2>10. Mapa de contorno</h2>
+
+    <p>
+        Quando representamos simultaneamente diversas curvas de nível,
+        obtemos um <strong>mapa de contorno</strong>.
+    </p>
+
+    <p>
+        O mapa de contorno fornece informações sobre a geometria da
+        superfície sem exigir uma representação tridimensional.
+    </p>
+
+    <div class="note">
+
+        <strong>Interpretação.</strong>
+
+        Cada curva corresponde a um valor constante da função. Assim,
+        deslocar-se sobre uma mesma curva de nível significa alterar
+        \(x\) e \(y\) sem alterar o valor de \(f(x,y)\).
+
+    </div>
+
+
+    <h2>11. Funções de três variáveis</h2>
+
+    <p>
+        A definição pode ser estendida naturalmente. Uma função de três
+        variáveis associa a cada tripla ordenada
+        \((x,y,z)\) de um domínio \(D\subseteq\mathbb{R}^3\)
+        um único número real.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            f:D\subseteq\mathbb{R}^3
+            \longrightarrow
+            \mathbb{R}.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Um exemplo natural é a temperatura em uma região variando também
+        com o tempo:
+    </p>
+
+    <div class="mathline">
+        \[
+        T=f(x,y,t).
+        \]
+    </div>
+
+    <p>
+        Nesse caso, duas variáveis descrevem a posição e uma terceira
+        descreve o instante considerado.
+    </p>
+
+
+    <h2>12. Exemplo 4 — domínio em três variáveis</h2>
+
+    <div class="example">
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y,z)
+            =
+            \ln(z-y)+xy\sin z.
+            \]
+        </div>
+
+        <p>
+            A única restrição decorre do logaritmo:
+        </p>
+
+        <div class="mathline">
+            \[
+            z-y>0.
+        \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            z>y.
+        \]
+        </div>
+
+        <p>
+            O domínio é
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \boxed{
+                D=
+                \{(x,y,z)\in\mathbb{R}^3:z>y\}
+                }.
+                \]
+            </div>
+
+        </div>
+
+        <p>
+            Geometricamente, esse domínio é o semiespaço formado pelos
+            pontos situados acima do plano
+        </p>
+
+        <div class="mathline">
+            \[
+            z=y.
+            \]
+        </div>
+
+    </div>
+
+
+    <h2>13. Limites de funções de duas variáveis</h2>
+
+    <p>
+        Para uma função de uma variável, podemos aproximar \(x\) de
+        \(a\) pela esquerda ou pela direita. Em duas variáveis, a situação
+        é muito mais rica: o ponto \((x,y)\) pode aproximar-se de
+        \((a,b)\) por infinitos caminhos.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \lim_{(x,y)\to(a,b)}
+            f(x,y)=L
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa expressão significa que os valores de \(f(x,y)\) podem ser
+        tornados arbitrariamente próximos de \(L\) tomando
+        \((x,y)\) suficientemente próximo de \((a,b)\), mas diferente
+        de \((a,b)\).
+    </p>
+
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/limite-varios-caminhos.png"
+            alt="Diversos caminhos de aproximação de um ponto no plano."
+        >
+
+        <figcaption>
+            Em duas variáveis, \((x,y)\) pode aproximar-se de
+            \((a,b)\) por infinitos caminhos. Se o limite existe, todos
+            devem conduzir ao mesmo valor. Adaptado de Stewart.
+        </figcaption>
+
+    </figure>
+
+
+    <h2>14. Definição formal de limite</h2>
+
+    <div class="definition">
+
+        <strong>Definição.</strong>
+
+        Escrevemos
+
+        <div class="mathline">
+            \[
+            \lim_{(x,y)\to(a,b)}f(x,y)=L
+            \]
+        </div>
+
+        se, para todo \(\varepsilon>0\), existir um
+        \(\delta>0\) tal que
+
+        <div class="mathline">
+            \[
+            0<
+            \sqrt{(x-a)^2+(y-b)^2}
+            <\delta
+            \]
+        </div>
+
+        implique
+
+        <div class="mathline">
+            \[
+            |f(x,y)-L|<\varepsilon.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Observe que
+    </p>
+
+    <div class="mathline">
+        \[
+        \sqrt{(x-a)^2+(y-b)^2}
+        \]
+    </div>
+
+    <p>
+        é exatamente a distância entre os pontos
+        \((x,y)\) e \((a,b)\).
+    </p>
+
+    <p>
+        A definição depende apenas dessa distância e não da direção de
+        aproximação. Portanto, se o limite existe, seu valor deve ser o
+        mesmo independentemente do caminho utilizado.
+    </p>
+
+
+    <h2>15. Investigação por caminhos</h2>
+
+    <p>
+        Para investigar um limite em duas variáveis, podemos aproximar o
+        ponto por diferentes caminhos.
+    </p>
+
+    <p>
+        Entre os caminhos mais simples estão
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            y=b,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            x=a,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            y-b=m(x-a),
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            y-b=c(x-a)^2.
+            \]
+        </div>
+
+    </div>
+
+    <div class="note">
+
+        <strong>Critério importante.</strong>
+
+        Se encontrarmos dois caminhos de aproximação para os quais a
+        função possui limites diferentes, então o limite não existe.
+
+        Entretanto, obter o mesmo valor ao longo de vários caminhos não
+        é suficiente, em geral, para provar que o limite existe.
+
+    </div>
+
+
+    <h2>16. Exemplo 5 — limite inexistente</h2>
+
+    <div class="example">
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)
+            =
+            \frac{x^2-y^2}{x^2+y^2}.
+            \]
+        </div>
+
+        <p>
+            Vamos investigar
+        </p>
+
+        <div class="mathline">
+            \[
+            \lim_{(x,y)\to(0,0)}
+            \frac{x^2-y^2}{x^2+y^2}.
+            \]
+        </div>
+
+        <p>
+            Primeiro, aproximamos a origem pelo eixo \(x\). Nesse caminho,
+        </p>
+
+        <div class="mathline">
+            \[
+            y=0.
+            \]
+        </div>
+
+        <p>
+            Então
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,0)
+            =
+            \frac{x^2}{x^2}
+            =
+            1,
+            \qquad x\neq0.
+            \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            \lim_{x\to0}f(x,0)=1.
+            \]
+        </div>
+
+        <p>
+            Agora aproximamos a origem pelo eixo \(y\):
+        </p>
+
+        <div class="mathline">
+            \[
+            x=0.
+            \]
+        </div>
+
+        <p>
+            Nesse caso,
+        </p>
+
+        <div class="mathline">
+            \[
+            f(0,y)
+            =
+            \frac{-y^2}{y^2}
+            =
+            -1,
+            \qquad y\neq0.
+            \]
+        </div>
+
+        <p>
+            Logo,
+        </p>
+
+        <div class="mathline">
+            \[
+            \lim_{y\to0}f(0,y)=-1.
+            \]
+        </div>
+
+        <p>
+            Como
+        </p>
+
+        <div class="mathline">
+            \[
+            1\neq-1,
+            \]
+        </div>
+
+        <p>
+            concluímos que
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \boxed{
+                \lim_{(x,y)\to(0,0)}
+                \frac{x^2-y^2}{x^2+y^2}
+                \text{ não existe}
+                }.
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <h2>17. Propriedades dos limites</h2>
+
+    <p>
+        Quando os limites envolvidos existem, valem propriedades análogas
+        às utilizadas para funções de uma variável.
+    </p>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        \lim_{(x,y)\to(a,b)}f(x,y)=L
+        \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        \lim_{(x,y)\to(a,b)}g(x,y)=M,
+        \]
+    </div>
+
+    <p>
+        então:
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \lim(f+g)=L+M,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \lim(f-g)=L-M,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \lim(cf)=cL,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \lim(fg)=LM,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \lim\left(\frac{f}{g}\right)
+            =
+            \frac{L}{M},
+            \qquad M\neq0.
+            \]
+        </div>
+
+    </div>
+
+
+    <h2>18. Continuidade</h2>
+
+    <div class="definition">
+
+        <strong>Definição.</strong>
+
+        Uma função \(f\) de duas variáveis é contínua em
+        \((a,b)\) quando
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \lim_{(x,y)\to(a,b)}
+            f(x,y)
+            =
+            f(a,b)
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa definição pressupõe três condições:
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>1.</strong> \(f(a,b)\) deve estar definida.
+        </p>
+
+        <p>
+            <strong>2.</strong> O limite
+            \(\displaystyle\lim_{(x,y)\to(a,b)}f(x,y)\)
+            deve existir.
+        </p>
+
+        <p>
+            <strong>3.</strong> O limite deve ser igual ao valor da função.
+        </p>
+
+    </div>
+
+    <p>
+        Dizemos que \(f\) é contínua em uma região \(D\) quando é
+        contínua em todos os pontos dessa região.
+    </p>
+
+
+    <h2>19. Continuidade de funções usuais</h2>
+
+    <p>
+        As regras de continuidade conhecidas do Cálculo de uma variável
+        permanecem fundamentais no contexto multivariável.
+    </p>
+
+    <p>
+        Polinômios em \(x\) e \(y\) são contínuos em todo
+        \(\mathbb{R}^2\). Funções racionais são contínuas nos pontos em
+        que seus denominadores são diferentes de zero.
+    </p>
+
+    <p>
+        Da mesma forma, composições de funções contínuas permanecem
+        contínuas nos pontos em que todas as expressões envolvidas estão
+        definidas.
+    </p>
+
+
+    <h2>20. Continuidade em três variáveis</h2>
+
+    <p>
+        A mesma ideia estende-se às funções de três variáveis.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \lim_{(x,y,z)\to(a,b,c)}
+            f(x,y,z)
+            =
+            f(a,b,c)
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <div class="example">
+
+        <strong>Exemplo 6.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y,z)
+            =
+            \frac{1}
+            {x^2+y^2+z^2-1}.
+            \]
+        </div>
+
+        <p>
+            Essa é uma função racional e, portanto, é contínua em todos
+            os pontos em que o denominador é diferente de zero.
+        </p>
+
+        <p>
+            A descontinuidade ocorre quando
+        </p>
+
+        <div class="mathline">
+            \[
+            x^2+y^2+z^2=1.
+            \]
+        </div>
+
+        <p>
+            Geometricamente, esse conjunto é a esfera de centro na origem
+            e raio \(1\).
+        </p>
+
+        <p>
+            Assim, \(f\) é contínua em
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbb{R}^3
+            \setminus
+            \{(x,y,z):x^2+y^2+z^2=1\}.
+            \]
+        </div>
+
+    </div>
+
+
+    <h2>21. Extensão para \(\mathbb{R}^n\)</h2>
+
+    <p>
+        As definições anteriores podem ser reunidas utilizando notação
+        vetorial. Considere
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf{x}
+        =
+        (x_1,x_2,\ldots,x_n)
+        \in\mathbb{R}^n
+        \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf{a}
+        =
+        (a_1,a_2,\ldots,a_n).
+        \]
+    </div>
+
+    <p>
+        A distância entre esses pontos é dada pela norma euclidiana
+    </p>
+
+    <div class="mathline">
+        \[
+        \|\mathbf{x}-\mathbf{a}\|
+        =
+        \sqrt{
+        (x_1-a_1)^2+
+        \cdots+
+        (x_n-a_n)^2
+        }.
+        \]
+    </div>
+
+    <p>
+        Assim,
+    </p>
+
+    <div class="definition">
+
+        <strong>Definição.</strong>
+
+        <div class="mathline">
+            \[
+            \lim_{\mathbf{x}\to\mathbf{a}}
+            f(\mathbf{x})=L
+            \]
+        </div>
+
+        significa que, para todo \(\varepsilon>0\), existe
+        \(\delta>0\) tal que
+
+        <div class="mathline">
+            \[
+            0<
+            \|\mathbf{x}-\mathbf{a}\|
+            <\delta
+            \]
+        </div>
+
+        implica
+
+        <div class="mathline">
+            \[
+            |f(\mathbf{x})-L|
+            <\varepsilon.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        A continuidade assume então a forma compacta
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \lim_{\mathbf{x}\to\mathbf{a}}
+            f(\mathbf{x})
+            =
+            f(\mathbf{a})
+            }.
+            \]
+        </div>
+
+    </div>
+
+
+    <h2>22. Estratégia para estudar uma função de várias variáveis</h2>
+
+    <p>
+        Ao encontrar uma nova função \(f(x,y)\), uma sequência útil de
+        análise é:
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>1.</strong> Identificar a expressão e as variáveis
+            independentes.
+        </p>
+
+        <p>
+            <strong>2.</strong> Determinar o domínio.
+        </p>
+
+        <p>
+            <strong>3.</strong> Investigar a imagem quando possível.
+        </p>
+
+        <p>
+            <strong>4.</strong> Analisar o gráfico
+            \(z=f(x,y)\).
+        </p>
+
+        <p>
+            <strong>5.</strong> Construir curvas de nível
+            \(f(x,y)=k\).
+        </p>
+
+        <p>
+            <strong>6.</strong> Investigar limites nos pontos de interesse.
+        </p>
+
+        <p>
+            <strong>7.</strong> Verificar a continuidade.
+        </p>
+
+    </div>
+
+
+    <h2>23. Erros conceituais frequentes</h2>
+
+    <div class="note">
+
+        <strong>Domínio não é imagem.</strong>
+
+        O domínio contém os valores admissíveis das variáveis independentes.
+        A imagem contém os valores produzidos pela função.
+
+    </div>
+
+    <div class="note">
+
+        <strong>O gráfico não é o domínio.</strong>
+
+        Para \(f(x,y)\), o domínio está no plano \(xy\), enquanto o gráfico
+        \(z=f(x,y)\) é uma superfície em \(\mathbb{R}^3\).
+
+    </div>
+
+    <div class="note">
+
+        <strong>Curva de nível não é o gráfico completo.</strong>
+
+        A equação \(f(x,y)=k\) seleciona apenas os pontos em que a função
+        assume um valor específico.
+
+    </div>
+
+    <div class="note">
+
+        <strong>Testar alguns caminhos não prova a existência de um limite.</strong>
+
+        Encontrar dois caminhos com resultados diferentes prova a
+        inexistência. Encontrar vários caminhos com o mesmo resultado,
+        entretanto, não constitui em geral uma demonstração de existência.
+
+    </div>
+
+    <div class="note">
+
+        <strong>O valor da função no ponto não determina o limite.</strong>
+
+        O limite descreve o comportamento de \(f(x,y)\) quando
+        \((x,y)\) se aproxima do ponto; o valor exatamente no ponto é uma
+        questão distinta.
+
+    </div>
+
+
+    <div class="geo-card">
+
+        <div>
+
+            <strong>
+                Visualização no GeoGebra 3D
+            </strong>
+
+            <p>
+                Utilize o ambiente 3D para representar superfícies
+                \(z=f(x,y)\), observar seus domínios e investigar
+                geometricamente a relação entre superfícies e curvas de nível.
+            </p>
+
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/3d"
+            target="_blank"
+            rel="noopener noreferrer">
+            Abrir GeoGebra 3D ↗
+        </a>
+
+    </div>
+
+
+    <div class="refbox">
+
+        <strong>Referências</strong>
+
+        <p>
+            STEWART, J. <em>Cálculo</em>. Volume 2.
+            São Paulo: Cengage Learning, 2013.
+        </p>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>
+            Bases Matemáticas para Ciência e Tecnologia B
+        </strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+
+</html>
