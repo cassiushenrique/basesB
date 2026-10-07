@@ -1,6 +1,1845 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Derivadas direcionais e vetor gradiente | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Derivadas direcionais e vetor gradiente</div><p class="eyebrow">PARTE 2 · AULAS 16–18</p><h1>Derivadas direcionais e vetor gradiente</h1><p class="lead">A derivada direcional generaliza as derivadas parciais para qualquer direção. O gradiente identifica a direção de crescimento máximo e é normal às curvas e superfícies de nível.</p><h2>1. Normalização da direção</h2><p>Uma derivada direcional usa um vetor unitário. Para \(\mathbf v\neq\mathbf0\),</p><div class="mathline">\[\mathbf u=\frac{\mathbf v}{\|\mathbf v\|}.\]</div><figure class="figure"><img src="../assets/img/aulas/gradiente-direcao.png" alt="Vetor unitário e suas componentes."><figcaption>Vetor unitário e suas componentes. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>2. Derivada direcional</h2><div class="mathbox"><div class="mathline">\[D_{\mathbf u}f(a,b)=\lim_{h\to0}\frac{f(a+hu_1,b+hu_2)-f(a,b)}{h}.\]</div></div><p>Se \(f\) é diferenciável,</p><div class="mathline">\[D_{\mathbf u}f(a,b)=\nabla f(a,b)\cdot\mathbf u.\]</div>
-<h2>3. Gradiente</h2><div class="mathbox"><div class="mathline">\[\nabla f(x,y)=\langle f_x(x,y),f_y(x,y)\rangle.\]</div></div>
-<ul class="property-list"><li>Aponta na direção de crescimento mais rápido.</li><li>A taxa máxima é \(\|\nabla f\|\).</li><li>O vetor oposto aponta para o decrescimento mais rápido.</li><li>É perpendicular às curvas de nível.</li></ul>
-<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(f=x^2+2y^2\), em \(P=(1,1)\),</p><div class="mathline">\[\nabla f(P)=\langle2,4\rangle.\]</div><p>Na direção \(\mathbf v=\langle3,4\rangle\),</p><div class="mathline">\[\mathbf u=\left\langle\frac35,\frac45\right\rangle.\]</div><div class="mathline">\[D_{\mathbf u}f(P)=\frac{22}{5}.\]</div></div>
-<h2>4. Superfícies de nível</h2><p>Para \(F(x,y,z)=k\), \(\nabla F(P)\) é normal à superfície.</p><div class="mathline">\[\nabla F(P)\cdot\langle x-x_0,y-y_0,z-z_0\rangle=0.\]</div><figure class="figure"><img src="../assets/img/aulas/gradiente-superficie.png" alt="Gradiente normal à superfície de nível e plano tangente."><figcaption>Gradiente normal à superfície de nível e plano tangente. Figura do material das aulas da GCT054.</figcaption></figure><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Derivadas direcionais e vetor gradiente | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a>
+        /
+        Derivadas direcionais e vetor gradiente
+    </div>
+
+    <p class="eyebrow">PARTE 2 · AULAS 16–18</p>
+
+    <h1>Derivadas direcionais e vetor gradiente</h1>
+
+    <p class="lead">
+        As derivadas parciais descrevem como uma função varia quando nos
+        deslocamos paralelamente aos eixos coordenados. Entretanto, em uma
+        superfície podemos nos deslocar em infinitas direções. A derivada
+        direcional permite medir a taxa de variação da função em qualquer
+        uma dessas direções. A partir dessa ideia surge naturalmente o
+        vetor gradiente, que reúne as derivadas parciais e revela a direção
+        em que a função cresce mais rapidamente.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. MOTIVAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>1. Por que precisamos de derivadas direcionais?</h2>
+
+    <p>
+        Considere uma função de duas variáveis
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,y).
+        \]
+    </div>
+
+    <p>
+        Em um ponto \((x_0,y_0)\), já sabemos interpretar as derivadas
+        parciais \(f_x(x_0,y_0)\) e \(f_y(x_0,y_0)\). A primeira mede a
+        taxa de variação de \(f\) quando alteramos \(x\) e mantemos \(y\)
+        constante. A segunda mede a taxa de variação quando alteramos
+        \(y\) e mantemos \(x\) constante.
+    </p>
+
+    <p>
+        Geometricamente, isso significa observar a superfície
+        \(z=f(x,y)\) apenas em duas direções muito particulares:
+        a direção do eixo \(x\) e a direção do eixo \(y\).
+    </p>
+
+    <p>
+        Mas não existe razão para nos restringirmos a essas duas
+        possibilidades. A partir de \((x_0,y_0)\), podemos caminhar para
+        nordeste, sudoeste ou em qualquer outra direção do plano.
+        Em cada uma dessas direções, a altura \(z=f(x,y)\) pode variar
+        de maneira diferente.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            A questão que queremos responder é:
+        </p>
+
+        <p>
+            <strong>
+                qual é a taxa instantânea de variação de \(f\) quando
+                partimos de um ponto e nos deslocamos em uma direção
+                escolhida?
+            </strong>
+        </p>
+
+        <p>
+            A resposta é dada pela
+            <strong>derivada direcional</strong>.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. DERIVADAS PARCIAIS COMO CASOS PARTICULARES -->
+    <!-- ========================================================= -->
+
+    <h2>2. As derivadas parciais são casos particulares</h2>
+
+    <p>
+        As direções positivas dos eixos coordenados são representadas
+        pelos vetores unitários
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf i=\langle1,0\rangle
+        \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf j=\langle0,1\rangle.
+        \]
+    </div>
+
+    <p>
+        Portanto, a derivada parcial em relação a \(x\) pode ser vista
+        como a taxa de variação de \(f\) na direção de \(\mathbf i\):
+    </p>
+
+    <div class="mathline">
+        \[
+        D_{\mathbf i}f=f_x.
+        \]
+    </div>
+
+    <p>
+        Da mesma forma,
+    </p>
+
+    <div class="mathline">
+        \[
+        D_{\mathbf j}f=f_y.
+        \]
+    </div>
+
+    <p>
+        Assim, a derivada direcional não é um conceito completamente
+        diferente das derivadas parciais. Ela é uma generalização:
+        substituímos as duas direções coordenadas por uma direção
+        arbitrária.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. DIREÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>3. Como representar uma direção?</h2>
+
+    <p>
+        Uma direção no plano pode ser representada por um vetor não nulo
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf v=\langle v_1,v_2\rangle.
+        \]
+    </div>
+
+    <p>
+        Entretanto, o vetor \(\mathbf v\) contém duas informações:
+        direção e comprimento. Para definir uma taxa de variação
+        exclusivamente em função da direção, eliminamos a influência do
+        comprimento do vetor.
+    </p>
+
+    <p>
+        Fazemos isso dividindo \(\mathbf v\) por sua norma:
+    </p>
+
+    <div class="mathline">
+        \[
+        \|\mathbf v\|
+        =
+        \sqrt{v_1^2+v_2^2}.
+        \]
+    </div>
+
+    <p>
+        Obtemos então o vetor unitário
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \mathbf u
+            =
+            \frac{\mathbf v}{\|\mathbf v\|}.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Esse processo é denominado <strong>normalização</strong>.
+        O vetor \(\mathbf u\) possui a mesma direção e o mesmo sentido de
+        \(\mathbf v\), mas satisfaz
+    </p>
+
+    <div class="mathline">
+        \[
+        \|\mathbf u\|=1.
+        \]
+    </div>
+
+    <p>
+        A exigência de um vetor unitário é importante porque queremos
+        medir a variação da função <strong>por unidade de distância
+        percorrida</strong>. Se utilizássemos diretamente vetores de
+        comprimentos diferentes, o valor calculado dependeria não apenas
+        da direção, mas também da escala escolhida para representá-la.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/gradiente-direcao.png"
+            alt="Vetor unitário indicando uma direção no plano."
+        >
+
+        <figcaption>
+            Uma direção é representada por um vetor unitário
+            \(\mathbf u\). Se a direção for inicialmente fornecida por
+            um vetor não unitário, devemos normalizá-lo antes de calcular
+            a derivada direcional.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. INTERPRETAÇÃO GEOMÉTRICA -->
+    <!-- ========================================================= -->
+
+    <h2>4. Interpretação geométrica</h2>
+
+    <p>
+        Considere novamente a superfície
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,y)
+        \]
+    </div>
+
+    <p>
+        e o ponto da superfície
+    </p>
+
+    <div class="mathline">
+        \[
+        P=(x_0,y_0,f(x_0,y_0)).
+        \]
+    </div>
+
+    <p>
+        Escolha uma direção no plano \(xy\), representada pelo vetor
+        unitário
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf u=\langle a,b\rangle.
+        \]
+    </div>
+
+    <p>
+        Imagine agora um plano vertical que passa por \(P\) e está
+        orientado segundo essa direção. Esse plano intercepta a superfície
+        \(z=f(x,y)\) formando uma curva.
+    </p>
+
+    <p>
+        Podemos então perguntar qual é a inclinação da reta tangente a
+        essa curva no ponto \(P\). Essa inclinação é exatamente a taxa
+        instantânea de variação da função na direção de \(\mathbf u\).
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Portanto, a derivada direcional pode ser interpretada
+            geometricamente como a
+            <strong>inclinação da reta tangente ao corte vertical da
+            superfície na direção escolhida</strong>.
+        </p>
+
+    </div>
+
+    <p>
+        Essa interpretação é a extensão natural daquela utilizada para
+        as derivadas parciais. A diferença é que agora o plano vertical
+        pode possuir qualquer orientação.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. DEFINIÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>5. Definição da derivada direcional</h2>
+
+    <p>
+        Seja
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf u=\langle a,b\rangle
+        \]
+    </div>
+
+    <p>
+        um vetor unitário. Se partirmos de \((x_0,y_0)\) e percorrermos
+        uma pequena distância \(h\) nessa direção, chegaremos ao ponto
+    </p>
+
+    <div class="mathline">
+        \[
+        (x_0+ha,\;y_0+hb).
+        \]
+    </div>
+
+    <p>
+        A correspondente variação de \(f\) é
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x_0+ha,y_0+hb)-f(x_0,y_0).
+        \]
+    </div>
+
+    <p>
+        Dividindo essa variação pela distância \(h\), obtemos uma taxa
+        média de variação. Fazendo \(h\to0\), chegamos à taxa
+        instantânea.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Definição.</strong>
+            A derivada direcional de \(f\) em \((x_0,y_0)\), na direção
+            do vetor unitário \(\mathbf u=\langle a,b\rangle\), é
+        </p>
+
+        <div class="mathline">
+            \[
+            D_{\mathbf u}f(x_0,y_0)
+            =
+            \lim_{h\to0}
+            \frac{
+                f(x_0+ha,y_0+hb)-f(x_0,y_0)
+            }{h},
+            \]
+        </div>
+
+        <p>
+            desde que esse limite exista.
+        </p>
+
+    </div>
+
+    <p>
+        Observe que essa definição possui exatamente a mesma estrutura
+        da definição de derivada de uma função de uma variável. A
+        diferença é que agora o incremento ocorre simultaneamente nas
+        coordenadas \(x\) e \(y\), de acordo com a direção escolhida.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. FÓRMULA PRÁTICA -->
+    <!-- ========================================================= -->
+
+    <h2>6. Como calcular uma derivada direcional?</h2>
+
+    <p>
+        Embora a definição por limite seja fundamental para compreender
+        o conceito, ela não é normalmente a maneira mais eficiente de
+        calcular uma derivada direcional.
+    </p>
+
+    <p>
+        Se \(f\) for diferenciável e
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf u=\langle a,b\rangle
+    \]</div>
+
+    <p>
+        for unitário, então
+    </p>
+
+    <div class="theorem">
+
+        <strong>Teorema.</strong>
+
+        <div class="mathline">
+            \[
+            D_{\mathbf u}f(x,y)
+            =
+            f_x(x,y)a+f_y(x,y)b.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Portanto, para determinar a taxa de variação de uma função em
+        uma direção, precisamos conhecer suas derivadas parciais e as
+        componentes do vetor unitário que representa essa direção.
+    </p>
+
+    <p>
+        Se o vetor unitário forma um ângulo \(\theta\) com o semieixo
+        positivo de \(x\), então
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf u
+        =
+        \langle\cos\theta,\sin\theta\rangle.
+        \]
+    </div>
+
+    <p>
+        Consequentemente,
+    </p>
+
+    <div class="mathline">
+        \[
+        D_{\mathbf u}f
+        =
+        f_x\cos\theta
+        +
+        f_y\sin\theta.
+    \]</div>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. PROCEDIMENTO -->
+    <!-- ========================================================= -->
+
+    <h2>7. Estratégia de cálculo</h2>
+
+    <p>
+        Em um problema típico, é fornecida uma função, um ponto e um
+        vetor que indica a direção desejada. O raciocínio pode ser
+        organizado da seguinte forma.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Primeiro, verifique se o vetor fornecido é unitário. Se não
+            for, normalize-o:
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf u
+            =
+            \frac{\mathbf v}{\|\mathbf v\|}.
+            \]
+        </div>
+
+        <p>
+            Em seguida, determine as derivadas parciais de \(f\) e
+            avalie-as no ponto de interesse.
+        </p>
+
+        <p>
+            Finalmente, combine as derivadas parciais com as componentes
+            de \(\mathbf u\):
+        </p>
+
+        <div class="mathline">
+            \[
+            D_{\mathbf u}f
+            =
+            f_xu_1+f_yu_2.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. EXEMPLO DA AULA -->
+    <!-- ========================================================= -->
+
+    <h2>8. Exemplo: derivada direcional em uma direção não unitária</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 1.</strong>
+
+        <p>
+            Considere a função
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2y^3-4y.
+            \]
+        </div>
+
+        <p>
+            Vamos determinar a derivada direcional no ponto
+            \((2,-1)\), na direção do vetor
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf v=\langle2,5\rangle.
+            \]
+        </div>
+
+        <p>
+            O primeiro cuidado é perceber que \(\mathbf v\) não é
+            unitário:
+        </p>
+
+        <div class="mathline">
+            \[
+            \|\mathbf v\|
+            =
+            \sqrt{2^2+5^2}
+            =
+            \sqrt{29}.
+            \]
+        </div>
+
+        <p>
+            Portanto, o vetor unitário correspondente é
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf u
+            =
+            \left\langle
+            \frac{2}{\sqrt{29}},
+            \frac{5}{\sqrt{29}}
+            \right\rangle.
+            \]
+        </div>
+
+        <p>
+            Agora calculamos as derivadas parciais:
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x(x,y)=2xy^3,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_y(x,y)=3x^2y^2-4.
+            \]
+        </div>
+
+        <p>
+            No ponto \((2,-1)\),
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x(2,-1)=-4
+            \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            f_y(2,-1)=8.
+            \]
+        </div>
+
+        <p>
+            Logo,
+        </p>
+
+        <div class="mathline">
+            \[
+            D_{\mathbf u}f(2,-1)
+            =
+            (-4)\frac{2}{\sqrt{29}}
+            +
+            8\frac{5}{\sqrt{29}}.
+            \]
+        </div>
+
+        <p>
+            Assim,
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            D_{\mathbf u}f(2,-1)
+            =
+            \frac{32}{\sqrt{29}}
+            }.
+            \]
+        </div>
+
+        <p>
+            Como o resultado é positivo, \(f\) está aumentando quando
+            partimos de \((2,-1)\) no sentido indicado por
+            \(\mathbf v\). O valor \(32/\sqrt{29}\) representa a taxa
+            instantânea de aumento por unidade de distância percorrida
+            nessa direção.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. GRADIENTE -->
+    <!-- ========================================================= -->
+
+    <h2>9. O vetor gradiente</h2>
+
+    <p>
+        A expressão utilizada para calcular a derivada direcional contém
+        repetidamente o vetor formado pelas derivadas parciais:
+    </p>
+
+    <div class="mathline">
+        \[
+        \langle f_x(x,y),f_y(x,y)\rangle.
+        \]
+    </div>
+
+    <p>
+        Esse vetor possui importância própria no cálculo multivariável e
+        recebe o nome de <strong>vetor gradiente</strong>.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Para uma função diferenciável \(f(x,y)\), definimos
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \nabla f(x,y)
+            =
+            \langle
+            f_x(x,y),
+            f_y(x,y)
+            \rangle
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        O símbolo \(\nabla\) é chamado de <em>nabla</em>. A expressão
+        \(\nabla f\) também é frequentemente lida como “gradiente de
+        \(f\)”.
+    </p>
+
+    <p>
+        Com essa notação, a fórmula da derivada direcional assume uma
+        forma particularmente simples:
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            D_{\mathbf u}f
+            =
+            \nabla f\cdot\mathbf u
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Portanto, a derivada direcional é o
+        <strong>produto escalar entre o gradiente e o vetor unitário que
+        indica a direção escolhida</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. SIGNIFICADO DO PRODUTO ESCALAR -->
+    <!-- ========================================================= -->
+
+    <h2>10. O que o produto escalar nos revela?</h2>
+
+    <p>
+        Se \(\theta\) é o ângulo entre \(\nabla f\) e
+        \(\mathbf u\), então
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla f\cdot\mathbf u
+        =
+        \|\nabla f\|
+        \|\mathbf u\|
+        \cos\theta.
+    \]</div>
+
+    <p>
+        Como \(\mathbf u\) é unitário,
+    </p>
+
+    <div class="mathline">
+        \[
+        \|\mathbf u\|=1.
+    \]</div>
+
+    <p>
+        Logo,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            D_{\mathbf u}f
+            =
+            \|\nabla f\|\cos\theta
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa fórmula é uma das relações mais importantes deste conteúdo,
+        pois permite compreender geometricamente o significado do
+        gradiente.
+    </p>
+
+    <p>
+        Quando \(\theta&lt;90^\circ\), temos
+        \(\cos\theta&gt;0\), e portanto
+        \(D_{\mathbf u}f&gt;0\): a função cresce nessa direção.
+    </p>
+
+    <p>
+        Quando \(\theta&gt;90^\circ\), temos
+        \(\cos\theta&lt;0\), e portanto
+        \(D_{\mathbf u}f&lt;0\): a função decresce nessa direção.
+    </p>
+
+    <p>
+        Quando \(\theta=90^\circ\),
+    </p>
+
+    <div class="mathline">
+        \[
+        D_{\mathbf u}f=0.
+    \]</div>
+
+    <p>
+        Nesse caso, não há variação instantânea de primeira ordem na
+        direção considerada.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. EXEMPLO GRADIENTE -->
+    <!-- ========================================================= -->
+
+    <h2>11. Exemplo: calculando e interpretando o gradiente</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 2.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=\sin x+e^{xy}.
+            \]
+        </div>
+
+        <p>
+            Suas derivadas parciais são
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x(x,y)
+            =
+            \cos x+ye^{xy}
+            \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            f_y(x,y)
+            =
+            xe^{xy}.
+            \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f(x,y)
+            =
+            \left\langle
+            \cos x+ye^{xy},
+            xe^{xy}
+            \right\rangle.
+            \]
+        </div>
+
+        <p>
+            No ponto \((0,1)\),
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f(0,1)
+            =
+            \langle2,0\rangle.
+            \]
+        </div>
+
+        <p>
+            Esse resultado já contém informação geométrica: no ponto
+            \((0,1)\), a direção de crescimento mais rápido de \(f\)
+            será a direção positiva do eixo \(x\). Veremos a seguir por
+            que essa conclusão é válida.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. CRESCIMENTO MÁXIMO -->
+    <!-- ========================================================= -->
+
+    <h2>12. Em qual direção a função cresce mais rapidamente?</h2>
+
+    <p>
+        Como
+    </p>
+
+    <div class="mathline">
+        \[
+        D_{\mathbf u}f
+        =
+        \|\nabla f\|\cos\theta,
+    \]</div>
+
+    <p>
+        para um ponto fixo o único termo que depende da direção
+        \(\mathbf u\) é \(\cos\theta\).
+    </p>
+
+    <p>
+        O maior valor possível de \(\cos\theta\) é \(1\), que ocorre
+        quando
+    </p>
+
+    <div class="mathline">
+        \[
+        \theta=0.
+    \]</div>
+
+    <p>
+        Isso significa que \(\mathbf u\) deve possuir a mesma direção e
+        o mesmo sentido do gradiente.
+    </p>
+
+    <div class="theorem">
+
+        <strong>Teorema do crescimento máximo.</strong>
+
+        <p>
+            Se \(f\) é diferenciável e
+            \(\nabla f(P)\neq\mathbf0\), então \(f\) cresce mais
+            rapidamente em \(P\) na direção de
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f(P).
+            \]
+        </div>
+
+        <p>
+            A taxa máxima de crescimento é
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \|\nabla f(P)\|
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Para indicar apenas a direção, podemos normalizar o gradiente:
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf u_{\max}
+        =
+        \frac{\nabla f(P)}
+        {\|\nabla f(P)\|}.
+    \]</div>
+
+    <p>
+        A direção de decrescimento mais rápido é exatamente a direção
+        oposta:
+    </p>
+
+    <div class="mathline">
+        \[
+        -\nabla f(P).
+    \]</div>
+
+    <p>
+        A taxa mínima possível da derivada direcional é
+    </p>
+
+    <div class="mathline">
+        \[
+        -\|\nabla f(P)\|.
+    \]</div>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. EXEMPLO CRESCIMENTO MÁXIMO -->
+    <!-- ========================================================= -->
+
+    <h2>13. Exemplo: direção de crescimento máximo</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 3.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2+2y^2
+            \]
+        </div>
+
+        <p>
+            e o ponto
+        </p>
+
+        <div class="mathline">
+            \[
+            P=(1,1).
+        \]
+        </div>
+
+        <p>
+            O gradiente é
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f(x,y)
+            =
+            \langle2x,4y\rangle.
+        \]</div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f(1,1)
+            =
+            \langle2,4\rangle.
+        \]</div>
+
+        <p>
+            Assim, \(f\) cresce mais rapidamente na direção de
+            \(\langle2,4\rangle\).
+        </p>
+
+        <p>
+            O vetor unitário correspondente é
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf u_{\max}
+            =
+            \frac{\langle2,4\rangle}{\sqrt{20}}
+            =
+            \left\langle
+            \frac{1}{\sqrt5},
+            \frac{2}{\sqrt5}
+            \right\rangle.
+        \]</div>
+
+        <p>
+            A taxa máxima de crescimento é
+        </p>
+
+        <div class="mathline">
+            \[
+            \|\nabla f(1,1)\|
+            =
+            \sqrt{2^2+4^2}
+            =
+            2\sqrt5.
+        \]</div>
+
+        <p>
+            Portanto, há duas respostas conceitualmente diferentes:
+            \(\nabla f(1,1)\) fornece a direção orientada e sua norma
+            fornece a maior taxa de crescimento possível.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. CURVAS DE NÍVEL -->
+    <!-- ========================================================= -->
+
+    <h2>14. Gradiente e curvas de nível</h2>
+
+    <p>
+        Uma curva de nível de \(f(x,y)\) é obtida fixando um valor
+        constante \(k\):
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y)=k.
+    \]</div>
+
+    <p>
+        Ao nos deslocarmos sobre uma mesma curva de nível, o valor de
+        \(f\) permanece constante. Consequentemente, a taxa instantânea
+        de variação de \(f\) em uma direção tangente à curva deve ser
+        zero.
+    </p>
+
+    <p>
+        Se \(\mathbf T\) é um vetor unitário tangente à curva de nível,
+        então
+    </p>
+
+    <div class="mathline">
+        \[
+        D_{\mathbf T}f=0.
+    \]</div>
+
+    <p>
+        Mas
+    </p>
+
+    <div class="mathline">
+        \[
+        D_{\mathbf T}f
+        =
+        \nabla f\cdot\mathbf T.
+    \]</div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla f\cdot\mathbf T=0.
+    \]</div>
+
+    <p>
+        Dois vetores com produto escalar igual a zero são ortogonais.
+        Assim:
+    </p>
+
+    <div class="theorem">
+
+        <strong>Gradiente e curvas de nível.</strong>
+
+        <p>
+            Em um ponto onde
+            \(\nabla f\neq\mathbf0\), o vetor gradiente é
+            perpendicular à curva de nível que passa pelo ponto.
+        </p>
+
+    </div>
+
+    <p>
+        Isso produz uma interpretação geométrica importante. Enquanto a
+        curva de nível descreve uma direção em que a função permanece
+        constante, o gradiente aponta transversalmente a ela, justamente
+        na direção em que a função aumenta mais rapidamente.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. MAPA TOPOGRÁFICO -->
+    <!-- ========================================================= -->
+
+    <h2>15. Uma interpretação intuitiva: mapa topográfico</h2>
+
+    <p>
+        Uma maneira útil de interpretar o resultado anterior é imaginar
+        \(f(x,y)\) como a altitude de um terreno.
+    </p>
+
+    <p>
+        As curvas de nível representam pontos que possuem a mesma
+        altitude. Se caminharmos exatamente ao longo de uma dessas
+        curvas, nossa altitude não muda instantaneamente.
+    </p>
+
+    <p>
+        O gradiente, por outro lado, aponta na direção da subida mais
+        íngreme. O vetor oposto ao gradiente aponta na direção da descida
+        mais íngreme.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Em um ponto \(P\):
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f(P)
+            \quad\text{indica a subida mais rápida;}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            -\nabla f(P)
+            \quad\text{indica a descida mais rápida;}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \|\nabla f(P)\|
+            \quad\text{é a taxa máxima de subida.}
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. SUPERFÍCIES DE NÍVEL -->
+    <!-- ========================================================= -->
+
+    <h2>16. Gradiente em três dimensões</h2>
+
+    <p>
+        Para uma função de três variáveis
+    </p>
+
+    <div class="mathline">
+        \[
+        f=f(x,y,z),
+    \]</div>
+
+    <p>
+        o gradiente é definido por
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \nabla f(x,y,z)
+            =
+            \langle
+            f_x,
+            f_y,
+            f_z
+            \rangle
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf u
+        =
+        \langle a,b,c\rangle
+    \]</div>
+
+    <p>
+        é um vetor unitário, então
+    </p>
+
+    <div class="mathline">
+        \[
+        D_{\mathbf u}f
+        =
+        f_xa+f_yb+f_zc.
+    \]</div>
+
+    <p>
+        Em notação vetorial,
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        D_{\mathbf u}f
+        =
+        \nabla f\cdot\mathbf u
+        }.
+    \]</div>
+
+    <p>
+        Portanto, a mesma estrutura estudada em duas dimensões continua
+        válida em três dimensões.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. SUPERFÍCIES DE NÍVEL -->
+    <!-- ========================================================= -->
+
+    <h2>17. Gradiente e superfícies de nível</h2>
+
+    <p>
+        Considere uma superfície definida implicitamente por
+    </p>
+
+    <div class="mathline">
+        \[
+        F(x,y,z)=k.
+    \]</div>
+
+    <p>
+        Seja
+    </p>
+
+    <div class="mathline">
+        \[
+        P=(x_0,y_0,z_0)
+    \]</div>
+
+    <p>
+        um ponto dessa superfície.
+    </p>
+
+    <p>
+        Qualquer curva contida na superfície e passando por \(P\)
+        mantém o valor de \(F\) constante. Por isso, a derivada de
+        \(F\) na direção tangente a essa curva é zero.
+    </p>
+
+    <p>
+        Consequentemente, o gradiente
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla F(P)
+    \]</div>
+
+    <p>
+        é perpendicular aos vetores tangentes à superfície no ponto.
+        Portanto, quando
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla F(P)\neq\mathbf0,
+    \]</div>
+
+    <p>
+        ele fornece um vetor normal à superfície.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/gradiente-superficie.png"
+            alt="Gradiente perpendicular a uma superfície de nível."
+        >
+
+        <figcaption>
+            Em uma superfície de nível \(F(x,y,z)=k\), o vetor
+            \(\nabla F(P)\) é normal à superfície no ponto \(P\).
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. PLANO TANGENTE -->
+    <!-- ========================================================= -->
+
+    <h2>18. Plano tangente a uma superfície de nível</h2>
+
+    <p>
+        Como \(\nabla F(P)\) é um vetor normal à superfície, podemos
+        utilizá-lo diretamente para escrever a equação do plano tangente.
+    </p>
+
+    <p>
+        Para
+    </p>
+
+    <div class="mathline">
+        \[
+        P=(x_0,y_0,z_0),
+    \]</div>
+
+    <p>
+        o vetor
+    </p>
+
+    <div class="mathline">
+        \[
+        \langle
+        x-x_0,
+        y-y_0,
+        z-z_0
+        \rangle
+    \]</div>
+
+    <p>
+        liga \(P\) a um ponto genérico do plano tangente. Esse vetor deve
+        ser ortogonal ao vetor normal \(\nabla F(P)\).
+    </p>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \nabla F(P)
+            \cdot
+            \langle
+            x-x_0,
+            y-y_0,
+            z-z_0
+            \rangle
+            =
+            0.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Escrevendo as componentes do gradiente, obtemos
+    </p>
+
+    <div class="mathline">
+        \[
+        F_x(P)(x-x_0)
+        +
+        F_y(P)(y-y_0)
+        +
+        F_z(P)(z-z_0)
+        =
+        0.
+    \]</div>
+
+    <p>
+        Essa expressão mostra uma conexão importante entre vários
+        conteúdos estudados até aqui: derivadas parciais, gradiente,
+        superfícies de nível e plano tangente são diferentes aspectos de
+        uma mesma estrutura geométrica.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. EXEMPLO SUPERFÍCIE -->
+    <!-- ========================================================= -->
+
+    <h2>19. Exemplo: plano tangente usando o gradiente</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 4.</strong>
+
+        <p>
+            Considere a esfera
+        </p>
+
+        <div class="mathline">
+            \[
+            x^2+y^2+z^2=9.
+        \]</div>
+
+        <p>
+            Podemos escrevê-la como a superfície de nível
+        </p>
+
+        <div class="mathline">
+            \[
+            F(x,y,z)=x^2+y^2+z^2=9.
+        \]</div>
+
+        <p>
+            O gradiente é
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla F(x,y,z)
+            =
+            \langle2x,2y,2z\rangle.
+        \]</div>
+
+        <p>
+            Considere o ponto
+        </p>
+
+        <div class="mathline">
+            \[
+            P=(1,2,2),
+        \]</div>
+
+        <p>
+            que pertence à esfera, pois
+        </p>
+
+        <div class="mathline">
+            \[
+            1^2+2^2+2^2=9.
+        \]</div>
+
+        <p>
+            Nesse ponto,
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla F(1,2,2)
+            =
+            \langle2,4,4\rangle.
+        \]</div>
+
+        <p>
+            Portanto, \(\langle2,4,4\rangle\) é normal à esfera em
+            \(P\). A equação do plano tangente é
+        </p>
+
+        <div class="mathline">
+            \[
+            2(x-1)+4(y-2)+4(z-2)=0.
+        \]</div>
+
+        <p>
+            Simplificando,
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            x+2y+2z=9
+            }.
+        \]</div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. VISÃO UNIFICADA -->
+    <!-- ========================================================= -->
+
+    <h2>20. Uma visão unificada do gradiente</h2>
+
+    <p>
+        O gradiente não deve ser entendido apenas como uma fórmula que
+        agrupa derivadas parciais. Ele sintetiza várias informações
+        locais sobre uma função.
+    </p>
+
+    <p>
+        Para uma função diferenciável \(f\), em um ponto onde
+        \(\nabla f\neq\mathbf0\):
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            o gradiente determina todas as derivadas direcionais por
+        meio de
+        </p>
+
+        <div class="mathline">
+            \[
+            D_{\mathbf u}f
+            =
+            \nabla f\cdot\mathbf u;
+            \]
+        </div>
+
+        <p>
+            aponta para a direção de crescimento mais rápido;
+        </p>
+
+        <p>
+            sua norma
+        </p>
+
+        <div class="mathline">
+            \[
+            \|\nabla f\|
+        \]</div>
+
+        <p>
+            fornece a taxa máxima de crescimento;
+        </p>
+
+        <p>
+            o vetor \(-\nabla f\) indica o decrescimento mais rápido;
+        </p>
+
+        <p>
+            é perpendicular às curvas de nível de funções de duas
+            variáveis;
+        </p>
+
+        <p>
+            e é normal às superfícies de nível de funções de três
+            variáveis.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. CUIDADOS -->
+    <!-- ========================================================= -->
+
+    <h2>21. Cuidados importantes</h2>
+
+    <p>
+        Alguns erros aparecem com frequência em problemas envolvendo
+        derivadas direcionais e gradiente.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Não normalizar o vetor da direção.</strong><br>
+            Se o problema fornece \(\mathbf v\), não devemos
+            automaticamente calcular
+            \(\nabla f\cdot\mathbf v\). Primeiro verificamos se
+            \(\|\mathbf v\|=1\).
+        </p>
+
+        <p>
+            <strong>Confundir gradiente com derivada direcional.</strong><br>
+            O gradiente é um vetor. A derivada direcional é um número:
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f
+            \quad\text{é vetor},
+            \qquad
+            D_{\mathbf u}f
+            \quad\text{é escalar}.
+        \]</div>
+
+        <p>
+            <strong>Confundir direção de crescimento máximo com taxa
+            máxima.</strong><br>
+            A direção é dada pelo gradiente; a taxa máxima é sua norma.
+        </p>
+
+        <p>
+            <strong>Esquecer o ponto em que o gradiente deve ser
+            avaliado.</strong><br>
+            Em geral, calculamos primeiro \(\nabla f(x,y)\) e depois
+            substituímos as coordenadas do ponto.
+        </p>
+
+        <p>
+            <strong>Usar o gradiente como vetor normal quando ele é
+            nulo.</strong><br>
+            Para a interpretação usual como vetor normal a uma curva ou
+            superfície de nível, precisamos de
+            \(\nabla f(P)\neq\mathbf0\).
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. SÍNTESE -->
+    <!-- ========================================================= -->
+
+    <h2>22. Síntese conceitual</h2>
+
+    <p>
+        Podemos resumir a construção desenvolvida nesta aula da seguinte
+        maneira. As derivadas parciais informam taxas de variação nas
+        direções coordenadas. A derivada direcional amplia essa ideia
+        para uma direção arbitrária. O gradiente reúne as derivadas
+        parciais em um vetor e permite calcular qualquer derivada
+        direcional por produto escalar.
+    </p>
+
+    <p>
+        A relação
+    </p>
+
+    <div class="mathline">
+        \[
+        D_{\mathbf u}f
+        =
+        \|\nabla f\|\cos\theta
+    \]</div>
+
+    <p>
+        explica geometricamente por que o gradiente aponta para o
+        crescimento máximo e por que é perpendicular às curvas de nível.
+        Em três dimensões, a mesma ideia faz do gradiente um vetor normal
+        às superfícies de nível.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            D_{\mathbf u}f
+            =
+            \nabla f\cdot\mathbf u
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \max_{\|\mathbf u\|=1}
+            D_{\mathbf u}f
+            =
+            \|\nabla f\|
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \mathbf u_{\max}
+            =
+            \frac{\nabla f}{\|\nabla f\|}
+            }
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+            <strong>Visualização no GeoGebra 3D</strong>
+
+            <p>
+                Represente uma superfície \(z=f(x,y)\), escolha um ponto
+                e observe cortes verticais em diferentes direções.
+                Compare também o vetor gradiente com as curvas de nível
+                da função e com a direção de maior inclinação da
+                superfície.
+            </p>
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/3d"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Abrir GeoGebra 3D ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIAS -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+
+        <strong>Referências.</strong>
+
+        <p>
+            STEWART, James.
+            <em>Cálculo</em>.
+            Volumes 1 e 2.
+            São Paulo: Cengage Learning.
+        </p>
+
+        <p>
+            ANTON, Howard; BIVENS, Irl; DAVIS, Stephen.
+            <em>Cálculo</em>.
+            Porto Alegre: Bookman.
+        </p>
+
+        <p>
+            THOMAS, George B.; WEIR, Maurice D.; HASS, Joel.
+            <em>Cálculo</em>.
+            São Paulo: Pearson.
+        </p>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
