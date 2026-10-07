@@ -1,7 +1,2138 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Máximos, mínimos e multiplicadores de Lagrange | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Máximos, mínimos e multiplicadores de Lagrange</div><p class="eyebrow">PARTE 2 · AULAS 19–23</p><h1>Máximos, mínimos e multiplicadores de Lagrange</h1><p class="lead">Pontos críticos, classificação local, extremos absolutos e otimização condicionada por multiplicadores de Lagrange.</p><h2>1. Extremos locais</h2><p>Em um ponto interior diferenciável de máximo ou mínimo local, o gradiente deve ser nulo.</p><div class="mathbox"><div class="mathline">\[f_x(a,b)=0.\]</div><div class="mathline">\[f_y(a,b)=0.\]</div></div><figure class="figure"><img src="../assets/img/aulas/maximos-minimos.png" alt="Máximos locais, mínimos locais e geometria de uma superfície."><figcaption>Máximos locais, mínimos locais e geometria de uma superfície. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>2. Teste da segunda derivada</h2><div class="mathline">\[D=f_{xx}f_{yy}-(f_{xy})^2.\]</div>
-<table><tr><th>Condição</th><th>Conclusão</th></tr><tr><td>\(D&gt;0,\ f_{xx}&gt;0\)</td><td>mínimo local</td></tr><tr><td>\(D&gt;0,\ f_{xx}&lt;0\)</td><td>máximo local</td></tr><tr><td>\(D&lt;0\)</td><td>ponto de sela</td></tr><tr><td>\(D=0\)</td><td>inconclusivo</td></tr></table>
-<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(f=x^2+y^2-2x-4y\),</p><div class="mathline">\[f_x=2x-2,\]</div><div class="mathline">\[f_y=2y-4.\]</div><p>O ponto crítico é \((1,2)\). Como \(f_{xx}=2\), \(f_{yy}=2\), \(f_{xy}=0\), temos \(D=4&gt;0\), portanto há mínimo local.</p></div><figure class="figure"><img src="../assets/img/aulas/otimizacao-superficie.png" alt="Superfície usada para interpretar pontos críticos e extremos."><figcaption>Superfície usada para interpretar pontos críticos e extremos. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>3. Extremos absolutos</h2><p>Em região fechada e limitada: encontre os candidatos no interior, analise toda a fronteira e compare os valores da função.</p>
-<h2>4. Multiplicadores de Lagrange</h2><div class="mathbox"><div class="mathline">\[\nabla f=\lambda\nabla g.\]</div><div class="mathline">\[g(x,y)=c.\]</div></div><p>Geometricamente, no extremo condicionado, a curva de nível de \(f\) é tangente à restrição.</p><figure class="figure"><img src="../assets/img/aulas/lagrange-curvas.png" alt="Tangência entre curva de nível e restrição no método de Lagrange."><figcaption>Tangência entre curva de nível e restrição no método de Lagrange. Figura do material das aulas da GCT054.</figcaption></figure>
-<div class="example"><strong>Exemplo resolvido.</strong><p>Otimize \(f=x+y\) sujeito a \(x^2+y^2=1\).</p><div class="mathline">\[1=2\lambda x.\]</div><div class="mathline">\[1=2\lambda y.\]</div><div class="mathline">\[x^2+y^2=1.\]</div><p>Logo \(x=y\), portanto</p><div class="mathline">\[x=y=\pm\frac1{\sqrt2}.\]</div><div class="mathline">\[f_{\max}=\sqrt2.\]</div><div class="mathline">\[f_{\min}=-\sqrt2.\]</div></div><figure class="figure"><img src="../assets/img/aulas/lagrange-superficie.png" alt="Superfície e restrição em um problema de otimização condicionada."><figcaption>Superfície e restrição em um problema de otimização condicionada. Figura do material das aulas da GCT054.</figcaption></figure><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Máximos, mínimos e multiplicadores de Lagrange | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a>
+        /
+        Máximos, mínimos e multiplicadores de Lagrange
+    </div>
+
+    <p class="eyebrow">PARTE 2 · AULAS 19–23</p>
+
+    <h1>Máximos, mínimos e multiplicadores de Lagrange</h1>
+
+    <p class="lead">
+        Muitos problemas de engenharia, ciência e economia podem ser
+        formulados como problemas de otimização: queremos encontrar a
+        maior eficiência, o menor custo, a maior capacidade ou a menor
+        quantidade de material possível. Para funções de várias variáveis,
+        as derivadas parciais e o vetor gradiente fornecem as ferramentas
+        necessárias para localizar e classificar extremos. Quando as
+        variáveis precisam satisfazer uma restrição, o mesmo raciocínio
+        conduz ao método dos multiplicadores de Lagrange.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. MOTIVAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>1. O que significa otimizar uma função?</h2>
+
+    <p>
+        Considere uma função de duas variáveis
+    </p>
+
+    <div class="mathline">
+        \[
+        z=f(x,y).
+        \]
+    </div>
+
+    <p>
+        Geometricamente, seu gráfico é uma superfície no espaço.
+        Procurar máximos e mínimos significa identificar pontos dessa
+        superfície que se comportam como picos ou vales.
+    </p>
+
+    <p>
+        Entretanto, existem duas perguntas diferentes que podem ser
+        feitas.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Um <strong>extremo local</strong> compara o valor da função
+            apenas com os valores suficientemente próximos.
+        </p>
+
+        <p>
+            Um <strong>extremo absoluto</strong> compara o valor da
+            função com todos os demais valores assumidos no domínio
+            considerado.
+        </p>
+
+    </div>
+
+    <p>
+        Portanto, um máximo local não precisa ser o maior valor de toda
+        a função. Uma superfície pode possuir vários picos, mas apenas
+        o mais alto deles será um máximo absoluto.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/maximos-minimos.png"
+            alt="Máximos locais, mínimos locais e geometria de uma superfície."
+        >
+
+        <figcaption>
+            Uma superfície pode apresentar diferentes máximos e mínimos
+            locais. Os extremos absolutos correspondem aos maiores e
+            menores valores assumidos no conjunto considerado.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. DEFINIÇÕES -->
+    <!-- ========================================================= -->
+
+    <h2>2. Máximos e mínimos locais</h2>
+
+    <p>
+        Dizemos que \(f(a,b)\) é um <strong>máximo local</strong> de
+        \(f\) quando existe uma região suficientemente pequena ao redor
+        de \((a,b)\) na qual
+    </p>
+
+    <div class="mathline">
+        \[
+        f(a,b)\geq f(x,y).
+        \]
+    </div>
+
+    <p>
+        Analogamente, \(f(a,b)\) é um
+        <strong>mínimo local</strong> quando
+    </p>
+
+    <div class="mathline">
+        \[
+        f(a,b)\leq f(x,y)
+        \]
+    </div>
+
+    <p>
+        para todos os pontos \((x,y)\) suficientemente próximos de
+        \((a,b)\).
+    </p>
+
+    <p>
+        A palavra <em>local</em> é essencial. Estamos observando apenas
+        o comportamento da superfície nas proximidades do ponto.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. POR QUE AS DERIVADAS SE ANULAM -->
+    <!-- ========================================================= -->
+
+    <h2>3. O que acontece com as derivadas em um extremo?</h2>
+
+    <p>
+        Recorde primeiro o caso de uma função de uma variável. Em um
+        máximo ou mínimo local suave, a reta tangente é horizontal e,
+        portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        f'(a)=0.
+    \]
+    </div>
+
+    <p>
+        Para uma função de duas variáveis, o raciocínio é semelhante.
+        Se \((a,b)\) é um extremo local situado no interior do domínio
+        e \(f\) é diferenciável nesse ponto, então não pode haver
+        crescimento instantâneo nem na direção do eixo \(x\), nem na
+        direção do eixo \(y\).
+    </p>
+
+    <p>
+        Consequentemente,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            f_x(a,b)=0,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_y(a,b)=0.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Em linguagem vetorial,
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \nabla f(a,b)=\mathbf0
+        }.
+    \]
+    </div>
+
+    <p>
+        Geometricamente, quando o gráfico é suave, o plano tangente em
+        um extremo local interior é horizontal.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. PONTOS CRÍTICOS -->
+    <!-- ========================================================= -->
+
+    <h2>4. Pontos críticos</h2>
+
+    <p>
+        A condição anterior sugere onde devemos procurar os extremos,
+        mas precisamos formular o conceito com um pouco mais de cuidado.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Definição.</strong>
+            Um ponto \((a,b)\) é chamado de
+            <strong>ponto crítico</strong> de \(f\) quando
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x(a,b)=0
+            \qquad\text{e}\qquad
+            f_y(a,b)=0,
+            \]
+        </div>
+
+        <p>
+            ou quando pelo menos uma dessas derivadas parciais não existe.
+        </p>
+
+    </div>
+
+    <p>
+        Todo máximo ou mínimo local interior, sob as hipóteses
+        apropriadas, deve ocorrer em um ponto crítico. A recíproca,
+        porém, é falsa:
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>
+                ponto crítico não significa necessariamente máximo ou
+                mínimo.
+            </strong>
+        </p>
+
+    </div>
+
+    <p>
+        Um ponto crítico pode corresponder a um máximo local, a um
+        mínimo local ou a nenhum dos dois.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. PONTO DE SELA -->
+    <!-- ========================================================= -->
+
+    <h2>5. Pontos de sela</h2>
+
+    <p>
+        Uma possibilidade característica das funções de várias variáveis
+        é o <strong>ponto de sela</strong>.
+    </p>
+
+    <p>
+        Considere, por exemplo,
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y)=x^2-y^2.
+    \]
+    </div>
+
+    <p>
+        Temos
+    </p>
+
+    <div class="mathline">
+        \[
+        f_x=2x,
+        \qquad
+        f_y=-2y.
+    \]
+    </div>
+
+    <p>
+        Logo, a origem é um ponto crítico.
+    </p>
+
+    <p>
+        Entretanto, ao longo do eixo \(x\),
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,0)=x^2\geq0,
+    \]
+    </div>
+
+    <p>
+        enquanto, ao longo do eixo \(y\),
+    </p>
+
+    <div class="mathline">
+        \[
+        f(0,y)=-y^2\leq0.
+    \]
+    </div>
+
+    <p>
+        Assim, nas proximidades da origem a superfície sobe em uma
+        direção e desce em outra. A origem não é máximo nem mínimo:
+        trata-se de um ponto de sela.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Encontrar os pontos críticos é apenas a primeira etapa.
+            Depois disso, precisamos determinar a natureza de cada ponto.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. SEGUNDAS DERIVADAS -->
+    <!-- ========================================================= -->
+
+    <h2>6. Como classificar um ponto crítico?</h2>
+
+    <p>
+        Em funções de uma variável, a segunda derivada informa a
+        concavidade da curva. Para funções de duas variáveis, precisamos
+        considerar simultaneamente as derivadas
+    </p>
+
+    <div class="mathline">
+        \[
+        f_{xx},
+        \qquad
+        f_{yy},
+        \qquad
+        f_{xy}.
+    \]
+    </div>
+
+    <p>
+        Essas derivadas descrevem a curvatura local da superfície em
+        diferentes direções.
+    </p>
+
+    <p>
+        A combinação relevante é
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            D(a,b)
+            =
+            f_{xx}(a,b)f_{yy}(a,b)
+            -
+            \left[f_{xy}(a,b)\right]^2
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Esse número permite classificar muitos pontos críticos.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. TESTE DA SEGUNDA DERIVADA -->
+    <!-- ========================================================= -->
+
+    <h2>7. Teste da segunda derivada</h2>
+
+    <p>
+        Suponha que as derivadas parciais de segunda ordem sejam
+        contínuas nas proximidades de um ponto crítico \((a,b)\).
+        Calcule
+    </p>
+
+    <div class="mathline">
+        \[
+        D
+        =
+        f_{xx}f_{yy}
+        -
+        (f_{xy})^2
+    \]
+    </div>
+
+    <p>
+        no ponto crítico.
+    </p>
+
+    <table>
+        <tr>
+            <th>Condição</th>
+            <th>Conclusão</th>
+        </tr>
+
+        <tr>
+            <td>
+                \(D&gt;0\) e \(f_{xx}&gt;0\)
+            </td>
+            <td>
+                mínimo local
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                \(D&gt;0\) e \(f_{xx}&lt;0\)
+            </td>
+            <td>
+                máximo local
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                \(D&lt;0\)
+            </td>
+            <td>
+                ponto de sela
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                \(D=0\)
+            </td>
+            <td>
+                teste inconclusivo
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        Quando \(D&gt;0\), a superfície possui comportamento semelhante
+        nas diferentes direções próximas ao ponto. O sinal de
+        \(f_{xx}\) distingue então um vale de um pico.
+    </p>
+
+    <p>
+        Quando \(D&lt;0\), existem direções com comportamentos opostos:
+        a superfície sobe em algumas direções e desce em outras. Isso
+        caracteriza um ponto de sela.
+    </p>
+
+    <p>
+        Quando \(D=0\), não podemos concluir nada apenas com esse teste.
+        É necessário analisar o comportamento da função por outro
+        método.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. EXEMPLO -->
+    <!-- ========================================================= -->
+
+    <h2>8. Exemplo: encontrando e classificando um ponto crítico</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 1.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)
+            =
+            x^2+y^2-2x-4y.
+            \]
+        </div>
+
+        <p>
+            Primeiro determinamos os pontos críticos:
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x=2x-2,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_y=2y-4.
+        \]
+        </div>
+
+        <p>
+            Igualando ambas a zero,
+        </p>
+
+        <div class="mathline">
+            \[
+            2x-2=0
+            \quad\Longrightarrow\quad
+            x=1,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            2y-4=0
+            \quad\Longrightarrow\quad
+            y=2.
+        \]
+        </div>
+
+        <p>
+            Portanto, existe um único ponto crítico:
+        </p>
+
+        <div class="mathline">
+            \[
+            P=(1,2).
+        \]
+        </div>
+
+        <p>
+            Agora calculamos as derivadas de segunda ordem:
+        </p>
+
+        <div class="mathline">
+            \[
+            f_{xx}=2,
+            \qquad
+            f_{yy}=2,
+            \qquad
+            f_{xy}=0.
+        \]
+        </div>
+
+        <p>
+            Assim,
+        </p>
+
+        <div class="mathline">
+            \[
+            D
+            =
+            (2)(2)-0^2
+            =
+            4&gt;0.
+        \]
+        </div>
+
+        <p>
+            Como
+        </p>
+
+        <div class="mathline">
+            \[
+            f_{xx}=2&gt;0,
+        \]
+        </div>
+
+        <p>
+            o ponto \((1,2)\) é um mínimo local.
+        </p>
+
+        <p>
+            O valor correspondente é
+        </p>
+
+        <div class="mathline">
+            \[
+            f(1,2)
+            =
+            1+4-2-8
+            =
+            -5.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. EXEMPLO COM SELA -->
+    <!-- ========================================================= -->
+
+    <h2>9. Uma função pode ter pontos críticos de naturezas diferentes</h2>
+
+    <p>
+        Nas aulas aparece um exemplo particularmente útil para visualizar
+        esse fenômeno:
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y)
+        =
+        x^4+y^4-4xy+1.
+    \]
+    </div>
+
+    <p>
+        A função possui três pontos críticos:
+    </p>
+
+    <div class="mathline">
+        \[
+        (0,0),
+        \qquad
+        (1,1),
+        \qquad
+        (-1,-1).
+    \]
+    </div>
+
+    <p>
+        Na origem, o teste fornece
+    </p>
+
+    <div class="mathline">
+        \[
+        D(0,0)=-16&lt;0.
+    \]
+    </div>
+
+    <p>
+        Portanto, \((0,0)\) é um ponto de sela.
+    </p>
+
+    <p>
+        Nos outros dois pontos,
+    </p>
+
+    <div class="mathline">
+        \[
+        D(1,1)=D(-1,-1)=128&gt;0
+    \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        f_{xx}(1,1)
+        =
+        f_{xx}(-1,-1)
+        =
+        12&gt;0.
+    \]
+    </div>
+
+    <p>
+        Logo, \((1,1)\) e \((-1,-1)\) são mínimos locais.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/otimizacao-superficie.png"
+            alt="Superfície com pontos críticos, mínimos locais e ponto de sela."
+        >
+
+        <figcaption>
+            Uma mesma superfície pode apresentar pontos críticos de
+            naturezas distintas. O teste da segunda derivada permite
+            distinguir mínimos, máximos e pontos de sela.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. LOCAIS X ABSOLUTOS -->
+    <!-- ========================================================= -->
+
+    <h2>10. Extremos locais não são extremos absolutos</h2>
+
+    <p>
+        Até aqui analisamos o comportamento da função nas proximidades
+        de um ponto. Entretanto, em muitos problemas queremos conhecer
+        o maior e o menor valor assumidos em todo um conjunto.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            \(f(a,b)\) é um <strong>máximo absoluto</strong> de \(f\)
+            em um conjunto \(D\) quando
+        </p>
+
+        <div class="mathline">
+            \[
+            f(a,b)\geq f(x,y)
+            \]
+        </div>
+
+        <p>
+            para todo \((x,y)\in D\).
+        </p>
+
+        <p>
+            Analogamente, \(f(a,b)\) é um
+            <strong>mínimo absoluto</strong> quando
+        </p>
+
+        <div class="mathline">
+            \[
+            f(a,b)\leq f(x,y)
+        \]
+        </div>
+
+        <p>
+            para todo \((x,y)\in D\).
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. FECHADO E LIMITADO -->
+    <!-- ========================================================= -->
+
+    <h2>11. Por que conjuntos fechados e limitados são importantes?</h2>
+
+    <p>
+        Em uma variável, uma função contínua em um intervalo fechado
+        \([a,b]\) necessariamente possui máximo e mínimo absolutos.
+        Existe uma versão desse resultado para funções de duas variáveis.
+    </p>
+
+    <p>
+        Para isso, precisamos compreender duas propriedades do domínio.
+    </p>
+
+    <p>
+        Um conjunto é <strong>fechado</strong> quando contém todos os
+        seus pontos de fronteira.
+    </p>
+
+    <p>
+        Por exemplo,
+    </p>
+
+    <div class="mathline">
+        \[
+        D=
+        \left\{
+        (x,y):
+        x^2+y^2\leq1
+        \right\}
+    \]
+    </div>
+
+    <p>
+        é fechado porque contém também a circunferência
+    </p>
+
+    <div class="mathline">
+        \[
+        x^2+y^2=1.
+    \]
+    </div>
+
+    <p>
+        Um conjunto é <strong>limitado</strong> quando pode ser contido
+        em algum disco suficientemente grande. Intuitivamente, ele não
+        se estende indefinidamente pelo plano.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. TEV -->
+    <!-- ========================================================= -->
+
+    <h2>12. Teorema do Valor Extremo</h2>
+
+    <div class="theorem">
+
+        <strong>Teorema do Valor Extremo.</strong>
+
+        <p>
+            Se \(f\) é contínua em um conjunto fechado e limitado
+            \(D\subset\mathbb R^2\), então \(f\) assume um valor máximo
+            absoluto e um valor mínimo absoluto em \(D\).
+        </p>
+
+    </div>
+
+    <p>
+        O teorema garante a <strong>existência</strong> dos extremos.
+        Ele não informa diretamente onde eles estão.
+    </p>
+
+    <p>
+        Para encontrá-los, precisamos procurar tanto no interior quanto
+        na fronteira do conjunto.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. PROCEDIMENTO -->
+    <!-- ========================================================= -->
+
+    <h2>13. Como encontrar máximos e mínimos absolutos?</h2>
+
+    <p>
+        Para uma função contínua definida em um conjunto fechado e
+        limitado, o procedimento utilizado nas aulas é a extensão
+        multivariável do método dos intervalos fechados.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Primeiro:</strong> determine os pontos críticos de
+            \(f\) no interior de \(D\) e calcule o valor da função
+            nesses pontos.
+        </p>
+
+        <p>
+            <strong>Depois:</strong> analise a função em toda a
+            fronteira de \(D\).
+        </p>
+
+        <p>
+            <strong>Finalmente:</strong> compare todos os valores
+            candidatos.
+        </p>
+
+        <p>
+            O maior deles é o máximo absoluto e o menor é o mínimo
+            absoluto.
+        </p>
+
+    </div>
+
+    <p>
+        Esse último passo é essencial. Em problemas de extremos
+        absolutos, não basta encontrar os pontos críticos do interior.
+        O maior ou menor valor pode ocorrer na fronteira.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. EXEMPLO ABSOLUTO -->
+    <!-- ========================================================= -->
+
+    <h2>14. Exemplo: extremos absolutos em um retângulo</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 2.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)
+            =
+            x^2-2xy+2y
+        \]
+        </div>
+
+        <p>
+            no retângulo
+        </p>
+
+        <div class="mathline">
+            \[
+            D=
+            \left\{
+            (x,y):
+            0\leq x\leq3,
+            \;
+            0\leq y\leq2
+            \right\}.
+        \]
+        </div>
+
+        <p>
+            Como \(f\) é um polinômio, ela é contínua. Além disso,
+            \(D\) é fechado e limitado. Portanto, pelo Teorema do Valor
+            Extremo, sabemos antecipadamente que existem máximo e mínimo
+            absolutos.
+        </p>
+
+        <p>
+            No interior,
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x=2x-2y
+        \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            f_y=-2x+2.
+        \]
+        </div>
+
+        <p>
+            Resolvendo
+        </p>
+
+        <div class="mathline">
+            \[
+            f_x=f_y=0,
+        \]
+        </div>
+
+        <p>
+            obtemos
+        </p>
+
+        <div class="mathline">
+            \[
+            (x,y)=(1,1).
+        \]
+        </div>
+
+        <p>
+            Nesse ponto,
+        </p>
+
+        <div class="mathline">
+            \[
+            f(1,1)=1.
+        \]
+        </div>
+
+        <p>
+            Entretanto, isso ainda não resolve o problema. Precisamos
+            estudar separadamente os quatro lados do retângulo:
+        </p>
+
+        <div class="mathline">
+            \[
+            x=0,
+            \qquad
+            x=3,
+            \qquad
+            y=0,
+            \qquad
+            y=2.
+        \]
+        </div>
+
+        <p>
+            Em cada lado, uma das variáveis fica determinada e o
+            problema se reduz à otimização de uma função de uma variável.
+            Somente depois de analisar toda a fronteira podemos comparar
+            os candidatos e identificar os extremos absolutos.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. RESTRIÇÕES -->
+    <!-- ========================================================= -->
+
+    <h2>15. O que muda quando existe uma restrição?</h2>
+
+    <p>
+        Considere agora um problema diferente. Queremos otimizar
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y)
+    \]
+    </div>
+
+    <p>
+        mas os valores de \(x\) e \(y\) não podem variar livremente.
+        Eles precisam satisfazer uma condição
+    </p>
+
+    <div class="mathline">
+        \[
+        g(x,y)=k.
+    \]
+    </div>
+
+    <p>
+        Nesse caso, os pontos admissíveis estão restritos à curva
+        definida por \(g(x,y)=k\).
+    </p>
+
+    <p>
+        Essa situação aparece naturalmente em aplicações. Podemos querer
+        maximizar um volume usando uma quantidade fixa de material,
+        minimizar um custo mantendo uma produção determinada ou encontrar
+        o ponto de uma curva mais próximo de um ponto dado.
+    </p>
+
+    <p>
+        O problema passa a ser:
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            otimizar
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)
+        \]
+        </div>
+
+        <p>
+            sujeito à restrição
+        </p>
+
+        <div class="mathline">
+            \[
+            g(x,y)=k.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. IDEIA GEOMÉTRICA -->
+    <!-- ========================================================= -->
+
+    <h2>16. A ideia geométrica do método de Lagrange</h2>
+
+    <p>
+        Para compreender o método, imagine desenhadas no mesmo plano as
+        curvas de nível de \(f\),
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y)=c,
+    \]
+    </div>
+
+    <p>
+        e a curva de restrição
+    </p>
+
+    <div class="mathline">
+        \[
+        g(x,y)=k.
+    \]
+    </div>
+
+    <p>
+        À medida que alteramos \(c\), obtemos diferentes curvas de nível
+        de \(f\). Queremos descobrir qual é o maior ou menor nível que
+        ainda consegue tocar a curva de restrição.
+    </p>
+
+    <p>
+        Em um extremo condicionado regular, a curva de nível de \(f\)
+        que passa pelo ponto extremo é tangente à curva de restrição.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/lagrange-curvas.png"
+            alt="Tangência entre curva de nível e curva de restrição."
+        >
+
+        <figcaption>
+            No extremo condicionado, uma curva de nível da função
+            objetivo é tangente à curva de restrição. Essa tangência é
+            a origem geométrica da condição dos multiplicadores de
+            Lagrange.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. GRADIENTES -->
+    <!-- ========================================================= -->
+
+    <h2>17. Por que os gradientes devem ser paralelos?</h2>
+
+    <p>
+        Sabemos das aulas anteriores que o gradiente de uma função é
+        perpendicular às suas curvas de nível.
+    </p>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla f
+    \]
+    </div>
+
+    <p>
+        é normal à curva
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y)=c,
+    \]
+    </div>
+
+    <p>
+        enquanto
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla g
+    \]
+    </div>
+
+    <p>
+        é normal à curva de restrição
+    </p>
+
+    <div class="mathline">
+        \[
+        g(x,y)=k.
+    \]
+    </div>
+
+    <p>
+        No ponto de tangência, as duas curvas possuem a mesma direção
+        tangente. Consequentemente, seus vetores normais são paralelos.
+    </p>
+
+    <p>
+        Logo, existe um número real \(\lambda\) tal que
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \nabla f
+            =
+            \lambda\nabla g
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        O número \(\lambda\) recebe o nome de
+        <strong>multiplicador de Lagrange</strong>.
+    </p>
+
+    <p>
+        A equação acima não substitui a restrição. As duas condições
+        devem ser satisfeitas simultaneamente:
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \nabla f
+            =
+            \lambda\nabla g,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            g(x,y)=k.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. SISTEMA -->
+    <!-- ========================================================= -->
+
+    <h2>18. O sistema de Lagrange</h2>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        f=f(x,y)
+    \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        g=g(x,y),
+    \]
+    </div>
+
+    <p>
+        então
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla f
+        =
+        \langle f_x,f_y\rangle
+    \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla g
+        =
+        \langle g_x,g_y\rangle.
+    \]
+    </div>
+
+    <p>
+        Portanto, a condição vetorial
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla f=\lambda\nabla g
+    \]
+    </div>
+
+    <p>
+        equivale às duas equações
+    </p>
+
+    <div class="mathline">
+        \[
+        f_x=\lambda g_x
+    \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        f_y=\lambda g_y.
+    \]
+    </div>
+
+    <p>
+        Juntamente com a restrição, obtemos o sistema
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            f_x=\lambda g_x,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            f_y=\lambda g_y,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            g(x,y)=k.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        As incógnitas são \(x\), \(y\) e \(\lambda\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. PROCEDIMENTO -->
+    <!-- ========================================================= -->
+
+    <h2>19. Como aplicar o método de Lagrange?</h2>
+
+    <p>
+        O método pode ser entendido como uma busca pelos pontos da
+        restrição nos quais os gradientes da função objetivo e da
+        restrição são paralelos.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Identifique a <strong>função objetivo</strong> \(f\) e
+            escreva a restrição na forma
+        </p>
+
+        <div class="mathline">
+            \[
+            g=k.
+        \]
+        </div>
+
+        <p>
+            Calcule
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f
+            \qquad\text{e}\qquad
+            \nabla g.
+        \]
+        </div>
+
+        <p>
+            Resolva simultaneamente
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f=\lambda\nabla g
+        \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            g=k.
+        \]
+        </div>
+
+        <p>
+            Finalmente, calcule \(f\) em todos os pontos candidatos.
+            O maior valor será o máximo e o menor será o mínimo, quando
+            os extremos existirem nas condições do problema.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. EXEMPLO DA AULA -->
+    <!-- ========================================================= -->
+
+    <h2>20. Exemplo: extremos sobre uma circunferência</h2>
+
+    <div class="example">
+
+        <strong>Exemplo 3.</strong>
+
+        <p>
+            Determine os valores extremos de
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)
+            =
+            x^2+2y^2
+        \]
+        </div>
+
+        <p>
+            sujeitos à restrição
+        </p>
+
+        <div class="mathline">
+            \[
+            x^2+y^2=1.
+        \]
+        </div>
+
+        <p>
+            A função objetivo é
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2+2y^2,
+        \]
+        </div>
+
+        <p>
+            enquanto podemos escrever a restrição como
+        </p>
+
+        <div class="mathline">
+            \[
+            g(x,y)=x^2+y^2=1.
+        \]
+        </div>
+
+        <p>
+            Os gradientes são
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f
+            =
+            \langle2x,4y\rangle
+        \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla g
+            =
+            \langle2x,2y\rangle.
+        \]
+        </div>
+
+        <p>
+            A condição de Lagrange fornece
+        </p>
+
+        <div class="mathline">
+            \[
+            \langle2x,4y\rangle
+            =
+            \lambda
+            \langle2x,2y\rangle.
+        \]
+        </div>
+
+        <p>
+            Assim,
+        </p>
+
+        <div class="mathline">
+            \[
+            2x=2\lambda x,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            4y=2\lambda y,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            x^2+y^2=1.
+        \]
+        </div>
+
+        <p>
+            As duas primeiras equações podem ser escritas como
+        </p>
+
+        <div class="mathline">
+            \[
+            x(1-\lambda)=0
+        \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            y(2-\lambda)=0.
+        \]
+        </div>
+
+        <p>
+            Se \(x\neq0\), então
+        </p>
+
+        <div class="mathline">
+            \[
+            \lambda=1.
+        \]
+        </div>
+
+        <p>
+            A segunda equação implica então \(y=0\). Pela restrição,
+        </p>
+
+        <div class="mathline">
+            \[
+            x=\pm1.
+        \]
+        </div>
+
+        <p>
+            Obtemos os candidatos
+        </p>
+
+        <div class="mathline">
+            \[
+            (1,0)
+            \qquad\text{e}\qquad
+            (-1,0).
+        \]
+        </div>
+
+        <p>
+            Nesses pontos,
+        </p>
+
+        <div class="mathline">
+            \[
+            f(\pm1,0)=1.
+        \]
+        </div>
+
+        <p>
+            Por outro lado, se \(y\neq0\), então
+        </p>
+
+        <div class="mathline">
+            \[
+            \lambda=2.
+        \]
+        </div>
+
+        <p>
+            A primeira equação implica \(x=0\). Pela restrição,
+        </p>
+
+        <div class="mathline">
+            \[
+            y=\pm1.
+        \]
+        </div>
+
+        <p>
+            Portanto, os outros candidatos são
+        </p>
+
+        <div class="mathline">
+            \[
+            (0,1)
+            \qquad\text{e}\qquad
+            (0,-1).
+        \]
+        </div>
+
+        <p>
+            Nesses pontos,
+        </p>
+
+        <div class="mathline">
+            \[
+            f(0,\pm1)=2.
+        \]
+        </div>
+
+        <p>
+            Comparando os valores:
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            f_{\min}=1
+            }
+        \]
+        </div>
+
+        <p>
+            nos pontos
+        </p>
+
+        <div class="mathline">
+            \[
+            (\pm1,0),
+        \]
+        </div>
+
+        <p>
+            enquanto
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            f_{\max}=2
+            }
+        \]
+        </div>
+
+        <p>
+            nos pontos
+        </p>
+
+        <div class="mathline">
+            \[
+            (0,\pm1).
+        \]
+        </div>
+
+    </div>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/lagrange-superficie.png"
+            alt="Paraboloide e curva determinada pela restrição."
+        >
+
+        <figcaption>
+            Geometricamente, o problema procura os pontos mais altos e
+            mais baixos da curva obtida pela interseção do paraboloide
+            \(z=x^2+2y^2\) com o cilindro vertical cuja base é a
+            circunferência \(x^2+y^2=1\).
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. LAGRANGE EM 3 VARIÁVEIS -->
+    <!-- ========================================================= -->
+
+    <h2>21. Lagrange para funções de três variáveis</h2>
+
+    <p>
+        O mesmo princípio geométrico se estende naturalmente para uma
+        função
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y,z)
+    \]
+    </div>
+
+    <p>
+        sujeita à restrição
+    </p>
+
+    <div class="mathline">
+        \[
+        g(x,y,z)=k.
+    \]
+    </div>
+
+    <p>
+        Nesse caso, a restrição representa uma superfície. Em um extremo
+        condicionado regular, uma superfície de nível de \(f\) é
+        tangente à superfície de restrição.
+    </p>
+
+    <p>
+        Como os gradientes são normais às respectivas superfícies de
+        nível, novamente temos
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \nabla f
+            =
+            \lambda\nabla g
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Em componentes,
+    </p>
+
+    <div class="mathline">
+        \[
+        f_x=\lambda g_x,
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        f_y=\lambda g_y,
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        f_z=\lambda g_z,
+    \]
+    </div>
+
+    <p>
+        juntamente com
+    </p>
+
+    <div class="mathline">
+        \[
+        g(x,y,z)=k.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. QUANDO USAR CADA MÉTODO -->
+    <!-- ========================================================= -->
+
+    <h2>22. Extremo livre ou extremo condicionado?</h2>
+
+    <p>
+        É importante distinguir os diferentes tipos de problema antes
+        de começar os cálculos.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Se \(x\) e \(y\) podem variar livremente no interior do
+            domínio, procuramos pontos críticos por meio de
+        </p>
+
+        <div class="mathline">
+            \[
+            \nabla f=\mathbf0.
+        \]
+        </div>
+
+        <p>
+            Se queremos extremos absolutos em um conjunto fechado e
+            limitado, precisamos estudar
+            <strong>interior e fronteira</strong>.
+        </p>
+
+        <p>
+            Se os pontos admissíveis devem satisfazer uma equação
+        </p>
+
+        <div class="mathline">
+            \[
+            g(x,y)=k,
+        \]
+        </div>
+
+        <p>
+            podemos utilizar multiplicadores de Lagrange, sob as
+            condições apropriadas.
+        </p>
+
+    </div>
+
+    <p>
+        Portanto, \(\nabla f=\mathbf0\) e
+        \(\nabla f=\lambda\nabla g\) correspondem a problemas
+        geometricamente diferentes. A primeira condição trata de um
+        extremo livre; a segunda, de um extremo sujeito a uma restrição.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 23. CUIDADOS -->
+    <!-- ========================================================= -->
+
+    <h2>23. Cuidados importantes</h2>
+
+    <p>
+        Alguns erros são particularmente comuns neste conteúdo.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Confundir ponto crítico com extremo.</strong><br>
+            A condição \(\nabla f=\mathbf0\) produz candidatos. O ponto
+            ainda precisa ser classificado.
+        </p>
+
+        <p>
+            <strong>Ignorar pontos em que alguma derivada parcial não
+            existe.</strong><br>
+            Esses pontos também podem ser críticos e precisam ser
+            considerados.
+        </p>
+
+        <p>
+            <strong>Usar apenas os pontos críticos ao procurar extremos
+            absolutos.</strong><br>
+            Em um conjunto fechado e limitado, a fronteira também deve
+            ser analisada.
+        </p>
+
+        <p>
+            <strong>Concluir que \(D=0\) significa ponto de sela.</strong><br>
+            Quando \(D=0\), o teste da segunda derivada é simplesmente
+            inconclusivo.
+        </p>
+
+        <p>
+            <strong>Esquecer a restrição no método de Lagrange.</strong><br>
+            Resolver apenas
+            \(\nabla f=\lambda\nabla g\) não basta. Também precisamos
+            satisfazer \(g=k\).
+        </p>
+
+        <p>
+            <strong>Dividir prematuramente por uma variável.</strong><br>
+            Em equações como
+            \(x(1-\lambda)=0\), dividir por \(x\) eliminaria a
+            possibilidade \(x=0\), podendo fazer desaparecer soluções
+            importantes.
+        </p>
+
+        <p>
+            <strong>Confundir candidato com resposta final.</strong><br>
+            Depois de encontrar os candidatos de Lagrange, devemos
+            calcular a função objetivo em cada um deles e comparar os
+            valores.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 24. CONEXÃO COM GRADIENTE -->
+    <!-- ========================================================= -->
+
+    <h2>24. A conexão entre gradiente e otimização</h2>
+
+    <p>
+        O conteúdo desta aula é uma consequência direta das propriedades
+        geométricas do gradiente estudadas anteriormente.
+    </p>
+
+    <p>
+        Em um extremo livre interior,
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla f=\mathbf0.
+    \]
+    </div>
+
+    <p>
+        Em um extremo condicionado regular,
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla f
+        =
+        \lambda\nabla g.
+    \]
+    </div>
+
+    <p>
+        A diferença é geométrica. No primeiro caso, podemos nos deslocar
+        em qualquer direção. No segundo, nossos deslocamentos estão
+        limitados às direções tangentes à restrição.
+    </p>
+
+    <p>
+        No extremo condicionado, a derivada direcional de \(f\) deve ser
+        zero em todas as direções tangentes admissíveis. Assim,
+        \(\nabla f\) deve ser perpendicular à curva de restrição. Mas
+        \(\nabla g\) também é perpendicular a essa curva. Por isso os
+        dois gradientes são paralelos.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \nabla f
+            =
+            \lambda\nabla g
+            }
+        \]
+        </div>
+
+        <p>
+            não é apenas uma regra algébrica: ela expressa a geometria
+            do problema de otimização condicionada.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 25. SÍNTESE -->
+    <!-- ========================================================= -->
+
+    <h2>25. Síntese conceitual</h2>
+
+    <p>
+        O estudo de máximos e mínimos de funções de várias variáveis
+        começa pela localização dos pontos críticos. Esses pontos são
+        apenas candidatos: o teste da segunda derivada permite
+        classificá-los, quando suas hipóteses são satisfeitas, como
+        máximos locais, mínimos locais ou pontos de sela.
+    </p>
+
+    <p>
+        Quando o objetivo é determinar extremos absolutos em um conjunto
+        fechado e limitado, precisamos ampliar a análise. Além dos
+        pontos críticos do interior, toda a fronteira do domínio deve
+        ser examinada.
+    </p>
+
+    <p>
+        Quando existe uma restrição do tipo \(g=k\), as variáveis deixam
+        de ser independentes. O método dos multiplicadores de Lagrange
+        transforma a tangência geométrica entre curvas ou superfícies de
+        nível na condição algébrica
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla f
+        =
+        \lambda\nabla g.
+    \]
+    </div>
+
+    <div class="mathbox">
+
+        <p>
+            Assim, três relações resumem grande parte do conteúdo:
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \nabla f=\mathbf0
+            }
+            \qquad
+            \text{extremos livres candidatos;}
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            D=f_{xx}f_{yy}-(f_{xy})^2
+            }
+            \qquad
+            \text{classificação local;}
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \nabla f=\lambda\nabla g
+            }
+            \qquad
+            \text{extremos condicionados candidatos.}
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+            <strong>Visualização no GeoGebra 3D</strong>
+
+            <p>
+                Represente superfícies com máximos, mínimos e pontos de
+                sela. Para problemas condicionados, represente
+                simultaneamente a superfície \(z=f(x,y)\) e a curva
+                determinada pela restrição para observar geometricamente
+                os pontos extremos.
+            </p>
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/3d"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Abrir GeoGebra 3D ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIAS -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+
+        <strong>Referências.</strong>
+
+        <p>
+            STEWART, James.
+            <em>Cálculo</em>.
+            Volumes 1 e 2.
+            São Paulo: Cengage Learning.
+        </p>
+
+        <p>
+            ANTON, Howard; BIVENS, Irl; DAVIS, Stephen.
+            <em>Cálculo</em>.
+            Porto Alegre: Bookman.
+        </p>
+
+        <p>
+            THOMAS, George B.; WEIR, Maurice D.; HASS, Joel.
+            <em>Cálculo</em>.
+            São Paulo: Pearson.
+        </p>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
