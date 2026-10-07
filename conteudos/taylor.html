@@ -1,6 +1,2036 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Séries de Taylor e Maclaurin | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Séries de Taylor e Maclaurin</div><p class="eyebrow">PARTE 4 · AULAS 74–76</p><h1>Séries de Taylor e Maclaurin</h1><p class="lead">Coeficientes determinados pelas derivadas, séries e polinômios de Taylor, aproximações e controle do erro.</p><h2>1. Coeficientes</h2><div class="mathline">\[c_n=\frac{f^{(n)}(a)}{n!}.\]</div>
-<h2>2. Série de Taylor</h2><div class="mathline">\[f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^n.\]</div>
-<h2>3. Maclaurin</h2><div class="mathline">\[f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(0)}{n!}x^n.\]</div>
-<div class="example"><strong>Exemplo resolvido — exponencial.</strong><p>Como todas as derivadas de \(e^x\) valem \(1\) em \(0\),</p><div class="mathline">\[e^x=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots.\]</div><div class="mathline">\[e^x=\sum_{n=0}^{\infty}\frac{x^n}{n!}.\]</div></div><figure class="figure"><img src="../assets/img/aulas/taylor-exp.png" alt="Polinômios de Taylor de ordens crescentes aproximando uma função."><figcaption>Polinômios de Taylor de ordens crescentes aproximando uma função. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>4. Polinômio de Taylor</h2><div class="mathline">\[T_n(x)=\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k.\]</div><p>O polinômio reproduz, no centro, o valor da função e suas derivadas até a ordem \(n\).</p><figure class="figure"><img src="../assets/img/aulas/taylor-sen.png" alt="Aproximações polinomiais da função seno."><figcaption>Aproximações polinomiais da função seno. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>5. Resto</h2><div class="mathline">\[R_n(x)=f(x)-T_n(x).\]</div><p>Na forma de Lagrange, sob hipóteses adequadas,</p><div class="mathline">\[R_n(x)=\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}.\]</div><div class="note"><strong>Ponto conceitual.</strong> A existência formal da série de Taylor não garante, por si só, que sua soma seja a própria função; é necessário controlar o resto.</div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Séries de Taylor e Maclaurin | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a> /
+        Séries de Taylor e Maclaurin
+    </div>
+
+    <p class="eyebrow">PARTE 4 · AULAS 74–76</p>
+
+    <h1>Séries de Taylor e Maclaurin</h1>
+
+    <p class="lead">
+        As séries de Taylor fornecem um procedimento sistemático para
+        representar funções por séries de potências. Seus coeficientes
+        são determinados pelas derivadas da própria função em um ponto
+        escolhido. Truncando a série, obtemos polinômios que aproximam
+        localmente a função; o resto de Taylor permite avaliar a qualidade
+        dessa aproximação e estabelecer quando a série realmente converge
+        para a função.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. PROBLEMA CENTRAL -->
+    <!-- ========================================================= -->
+
+    <h2>1. O problema central</h2>
+
+    <p>
+        Considere uma função que possa ser representada, nas proximidades
+        de um ponto \(a\), por uma série de potências:
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        c_0
+        +
+        c_1(x-a)
+        +
+        c_2(x-a)^2
+        +
+        c_3(x-a)^3
+        +\cdots.
+        \]
+    </div>
+
+    <p>
+        Equivalentemente,
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n.
+        \]
+    </div>
+
+    <p>
+        A questão fundamental é:
+        <strong>como determinar os coeficientes \(c_n\) diretamente
+        a partir da função \(f\)?</strong>
+    </p>
+
+    <p>
+        A resposta é obtida utilizando os valores de \(f\) e de suas
+        derivadas no centro \(a\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. COEFICIENTE C0 -->
+    <!-- ========================================================= -->
+
+    <h2>2. Determinação do primeiro coeficiente</h2>
+
+    <p>
+        Partimos de
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        c_0
+        +
+        c_1(x-a)
+        +
+        c_2(x-a)^2
+        +\cdots.
+        \]
+    </div>
+
+    <p>
+        Fazendo \(x=a\), todos os termos que contêm
+        \(x-a\) desaparecem:
+    </p>
+
+    <div class="mathline">
+        \[
+        f(a)=c_0.
+        \]
+    </div>
+
+    <p>Portanto,</p>
+
+    <div class="mathline">
+        \[
+        \boxed{c_0=f(a)}.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. COEFICIENTE C1 -->
+    <!-- ========================================================= -->
+
+    <h2>3. Determinação do segundo coeficiente</h2>
+
+    <p>
+        Derivando a série termo a termo,
+    </p>
+
+    <div class="mathline">
+        \[
+        f'(x)
+        =
+        c_1
+        +
+        2c_2(x-a)
+        +
+        3c_3(x-a)^2
+        +\cdots.
+        \]
+    </div>
+
+    <p>
+        Fazendo novamente \(x=a\),
+    </p>
+
+    <div class="mathline">
+        \[
+        f'(a)=c_1.
+        \]
+    </div>
+
+    <p>Assim,</p>
+
+    <div class="mathline">
+        \[
+        \boxed{c_1=f'(a)}.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. COEFICIENTES GERAIS -->
+    <!-- ========================================================= -->
+
+    <h2>4. Determinação dos demais coeficientes</h2>
+
+    <p>
+        Derivando uma segunda vez,
+    </p>
+
+    <div class="mathline">
+        \[
+        f''(x)
+        =
+        2c_2
+        +
+        3\cdot2\,c_3(x-a)
+        +
+        4\cdot3\,c_4(x-a)^2
+        +\cdots.
+        \]
+    </div>
+
+    <p>
+        Em \(x=a\),
+    </p>
+
+    <div class="mathline">
+        \[
+        f''(a)=2!c_2,
+    \]
+    </div>
+
+    <p>logo,</p>
+
+    <div class="mathline">
+        \[
+        c_2=\frac{f''(a)}{2!}.
+    \]
+    </div>
+
+    <p>
+        Continuando esse processo,
+    </p>
+
+    <div class="mathline">
+        \[
+        f^{(n)}(a)=n!c_n.
+    \]
+    </div>
+
+    <p>Portanto,</p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            c_n=
+            \frac{f^{(n)}(a)}{n!}
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa expressão determina todos os coeficientes da série a partir
+        das derivadas da função no ponto \(a\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. SÉRIE DE TAYLOR -->
+    <!-- ========================================================= -->
+
+    <h2>5. Série de Taylor</h2>
+
+    <p>
+        Substituindo os coeficientes obtidos na série de potências,
+        chegamos à expressão
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            f(x)
+            =
+            \sum_{n=0}^{\infty}
+            \frac{f^{(n)}(a)}{n!}
+            (x-a)^n
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa é a <strong>série de Taylor de \(f\) centrada em \(a\)</strong>.
+    </p>
+
+    <p>
+        Desenvolvendo seus primeiros termos,
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        f(a)
+        +
+        f'(a)(x-a)
+        +
+        \frac{f''(a)}{2!}(x-a)^2
+        +
+        \frac{f'''(a)}{3!}(x-a)^3
+        +\cdots.
+        \]
+    </div>
+
+    <div class="note">
+
+        <strong>Interpretação.</strong>
+
+        A série é construída para reproduzir, no ponto \(a\),
+        o valor da função e os valores de suas derivadas sucessivas.
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. MACLAURIN -->
+    <!-- ========================================================= -->
+
+    <h2>6. Série de Maclaurin</h2>
+
+    <p>
+        Quando o centro da série de Taylor é
+    </p>
+
+    <div class="mathline">
+        \[
+        a=0,
+    \]
+    </div>
+
+    <p>
+        obtemos um caso particular chamado
+        <strong>série de Maclaurin</strong>.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            f(x)
+            =
+            \sum_{n=0}^{\infty}
+            \frac{f^{(n)}(0)}{n!}x^n
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Explicitamente,
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        f(0)
+        +
+        f'(0)x
+        +
+        \frac{f''(0)}{2!}x^2
+        +
+        \frac{f'''(0)}{3!}x^3
+        +\cdots.
+        \]
+    </div>
+
+    <div class="note">
+
+        <strong>Taylor × Maclaurin.</strong>
+
+        Toda série de Maclaurin é uma série de Taylor.
+        A diferença é apenas o centro:
+        na série de Maclaurin usamos \(a=0\).
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. EXPONENCIAL -->
+    <!-- ========================================================= -->
+
+    <h2>7. Exemplo: série de Maclaurin de \(e^x\)</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x)=e^x.
+            \]
+        </div>
+
+        <p>
+            Todas as suas derivadas são iguais à própria função:
+        </p>
+
+        <div class="mathline">
+            \[
+            f^{(n)}(x)=e^x.
+            \]
+        </div>
+
+        <p>
+            Avaliando em \(x=0\),
+        </p>
+
+        <div class="mathline">
+            \[
+            f^{(n)}(0)=e^0=1
+        \]
+        </div>
+
+        <p>
+            para todo \(n\geq0\).
+        </p>
+
+        <p>
+            Logo,
+        </p>
+
+        <div class="mathline">
+            \[
+            c_n
+            =
+            \frac{1}{n!}.
+        \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \boxed{
+                e^x
+                =
+                \sum_{n=0}^{\infty}
+                \frac{x^n}{n!}
+                }
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                e^x
+                =
+                1+x+\frac{x^2}{2!}
+                +\frac{x^3}{3!}
+                +\frac{x^4}{4!}
+                +\cdots.
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \boxed{R=\infty}
+                \]
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- FIGURA EXISTENTE -->
+    <!-- ========================================================= -->
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/taylor-exp.png"
+            alt="Polinômios de Taylor de ordens crescentes aproximando a função exponencial."
+        >
+
+        <figcaption>
+            Polinômios de Taylor de ordens crescentes aproximando
+            a função. O aumento do grau incorpora mais informações
+            sobre as derivadas da função no centro da expansão.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. POLINÔMIO -->
+    <!-- ========================================================= -->
+
+    <h2>8. Polinômio de Taylor</h2>
+
+    <p>
+        Na prática, não podemos utilizar infinitos termos em um cálculo
+        numérico. Por isso, interrompemos a série após um número finito
+        de termos.
+    </p>
+
+    <p>
+        O <strong>polinômio de Taylor de grau \(n\)</strong> de \(f\),
+        centrado em \(a\), é
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            T_n(x)
+            =
+            \sum_{k=0}^{n}
+            \frac{f^{(k)}(a)}{k!}
+            (x-a)^k
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Explicitamente,
+    </p>
+
+    <div class="mathline">
+        \[
+        T_n(x)
+        =
+        f(a)
+        +
+        f'(a)(x-a)
+        +
+        \frac{f''(a)}{2!}(x-a)^2
+        +\cdots+
+        \frac{f^{(n)}(a)}{n!}(x-a)^n.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. PROPRIEDADE POLINÔMIO -->
+    <!-- ========================================================= -->
+
+    <h2>9. O que o polinômio de Taylor reproduz?</h2>
+
+    <p>
+        A construção de \(T_n\) garante que a função e o polinômio
+        possuem, no centro \(a\), o mesmo valor e as mesmas derivadas
+        até a ordem \(n\):
+    </p>
+
+    <div class="mathline">
+        \[
+        T_n(a)=f(a),
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        T_n'(a)=f'(a),
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        T_n''(a)=f''(a),
+    \]
+    </div>
+
+    <p>e, de maneira geral,</p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        T_n^{(k)}(a)=f^{(k)}(a),
+        \qquad
+        k=0,1,\ldots,n.
+        }
+        \]
+    </div>
+
+    <p>
+        É justamente essa concordância sucessiva das derivadas que
+        explica a qualidade da aproximação nas proximidades do centro.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. APROXIMAÇÕES -->
+    <!-- ========================================================= -->
+
+    <h2>10. Aproximações sucessivas</h2>
+
+    <p>
+        Os primeiros polinômios de Taylor são
+    </p>
+
+    <div class="mathline">
+        \[
+        T_0(x)=f(a),
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        T_1(x)
+        =
+        f(a)+f'(a)(x-a),
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        T_2(x)
+        =
+        f(a)
+        +
+        f'(a)(x-a)
+        +
+        \frac{f''(a)}{2!}(x-a)^2,
+    \]
+    </div>
+
+    <p>e</p>
+
+    <div class="mathline">
+        \[
+        T_3(x)
+        =
+        f(a)
+        +
+        f'(a)(x-a)
+        +
+        \frac{f''(a)}{2!}(x-a)^2
+        +
+        \frac{f'''(a)}{3!}(x-a)^3.
+    \]
+    </div>
+
+    <p>
+        O polinômio \(T_1\) corresponde à conhecida
+        <strong>aproximação linear</strong>. Os polinômios de graus
+        superiores incorporam informações sobre derivadas de ordens
+        maiores.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. EXPONENCIAL POLINÔMIOS -->
+    <!-- ========================================================= -->
+
+    <h2>11. Polinômios de Maclaurin para \(e^x\)</h2>
+
+    <p>
+        Para a função exponencial,
+    </p>
+
+    <div class="mathline">
+        \[
+        e^x
+        =
+        1+x+\frac{x^2}{2!}
+        +\frac{x^3}{3!}
+        +\cdots,
+    \]
+    </div>
+
+    <p>
+        os primeiros polinômios de Maclaurin são
+    </p>
+
+    <div class="mathline">
+        \[
+        T_0(x)=1,
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        T_1(x)=1+x,
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        T_2(x)=1+x+\frac{x^2}{2},
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        T_3(x)
+        =
+        1+x+\frac{x^2}{2}
+        +\frac{x^3}{6}.
+    \]
+    </div>
+
+    <p>
+        Quanto maior o grau, maior é o número de derivadas da função
+        reproduzidas no centro \(x=0\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. SENO -->
+    <!-- ========================================================= -->
+
+    <h2>12. Série de Maclaurin para \(\sin x\)</h2>
+
+    <p>
+        Considere
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)=\sin x.
+    \]
+    </div>
+
+    <p>
+        As derivadas seguem um ciclo:
+    </p>
+
+    <div class="mathline">
+        \[
+        \sin x,\qquad
+        \cos x,\qquad
+        -\sin x,\qquad
+        -\cos x,\qquad
+        \sin x,\ldots
+        \]
+    </div>
+
+    <p>
+        Em \(x=0\),
+    </p>
+
+    <div class="mathline">
+        \[
+        \sin0=0,
+        \qquad
+        \cos0=1.
+    \]
+    </div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \sin x
+            =
+            x
+            -
+            \frac{x^3}{3!}
+            +
+            \frac{x^5}{5!}
+            -
+            \frac{x^7}{7!}
+            +\cdots
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \sin x
+            =
+            \sum_{n=0}^{\infty}
+            (-1)^n
+            \frac{x^{2n+1}}{(2n+1)!}
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{R=\infty}
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- FIGURA EXISTENTE -->
+    <!-- ========================================================= -->
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/taylor-sen.png"
+            alt="Aproximações polinomiais da função seno."
+        >
+
+        <figcaption>
+            Aproximações polinomiais da função seno. Os polinômios
+            de Maclaurin reproduzem progressivamente mais características
+            locais da função em torno de \(x=0\).
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. COSSENO -->
+    <!-- ========================================================= -->
+
+    <h2>13. Série de Maclaurin para \(\cos x\)</h2>
+
+    <p>
+        De maneira análoga,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \cos x
+            =
+            1
+            -
+            \frac{x^2}{2!}
+            +
+            \frac{x^4}{4!}
+            -
+            \frac{x^6}{6!}
+            +\cdots
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \cos x
+            =
+            \sum_{n=0}^{\infty}
+            (-1)^n
+            \frac{x^{2n}}{(2n)!}
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{R=\infty}
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. SÉRIE FORMAL X FUNÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>14. A série de Taylor é sempre igual à função?</h2>
+
+    <p>
+        Não basta calcular formalmente os coeficientes
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{f^{(n)}(a)}{n!}.
+    \]
+    </div>
+
+    <p>
+        Para afirmar que
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        \sum_{n=0}^{\infty}
+        \frac{f^{(n)}(a)}{n!}(x-a)^n,
+    \]
+    </div>
+
+    <p>
+        precisamos verificar que os polinômios de Taylor realmente
+        convergem para \(f(x)\).
+    </p>
+
+    <p>
+        Essa questão é estudada por meio do
+        <strong>resto da série de Taylor</strong>.
+    </p>
+
+    <div class="note">
+
+        <strong>Ponto conceitual.</strong>
+
+        A existência das derivadas e a construção formal da série de
+        Taylor não são, por si sós, suficientes para garantir que a soma
+        da série seja igual à função.
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. RESTO -->
+    <!-- ========================================================= -->
+
+    <h2>15. Resto da série de Taylor</h2>
+
+    <p>
+        Definimos o resto de ordem \(n\) por
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            R_n(x)=f(x)-T_n(x)
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Consequentemente,
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        f(x)=T_n(x)+R_n(x)
+        }.
+    \]
+    </div>
+
+    <p>
+        O termo \(T_n(x)\) é a aproximação polinomial e
+        \(R_n(x)\) mede exatamente a diferença entre a função e essa
+        aproximação.
+    </p>
+
+    <p>
+        Em particular,
+    </p>
+
+    <div class="mathline">
+        \[
+        |R_n(x)|
+        =
+        |f(x)-T_n(x)|
+    \]
+    </div>
+
+    <p>
+        é o <strong>erro absoluto da aproximação</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. CONVERGÊNCIA -->
+    <!-- ========================================================= -->
+
+    <h2>16. Quando a série de Taylor representa a função?</h2>
+
+    <p>
+        Como
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)=T_n(x)+R_n(x),
+    \]
+    </div>
+
+    <p>
+        temos
+    </p>
+
+    <div class="mathline">
+        \[
+        T_n(x)=f(x)-R_n(x).
+    \]
+    </div>
+
+    <p>
+        Se conseguirmos mostrar que
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \lim_{n\to\infty}R_n(x)=0,
+        }
+    \]
+    </div>
+
+    <p>
+        então
+    </p>
+
+    <div class="mathline">
+        \[
+        \lim_{n\to\infty}T_n(x)
+        =
+        f(x).
+    \]
+    </div>
+
+    <p>
+        Nesse caso, a série de Taylor converge efetivamente para a
+        função:
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            f(x)
+            =
+            \sum_{n=0}^{\infty}
+            \frac{f^{(n)}(a)}{n!}
+            (x-a)^n
+            }
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. DESIGUALDADE DE TAYLOR -->
+    <!-- ========================================================= -->
+
+    <h2>17. Desigualdade de Taylor</h2>
+
+    <p>
+        Para controlar o tamanho do resto, utilizamos a
+        <strong>Desigualdade de Taylor</strong>.
+    </p>
+
+    <p>
+        Suponha que exista uma constante \(M\) tal que
+    </p>
+
+    <div class="mathline">
+        \[
+        \left|
+        f^{(n+1)}(t)
+        \right|
+        \leq M
+    \]
+    </div>
+
+    <p>
+        para os valores de \(t\) considerados entre o centro \(a\)
+        e o ponto \(x\).
+    </p>
+
+    <p>
+        Então,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            |R_n(x)|
+            \leq
+            \frac{M}{(n+1)!}
+            |x-a|^{n+1}
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa desigualdade fornece um limite superior para o erro cometido
+        ao substituir \(f(x)\) por \(T_n(x)\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. COMO USAR A DESIGUALDADE -->
+    <!-- ========================================================= -->
+
+    <h2>18. Como utilizar a estimativa do resto?</h2>
+
+    <div class="steps">
+
+        <strong>Procedimento.</strong>
+
+        <ol>
+
+            <li>
+                Identifique o centro \(a\) e a ordem \(n\) do
+                polinômio utilizado.
+            </li>
+
+            <li>
+                Calcule ou identifique
+                \[
+                f^{(n+1)}(x).
+                \]
+            </li>
+
+            <li>
+                Determine um número \(M\) que satisfaça
+                \[
+                |f^{(n+1)}(t)|\leq M
+                \]
+                no intervalo relevante.
+            </li>
+
+            <li>
+                Substitua os valores na desigualdade
+                \[
+                |R_n(x)|
+                \leq
+                \frac{M}{(n+1)!}|x-a|^{n+1}.
+                \]
+            </li>
+
+            <li>
+                Compare o limite obtido com a tolerância de erro desejada.
+            </li>
+
+        </ol>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. CASO N=1 -->
+    <!-- ========================================================= -->
+
+    <h2>19. Caso particular: aproximação linear</h2>
+
+    <p>
+        Para \(n=1\), o polinômio de Taylor é
+    </p>
+
+    <div class="mathline">
+        \[
+        T_1(x)
+        =
+        f(a)+f'(a)(x-a).
+    \]
+    </div>
+
+    <p>
+        Esse é exatamente o polinômio utilizado na aproximação linear.
+    </p>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        |f''(t)|\leq M,
+    \]
+    </div>
+
+    <p>
+        então a Desigualdade de Taylor fornece
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            |R_1(x)|
+            \leq
+            \frac{M}{2}
+            |x-a|^2
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Portanto, o erro da aproximação linear pode ser controlado por
+        uma quantidade proporcional ao quadrado da distância entre
+        \(x\) e o centro \(a\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. RESTO DE LAGRANGE -->
+    <!-- ========================================================= -->
+
+    <h2>20. Forma de Lagrange do resto</h2>
+
+    <p>
+        Sob as hipóteses adequadas, existe um ponto \(c\) entre
+        \(a\) e \(x\) tal que
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            R_n(x)
+            =
+            \frac{f^{(n+1)}(c)}
+                 {(n+1)!}
+            (x-a)^{n+1}
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa expressão é conhecida como
+        <strong>forma de Lagrange do resto</strong>.
+    </p>
+
+    <p>
+        Tomando valores absolutos,
+    </p>
+
+    <div class="mathline">
+        \[
+        |R_n(x)|
+        =
+        \frac{|f^{(n+1)}(c)|}
+             {(n+1)!}
+        |x-a|^{n+1}.
+    \]
+    </div>
+
+    <p>
+        Se sabemos que
+    </p>
+
+    <div class="mathline">
+        \[
+        |f^{(n+1)}(c)|\leq M,
+    \]
+    </div>
+
+    <p>
+        recuperamos imediatamente a Desigualdade de Taylor.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. RESTO INTEGRAL -->
+    <!-- ========================================================= -->
+
+    <h2>21. Forma integral do resto</h2>
+
+    <p>
+        Outra expressão para o erro é a
+        <strong>forma integral do resto</strong>:
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            R_n(x)
+            =
+            \frac{1}{n!}
+            \int_a^x
+            (x-t)^n
+            f^{(n+1)}(t)\,dt
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        As formas integral e de Lagrange descrevem o mesmo fenômeno:
+        a diferença entre a função e seu polinômio de Taylor depende
+        das derivadas de ordem superior que não foram incorporadas
+        ao polinômio.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. EXPONENCIAL E RESTO -->
+    <!-- ========================================================= -->
+
+    <h2>22. Por que a série de Maclaurin de \(e^x\) representa \(e^x\)?</h2>
+
+    <p>
+        Para
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)=e^x,
+    \]
+    </div>
+
+    <p>
+        temos
+    </p>
+
+    <div class="mathline">
+        \[
+        f^{(n+1)}(x)=e^x
+    \]
+    </div>
+
+    <p>
+        para qualquer \(n\).
+    </p>
+
+    <p>
+        Fixe um número \(d&gt;0\) e considere
+    </p>
+
+    <div class="mathline">
+        \[
+        |x|\leq d.
+    \]
+    </div>
+
+    <p>
+        Nesse intervalo,
+    </p>
+
+    <div class="mathline">
+        \[
+        |f^{(n+1)}(x)|
+        =
+        e^x
+        \leq e^d.
+    \]
+    </div>
+
+    <p>
+        Podemos, portanto, tomar
+    </p>
+
+    <div class="mathline">
+        \[
+        M=e^d.
+    \]
+    </div>
+
+    <p>
+        Pela Desigualdade de Taylor,
+    </p>
+
+    <div class="mathline">
+        \[
+        |R_n(x)|
+        \leq
+        \frac{e^d}{(n+1)!}
+        |x|^{n+1}.
+    \]
+    </div>
+
+    <p>
+        Para \(x\) fixado, o crescimento do fatorial no denominador
+        domina a potência no numerador, de modo que
+    </p>
+
+    <div class="mathline">
+        \[
+        \lim_{n\to\infty}
+        R_n(x)=0.
+    \]
+    </div>
+
+    <p>
+        Consequentemente,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            e^x
+            =
+            \sum_{n=0}^{\infty}
+            \frac{x^n}{n!}
+            }
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            -\infty&lt;x&lt;\infty.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Assim, nesse caso não temos apenas uma série formal:
+        a série de Maclaurin efetivamente converge para \(e^x\)
+        para todo número real \(x\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 23. APROXIMAÇÃO NUMÉRICA -->
+    <!-- ========================================================= -->
+
+    <h2>23. Aproximações numéricas com polinômios de Taylor</h2>
+
+    <p>
+        Uma das aplicações mais importantes dos polinômios de Taylor
+        é aproximar valores de funções utilizando apenas operações
+        algébricas.
+    </p>
+
+    <p>
+        Por exemplo,
+    </p>
+
+    <div class="mathline">
+        \[
+        e^x
+        \approx
+        T_n(x)
+        =
+        \sum_{k=0}^{n}
+        \frac{x^k}{k!}.
+    \]
+    </div>
+
+    <p>
+        Para \(n=3\),
+    </p>
+
+    <div class="mathline">
+        \[
+        e^x
+        \approx
+        1+x+\frac{x^2}{2}
+        +\frac{x^3}{6}.
+    \]
+    </div>
+
+    <p>
+        Se desejarmos aproximar \(e^{0,1}\), obtemos
+    </p>
+
+    <div class="mathline">
+        \[
+        e^{0,1}
+        \approx
+        1+0,1+
+        \frac{(0,1)^2}{2}
+        +
+        \frac{(0,1)^3}{6}.
+    \]
+    </div>
+
+    <p>Assim,</p>
+
+    <div class="mathline">
+        \[
+        e^{0,1}
+        \approx
+        1+0,1+0,005+0,0001667.
+    \]
+    </div>
+
+    <p>Portanto,</p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        e^{0,1}\approx1,1051667
+        }.
+    \]
+    </div>
+
+    <p>
+        O resto de Taylor pode então ser utilizado para estimar o erro
+        cometido nessa aproximação.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 24. SÉRIES IMPORTANTES -->
+    <!-- ========================================================= -->
+
+    <h2>24. Séries de Maclaurin importantes</h2>
+
+    <p>
+        Algumas séries aparecem repetidamente em problemas de cálculo
+        e devem ser reconhecidas.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Série geométrica</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1-x}
+            =
+            \sum_{n=0}^{\infty}x^n,
+            \qquad R=1.
+            \]
+        </div>
+
+        <p>
+            <strong>Exponencial</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            e^x
+            =
+            \sum_{n=0}^{\infty}
+            \frac{x^n}{n!},
+            \qquad R=\infty.
+            \]
+        </div>
+
+        <p>
+            <strong>Seno</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \sin x
+            =
+            \sum_{n=0}^{\infty}
+            (-1)^n
+            \frac{x^{2n+1}}
+                 {(2n+1)!},
+            \qquad R=\infty.
+            \]
+        </div>
+
+        <p>
+            <strong>Cosseno</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \cos x
+            =
+            \sum_{n=0}^{\infty}
+            (-1)^n
+            \frac{x^{2n}}
+                 {(2n)!},
+            \qquad R=\infty.
+            \]
+        </div>
+
+        <p>
+            <strong>Arco-tangente</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \arctan x
+            =
+            \sum_{n=0}^{\infty}
+            (-1)^n
+            \frac{x^{2n+1}}
+                 {2n+1},
+            \qquad R=1.
+            \]
+        </div>
+
+        <p>
+            <strong>Logaritmo</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \ln(1+x)
+            =
+            \sum_{n=1}^{\infty}
+            (-1)^{n-1}
+            \frac{x^n}{n},
+            \qquad R=1.
+            \]
+        </div>
+
+        <p>
+            <strong>Série binomial</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            (1+x)^k
+            =
+            \sum_{n=0}^{\infty}
+            \binom{k}{n}x^n,
+            \qquad R=1.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 25. SÉRIE BINOMIAL -->
+    <!-- ========================================================= -->
+
+    <h2>25. Série binomial</h2>
+
+    <p>
+        Na expressão
+    </p>
+
+    <div class="mathline">
+        \[
+        (1+x)^k
+        =
+        \sum_{n=0}^{\infty}
+        \binom{k}{n}x^n,
+    \]
+    </div>
+
+    <p>
+        o coeficiente binomial generalizado é dado por
+    </p>
+
+    <div class="mathline">
+        \[
+        \binom{k}{n}
+        =
+        \frac{
+        k(k-1)(k-2)\cdots(k-n+1)
+        }{n!}.
+    \]
+    </div>
+
+    <p>
+        Assim,
+    </p>
+
+    <div class="mathline">
+        \[
+        (1+x)^k
+        =
+        1
+        +
+        kx
+        +
+        \frac{k(k-1)}{2!}x^2
+        +
+        \frac{k(k-1)(k-2)}{3!}x^3
+        +\cdots.
+    \]
+    </div>
+
+    <p>
+        Essa representação é particularmente útil quando \(k\) não é
+        um inteiro não negativo, situação em que a expansão não termina
+        em um polinômio finito.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 26. ESCOLHA DO CENTRO -->
+    <!-- ========================================================= -->
+
+    <h2>26. O papel do centro \(a\)</h2>
+
+    <p>
+        A série de Taylor é construída em torno de um ponto específico
+        \(a\). Por isso, a escolha do centro é parte importante do
+        problema.
+    </p>
+
+    <p>
+        Se desejamos aproximar \(f(x)\) para valores de \(x\) próximos
+        de \(a\), escrevemos
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        \approx
+        T_n(x).
+    \]
+    </div>
+
+    <p>
+        A estimativa do resto contém explicitamente o fator
+    </p>
+
+    <div class="mathline">
+        \[
+        |x-a|^{n+1},
+    \]
+    </div>
+
+    <p>
+        mostrando por que a distância ao centro desempenha papel
+        fundamental na qualidade da aproximação.
+    </p>
+
+    <div class="note">
+
+        <strong>Interpretação prática.</strong>
+
+        Os polinômios de Taylor são aproximações locais. Em geral,
+        a aproximação tende a ser mais eficiente quando \(x\) está
+        próximo do centro \(a\), embora a região efetiva de convergência
+        dependa da função considerada.
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 27. ERRO X CONVERGÊNCIA -->
+    <!-- ========================================================= -->
+
+    <h2>27. Não confunda erro de aproximação com raio de convergência</h2>
+
+    <p>
+        São duas questões relacionadas, mas distintas.
+    </p>
+
+    <p>
+        O <strong>raio de convergência</strong> informa para quais
+        valores de \(x\) a série de potências converge.
+    </p>
+
+    <p>
+        O <strong>resto de Taylor</strong>
+    </p>
+
+    <div class="mathline">
+        \[
+        R_n(x)=f(x)-T_n(x)
+    \]
+    </div>
+
+    <p>
+        informa quão distante o polinômio de grau \(n\) está da função.
+    </p>
+
+    <p>
+        Para afirmar que a série de Taylor representa \(f\), precisamos
+        estabelecer que
+    </p>
+
+    <div class="mathline">
+        \[
+        R_n(x)\longrightarrow0.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 28. ERROS COMUNS -->
+    <!-- ========================================================= -->
+
+    <h2>28. Cuidados importantes</h2>
+
+    <ul class="property-list">
+
+        <li>
+            Não confunda série de Taylor com polinômio de Taylor:
+            a série possui infinitos termos; \(T_n\) possui apenas
+            termos até o grau \(n\).
+        </li>
+
+        <li>
+            Não esqueça o fatorial:
+            \[
+            c_n=\frac{f^{(n)}(a)}{n!}.
+            \]
+        </li>
+
+        <li>
+            Em uma série centrada em \(a\), as potências são de
+            \[
+            (x-a),
+            \]
+            e não simplesmente de \(x\).
+        </li>
+
+        <li>
+            Maclaurin significa especificamente Taylor centrada em
+            \[
+            a=0.
+            \]
+        </li>
+
+        <li>
+            Construir formalmente a série não prova que ela converge
+            para a função.
+        </li>
+
+        <li>
+            Para estudar a aproximação
+            \[
+            f(x)\approx T_n(x),
+            \]
+            é necessário considerar o resto \(R_n(x)\).
+        </li>
+
+        <li>
+            Ao utilizar a Desigualdade de Taylor, \(M\) deve realmente
+            limitar
+            \[
+            |f^{(n+1)}(t)|
+            \]
+            no intervalo relevante.
+        </li>
+
+        <li>
+            O grau necessário depende simultaneamente da função,
+            da distância \(|x-a|\) e da precisão desejada.
+        </li>
+
+    </ul>
+
+
+    <!-- ========================================================= -->
+    <!-- 29. PROCEDIMENTO -->
+    <!-- ========================================================= -->
+
+    <h2>29. Estratégia para construir uma série de Taylor</h2>
+
+    <div class="steps">
+
+        <strong>Procedimento.</strong>
+
+        <ol>
+
+            <li>
+                Identifique a função \(f(x)\).
+            </li>
+
+            <li>
+                Determine o centro \(a\).
+            </li>
+
+            <li>
+                Calcule
+                \[
+                f(x),\;
+                f'(x),\;
+                f''(x),\;
+                f'''(x),\ldots
+                \]
+                procurando identificar um padrão.
+            </li>
+
+            <li>
+                Avalie as derivadas em \(x=a\).
+            </li>
+
+            <li>
+                Determine
+                \[
+                c_n=
+                \frac{f^{(n)}(a)}{n!}.
+                \]
+            </li>
+
+            <li>
+                Escreva a série
+                \[
+                \sum_{n=0}^{\infty}
+                \frac{f^{(n)}(a)}{n!}
+                (x-a)^n.
+                \]
+            </li>
+
+            <li>
+                Determine a região de convergência quando necessário.
+            </li>
+
+            <li>
+                Se for necessário provar que a série representa
+                \(f(x)\), estude o resto \(R_n(x)\).
+            </li>
+
+        </ol>
+
+    </div>
+
+
+ 
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+
+            <strong>Visualização no GeoGebra</strong>
+
+            <p>
+                Compare uma função com seus polinômios de Taylor.
+                Por exemplo, represente
+                \[
+                f(x)=e^x
+                \]
+                juntamente com
+                \[
+                T_1(x),\;
+                T_2(x),\;
+                T_3(x)
+                \]
+                e polinômios de graus maiores. Observe como a
+                aproximação se modifica à medida que novos termos
+                são adicionados.
+            </p>
+
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/graphing"
+            target="_blank"
+            rel="noopener noreferrer">
+            Abrir GeoGebra ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIA -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+
+        <strong>Referência principal:</strong>
+        Stewart, J. (2013).
+        <em>Cálculo</em>, volume 1.
+        Cengage Learning, São Paulo.
+
+        <br><br>
+
+        Conteúdo correspondente às Aulas 74–76:
+        séries de Taylor e Maclaurin, polinômios de Taylor,
+        resto da série de Taylor, Desigualdade de Taylor,
+        formas integral e de Lagrange do resto, aproximações
+        e séries de Maclaurin importantes.
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
