@@ -160,7 +160,7 @@
 
 
         <!-- =====================================================
-             INVERSAS
+             DERIVADAS TRIGONOMÉTRICAS INVERSAS
              ===================================================== -->
 
         <h2>2. Derivadas das funções trigonométricas inversas</h2>
@@ -203,8 +203,7 @@
                 \[
                 \frac{d}{dx}(\operatorname{arcsec}u)
                 =
-                \frac{u'}
-                {|u|\sqrt{u^2-1}},
+                \frac{u'}{|u|\sqrt{u^2-1}},
                 \qquad |u|&gt;1
                 \]
             </div>
@@ -213,8 +212,7 @@
                 \[
                 \frac{d}{dx}(\operatorname{arccsc}u)
                 =
-                -\frac{u'}
-                {|u|\sqrt{u^2-1}},
+                -\frac{u'}{|u|\sqrt{u^2-1}},
                 \qquad |u|&gt;1
                 \]
             </div>
@@ -232,7 +230,7 @@
 
             <div class="mathline">
                 \[
-                \int\sin u\,du
+                \int \sin u\,du
                 =
                 -\cos u+C
                 \]
@@ -240,7 +238,7 @@
 
             <div class="mathline">
                 \[
-                \int\cos u\,du
+                \int \cos u\,du
                 =
                 \sin u+C
                 \]
@@ -248,7 +246,7 @@
 
             <div class="mathline">
                 \[
-                \int\tan u\,du
+                \int \tan u\,du
                 =
                 \ln|\sec u|+C
                 \]
@@ -256,7 +254,7 @@
 
             <div class="mathline">
                 \[
-                \int\cot u\,du
+                \int \cot u\,du
                 =
                 \ln|\sin u|+C
                 \]
@@ -264,7 +262,7 @@
 
             <div class="mathline">
                 \[
-                \int\sec u\,du
+                \int \sec u\,du
                 =
                 \ln|\sec u+\tan u|+C
                 \]
@@ -272,7 +270,7 @@
 
             <div class="mathline">
                 \[
-                \int\csc u\,du
+                \int \csc u\,du
                 =
                 \ln|\csc u-\cot u|+C
                 \]
@@ -280,7 +278,7 @@
 
             <div class="mathline">
                 \[
-                \int\sec u\tan u\,du
+                \int \sec u\tan u\,du
                 =
                 \sec u+C
                 \]
@@ -288,7 +286,7 @@
 
             <div class="mathline">
                 \[
-                \int\csc u\cot u\,du
+                \int \csc u\cot u\,du
                 =
                 -\csc u+C
                 \]
@@ -296,7 +294,7 @@
 
             <div class="mathline">
                 \[
-                \int\sec^2u\,du
+                \int \sec^2u\,du
                 =
                 \tan u+C
                 \]
@@ -304,7 +302,7 @@
 
             <div class="mathline">
                 \[
-                \int\csc^2u\,du
+                \int \csc^2u\,du
                 =
                 -\cot u+C
                 \]
@@ -314,7 +312,7 @@
 
 
         <!-- =====================================================
-             QUADRADOS
+             INTEGRAIS DE QUADRADOS
              ===================================================== -->
 
         <h2>4. Integrais envolvendo \(\sin^2u\) e \(\cos^2u\)</h2>
@@ -807,7 +805,9 @@
         </p>
 
 
-        <!-- PARABOLOIDE ELÍPTICO -->
+        <!-- =====================================================
+             PARABOLOIDE ELÍPTICO
+             ===================================================== -->
 
         <h3>12.1 Paraboloide elíptico</h3>
 
@@ -847,7 +847,7 @@
         <figure class="figure">
 
             <img
-                src="../assets/img/quadricas/paraboloide-eliptico.png"
+                src="../assets/img/aulas/paraboloide-eliptico.png"
                 alt="Paraboloide elíptico."
             >
 
@@ -859,7 +859,9 @@
         </figure>
 
 
-        <!-- PARABOLOIDE HIPERBÓLICO -->
+        <!-- =====================================================
+             PARABOLOIDE HIPERBÓLICO
+             ===================================================== -->
 
         <h3>12.2 Paraboloide hiperbólico</h3>
 
@@ -910,7 +912,7 @@
         <figure class="figure">
 
             <img
-                src="../assets/img/quadricas/paraboloide-hiperbolico.png"
+                src="../assets/img/aulas/paraboloide-hiperbolico.png"
                 alt="Paraboloide hiperbólico."
             >
 
@@ -922,7 +924,9 @@
         </figure>
 
 
-        <!-- ELIPSOIDE -->
+        <!-- =====================================================
+             ELIPSOIDE
+             ===================================================== -->
 
         <h3>12.3 Elipsoide</h3>
 
@@ -977,7 +981,7 @@
         <figure class="figure">
 
             <img
-                src="../assets/img/quadricas/elipsoide.png"
+                src="../assets/img/aulas/elipsoide.png"
                 alt="Elipsoide."
             >
 
@@ -989,7 +993,9 @@
         </figure>
 
 
-        <!-- CILINDRO -->
+        <!-- =====================================================
+             CILINDRO ELÍPTICO
+             ===================================================== -->
 
         <h3>12.4 Cilindro elíptico</h3>
 
@@ -1013,7 +1019,6 @@
         </p>
 
         <div class="note">
-            <strong>Reconhecimento.</strong>
             Quando uma variável não aparece na equação de
             uma superfície cilíndrica, a superfície se prolonga
             paralelamente ao eixo associado a essa variável.
@@ -1022,7 +1027,7 @@
         <figure class="figure">
 
             <img
-                src="../assets/img/quadricas/cilindro-eliptico.png"
+                src="../assets/img/aulas/cilindro-eliptico.png"
                 alt="Cilindro elíptico."
             >
 
@@ -1034,7 +1039,9 @@
         </figure>
 
 
-        <!-- CONE -->
+        <!-- =====================================================
+             CONE ELÍPTICO
+             ===================================================== -->
 
         <h3>12.5 Cone elíptico</h3>
 
@@ -1065,7 +1072,7 @@
         <figure class="figure">
 
             <img
-                src="../assets/img/quadricas/cone-eliptico.png"
+                src="../assets/img/aulas/cone-eliptico.png"
                 alt="Cone elíptico."
             >
 
@@ -1076,7 +1083,9 @@
         </figure>
 
 
-        <!-- HIPERBOLOIDE UMA FOLHA -->
+        <!-- =====================================================
+             HIPERBOLOIDE DE UMA FOLHA
+             ===================================================== -->
 
         <h3>12.6 Hiperboloide de uma folha</h3>
 
@@ -1123,7 +1132,7 @@
         <figure class="figure">
 
             <img
-                src="../assets/img/quadricas/hiperboloide-uma-folha.png"
+                src="../assets/img/aulas/hiperboloide-uma-folha.png"
                 alt="Hiperboloide de uma folha."
             >
 
@@ -1135,7 +1144,9 @@
         </figure>
 
 
-        <!-- HIPERBOLOIDE DUAS FOLHAS -->
+        <!-- =====================================================
+             HIPERBOLOIDE DE DUAS FOLHAS
+             ===================================================== -->
 
         <h3>12.7 Hiperboloide de duas folhas</h3>
 
@@ -1166,12 +1177,12 @@
 
         <div class="mathline">
             \[
-            \frac{z^2}{c^2}=1,
+            \frac{z^2}{c^2}=1.
             \]
         </div>
 
         <p>
-            de modo que os vértices são
+            Portanto, os vértices são
         </p>
 
         <div class="mathline">
@@ -1185,7 +1196,7 @@
         <figure class="figure">
 
             <img
-                src="../assets/img/quadricas/hiperboloide-duas-folhas.png"
+                src="../assets/img/aulas/hiperboloide-duas-folhas.png"
                 alt="Hiperboloide de duas folhas."
             >
 
@@ -1197,7 +1208,9 @@
         </figure>
 
 
-        <!-- PLANO -->
+        <!-- =====================================================
+             PLANO
+             ===================================================== -->
 
         <h3>12.8 Plano</h3>
 
@@ -1247,7 +1260,7 @@
         <figure class="figure">
 
             <img
-                src="../assets/img/quadricas/plano.png"
+                src="../assets/img/aulas/plano.png"
                 alt="Plano em três dimensões."
             >
 
@@ -1260,7 +1273,7 @@
 
 
         <!-- =====================================================
-             RECONHECIMENTO
+             RECONHECIMENTO DAS SUPERFÍCIES
              ===================================================== -->
 
         <h2>13. Reconhecimento das superfícies pela equação</h2>
