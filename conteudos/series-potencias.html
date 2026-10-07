@@ -1,4 +1,2087 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Séries de potências | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Séries de potências</div><p class="eyebrow">PARTE 4 · AULAS 69–71</p><h1>Séries de potências</h1><p class="lead">Centro, coeficientes, raio de convergência, intervalo de convergência e análise dos extremos.</p><h2>1. Definição</h2><div class="mathline">\[\sum_{n=0}^{\infty}c_n(x-a)^n.\]</div><p>\(a\) é o centro e \(c_n\) são os coeficientes.</p>
-<h2>2. Raio de convergência</h2><p>A série converge para \(|x-a|&lt;R\) e diverge para \(|x-a|&gt;R\). Os extremos devem ser testados separadamente.</p><figure class="figure"><img src="../assets/img/aulas/potencias-convergencia.png" alt="Estrutura típica do intervalo associado ao raio de convergência."><figcaption>Estrutura típica do intervalo associado ao raio de convergência. Figura do material das aulas da GCT054.</figcaption></figure>
-<div class="steps"><strong>Procedimento.</strong><ol><li>Use Razão ou Raiz.</li><li>Isole a condição sobre \(x\).</li><li>Identifique \(R\).</li><li>Teste os extremos separadamente.</li></ol></div>
-<div class="example"><strong>Exemplo resolvido.</strong><div class="mathline">\[\sum_{n=1}^{\infty}\frac{(x-3)^n}{n}.\]</div><p>O Teste da Razão fornece</p><div class="mathline">\[|x-3|&lt;1.\]</div><p>Logo \(2&lt;x&lt;4\). Em \(x=4\), surge a harmônica, que diverge; em \(x=2\), surge a harmônica alternada, que converge.</p><div class="mathline">\[R=1.\]</div><div class="mathline">\[\text{Intervalo}=[2,4).\]</div></div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Séries de potências | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a> / Séries de potências
+    </div>
+
+    <p class="eyebrow">PARTE 4 · AULAS 69–71</p>
+
+    <h1>Séries de potências</h1>
+
+    <p class="lead">
+        Séries de potências são séries infinitas que dependem de uma variável
+        \(x\). Dependendo do valor atribuído a essa variável, a série pode
+        convergir ou divergir. Nesta seção estudaremos sua definição, o centro
+        da série, o raio e o intervalo de convergência, a análise dos extremos
+        e o uso do Teste da Razão para determinar onde uma série de potências
+        representa uma função.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. DEFINIÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>1. O que é uma série de potências?</h2>
+
+    <p>
+        Uma série de potências em \(x\) é uma série infinita da forma
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}c_nx^n.
+        \]
+    </div>
+
+    <p>Escrevendo os primeiros termos, temos</p>
+
+    <div class="mathline">
+        \[
+        c_0+c_1x+c_2x^2+c_3x^3+\cdots.
+        \]
+    </div>
+
+    <p>
+        Os números
+    </p>
+
+    <div class="mathline">
+        \[
+        c_0,c_1,c_2,c_3,\ldots
+        \]
+    </div>
+
+    <p>
+        são constantes denominadas <strong>coeficientes</strong> da série,
+        enquanto \(x\) é uma variável.
+    </p>
+
+    <p>
+        A diferença fundamental em relação às séries numéricas estudadas
+        anteriormente é que agora a convergência pode depender do valor de
+        \(x\).
+    </p>
+
+    <p>
+        Para cada valor fixado de \(x\), a série de potências transforma-se
+        em uma série numérica. Essa série poderá convergir ou divergir.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. SÉRIE COMO FUNÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>2. Uma série de potências define uma função</h2>
+
+    <p>
+        Quando a série converge, sua soma depende do valor de \(x\).
+        Podemos, portanto, definir uma função por
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        \sum_{n=0}^{\infty}c_nx^n.
+        \]
+    </div>
+
+    <p>Ou, desenvolvendo a série,</p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        c_0+c_1x+c_2x^2+c_3x^3+\cdots.
+        \]
+    </div>
+
+    <p>
+        O domínio dessa função não precisa ser todo o conjunto dos números
+        reais. Ele é formado precisamente pelos valores de \(x\) para os
+        quais a série converge.
+    </p>
+
+    <div class="note">
+        <strong>Ideia central.</strong>
+        Em uma série de potências, uma das primeiras questões é determinar:
+        para quais valores de \(x\) a série converge?
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. EXEMPLO INTRODUTÓRIO -->
+    <!-- ========================================================= -->
+
+    <h2>3. Exemplo introdutório: a série geométrica</h2>
+
+    <p>
+        Considere o caso em que
+    </p>
+
+    <div class="mathline">
+        \[
+        c_n=1
+        \]
+    </div>
+
+    <p>para todo \(n\). Obtemos</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}x^n
+        =
+        1+x+x^2+x^3+\cdots.
+        \]
+    </div>
+
+    <p>
+        Essa é uma série geométrica com primeiro termo \(1\) e razão \(x\).
+    </p>
+
+    <p>
+        Sabemos que uma série geométrica converge quando o módulo da razão
+        é menor que \(1\). Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        |x|&lt;1.
+        \]
+    </div>
+
+    <p>Equivalentemente,</p>
+
+    <div class="mathline">
+        \[
+        -1&lt;x&lt;1.
+        \]
+    </div>
+
+    <p>
+        Nesse intervalo,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \sum_{n=0}^{\infty}x^n
+            =
+            \frac{1}{1-x},
+            \qquad |x|&lt;1
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Assim, uma mesma expressão
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}x^n
+    \]
+    </div>
+
+    <p>
+        converge para alguns valores de \(x\) e diverge para outros.
+        Esse é o comportamento característico das séries de potências.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. SÉRIES CENTRADAS -->
+    <!-- ========================================================= -->
+
+    <h2>4. Séries de potências centradas em \(a\)</h2>
+
+    <p>
+        A forma mais geral estudada nas aulas é
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n.
+        \]
+    </div>
+
+    <p>Desenvolvendo os primeiros termos,</p>
+
+    <div class="mathline">
+        \[
+        c_0
+        +
+        c_1(x-a)
+        +
+        c_2(x-a)^2
+        +
+        c_3(x-a)^3
+        +\cdots.
+        \]
+    </div>
+
+    <p>
+        Essa expressão é denominada <strong>série de potências em
+        \((x-a)\)</strong> ou série de potências
+        <strong>centrada em \(a\)</strong>.
+    </p>
+
+    <p>
+        O número \(a\) recebe o nome de <strong>centro</strong> da série.
+    </p>
+
+    <div class="mathbox">
+
+        <strong>Forma geral.</strong>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \sum_{n=0}^{\infty}
+            c_n(x-a)^n
+            }
+            \]
+        </div>
+
+        <p>
+            \(a\): centro da série.
+        </p>
+
+        <p>
+            \(c_n\): coeficientes da série.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. CONVERGÊNCIA NO CENTRO -->
+    <!-- ========================================================= -->
+
+    <h2>5. Convergência no centro</h2>
+
+    <p>
+        Uma propriedade imediata aparece quando substituímos
+    </p>
+
+    <div class="mathline">
+        \[
+        x=a.
+        \]
+    </div>
+
+    <p>Nesse caso,</p>
+
+    <div class="mathline">
+        \[
+        x-a=0.
+        \]
+    </div>
+
+    <p>Logo,</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n
+        =
+        c_0+c_1(0)+c_2(0)^2+\cdots
+        =
+        c_0.
+        \]
+    </div>
+
+    <p>
+        Portanto, uma série de potências centrada em \(a\)
+        <strong>sempre converge em seu centro</strong>.
+    </p>
+
+    <div class="note">
+        Ao estudar o conjunto de convergência de uma série de potências,
+        o centro \(x=a\) sempre pertence a esse conjunto.
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. TRÊS POSSIBILIDADES -->
+    <!-- ========================================================= -->
+
+    <h2>6. Como pode ser o conjunto de convergência?</h2>
+
+    <p>
+        Para uma série de potências
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n,
+        \]
+    </div>
+
+    <p>
+        existem três possibilidades para os valores de \(x\) em que ocorre
+        convergência.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>1.</strong> A série converge somente no centro:
+        </p>
+
+        <div class="mathline">
+            \[
+            x=a.
+            \]
+        </div>
+
+        <p>
+            <strong>2.</strong> A série converge para todo
+            \(x\in\mathbb{R}\).
+        </p>
+
+        <p>
+            <strong>3.</strong> Existe um número \(R&gt;0\) tal que
+        </p>
+
+        <div class="mathline">
+            \[
+            |x-a|&lt;R
+        \]
+        </div>
+
+        <p>
+            implica convergência, enquanto
+        </p>
+
+        <div class="mathline">
+            \[
+            |x-a|&gt;R
+        \]
+        </div>
+
+        <p>
+            implica divergência.
+        </p>
+
+    </div>
+
+    <p>
+        O número \(R\) que aparece nessa classificação é denominado
+        <strong>raio de convergência</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. RAIO -->
+    <!-- ========================================================= -->
+
+    <h2>7. Raio de convergência</h2>
+
+    <p>
+        O raio de convergência descreve a distância, medida a partir do
+        centro \(a\), dentro da qual a série converge.
+    </p>
+
+    <p>
+        Há três casos.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Se a série converge apenas quando \(x=a\), então
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{R=0}.
+            \]
+        </div>
+
+        <p>
+            Se a série converge para todo \(x\in\mathbb{R}\), então
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{R=\infty}.
+            \]
+        </div>
+
+        <p>
+            Se
+        </p>
+
+        <div class="mathline">
+            \[
+            0&lt;R&lt;\infty,
+        \]
+        </div>
+
+        <p>
+            então a série converge para
+        </p>
+
+        <div class="mathline">
+            \[
+            |x-a|&lt;R
+        \]
+        </div>
+
+        <p>e diverge para</p>
+
+        <div class="mathline">
+            \[
+            |x-a|&gt;R.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. INTERVALO -->
+    <!-- ========================================================= -->
+
+    <h2>8. Do raio ao intervalo de convergência</h2>
+
+    <p>
+        Quando
+    </p>
+
+    <div class="mathline">
+        \[
+        0&lt;R&lt;\infty,
+    \]
+    </div>
+
+    <p>a desigualdade</p>
+
+    <div class="mathline">
+        \[
+        |x-a|&lt;R
+    \]
+    </div>
+
+    <p>é equivalente a</p>
+
+    <div class="mathline">
+        \[
+        -R&lt;x-a&lt;R.
+    \]
+    </div>
+
+    <p>Somando \(a\) aos três membros,</p>
+
+    <div class="mathline">
+        \[
+        a-R&lt;x&lt;a+R.
+    \]
+    </div>
+
+    <p>
+        Assim, inicialmente obtemos o intervalo aberto
+    </p>
+
+    <div class="mathline">
+        \[
+        (a-R,a+R).
+    \]
+    </div>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/potencias-convergencia.png"
+            alt="Estrutura típica do intervalo associado ao raio de convergência."
+        >
+
+        <figcaption>
+            Estrutura do conjunto de convergência em torno do centro
+            \(a\): convergência para \(|x-a|&lt;R\) e divergência para
+            \(|x-a|&gt;R\). Os extremos \(a-R\) e \(a+R\) devem ser
+            examinados separadamente.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. EXTREMOS -->
+    <!-- ========================================================= -->
+
+    <h2>9. O que acontece nos extremos?</h2>
+
+    <p>
+        A condição
+    </p>
+
+    <div class="mathline">
+        \[
+        |x-a|&lt;R
+    \]
+    </div>
+
+    <p>
+        não fornece informação sobre os pontos
+    </p>
+
+    <div class="mathline">
+        \[
+        x=a-R
+        \qquad\text{e}\qquad
+        x=a+R.
+        \]
+    </div>
+
+    <p>
+        Cada extremo deve ser substituído diretamente na série original.
+        A série numérica resultante deve então ser estudada por algum dos
+        testes de convergência vistos anteriormente.
+    </p>
+
+    <p>
+        Dependendo do comportamento dos dois extremos, o intervalo de
+        convergência poderá ser
+    </p>
+
+    <div class="mathline">
+        \[
+        (a-R,a+R),
+        \]
+    </div>
+
+    <div class="mathline">
+        \[
+        [a-R,a+R),
+        \]
+    </div>
+
+    <div class="mathline">
+        \[
+        (a-R,a+R],
+        \]
+    </div>
+
+    <p>ou</p>
+
+    <div class="mathline">
+        \[
+        [a-R,a+R].
+        \]
+    </div>
+
+    <div class="note">
+        O raio \(R\) determina a distância entre o centro e os extremos,
+        mas não determina se esses extremos pertencem ao intervalo de
+        convergência.
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. RAZÃO -->
+    <!-- ========================================================= -->
+
+    <h2>10. Determinação do raio pelo Teste da Razão</h2>
+
+    <p>
+        Em muitos problemas, o Teste da Razão é a maneira mais conveniente
+        de determinar o raio de convergência.
+    </p>
+
+    <p>Para</p>
+
+    <div class="mathline">
+        \[
+        a_n=c_n(x-a)^n,
+    \]
+    </div>
+
+    <p>estudamos</p>
+
+    <div class="mathline">
+        \[
+        L
+        =
+        \lim_{n\to\infty}
+        \left|
+        \frac{a_{n+1}}{a_n}
+        \right|.
+    \]
+    </div>
+
+    <p>
+        Pelo Teste da Razão, buscamos os valores de \(x\) para os quais
+    </p>
+
+    <div class="mathline">
+        \[
+        L&lt;1.
+    \]
+    </div>
+
+    <p>
+        A desigualdade resultante normalmente pode ser escrita na forma
+    </p>
+
+    <div class="mathline">
+        \[
+        |x-a|&lt;R,
+    \]
+    </div>
+
+    <p>
+        permitindo identificar o centro e o raio de convergência.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. PROCEDIMENTO -->
+    <!-- ========================================================= -->
+
+    <h2>11. Procedimento para determinar raio e intervalo</h2>
+
+    <div class="steps">
+
+        <strong>Procedimento.</strong>
+
+        <ol>
+
+            <li>
+                Identifique o centro \(a\) da série.
+            </li>
+
+            <li>
+                Aplique, em geral, o Teste da Razão ou, quando conveniente,
+                o Teste da Raiz.
+            </li>
+
+            <li>
+                Determine os valores de \(x\) para os quais o teste fornece
+                convergência.
+            </li>
+
+            <li>
+                Escreva a condição obtida na forma
+                \[
+                |x-a|&lt;R.
+                \]
+            </li>
+
+            <li>
+                Identifique o raio \(R\).
+            </li>
+
+            <li>
+                Determine os candidatos a extremos:
+                \[
+                a-R
+                \qquad\text{e}\qquad
+                a+R.
+                \]
+            </li>
+
+            <li>
+                Substitua cada extremo separadamente na série original.
+            </li>
+
+            <li>
+                Classifique as séries numéricas obtidas nos extremos como
+                convergentes ou divergentes.
+            </li>
+
+            <li>
+                Escreva o intervalo de convergência com os parênteses ou
+                colchetes adequados.
+            </li>
+
+        </ol>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. EXEMPLO PRINCIPAL -->
+    <!-- ========================================================= -->
+
+    <h2>12. Exemplo: série centrada em \(3\)</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Determine os valores de \(x\) para os quais converge
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{(x-3)^n}{n}.
+            \]
+        </div>
+
+        <p>
+            O centro da série é
+        </p>
+
+        <div class="mathline">
+            \[
+            a=3.
+            \]
+        </div>
+
+        <p>Definimos</p>
+
+        <div class="mathline">
+            \[
+            a_n=
+            \frac{(x-3)^n}{n}.
+            \]
+        </div>
+
+        <p>Pelo Teste da Razão,</p>
+
+        <div class="mathline">
+            \[
+            \left|
+            \frac{a_{n+1}}{a_n}
+            \right|
+            =
+            \left|
+            \frac{(x-3)^{n+1}}{n+1}
+            \frac{n}{(x-3)^n}
+            \right|.
+        \]
+        </div>
+
+        <p>Simplificando,</p>
+
+        <div class="mathline">
+            \[
+            \left|
+            \frac{a_{n+1}}{a_n}
+            \right|
+            =
+            |x-3|
+            \frac{n}{n+1}.
+        \]
+        </div>
+
+        <p>Logo,</p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}
+            \left|
+            \frac{a_{n+1}}{a_n}
+            \right|
+            =
+            |x-3|.
+        \]
+        </div>
+
+        <p>
+            O Teste da Razão fornece convergência absoluta quando
+        </p>
+
+        <div class="mathline">
+            \[
+            |x-3|&lt;1.
+        \]
+        </div>
+
+        <p>Resolvendo a desigualdade,</p>
+
+        <div class="mathline">
+            \[
+            -1&lt;x-3&lt;1,
+        \]
+        </div>
+
+        <p>e, portanto,</p>
+
+        <div class="mathline">
+            \[
+            2&lt;x&lt;4.
+        \]
+        </div>
+
+        <p>Assim,</p>
+
+        <div class="mathline">
+            \[
+            \boxed{R=1}.
+        \]
+        </div>
+
+        <p>
+            Ainda precisamos analisar separadamente os extremos
+            \(x=2\) e \(x=4\).
+        </p>
+
+    </div>
+
+    <p>
+        Esse é exatamente o desenvolvimento usado nas aulas: o Teste da
+        Razão produz \(|x-3|&lt;1\), isto é, \(2&lt;x&lt;4\), mas não
+        resolve o comportamento nos extremos. 
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. EXTREMO DIREITO -->
+    <!-- ========================================================= -->
+
+    <h2>13. Análise do extremo \(x=4\)</h2>
+
+    <p>
+        Substituindo \(x=4\) na série original,
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}
+        \frac{(4-3)^n}{n}
+        =
+        \sum_{n=1}^{\infty}
+        \frac{1}{n}.
+        \]
+    </div>
+
+    <p>
+        Obtemos a série harmônica,
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}\frac1n,
+    \]
+    </div>
+
+    <p>
+        que diverge.
+    </p>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        x=4
+    \]
+    </div>
+
+    <p>
+        não pertence ao intervalo de convergência.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. EXTREMO ESQUERDO -->
+    <!-- ========================================================= -->
+
+    <h2>14. Análise do extremo \(x=2\)</h2>
+
+    <p>
+        Agora substituímos \(x=2\):
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}
+        \frac{(2-3)^n}{n}
+        =
+        \sum_{n=1}^{\infty}
+        \frac{(-1)^n}{n}.
+        \]
+    </div>
+
+    <p>
+        Trata-se de uma série alternada.
+    </p>
+
+    <p>Como</p>
+
+    <div class="mathline">
+        \[
+        \frac1n\longrightarrow0
+    \]
+    </div>
+
+    <p>
+        e \(1/n\) é uma sequência decrescente, a série converge pelo
+        Teste da Série Alternada.
+    </p>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        x=2
+    \]
+    </div>
+
+    <p>
+        pertence ao intervalo de convergência.
+    </p>
+
+    <div class="mathbox">
+
+        <strong>Resultado do exemplo.</strong>
+
+        <div class="mathline">
+            \[
+            \boxed{R=1}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{[2,4)}
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Nas aulas, o extremo \(x=4\) produz a série harmônica divergente,
+        enquanto \(x=2\) produz uma série alternada convergente. Por isso,
+        o intervalo final é \([2,4)\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. EXEMPLO R = 0 -->
+    <!-- ========================================================= -->
+
+    <h2>15. Uma série com raio \(R=0\)</h2>
+
+    <div class="example">
+
+        <strong>Exemplo.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=0}^{\infty}
+            n!x^n.
+            \]
+        </div>
+
+        <p>Para \(x\neq0\), seja</p>
+
+        <div class="mathline">
+            \[
+            a_n=n!x^n.
+            \]
+        </div>
+
+        <p>Pelo Teste da Razão,</p>
+
+        <div class="mathline">
+            \[
+            \left|
+            \frac{a_{n+1}}{a_n}
+            \right|
+            =
+            \left|
+            \frac{(n+1)!x^{n+1}}
+                 {n!x^n}
+            \right|.
+        \]
+        </div>
+
+        <p>Assim,</p>
+
+        <div class="mathline">
+            \[
+            \left|
+            \frac{a_{n+1}}{a_n}
+            \right|
+            =
+            (n+1)|x|.
+        \]
+        </div>
+
+        <p>Para qualquer \(x\neq0\),</p>
+
+        <div class="mathline">
+            \[
+            (n+1)|x|
+            \longrightarrow
+            \infty.
+        \]
+        </div>
+
+        <p>
+            Portanto, a série diverge para todo \(x\neq0\).
+        </p>
+
+        <p>
+            Para \(x=0\), entretanto, a série converge.
+        </p>
+
+        <p>Logo,</p>
+
+        <div class="mathline">
+            \[
+            \boxed{R=0}
+        \]
+        </div>
+
+        <p>e o conjunto de convergência é</p>
+
+        <div class="mathline">
+            \[
+            \boxed{\{0\}}.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. R INFINITO -->
+    <!-- ========================================================= -->
+
+    <h2>16. Uma série com raio \(R=\infty\)</h2>
+
+    <p>
+        Também existem séries de potências que convergem para qualquer
+        número real \(x\).
+    </p>
+
+    <p>
+        Nas aulas, isso aparece na série que define a função de Bessel
+        de ordem zero:
+    </p>
+
+    <div class="mathline">
+        \[
+        J_0(x)
+        =
+        \sum_{n=0}^{\infty}
+        \frac{(-1)^n x^{2n}}
+             {2^{2n}(n!)^2}.
+        \]
+    </div>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        a_n=
+        \frac{(-1)^n x^{2n}}
+             {2^{2n}(n!)^2},
+    \]
+    </div>
+
+    <p>
+        o Teste da Razão conduz a
+    </p>
+
+    <div class="mathline">
+        \[
+        \left|
+        \frac{a_{n+1}}{a_n}
+        \right|
+        =
+        \frac{x^2}{4(n+1)^2}.
+    \]
+    </div>
+
+    <p>
+        Para qualquer valor real fixado de \(x\),
+    </p>
+
+    <div class="mathline">
+        \[
+        \lim_{n\to\infty}
+        \frac{x^2}{4(n+1)^2}
+        =
+        0.
+    \]
+    </div>
+
+    <p>Como</p>
+
+    <div class="mathline">
+        \[
+        0&lt;1,
+    \]
+    </div>
+
+    <p>
+        a série converge para todo \(x\in\mathbb{R}\).
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{R=\infty}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{(-\infty,\infty)}
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Esse exemplo mostra que uma série de potências pode definir uma
+        função em toda a reta real.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. SOMAS PARCIAIS -->
+    <!-- ========================================================= -->
+
+    <h2>17. Séries de potências e aproximações por somas parciais</h2>
+
+    <p>
+        Se uma função é definida por uma série de potências,
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n,
+    \]
+    </div>
+
+    <p>
+        podemos aproximá-la utilizando apenas um número finito de termos.
+    </p>
+
+    <p>A \(N\)-ésima soma parcial é</p>
+
+    <div class="mathline">
+        \[
+        s_N(x)
+        =
+        \sum_{n=0}^{N}
+        c_n(x-a)^n.
+    \]
+    </div>
+
+    <p>
+        Para os valores de \(x\) em que a série converge,
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        \lim_{N\to\infty}s_N(x).
+    \]
+    </div>
+
+    <p>
+        Portanto, as somas parciais são polinômios que podem ser utilizados
+        como aproximações da função representada pela série.
+    </p>
+
+    <p>
+        No exemplo da função de Bessel apresentado nas aulas, as primeiras
+        somas parciais são
+    </p>
+
+    <div class="mathline">
+        \[
+        s_0(x)=1,
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        s_1(x)
+        =
+        1-\frac{x^2}{4},
+    \]
+    </div>
+
+    <div class="mathline">
+        \[
+        s_2(x)
+        =
+        1-\frac{x^2}{4}
+        +\frac{x^4}{64},
+    \]
+    </div>
+
+    <p>e</p>
+
+    <div class="mathline">
+        \[
+        s_3(x)
+        =
+        1-\frac{x^2}{4}
+        +\frac{x^4}{64}
+        -\frac{x^6}{2304}.
+    \]
+    </div>
+
+    <p>
+        À medida que mais termos são incorporados, as somas parciais
+        fornecem aproximações da função \(J_0(x)\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. EXEMPLO R = 1/3 -->
+    <!-- ========================================================= -->
+
+    <h2>18. Exemplo: raio \(R=\frac13\)</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Determine o raio e o intervalo de convergência de
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=0}^{\infty}
+            \frac{(-3)^n x^n}{\sqrt{n+1}}.
+            \]
+        </div>
+
+        <p>Seja</p>
+
+        <div class="mathline">
+            \[
+            a_n=
+            \frac{(-3)^n x^n}{\sqrt{n+1}}.
+            \]
+        </div>
+
+        <p>Pelo Teste da Razão,</p>
+
+        <div class="mathline">
+            \[
+            \left|
+            \frac{a_{n+1}}{a_n}
+            \right|
+            =
+            3|x|
+            \sqrt{
+            \frac{n+1}{n+2}
+            }.
+        \]
+        </div>
+
+        <p>Quando \(n\to\infty\),</p>
+
+        <div class="mathline">
+            \[
+            \sqrt{
+            \frac{n+1}{n+2}
+            }
+            \longrightarrow1.
+        \]
+        </div>
+
+        <p>Logo,</p>
+
+        <div class="mathline">
+            \[
+            L=3|x|.
+        \]
+        </div>
+
+        <p>A convergência ocorre quando</p>
+
+        <div class="mathline">
+            \[
+            3|x|&lt;1,
+        \]
+        </div>
+
+        <p>isto é,</p>
+
+        <div class="mathline">
+            \[
+            |x|&lt;\frac13.
+        \]
+        </div>
+
+        <p>Portanto,</p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            R=\frac13
+            }.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. EXTREMOS DO EXEMPLO -->
+    <!-- ========================================================= -->
+
+    <h2>19. Análise dos extremos do exemplo anterior</h2>
+
+    <p>
+        Precisamos analisar
+    </p>
+
+    <div class="mathline">
+        \[
+        x=-\frac13
+        \qquad\text{e}\qquad
+        x=\frac13.
+        \]
+    </div>
+
+    <p>
+        Para
+    </p>
+
+    <div class="mathline">
+        \[
+        x=-\frac13,
+    \]
+    </div>
+
+    <p>a série torna-se</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}
+        \frac{1}{\sqrt{n+1}}.
+    \]
+    </div>
+
+    <p>
+        Trata-se de uma série \(p\) com
+    </p>
+
+    <div class="mathline">
+        \[
+        p=\frac12&lt;1,
+    \]
+    </div>
+
+    <p>
+        portanto diverge.
+    </p>
+
+    <p>
+        Para
+    </p>
+
+    <div class="mathline">
+        \[
+        x=\frac13,
+    \]
+    </div>
+
+    <p>obtemos</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}
+        \frac{(-1)^n}{\sqrt{n+1}},
+    \]
+    </div>
+
+    <p>
+        que converge pelo Teste da Série Alternada.
+    </p>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            R=\frac13
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \left(
+            -\frac13,\frac13
+            \right]
+            }
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. CENTRO DIFERENTE DE ZERO -->
+    <!-- ========================================================= -->
+
+    <h2>20. Exemplo com centro diferente de zero</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Considere a série
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=0}^{\infty}
+            \frac{n(x+2)^n}{3^{n+1}}.
+            \]
+        </div>
+
+        <p>
+            Como
+        </p>
+
+        <div class="mathline">
+            \[
+            x+2=x-(-2),
+        \]
+        </div>
+
+        <p>
+            o centro é
+        </p>
+
+        <div class="mathline">
+            \[
+            a=-2.
+        \]
+        </div>
+
+        <p>
+            Pelo Teste da Razão,
+        </p>
+
+        <div class="mathline">
+            \[
+            \left|
+            \frac{a_{n+1}}{a_n}
+            \right|
+            =
+            \left(
+            1+\frac1n
+            \right)
+            \frac{|x+2|}{3}.
+        \]
+        </div>
+
+        <p>
+            Fazendo \(n\to\infty\),
+        </p>
+
+        <div class="mathline">
+            \[
+            L=
+            \frac{|x+2|}{3}.
+        \]
+        </div>
+
+        <p>
+            A série converge quando
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{|x+2|}{3}&lt;1,
+        \]
+        </div>
+
+        <p>ou seja,</p>
+
+        <div class="mathline">
+            \[
+            |x+2|&lt;3.
+        \]
+        </div>
+
+        <p>Logo,</p>
+
+        <div class="mathline">
+            \[
+            \boxed{R=3}.
+        \]
+        </div>
+
+        <p>
+            Resolvendo a desigualdade,
+        </p>
+
+        <div class="mathline">
+            \[
+            -3&lt;x+2&lt;3,
+        \]
+        </div>
+
+        <p>portanto,</p>
+
+        <div class="mathline">
+            \[
+            -5&lt;x&lt;1.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. EXTREMOS -->
+    <!-- ========================================================= -->
+
+    <h2>21. Testando \(x=-5\) e \(x=1\)</h2>
+
+    <p>
+        No extremo esquerdo, \(x=-5\),
+    </p>
+
+    <div class="mathline">
+        \[
+        x+2=-3.
+        \]
+    </div>
+
+    <p>Assim, a série torna-se</p>
+
+    <div class="mathline">
+        \[
+        \frac13
+        \sum_{n=0}^{\infty}
+        (-1)^n n.
+    \]
+    </div>
+
+    <p>
+        Os termos
+    </p>
+
+    <div class="mathline">
+        \[
+        (-1)^n n
+    \]
+    </div>
+
+    <p>
+        não tendem a zero. Portanto, a série diverge pelo Teste da
+        Divergência.
+    </p>
+
+    <p>
+        No extremo direito, \(x=1\),
+    </p>
+
+    <div class="mathline">
+        \[
+        x+2=3,
+    \]
+    </div>
+
+    <p>e obtemos</p>
+
+    <div class="mathline">
+        \[
+        \frac13
+        \sum_{n=0}^{\infty}n,
+    \]
+    </div>
+
+    <p>
+        que também diverge.
+    </p>
+
+    <p>
+        Portanto, nenhum dos extremos pertence ao intervalo.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{a=-2}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{R=3}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{(-5,1)}
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. CENTRO, RAIO E INTERVALO -->
+    <!-- ========================================================= -->
+
+    <h2>22. Centro, raio e intervalo são informações diferentes</h2>
+
+    <p>
+        É importante distinguir claramente essas três informações.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Centro:</strong>
+            é o número \(a\) que aparece em
+            \[
+            (x-a)^n.
+            \]
+        </p>
+
+        <p>
+            <strong>Raio de convergência:</strong>
+            é a distância \(R\) do centro até os candidatos a extremos
+            do intervalo.
+        </p>
+
+        <p>
+            <strong>Intervalo de convergência:</strong>
+            é o conjunto completo dos valores reais de \(x\) para os quais
+            a série converge, incluindo ou não os extremos.
+        </p>
+
+    </div>
+
+    <p>
+        Quando \(0&lt;R&lt;\infty\), os candidatos a extremos são sempre
+    </p>
+
+    <div class="mathline">
+        \[
+        a-R
+        \qquad\text{e}\qquad
+        a+R.
+    \]
+    </div>
+
+    <p>
+        Mas apenas a substituição desses valores na série permite decidir
+        se eles pertencem ao intervalo.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 23. INTERPRETAÇÃO DO RAIO -->
+    <!-- ========================================================= -->
+
+    <h2>23. Interpretação geométrica do raio</h2>
+
+    <p>
+        O raio de convergência pode ser entendido como uma distância na
+        reta real.
+    </p>
+
+    <p>
+        A condição
+    </p>
+
+    <div class="mathline">
+        \[
+        |x-a|&lt;R
+    \]
+    </div>
+
+    <p>
+        significa exatamente que a distância entre \(x\) e o centro \(a\)
+        é menor que \(R\).
+    </p>
+
+    <p>
+        Portanto, todos os pontos situados a uma distância menor que
+        \(R\) do centro pertencem à região em que a série converge
+        absolutamente.
+    </p>
+
+    <p>
+        Os pontos cuja distância ao centro é maior que \(R\) pertencem
+        à região de divergência.
+    </p>
+
+    <p>
+        Quando a distância é exatamente \(R\),
+    </p>
+
+    <div class="mathline">
+        \[
+        |x-a|=R,
+    \]
+    </div>
+
+    <p>
+        estamos nos extremos, que precisam ser estudados individualmente.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 24. RAZÃO E EXTREMOS -->
+    <!-- ========================================================= -->
+
+    <h2>24. Por que o Teste da Razão não decide os extremos?</h2>
+
+    <p>
+        Na determinação do raio, o Teste da Razão normalmente conduz a uma
+        condição do tipo
+    </p>
+
+    <div class="mathline">
+        \[
+        |x-a|&lt;R.
+    \]
+    </div>
+
+    <p>
+        Nos extremos,
+    </p>
+
+    <div class="mathline">
+        \[
+        |x-a|=R.
+    \]
+    </div>
+
+    <p>
+        Nessa situação, o limite utilizado no Teste da Razão frequentemente
+        assume o valor
+    </p>
+
+    <div class="mathline">
+        \[
+        L=1.
+    \]
+    </div>
+
+    <p>
+        Como o Teste da Razão é inconclusivo quando \(L=1\), precisamos
+        retornar à série original e estudar cada extremo por outro teste.
+    </p>
+
+    <p>
+        Dependendo da série obtida, podemos utilizar, por exemplo, o
+        Teste da Série Alternada, reconhecer uma série \(p\), uma série
+        geométrica ou aplicar o Teste da Divergência.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 25. QUADRO COMPARATIVO -->
+    <!-- ========================================================= -->
+
+    <h2>25. Exemplos de diferentes raios e intervalos</h2>
+
+    <p>
+        Os exemplos das aulas mostram que séries de potências podem apresentar
+        comportamentos bastante diferentes.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Série geométrica</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=0}^{\infty}x^n
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            R=1,
+            \qquad
+            (-1,1).
+            \]
+        </div>
+
+        <p>
+            <strong>Série com fatorial</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=0}^{\infty}n!x^n
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            R=0,
+            \qquad
+            \{0\}.
+            \]
+        </div>
+
+        <p>
+            <strong>Série centrada em \(3\)</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{(x-3)^n}{n}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            R=1,
+            \qquad
+            [2,4).
+            \]
+        </div>
+
+        <p>
+            <strong>Série da função de Bessel \(J_0\)</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=0}^{\infty}
+            \frac{(-1)^n x^{2n}}
+                 {2^{2n}(n!)^2}
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            R=\infty,
+            \qquad
+            (-\infty,\infty).
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 26. OBSERVAÇÕES -->
+    <!-- ========================================================= -->
+
+    <h2>26. Observações para a resolução de exercícios</h2>
+
+    <ul class="property-list">
+
+        <li>
+            Identifique corretamente o centro. Em
+            \[
+            (x+2)^n=(x-(-2))^n,
+            \]
+            o centro é \(a=-2\), e não \(a=2\).
+        </li>
+
+        <li>
+            Uma série de potências centrada em \(a\) sempre converge
+            em \(x=a\).
+        </li>
+
+        <li>
+            O Teste da Razão ou o Teste da Raiz geralmente determina
+            o raio, mas não necessariamente o comportamento nos extremos.
+        </li>
+
+        <li>
+            Quando \(0&lt;R&lt;\infty\), os dois extremos devem ser
+            substituídos separadamente na série original.
+        </li>
+
+        <li>
+            Um extremo pode convergir e o outro divergir.
+        </li>
+
+        <li>
+            Não confunda raio de convergência com intervalo de convergência.
+            O raio é um número \(R\); o intervalo é um conjunto de valores
+            de \(x\).
+        </li>
+
+        <li>
+            Se \(R=0\), a série converge somente no centro.
+        </li>
+
+        <li>
+            Se \(R=\infty\), a série converge para todo
+            \(x\in\mathbb{R}\).
+        </li>
+
+        <li>
+            Nos extremos podem aparecer séries já conhecidas, como séries
+            \(p\), geométricas ou alternadas.
+        </li>
+
+    </ul>
+
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+
+            <strong>Visualização no GeoGebra</strong>
+
+            <p>
+                Use o ambiente gráfico para comparar uma função definida
+                por uma série de potências com suas somas parciais e observar
+                como a inclusão de novos termos altera a aproximação.
+            </p>
+
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/graphing"
+            target="_blank"
+            rel="noopener noreferrer">
+            Abrir GeoGebra ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIA -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+
+        <strong>Referência principal:</strong>
+        Stewart, J. (2013).
+        <em>Cálculo</em>, volume 1.
+        Cengage Learning, São Paulo.
+
+        <br><br>
+
+        Conteúdo correspondente às Aulas 69–71:
+        Séries de potências, raio de convergência e intervalo de
+        convergência.
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
