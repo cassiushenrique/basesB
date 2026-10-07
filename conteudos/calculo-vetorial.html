@@ -1,6 +1,1832 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Campos vetoriais e integrais de linha | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Campos vetoriais e integrais de linha</div><p class="eyebrow">CÁLCULO VETORIAL · AULAS 49–50</p><h1>Campos vetoriais e integrais de linha</h1><p class="lead">Campos vetoriais, curvas parametrizadas, comprimento de arco e integrais de linha escalares e vetoriais.</p><h2>1. Campo vetorial</h2><div class="mathline">\[\mathbf F(x,y)=P(x,y)\mathbf i+Q(x,y)\mathbf j.\]</div><p>\(P\) e \(Q\) são as componentes do campo nas direções coordenadas.</p><figure class="figure"><img src="../assets/img/aulas/campo-vetorial.png" alt="Representação de um campo vetorial no plano."><figcaption>Representação de um campo vetorial no plano. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>2. Curva parametrizada</h2><div class="mathline">\[\mathbf r(t)=\langle x(t),y(t),z(t)\rangle.\]</div><p>\(\mathbf r'(t)\) é tangente à curva.</p>
-<h2>3. Comprimento</h2><div class="mathline">\[L=\int_a^b\|\mathbf r'(t)\|\,dt.\]</div>
-<h2>4. Integral escalar</h2><div class="mathline">\[\int_Cf\,ds=\int_a^bf(\mathbf r(t))\|\mathbf r'(t)\|\,dt.\]</div>
-<h2>5. Integral de campo vetorial</h2><div class="mathline">\[\int_C\mathbf F\cdot d\mathbf r=\int_a^b\mathbf F(\mathbf r(t))\cdot\mathbf r'(t)\,dt.\]</div>
-<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(\mathbf F=\langle x,y\rangle\) e \(\mathbf r(t)=\langle t,t\rangle\), \(0\leq t\leq1\),</p><div class="mathline">\[\mathbf r'(t)=\langle1,1\rangle.\]</div><div class="mathline">\[\mathbf F(\mathbf r(t))=\langle t,t\rangle.\]</div><div class="mathline">\[\mathbf F\cdot\mathbf r'=2t.\]</div><div class="mathline">\[\int_0^12t\,dt=1.\]</div></div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Campos vetoriais e integrais de linha | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a>
+        /
+        Campos vetoriais e integrais de linha
+    </div>
+
+    <p class="eyebrow">CÁLCULO VETORIAL · AULAS 49–50</p>
+
+    <h1>Campos vetoriais e integrais de linha</h1>
+
+    <p class="lead">
+        Campos vetoriais descrevem grandezas que possuem módulo e direção
+        em cada ponto de uma região, como velocidade de um fluido e força.
+        As integrais de linha permitem acumular grandezas ao longo de uma
+        curva e, no caso de campos vetoriais, calcular quantidades como o
+        trabalho realizado por uma força ao deslocar uma partícula ao
+        longo de uma trajetória.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. CAMPOS VETORIAIS -->
+    <!-- ========================================================= -->
+
+    <h2>1. O que é um campo vetorial?</h2>
+
+    <p>
+        Até aqui, estudamos principalmente funções que associam um
+        <strong>número</strong> a cada ponto do domínio. Uma função como
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y)=x^2+y^2
+        \]
+    </div>
+
+    <p>
+        associa um escalar ao ponto \((x,y)\).
+    </p>
+
+    <p>
+        Em muitas aplicações, porém, a grandeza associada a cada ponto
+        possui simultaneamente módulo e direção. Nesse caso, precisamos
+        de uma função cujo valor seja um vetor.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Definição.</strong>
+            Seja \(D\subset\mathbb R^2\). Um campo vetorial no plano é
+            uma função \(\mathbf F\) que associa a cada ponto
+            \((x,y)\in D\) um vetor bidimensional
+            \(\mathbf F(x,y)\).
+        </p>
+
+    </div>
+
+    <p>
+        Podemos escrever
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \mathbf F(x,y)
+        =
+        P(x,y)\mathbf i
+        +
+        Q(x,y)\mathbf j
+        }
+        \]
+    </div>
+
+    <p>
+        ou, equivalentemente,
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F(x,y)
+        =
+        \langle P(x,y),Q(x,y)\rangle.
+        \]
+    </div>
+
+    <p>
+        As funções escalares \(P\) e \(Q\) são as componentes do campo
+        nas direções dos eixos coordenados.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/campo-vetorial.png"
+            alt="Representação de um campo vetorial no plano."
+        >
+
+        <figcaption>
+            Representação de um campo vetorial no plano. Em cada ponto
+            selecionado do domínio é desenhado o vetor correspondente
+            \(\mathbf F(x,y)\).
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. COMO INTERPRETAR -->
+    <!-- ========================================================= -->
+
+    <h2>2. Como interpretar geometricamente um campo vetorial?</h2>
+
+    <p>
+        Para visualizar um campo vetorial, imaginamos uma seta iniciando
+        em cada ponto \((x,y)\) do domínio. A direção e o sentido da seta
+        são determinados por \(\mathbf F(x,y)\), enquanto seu comprimento
+        representa o módulo
+    </p>
+
+    <div class="mathline">
+        \[
+        \|\mathbf F(x,y)\|.
+        \]
+    </div>
+
+    <p>
+        Na prática, é impossível desenhar uma seta em todos os pontos do
+        plano. Por isso, representamos o campo em uma malha de pontos
+        selecionados.
+    </p>
+
+    <p>
+        Por exemplo, se
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F(x,y)
+        =
+        \langle-y,x\rangle,
+        \]
+    </div>
+
+    <p>
+        então no ponto \((1,0)\),
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F(1,0)
+        =
+        \langle0,1\rangle,
+    \]
+    </div>
+
+    <p>
+        enquanto no ponto \((0,1)\),
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F(0,1)
+        =
+        \langle-1,0\rangle.
+    \]
+    </div>
+
+    <p>
+        O padrão formado pelas setas sugere um movimento de rotação em
+        torno da origem.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. CAMPOS EM R3 -->
+    <!-- ========================================================= -->
+
+    <h2>3. Campos vetoriais no espaço</h2>
+
+    <p>
+        O conceito se estende diretamente a três dimensões. Se
+        \(E\subset\mathbb R^3\), um campo vetorial em \(\mathbb R^3\)
+        pode ser escrito como
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \mathbf F(x,y,z)
+            =
+            P(x,y,z)\mathbf i
+            +
+            Q(x,y,z)\mathbf j
+            +
+            R(x,y,z)\mathbf k
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        ou
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F(x,y,z)
+        =
+        \langle P,Q,R\rangle.
+        \]
+    </div>
+
+    <p>
+        Agora, a cada ponto do espaço é associado um vetor tridimensional.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. EXEMPLOS FÍSICOS -->
+    <!-- ========================================================= -->
+
+    <h2>4. Campos de velocidade e campos de força</h2>
+
+    <p>
+        Campos vetoriais aparecem naturalmente em problemas físicos.
+        Imagine um fluido escoando no interior de um tubo. A velocidade
+        pode variar de um ponto para outro.
+    </p>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf V(x,y,z)
+        \]
+    </div>
+
+    <p>
+        representa a velocidade da partícula de fluido que passa pelo
+        ponto \((x,y,z)\), então \(\mathbf V\) é chamado de
+        <strong>campo de velocidade</strong>.
+    </p>
+
+    <p>
+        Analogamente, se a cada ponto associamos uma força
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F(x,y,z),
+    \]
+    </div>
+
+    <p>
+        obtemos um <strong>campo de força</strong>. O campo gravitacional
+        é um exemplo importante.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/campo-velocidade.png"
+            alt="Campo de velocidade associado ao escoamento de um fluido."
+        >
+
+        <figcaption>
+            Campo de velocidade de um fluido. O vetor em cada ponto
+            indica a direção do movimento e seu comprimento representa
+            a intensidade da velocidade.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. CURVAS PARAMETRIZADAS -->
+    <!-- ========================================================= -->
+
+    <h2>5. Curvas parametrizadas</h2>
+
+    <p>
+        Uma integral de linha é calculada ao longo de uma
+        <strong>curva</strong>. Para realizar os cálculos, precisamos
+        descrever essa curva por meio de uma parametrização.
+    </p>
+
+    <p>
+        Uma curva espacial pode ser representada por
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \mathbf r(t)
+            =
+            \langle
+            x(t),y(t),z(t)
+            \rangle
+            }
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            a\leq t\leq b.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        No plano, basta escrever
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf r(t)
+        =
+        \langle x(t),y(t)\rangle.
+        \]
+    </div>
+
+    <p>
+        À medida que \(t\) varia de \(a\) até \(b\), o ponto
+        \(\mathbf r(t)\) percorre a curva.
+    </p>
+
+    <p>
+        A parametrização contém uma informação que a equação cartesiana
+        da curva, isoladamente, não fornece: a
+        <strong>orientação</strong>, isto é, o sentido em que a curva é
+        percorrida.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. VETOR TANGENTE -->
+    <!-- ========================================================= -->
+
+    <h2>6. Vetor tangente à curva</h2>
+
+    <p>
+        Derivando a função vetorial,
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf r'(t)
+        =
+        \langle
+        x'(t),y'(t),z'(t)
+        \rangle.
+        \]
+    </div>
+
+    <p>
+        Quando \(\mathbf r'(t)\neq\mathbf0\), esse vetor é tangente à
+        curva e aponta no sentido em que ela está sendo percorrida.
+    </p>
+
+    <p>
+        Seu módulo é
+    </p>
+
+    <div class="mathline">
+        \[
+        \|\mathbf r'(t)\|
+        =
+        \sqrt{
+        [x'(t)]^2+
+        [y'(t)]^2+
+        [z'(t)]^2
+        }.
+    \]
+    </div>
+
+    <p>
+        O vetor tangente unitário é
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \mathbf T(t)
+            =
+            \frac{\mathbf r'(t)}
+            {\|\mathbf r'(t)\|}
+            }
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Esse vetor será fundamental para interpretar o trabalho realizado
+        por um campo de força.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. COMPRIMENTO DE ARCO -->
+    <!-- ========================================================= -->
+
+    <h2>7. Comprimento de uma curva</h2>
+
+    <p>
+        Para uma curva suave
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf r(t),
+        \qquad
+        a\leq t\leq b,
+    \]
+    </div>
+
+    <p>
+        seu comprimento é
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            L
+            =
+            \int_a^b
+            \|\mathbf r'(t)\|
+            \,dt
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        No plano,
+    </p>
+
+    <div class="mathline">
+        \[
+        L
+        =
+        \int_a^b
+        \sqrt{
+        [x'(t)]^2+[y'(t)]^2
+        }
+        \,dt.
+    \]
+    </div>
+
+    <p>
+        No espaço,
+    </p>
+
+    <div class="mathline">
+        \[
+        L
+        =
+        \int_a^b
+        \sqrt{
+        [x'(t)]^2+
+        [y'(t)]^2+
+        [z'(t)]^2
+        }
+        \,dt.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. ELEMENTO DE ARCO -->
+    <!-- ========================================================= -->
+
+    <h2>8. O elemento de comprimento \(ds\)</h2>
+
+    <p>
+        Se \(s(t)\) representa o comprimento percorrido sobre a curva
+        desde o ponto inicial até \(\mathbf r(t)\), então
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{ds}{dt}
+        =
+        \|\mathbf r'(t)\|.
+    \]
+    </div>
+
+    <p>
+        Consequentemente,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            ds
+            =
+            \|\mathbf r'(t)\|\,dt
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa relação é a chave para transformar uma integral ao longo de
+        uma curva em uma integral comum na variável \(t\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. IDEIA DA INTEGRAL ESCALAR -->
+    <!-- ========================================================= -->
+
+    <h2>9. De uma soma ao longo da curva para uma integral de linha</h2>
+
+    <p>
+        Considere uma função escalar \(f\) definida sobre uma curva
+        \(C\). Dividimos \(C\) em pequenos segmentos de comprimentos
+    </p>
+
+    <div class="mathline">
+        \[
+        \Delta s_1,
+        \Delta s_2,
+        \ldots,
+        \Delta s_n.
+    \]
+    </div>
+
+    <p>
+        Em cada segmento escolhemos um ponto
+        \((x_i^*,y_i^*)\). A soma
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{i=1}^{n}
+        f(x_i^*,y_i^*)\Delta s_i
+    \]
+    </div>
+
+    <p>
+        acumula os valores de \(f\) ao longo da curva, ponderando-os pelo
+        comprimento de cada pequeno trecho.
+    </p>
+
+    <p>
+        Fazendo os segmentos tenderem a comprimentos cada vez menores,
+        obtemos a integral de linha.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_C f(x,y)\,ds
+            =
+            \lim_{n\to\infty}
+            \sum_{i=1}^{n}
+            f(x_i^*,y_i^*)\Delta s_i
+            }.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. CÁLCULO DA INTEGRAL ESCALAR -->
+    <!-- ========================================================= -->
+
+    <h2>10. Como calcular uma integral de linha escalar?</h2>
+
+    <p>
+        Se a curva \(C\) é parametrizada por
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf r(t)
+        =
+        \langle x(t),y(t)\rangle,
+        \qquad
+        a\leq t\leq b,
+    \]
+    </div>
+
+    <p>
+        então
+    </p>
+
+    <div class="mathline">
+        \[
+        ds
+        =
+        \sqrt{
+        [x'(t)]^2+[y'(t)]^2
+        }
+        \,dt.
+    \]
+    </div>
+
+    <p>
+        Logo,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_C f\,ds
+            =
+            \int_a^b
+            f(x(t),y(t))
+            \|\mathbf r'(t)\|
+            \,dt
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Em outras palavras, para calcular a integral devemos:
+        parametrizar a curva, substituir \(x\) e \(y\) por suas
+        expressões em função de \(t\), calcular \(ds\) e integrar no
+        intervalo do parâmetro.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. INTERPRETAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>11. Interpretação da integral escalar</h2>
+
+    <p>
+        A integral
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C f\,ds
+    \]
+    </div>
+
+    <p>
+        pode representar diferentes quantidades dependendo do significado
+        de \(f\).
+    </p>
+
+    <p>
+        Por exemplo, imagine um fio fino cuja forma é descrita pela curva
+        \(C\). Se
+    </p>
+
+    <div class="mathline">
+        \[
+        \rho(x,y)
+    \]
+    </div>
+
+    <p>
+        representa sua densidade linear de massa, então a massa total do
+        fio é
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        m
+        =
+        \int_C\rho\,ds
+        }.
+    \]
+    </div>
+
+    <p>
+        A integral de linha escalar pode, portanto, ser vista como uma
+        versão da integral usual em que a acumulação ocorre ao longo de
+        uma curva.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. NO ESPAÇO -->
+    <!-- ========================================================= -->
+
+    <h2>12. Integral de linha escalar no espaço</h2>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf r(t)
+        =
+        \langle x(t),y(t),z(t)\rangle,
+    \]
+    </div>
+
+    <p>
+        então
+    </p>
+
+    <div class="mathline">
+        \[
+        ds
+        =
+        \sqrt{
+        [x'(t)]^2+
+        [y'(t)]^2+
+        [z'(t)]^2
+        }
+        \,dt.
+    \]
+    </div>
+
+    <p>
+        Assim,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_C f(x,y,z)\,ds
+            =
+            \int_a^b
+            f(\mathbf r(t))
+            \|\mathbf r'(t)\|
+            \,dt
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        O conceito é exatamente o mesmo do caso plano; apenas a geometria
+        da curva ocorre agora em três dimensões.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. INTEGRAIS DX E DY -->
+    <!-- ========================================================= -->
+
+    <h2>13. Integrais de linha em relação a \(x\) e \(y\)</h2>
+
+    <p>
+        Além da integral em relação ao comprimento de arco \(ds\),
+        aparecem integrais da forma
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C f(x,y)\,dx
+    \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C f(x,y)\,dy.
+    \]
+    </div>
+
+    <p>
+        Como
+    </p>
+
+    <div class="mathline">
+        \[
+        dx=x'(t)\,dt
+    \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        dy=y'(t)\,dt,
+    \]
+    </div>
+
+    <p>
+        temos
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \int_C f(x,y)\,dx
+            =
+            \int_a^b
+            f(x(t),y(t))x'(t)\,dt,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \int_C f(x,y)\,dy
+            =
+            \int_a^b
+            f(x(t),y(t))y'(t)\,dt.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. DO CAMPO PARA O TRABALHO -->
+    <!-- ========================================================= -->
+
+    <h2>14. Trabalho realizado por um campo de força</h2>
+
+    <p>
+        Considere uma partícula que se desloca ao longo de uma curva
+        \(C\) sob a ação de um campo de força \(\mathbf F\).
+    </p>
+
+    <p>
+        Se a força fosse constante e o deslocamento fosse um vetor
+        \(\mathbf d\), o trabalho seria
+    </p>
+
+    <div class="mathline">
+        \[
+        W
+        =
+        \mathbf F\cdot\mathbf d.
+    \]
+    </div>
+
+    <p>
+        Entretanto, ao longo de uma trajetória curva, tanto a direção do
+        movimento quanto o próprio campo de força podem variar de ponto
+        para ponto.
+    </p>
+
+    <p>
+        Em cada ponto, somente a componente da força na direção tangente
+        à trajetória contribui para o trabalho.
+    </p>
+
+    <p>
+        Como \(\mathbf T\) é o vetor tangente unitário, essa componente é
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F\cdot\mathbf T.
+    \]
+    </div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            W
+            =
+            \int_C
+            \mathbf F\cdot\mathbf T
+            \,ds
+            }.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. INTEGRAL VETORIAL -->
+    <!-- ========================================================= -->
+
+    <h2>15. Integral de linha de um campo vetorial</h2>
+
+    <p>
+        Como
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf T(t)
+        =
+        \frac{\mathbf r'(t)}
+        {\|\mathbf r'(t)\|}
+    \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        ds
+        =
+        \|\mathbf r'(t)\|\,dt,
+    \]
+    </div>
+
+    <p>
+        temos
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F\cdot\mathbf T\,ds
+        =
+        \mathbf F(\mathbf r(t))
+        \cdot
+        \mathbf r'(t)\,dt.
+    \]
+    </div>
+
+    <p>
+        Assim, definimos
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_C
+            \mathbf F\cdot d\mathbf r
+            =
+            \int_a^b
+            \mathbf F(\mathbf r(t))
+            \cdot
+            \mathbf r'(t)
+            \,dt
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa é a integral de linha de um campo vetorial ao longo da curva
+        \(C\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. SIGNIFICADO DO PRODUTO ESCALAR -->
+    <!-- ========================================================= -->
+
+    <h2>16. O papel do produto escalar</h2>
+
+    <p>
+        A expressão
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F\cdot\mathbf r'
+    \]
+    </div>
+
+    <p>
+        mede quanto do campo está alinhado com o movimento.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Se
+            \[
+            \mathbf F\cdot\mathbf r'&gt;0,
+            \]
+            o campo favorece o movimento naquele trecho.
+        </p>
+
+        <p>
+            Se
+            \[
+            \mathbf F\cdot\mathbf r'&lt;0,
+            \]
+            o campo se opõe ao movimento.
+        </p>
+
+        <p>
+            Se
+            \[
+            \mathbf F\cdot\mathbf r'=0,
+            \]
+            o campo é perpendicular à direção instantânea do movimento
+            e não realiza trabalho naquele instante.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. FORMA EM COMPONENTES -->
+    <!-- ========================================================= -->
+
+    <h2>17. Forma em componentes</h2>
+
+    <p>
+        Para um campo tridimensional
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F
+        =
+        P\mathbf i+Q\mathbf j+R\mathbf k
+    \]
+    </div>
+
+    <p>
+        e uma curva
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf r(t)
+        =
+        \langle x(t),y(t),z(t)\rangle,
+    \]
+    </div>
+
+    <p>
+        temos
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf r'(t)
+        =
+        \langle x'(t),y'(t),z'(t)\rangle.
+    \]
+    </div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F(\mathbf r(t))
+        \cdot
+        \mathbf r'(t)
+        =
+        Px'+Qy'+Rz'.
+    \]
+    </div>
+
+    <p>
+        Consequentemente,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_C\mathbf F\cdot d\mathbf r
+            =
+            \int_C
+            P\,dx+Q\,dy+R\,dz
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        As duas notações representam a mesma integral.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. EXEMPLO DA AULA -->
+    <!-- ========================================================= -->
+
+    <h2>18. Exemplo: trabalho realizado ao longo de uma curva</h2>
+
+    <div class="example">
+
+        <strong>Exemplo.</strong>
+
+        <p>
+            Considere o campo de força
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F(x,y)
+            =
+            x^2\mathbf i
+            -
+            xy\mathbf j
+            \]
+        </div>
+
+        <p>
+            e a trajetória dada pelo quarto de circunferência
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf r(t)
+            =
+            \cos t\,\mathbf i
+            +
+            \sin t\,\mathbf j,
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            0\leq t\leq\frac{\pi}{2}.
+        \]
+        </div>
+
+        <p>
+            Pela parametrização,
+        </p>
+
+        <div class="mathline">
+            \[
+            x=\cos t,
+            \qquad
+            y=\sin t.
+        \]
+        </div>
+
+        <p>
+            Assim,
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F(\mathbf r(t))
+            =
+            \langle
+            \cos^2t,
+            -\cos t\sin t
+            \rangle.
+        \]
+        </div>
+
+        <p>
+            O vetor tangente é
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf r'(t)
+            =
+            \langle
+            -\sin t,
+            \cos t
+            \rangle.
+        \]
+        </div>
+
+        <p>
+            Calculando o produto escalar,
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F(\mathbf r(t))
+            \cdot
+            \mathbf r'(t)
+            =
+            -\cos^2t\sin t
+            -
+            \cos^2t\sin t.
+        \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F(\mathbf r(t))
+            \cdot
+            \mathbf r'(t)
+            =
+            -2\cos^2t\sin t.
+        \]
+        </div>
+
+        <p>
+            O trabalho é
+        </p>
+
+        <div class="mathline">
+            \[
+            W
+            =
+            \int_0^{\pi/2}
+            -2\cos^2t\sin t
+            \,dt.
+        \]
+        </div>
+
+        <p>
+            Fazendo
+        </p>
+
+        <div class="mathline">
+            \[
+            u=\cos t,
+            \qquad
+            du=-\sin t\,dt,
+        \]
+        </div>
+
+        <p>
+            obtemos
+        </p>
+
+        <div class="mathline">
+            \[
+            W
+            =
+            -\frac{2}{3}.
+        \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            W=-\frac23
+            }.
+        \]
+        </div>
+
+        <p>
+            O sinal negativo possui interpretação física: ao longo dessa
+            trajetória, o campo apresenta uma componente que se opõe ao
+            movimento da partícula.
+        </p>
+
+    </div>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/trabalho-campo.png"
+            alt="Campo de força e trajetória curva no exemplo de trabalho."
+        >
+
+        <figcaption>
+            Campo de força e trajetória do exemplo. O trabalho é
+            negativo porque, ao longo da curva, o campo se opõe ao
+            movimento.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. ORIENTAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>19. A orientação da curva importa?</h2>
+
+    <p>
+        Essa é uma diferença fundamental entre as duas principais
+        integrais estudadas nesta aula.
+    </p>
+
+    <p>
+        Na integral escalar
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C f\,ds,
+    \]
+    </div>
+
+    <p>
+        o elemento \(ds\) representa comprimento e é sempre não negativo.
+        Por isso, inverter o sentido em que a curva é percorrida não
+        altera o valor da integral.
+    </p>
+
+    <p>
+        Entretanto, na integral vetorial
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C\mathbf F\cdot d\mathbf r,
+    \]
+    </div>
+
+    <p>
+        inverter a orientação troca
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf T
+        \quad\text{por}\quad
+        -\mathbf T.
+    \]
+    </div>
+
+    <p>
+        Consequentemente,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_{-C}
+            \mathbf F\cdot d\mathbf r
+            =
+            -
+            \int_C
+            \mathbf F\cdot d\mathbf r
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Portanto, para integrais de campos vetoriais,
+        <strong>a orientação da curva é parte do problema</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. PARAMETRIZAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>20. Parametrização e orientação não são a mesma coisa</h2>
+
+    <p>
+        Uma mesma curva pode possuir muitas parametrizações diferentes.
+        O valor da integral escalar
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C f\,ds
+    \]
+    </div>
+
+    <p>
+        não depende da parametrização escolhida, desde que a curva seja
+        percorrida corretamente uma única vez.
+    </p>
+
+    <p>
+        Para integrais vetoriais, diferentes parametrizações que
+        preservam a mesma orientação também fornecem o mesmo resultado.
+        O que altera o sinal é inverter a orientação da curva.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. ESCALAR X VETORIAL -->
+    <!-- ========================================================= -->
+
+    <h2>21. Integral escalar × integral de campo vetorial</h2>
+
+    <table>
+
+        <tr>
+            <th>Integral</th>
+            <th>Expressão parametrizada</th>
+            <th>Interpretação típica</th>
+        </tr>
+
+        <tr>
+            <td>
+                \(\displaystyle \int_C f\,ds\)
+            </td>
+
+            <td>
+                \(\displaystyle
+                \int_a^b
+                f(\mathbf r(t))
+                \|\mathbf r'(t)\|\,dt
+                \)
+            </td>
+
+            <td>
+                Acumulação de uma grandeza escalar ao longo da curva
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                \(\displaystyle \int_C\mathbf F\cdot d\mathbf r\)
+            </td>
+
+            <td>
+                \(\displaystyle
+                \int_a^b
+                \mathbf F(\mathbf r(t))
+                \cdot
+                \mathbf r'(t)\,dt
+                \)
+            </td>
+
+            <td>
+                Trabalho ou circulação de um campo ao longo da curva
+            </td>
+        </tr>
+
+    </table>
+
+    <p>
+        Observe a diferença estrutural:
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C f\,ds
+        \quad\Longrightarrow\quad
+        \|\mathbf r'(t)\|,
+    \]
+    </div>
+
+    <p>
+        enquanto
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C\mathbf F\cdot d\mathbf r
+        \quad\Longrightarrow\quad
+        \mathbf F(\mathbf r(t))
+        \cdot
+        \mathbf r'(t).
+    \]
+    </div>
+
+    <p>
+        Confundir essas duas expressões é um dos erros mais comuns no
+        cálculo de integrais de linha.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. PROCEDIMENTO ESCALAR -->
+    <!-- ========================================================= -->
+
+    <h2>22. Procedimento para uma integral escalar</h2>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>1.</strong>
+            Parametrize a curva:
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf r(t).
+            \]
+        </div>
+
+        <p>
+            <strong>2.</strong>
+            Determine o intervalo
+            \(a\leq t\leq b\).
+        </p>
+
+        <p>
+            <strong>3.</strong>
+            Calcule
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf r'(t)
+            \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            \|\mathbf r'(t)\|.
+        \]
+        </div>
+
+        <p>
+            <strong>4.</strong>
+            Substitua a parametrização em \(f\):
+        </p>
+
+        <div class="mathline">
+            \[
+            f(\mathbf r(t)).
+        \]
+        </div>
+
+        <p>
+            <strong>5.</strong>
+            Calcule
+        </p>
+
+        <div class="mathline">
+            \[
+            \int_a^b
+            f(\mathbf r(t))
+            \|\mathbf r'(t)\|
+            \,dt.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 23. PROCEDIMENTO VETORIAL -->
+    <!-- ========================================================= -->
+
+    <h2>23. Procedimento para uma integral de campo vetorial</h2>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>1.</strong>
+            Parametrize a curva respeitando a orientação solicitada:
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf r(t),
+            \qquad
+            a\leq t\leq b.
+            \]
+        </div>
+
+        <p>
+            <strong>2.</strong>
+            Calcule
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf r'(t).
+        \]
+        </div>
+
+        <p>
+            <strong>3.</strong>
+            Substitua a parametrização no campo:
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F(\mathbf r(t)).
+        \]
+        </div>
+
+        <p>
+            <strong>4.</strong>
+            Calcule o produto escalar
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F(\mathbf r(t))
+            \cdot
+            \mathbf r'(t).
+        \]
+        </div>
+
+        <p>
+            <strong>5.</strong>
+            Integre:
+        </p>
+
+        <div class="mathline">
+            \[
+            \int_a^b
+            \mathbf F(\mathbf r(t))
+            \cdot
+            \mathbf r'(t)
+            \,dt.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 24. ERROS COMUNS -->
+    <!-- ========================================================= -->
+
+    <h2>24. Cuidados importantes</h2>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Confundir \(ds\) com \(dt\).</strong><br>
+            Em uma integral escalar,
+            \[
+            ds=\|\mathbf r'(t)\|\,dt.
+            \]
+            O fator \(\|\mathbf r'(t)\|\) não pode ser omitido.
+        </p>
+
+        <p>
+            <strong>Usar \(\|\mathbf r'(t)\|\) em uma integral
+            vetorial.</strong><br>
+            Para
+            \[
+            \int_C\mathbf F\cdot d\mathbf r,
+            \]
+            usamos o produto escalar com
+            \(\mathbf r'(t)\), não apenas seu módulo.
+        </p>
+
+        <p>
+            <strong>Ignorar a orientação.</strong><br>
+            Na integral de um campo vetorial, inverter a orientação da
+            curva inverte o sinal da integral.
+        </p>
+
+        <p>
+            <strong>Substituir apenas parte da parametrização.</strong><br>
+            Todas as variáveis presentes em \(f\) ou \(\mathbf F\)
+            precisam ser escritas em função do parâmetro \(t\).
+        </p>
+
+        <p>
+            <strong>Esquecer o intervalo do parâmetro.</strong><br>
+            A parametrização só descreve a trajetória desejada quando
+            acompanhada do intervalo adequado.
+        </p>
+
+        <p>
+            <strong>Confundir campo vetorial com função escalar.</strong><br>
+            Um campo vetorial associa um vetor a cada ponto. Por isso,
+            sua integral envolve produto escalar quando calculamos
+            trabalho ao longo de uma trajetória.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+            <strong>Visualização no GeoGebra 3D</strong>
+
+            <p>
+                Utilize o ambiente 3D para representar curvas
+                parametrizadas e visualizar o vetor tangente
+                \(\mathbf r'(t)\) ao longo da trajetória.
+            </p>
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/3d"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Abrir GeoGebra 3D ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIAS -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+
+        <strong>Referências.</strong>
+
+        <p>
+            STEWART, James.
+            <em>Cálculo</em>.
+            Volume 2.
+            São Paulo: Cengage Learning.
+        </p>
+
+        <p>
+            ANTON, Howard; BIVENS, Irl; DAVIS, Stephen.
+            <em>Cálculo</em>.
+            Porto Alegre: Bookman.
+        </p>
+
+        <p>
+            THOMAS, George B.; WEIR, Maurice D.; HASS, Joel.
+            <em>Cálculo</em>.
+            São Paulo: Pearson.
+        </p>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
