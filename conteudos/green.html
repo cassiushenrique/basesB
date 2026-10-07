@@ -1,6 +1,1939 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Campos conservativos, rotacional, divergente e Teorema de Green | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Campos conservativos, rotacional, divergente e Teorema de Green</div><p class="eyebrow">CÁLCULO VETORIAL · AULAS 51–55</p><h1>Campos conservativos, rotacional, divergente e Teorema de Green</h1><p class="lead">Potenciais, independência do caminho, Teorema Fundamental das Integrais de Linha, Green, rotacional e divergente.</p><h2>1. Campo conservativo</h2><div class="mathline">\[\mathbf F=\nabla f.\]</div><p>A função \(f\) é chamada potencial.</p>
-<h2>2. Teorema Fundamental das Integrais de Linha</h2><div class="mathline">\[\int_C\nabla f\cdot d\mathbf r=f(B)-f(A).\]</div><p>O resultado depende apenas dos extremos.</p><figure class="figure"><img src="../assets/img/aulas/green-caminhos.png" alt="Caminhos diferentes com os mesmos extremos."><figcaption>Caminhos diferentes com os mesmos extremos. Figura do material das aulas da GCT054.</figcaption></figure>
-<div class="example"><strong>Exemplo resolvido.</strong><p>Para \(\mathbf F=\langle2x,2y\rangle\), um potencial é \(f=x^2+y^2\). De \((0,0)\) a \((1,2)\),</p><div class="mathline">\[\int_C\mathbf F\cdot d\mathbf r=5.\]</div></div>
-<h2>3. Teorema de Green</h2><div class="mathbox"><div class="mathline">\[\oint_CP\,dx+Q\,dy=\iint_D\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)dA.\]</div></div><figure class="figure"><img src="../assets/img/aulas/green-curvas.png" alt="Curva fechada e região interior no Teorema de Green."><figcaption>Curva fechada e região interior no Teorema de Green. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>4. Rotacional</h2><p>Mede a tendência local de rotação do campo.</p><div class="mathline">\[\nabla\times\mathbf F.\]</div>
-<h2>5. Divergência</h2><div class="mathline">\[\nabla\cdot\mathbf F=\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}.\]</div><p>Valores positivos sugerem fonte local; negativos, sumidouro.</p><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Campos conservativos, rotacional, divergente e Teorema de Green | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a>
+        /
+        Campos conservativos, rotacional, divergente e Teorema de Green
+    </div>
+
+    <p class="eyebrow">CÁLCULO VETORIAL · AULAS 51–55</p>
+
+    <h1>Campos conservativos, rotacional, divergente e Teorema de Green</h1>
+
+    <p class="lead">
+        Campos conservativos, funções potenciais, independência do caminho,
+        Teorema Fundamental das Integrais de Linha, Teorema de Green,
+        rotacional e divergente. Esses conceitos conectam propriedades
+        locais de um campo vetorial ao seu comportamento global ao longo
+        de curvas e regiões.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. CAMPOS CONSERVATIVOS -->
+    <!-- ========================================================= -->
+
+    <h2>1. Campos conservativos</h2>
+
+    <p>
+        Seja \(\mathbf F\) um campo vetorial definido em uma região
+        \(D\). Dizemos que \(\mathbf F\) é um
+        <strong>campo vetorial conservativo</strong> quando existe uma
+        função escalar \(f\) tal que
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \mathbf F=\nabla f
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        A função \(f\) é chamada de
+        <strong>função potencial</strong> de \(\mathbf F\).
+    </p>
+
+    <p>
+        Em duas variáveis, se
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F(x,y)
+        =
+        P(x,y)\mathbf i
+        +
+        Q(x,y)\mathbf j,
+        \]
+    </div>
+
+    <p>
+        então
+    </p>
+
+    <div class="mathline">
+        \[
+        \nabla f
+        =
+        \frac{\partial f}{\partial x}\mathbf i
+        +
+        \frac{\partial f}{\partial y}\mathbf j.
+        \]
+    </div>
+
+    <p>
+        Portanto, para que \(\mathbf F=\nabla f\), devemos ter
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{\partial f}{\partial x}=P
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{\partial f}{\partial y}=Q
+            }.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. FUNÇÃO POTENCIAL -->
+    <!-- ========================================================= -->
+
+    <h2>2. Como encontrar uma função potencial?</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Considere o campo
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F(x,y)
+            =
+            \langle 2x,2y\rangle.
+            \]
+        </div>
+
+        <p>
+            Para encontrar uma função potencial \(f\), devemos ter
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{\partial f}{\partial x}=2x
+            \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{\partial f}{\partial y}=2y.
+            \]
+        </div>
+
+        <p>
+            Integrando a primeira equação em relação a \(x\),
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2+g(y),
+            \]
+        </div>
+
+        <p>
+            em que \(g(y)\) representa uma função que não depende de
+            \(x\).
+        </p>
+
+        <p>
+            Derivando essa expressão em relação a \(y\),
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{\partial f}{\partial y}=g'(y).
+            \]
+        </div>
+
+        <p>
+            Comparando com a segunda componente do campo,
+        </p>
+
+        <div class="mathline">
+            \[
+            g'(y)=2y.
+            \]
+        </div>
+
+        <p>
+            Logo,
+        </p>
+
+        <div class="mathline">
+            \[
+            g(y)=y^2+C.
+            \]
+        </div>
+
+        <p>
+            Podemos tomar como função potencial
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            f(x,y)=x^2+y^2
+            }.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. TEOREMA FUNDAMENTAL -->
+    <!-- ========================================================= -->
+
+    <h2>3. Teorema Fundamental das Integrais de Linha</h2>
+
+    <p>
+        O principal benefício de reconhecer um campo conservativo aparece
+        no cálculo das integrais de linha.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Teorema Fundamental das Integrais de Linha.</strong>
+            Se
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F=\nabla f
+            \]
+        </div>
+
+        <p>
+            e \(C\) é uma curva que começa em \(A\) e termina em \(B\),
+            então
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_C
+            \mathbf F\cdot d\mathbf r
+            =
+            f(B)-f(A)
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Em duas variáveis, se \(A=(x_1,y_1)\) e
+        \(B=(x_2,y_2)\),
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C\nabla f\cdot d\mathbf r
+        =
+        f(x_2,y_2)-f(x_1,y_1).
+        \]
+    </div>
+
+    <p>
+        Em três variáveis, se \(A=(x_1,y_1,z_1)\) e
+        \(B=(x_2,y_2,z_2)\),
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_C\nabla f\cdot d\mathbf r
+        =
+        f(x_2,y_2,z_2)-f(x_1,y_1,z_1).
+        \]
+    </div>
+
+    <p>
+        Portanto, quando conhecemos uma função potencial, a integral
+        pode ser calculada sem a necessidade de parametrizar toda a
+        trajetória.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. EXEMPLO -->
+    <!-- ========================================================= -->
+
+    <h2>4. Exemplo do Teorema Fundamental</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Para
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F(x,y)=\langle2x,2y\rangle,
+            \]
+        </div>
+
+        <p>
+            encontramos a função potencial
+        </p>
+
+        <div class="mathline">
+            \[
+            f(x,y)=x^2+y^2.
+            \]
+        </div>
+
+        <p>
+            Considere qualquer curva \(C\) ligando
+            \(A=(0,0)\) a \(B=(1,2)\).
+        </p>
+
+        <p>
+            Pelo Teorema Fundamental,
+        </p>
+
+        <div class="mathline">
+            \[
+            \int_C
+            \mathbf F\cdot d\mathbf r
+            =
+            f(1,2)-f(0,0).
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            =
+            (1^2+2^2)-(0^2+0^2).
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_C
+            \mathbf F\cdot d\mathbf r
+            =
+            5
+            }.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. INDEPENDÊNCIA DO CAMINHO -->
+    <!-- ========================================================= -->
+
+    <h2>5. Independência do caminho</h2>
+
+    <p>
+        Se \(\mathbf F\) é conservativo, a integral de linha depende
+        apenas dos pontos inicial e final.
+    </p>
+
+    <p>
+        Se \(C_1\) e \(C_2\) são dois caminhos com os mesmos extremos,
+        então
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_{C_1}\mathbf F\cdot d\mathbf r
+            =
+            \int_{C_2}\mathbf F\cdot d\mathbf r
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/green-independencia-horizontal.png"
+            alt="Construção de caminhos utilizada no estudo da independência do caminho."
+        >
+
+        <figcaption>
+            Construção de caminhos em uma região \(D\). A independência
+            do caminho permite definir uma função potencial a partir da
+            integral de linha entre um ponto fixo \((a,b)\) e um ponto
+            variável \((x,y)\). Fonte: Stewart (2013).
+        </figcaption>
+
+    </figure>
+
+    <p>
+        Uma forma de construir uma função potencial é fixar um ponto
+        \((a,b)\) no domínio e definir
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x,y)
+        =
+        \int_C
+        \mathbf F\cdot d\mathbf r,
+    \]
+    </div>
+
+    <p>
+        em que \(C\) é qualquer caminho no domínio ligando
+        \((a,b)\) a \((x,y)\).
+    </p>
+
+    <p>
+        Como a integral é independente do caminho, o valor de
+        \(f(x,y)\) não depende da trajetória escolhida.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/green-independencia-vertical.png"
+            alt="Construção alternativa de caminhos em uma região."
+        >
+
+        <figcaption>
+            Outra decomposição possível do caminho entre
+            \((a,b)\) e \((x,y)\), utilizada para relacionar a integral
+            de linha às derivadas parciais da função potencial.
+            Fonte: Stewart (2013).
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. CURVAS FECHADAS -->
+    <!-- ========================================================= -->
+
+    <h2>6. Campos conservativos e curvas fechadas</h2>
+
+    <p>
+        Se \(C\) é uma curva fechada, o ponto inicial coincide com o
+        ponto final.
+    </p>
+
+    <p>
+        Assim, para um campo conservativo,
+    </p>
+
+    <div class="mathline">
+        \[
+        \oint_C
+        \mathbf F\cdot d\mathbf r
+        =
+        f(A)-f(A).
+        \]
+    </div>
+
+    <p>
+        Consequentemente,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \oint_C
+            \mathbf F\cdot d\mathbf r
+            =
+            0
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Fisicamente, isso significa que o trabalho realizado por um
+        campo de força conservativo ao mover um objeto ao redor de uma
+        trajetória fechada é zero.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. TESTE -->
+    <!-- ========================================================= -->
+
+    <h2>7. Um teste para campos conservativos no plano</h2>
+
+    <p>
+        Considere
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F
+        =
+        P(x,y)\mathbf i
+        +
+        Q(x,y)\mathbf j.
+        \]
+    </div>
+
+    <p>
+        Se \(\mathbf F=\nabla f\), então
+    </p>
+
+    <div class="mathline">
+        \[
+        P=f_x
+        \qquad\text{e}\qquad
+        Q=f_y.
+        \]
+    </div>
+
+    <p>
+        Sob as condições adequadas de continuidade das derivadas,
+    </p>
+
+    <div class="mathline">
+        \[
+        P_y=f_{xy}
+        \]
+    </div>
+
+    <p>
+        e
+    </p>
+
+    <div class="mathline">
+        \[
+        Q_x=f_{yx}.
+        \]
+    </div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{\partial P}{\partial y}
+            =
+            \frac{\partial Q}{\partial x}
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Em uma região simplesmente conexa, se \(P\) e \(Q\) possuem
+        derivadas parciais de primeira ordem contínuas e
+    </p>
+
+    <div class="mathline">
+        \[
+        P_y=Q_x,
+    \]
+    </div>
+
+    <p>
+        então o campo é conservativo.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Atenção ao domínio.</strong>
+            A igualdade \(P_y=Q_x\), isoladamente, não deve ser utilizada
+            sem verificar as hipóteses sobre o domínio. A topologia da
+            região é relevante para a recíproca.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. GREEN -->
+    <!-- ========================================================= -->
+
+    <h2>8. Teorema de Green</h2>
+
+    <p>
+        O Teorema de Green estabelece uma relação entre uma integral de
+        linha ao redor de uma curva fechada e uma integral dupla sobre a
+        região plana delimitada por essa curva.
+    </p>
+
+    <p>
+        Seja \(C\) uma curva plana simples, fechada, contínua por partes
+        e orientada positivamente, e seja \(D\) a região delimitada por
+        \(C\).
+    </p>
+
+    <p>
+        Se \(P\) e \(Q\) possuem derivadas parciais de primeira ordem
+        contínuas em uma região aberta que contém \(D\), então
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \oint_C
+            P\,dx+Q\,dy
+            =
+            \iint_D
+            \left(
+            \frac{\partial Q}{\partial x}
+            -
+            \frac{\partial P}{\partial y}
+            \right)
+            dA
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F=P\mathbf i+Q\mathbf j,
+    \]
+    </div>
+
+    <p>
+        então
+    </p>
+
+    <div class="mathline">
+        \[
+        \oint_C
+        \mathbf F\cdot d\mathbf r
+        =
+        \iint_D
+        \left(
+        Q_x-P_y
+        \right)dA.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. ORIENTAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>9. Orientação positiva</h2>
+
+    <p>
+        A orientação da curva é parte das hipóteses do Teorema de
+        Green.
+    </p>
+
+    <p>
+        Para uma região simples, a orientação positiva da fronteira
+        corresponde ao sentido <strong>anti-horário</strong>.
+        Ao percorrer a curva nesse sentido, a região permanece à
+        esquerda.
+    </p>
+
+    <p>
+        Em regiões com uma fronteira interna, a mesma regra continua
+        válida: cada componente da fronteira deve ser percorrida de modo
+        que a região permaneça à esquerda.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/green-regiao-furo.png"
+            alt="Região com uma fronteira externa e uma fronteira interna."
+        >
+
+        <figcaption>
+            Região \(D\) com uma fronteira externa \(C\) e uma fronteira
+            interna \(C'\). Para manter \(D\) à esquerda, a fronteira
+            externa é percorrida no sentido anti-horário e a fronteira
+            interna no sentido horário. Fonte: Stewart (2013).
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. REGIÕES NÃO SIMPLES -->
+    <!-- ========================================================= -->
+
+    <h2>10. Regiões com furos e decomposição</h2>
+
+    <p>
+        Quando a região possui um furo, ela pode ser decomposta em
+        sub-regiões para permitir a aplicação do Teorema de Green.
+    </p>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/green-regiao-decomposta.png"
+            alt="Decomposição de uma região com furo em duas sub-regiões."
+        >
+
+        <figcaption>
+            Uma região com furo pode ser dividida em regiões \(D'\) e
+            \(D''\). Os segmentos introduzidos pela decomposição são
+            percorridos em sentidos opostos e suas contribuições se
+            cancelam quando as integrais são somadas.
+            Fonte: Stewart (2013).
+        </figcaption>
+
+    </figure>
+
+    <p>
+        Essa construção mostra por que o teorema pode ser estendido a
+        regiões que não são simplesmente conexas, desde que as
+        orientações das diferentes componentes da fronteira sejam
+        tratadas corretamente.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. SIGNIFICADO DE GREEN -->
+    <!-- ========================================================= -->
+
+    <h2>11. O que o Teorema de Green relaciona?</h2>
+
+    <p>
+        O lado esquerdo,
+    </p>
+
+    <div class="mathline">
+        \[
+        \oint_C
+        P\,dx+Q\,dy,
+    \]
+    </div>
+
+    <p>
+        é uma integral calculada sobre a
+        <strong>fronteira</strong> da região.
+    </p>
+
+    <p>
+        O lado direito,
+    </p>
+
+    <div class="mathline">
+        \[
+        \iint_D
+        (Q_x-P_y)\,dA,
+    \]
+    </div>
+
+    <p>
+        é calculado sobre todo o <strong>interior</strong> da região.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \text{comportamento na fronteira}
+            \quad\longleftrightarrow\quad
+            \text{comportamento no interior}
+            }
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa estrutura lembra o Teorema Fundamental do Cálculo:
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_a^b F'(x)\,dx
+        =
+        F(b)-F(a).
+    \]
+    </div>
+
+    <p>
+        Em uma dimensão, integramos uma derivada no interior de um
+        intervalo e obtemos uma informação sobre sua fronteira.
+        Green estabelece uma relação análoga em duas dimensões.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. EXEMPLO GREEN -->
+    <!-- ========================================================= -->
+
+    <h2>12. Exemplo de aplicação do Teorema de Green</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            \oint_C
+            x^4\,dx+xy\,dy,
+            \]
+        </div>
+
+        <p>
+            em que \(C\) é a fronteira positivamente orientada da região
+            \(D\) dada por
+        </p>
+
+        <div class="mathline">
+            \[
+            0\leq x\leq1
+        \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            1-x\leq y\leq1.
+        \]
+        </div>
+
+        <p>
+            Temos
+        </p>
+
+        <div class="mathline">
+            \[
+            P(x,y)=x^4
+        \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            Q(x,y)=xy.
+        \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            Q_x=y
+            \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            P_y=0.
+        \]
+        </div>
+
+        <p>
+            Pelo Teorema de Green,
+        </p>
+
+        <div class="mathline">
+            \[
+            \oint_C
+            x^4\,dx+xy\,dy
+            =
+            \iint_D y\,dA.
+        \]
+        </div>
+
+        <p>
+            Assim,
+        </p>
+
+        <div class="mathline">
+            \[
+            =
+            \int_0^1
+            \int_{1-x}^{1}
+            y\,dy\,dx.
+        \]
+        </div>
+
+        <p>
+            Calculando a integral interna,
+        </p>
+
+        <div class="mathline">
+            \[
+            =
+            \frac12
+            \int_0^1
+            \left[
+            1-(1-x)^2
+            \right]dx.
+        \]
+        </div>
+
+        <p>
+            Logo,
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \oint_C
+            x^4\,dx+xy\,dy
+            =
+            \frac16
+            }.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. ROTACIONAL -->
+    <!-- ========================================================= -->
+
+    <h2>13. Rotacional</h2>
+
+    <p>
+        O rotacional é um operador diferencial aplicado a campos
+        vetoriais e está associado à tendência local de rotação.
+    </p>
+
+    <p>
+        Seja
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F
+        =
+        P\mathbf i
+        +
+        Q\mathbf j
+        +
+        R\mathbf k.
+    \]
+    </div>
+
+    <p>
+        O rotacional de \(\mathbf F\) é definido por
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \operatorname{rot}\mathbf F
+            =
+            \nabla\times\mathbf F
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Em componentes,
+    </p>
+
+    <div class="mathline">
+        \[
+        \operatorname{rot}\mathbf F
+        =
+        \left(
+        \frac{\partial R}{\partial y}
+        -
+        \frac{\partial Q}{\partial z}
+        \right)\mathbf i
+        \]
+    </div>
+
+    <div class="mathline">
+        \[
+        +
+        \left(
+        \frac{\partial P}{\partial z}
+        -
+        \frac{\partial R}{\partial x}
+        \right)\mathbf j
+        \]
+    </div>
+
+    <div class="mathline">
+        \[
+        +
+        \left(
+        \frac{\partial Q}{\partial x}
+        -
+        \frac{\partial P}{\partial y}
+        \right)\mathbf k.
+    \]
+    </div>
+
+    <p>
+        Ou, de forma compacta,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \operatorname{rot}\mathbf F
+            =
+            \left\langle
+            R_y-Q_z,\,
+            P_z-R_x,\,
+            Q_x-P_y
+            \right\rangle
+            }.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. INTERPRETAÇÃO DO ROTACIONAL -->
+    <!-- ========================================================= -->
+
+    <h2>14. Interpretação do rotacional</h2>
+
+    <p>
+        Quando \(\mathbf F\) representa um campo de velocidades em
+        mecânica dos fluidos, o rotacional está associado à rotação
+        local das partículas do fluido.
+    </p>
+
+    <p>
+        A direção do vetor
+    </p>
+
+    <div class="mathline">
+        \[
+        \operatorname{rot}\mathbf F(x,y,z)
+    \]
+    </div>
+
+    <p>
+        fornece o eixo associado à rotação local, enquanto seu módulo
+        está relacionado à intensidade dessa rotação.
+    </p>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        \operatorname{rot}\mathbf F=\mathbf0,
+    \]
+    </div>
+
+    <p>
+        o campo é chamado de <strong>irrotacional</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. CONSERVATIVO E ROTACIONAL -->
+    <!-- ========================================================= -->
+
+    <h2>15. Campos conservativos e rotacional</h2>
+
+    <p>
+        Se \(\mathbf F\) é conservativo, então
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F=\nabla f.
+    \]
+    </div>
+
+    <p>
+        Se \(f\) possui derivadas parciais de segunda ordem contínuas,
+        então
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \operatorname{rot}(\nabla f)
+            =
+            \mathbf0
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \mathbf F\text{ conservativo}
+        \quad\Longrightarrow\quad
+        \operatorname{rot}\mathbf F=\mathbf0
+        }.
+    \]
+    </div>
+
+    <p>
+        Assim, se o rotacional de um campo for diferente de zero em
+        algum ponto, o campo não pode ser conservativo.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Cuidado com a recíproca.</strong>
+            A condição
+            \(\operatorname{rot}\mathbf F=\mathbf0\)
+            necessita de hipóteses adicionais sobre o domínio para
+            garantir que o campo seja conservativo.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. GREEN E ROTACIONAL -->
+    <!-- ========================================================= -->
+
+    <h2>16. Relação entre Green e o rotacional</h2>
+
+    <p>
+        Considere um campo vetorial plano
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F
+        =
+        P\mathbf i+Q\mathbf j.
+    \]
+    </div>
+
+    <p>
+        Podemos interpretá-lo em \(\mathbb R^3\) como
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F
+        =
+        \langle P,Q,0\rangle.
+    \]
+    </div>
+
+    <p>
+        Nesse caso,
+    </p>
+
+    <div class="mathline">
+        \[
+        \operatorname{rot}\mathbf F
+        =
+        \left\langle
+        0,0,Q_x-P_y
+        \right\rangle.
+    \]
+    </div>
+
+    <p>
+        Portanto, o integrando que aparece no Teorema de Green,
+    </p>
+
+    <div class="mathline">
+        \[
+        Q_x-P_y,
+    \]
+    </div>
+
+    <p>
+        é precisamente a componente do rotacional perpendicular ao
+        plano.
+    </p>
+
+    <p>
+        O Teorema de Green pode, assim, ser interpretado como uma
+        relação entre a <strong>circulação na fronteira</strong> e a
+        <strong>rotação acumulada no interior</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. DIVERGENTE -->
+    <!-- ========================================================= -->
+
+    <h2>17. Divergente</h2>
+
+    <p>
+        Seja
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F
+        =
+        P\mathbf i
+        +
+        Q\mathbf j
+        +
+        R\mathbf k.
+    \]
+    </div>
+
+    <p>
+        O divergente de \(\mathbf F\) é a função escalar definida por
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \operatorname{div}\mathbf F
+            =
+            \nabla\cdot\mathbf F
+            =
+            \frac{\partial P}{\partial x}
+            +
+            \frac{\partial Q}{\partial y}
+            +
+            \frac{\partial R}{\partial z}
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Observe a diferença:
+    </p>
+
+    <div class="mathline">
+        \[
+        \operatorname{rot}\mathbf F
+        \quad\text{é vetorial},
+    \]
+    </div>
+
+    <p>
+        enquanto
+    </p>
+
+    <div class="mathline">
+        \[
+        \operatorname{div}\mathbf F
+        \quad\text{é escalar}.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. INTERPRETAÇÃO DO DIVERGENTE -->
+    <!-- ========================================================= -->
+
+    <h2>18. Interpretação do divergente</h2>
+
+    <p>
+        Se \(\mathbf F(x,y,z)\) representa o campo de velocidades de um
+        fluido, então
+    </p>
+
+    <div class="mathline">
+        \[
+        \operatorname{div}\mathbf F(x,y,z)
+    \]
+    </div>
+
+    <p>
+        mede a tendência local do fluido de se afastar ou convergir nas
+        proximidades do ponto \((x,y,z)\).
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            Se
+            \[
+            \operatorname{div}\mathbf F&gt;0,
+            \]
+            existe tendência local de saída ou expansão.
+        </p>
+
+        <p>
+            Se
+            \[
+            \operatorname{div}\mathbf F&lt;0,
+            \]
+            existe tendência local de entrada ou convergência.
+        </p>
+
+        <p>
+            Se
+            \[
+            \operatorname{div}\mathbf F=0,
+            \]
+            não existe divergência líquida local.
+        </p>
+
+    </div>
+
+    <p>
+        Em mecânica dos fluidos, quando
+    </p>
+
+    <div class="mathline">
+        \[
+        \operatorname{div}\mathbf F=0,
+    \]
+    </div>
+
+    <p>
+        o escoamento é chamado de <strong>incompressível</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. EXEMPLO DIVERGENTE -->
+    <!-- ========================================================= -->
+
+    <h2>19. Exemplo de cálculo do divergente</h2>
+
+    <div class="example">
+
+        <strong>Exemplo.</strong>
+
+        <p>
+            Considere
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F(x,y,z)
+            =
+            \langle x^2,y^2,z^2\rangle.
+            \]
+        </div>
+
+        <p>
+            Temos
+        </p>
+
+        <div class="mathline">
+            \[
+            P=x^2,
+            \qquad
+            Q=y^2,
+            \qquad
+            R=z^2.
+        \]
+        </div>
+
+        <p>
+            Logo,
+        </p>
+
+        <div class="mathline">
+            \[
+            P_x=2x,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            Q_y=2y,
+            \]
+        </div>
+
+        <p>
+            e
+        </p>
+
+        <div class="mathline">
+            \[
+            R_z=2z.
+        \]
+        </div>
+
+        <p>
+            Portanto,
+        </p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \operatorname{div}\mathbf F
+            =
+            2x+2y+2z
+            }.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. IDENTIDADES -->
+    <!-- ========================================================= -->
+
+    <h2>20. Identidades importantes</h2>
+
+    <p>
+        Gradiente, rotacional e divergente satisfazem relações
+        fundamentais.
+    </p>
+
+    <p>
+        Se \(f\) possui derivadas parciais de segunda ordem contínuas,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \nabla\times(\nabla f)
+            =
+            \mathbf0
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Ou seja, o rotacional de um gradiente é nulo.
+    </p>
+
+    <p>
+        Se \(\mathbf F\) possui as derivadas parciais de segunda ordem
+        contínuas necessárias, então
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \nabla\cdot
+            (\nabla\times\mathbf F)
+            =
+            0
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Equivalentemente,
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \operatorname{div}
+        (\operatorname{rot}\mathbf F)
+        =
+        0
+        }.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. FORMAS VETORIAIS DE GREEN -->
+    <!-- ========================================================= -->
+
+    <h2>21. Formas vetoriais do Teorema de Green</h2>
+
+    <p>
+        Os operadores rotacional e divergente permitem escrever o
+        Teorema de Green de duas maneiras particularmente importantes.
+    </p>
+
+    <p>
+        A <strong>forma de circulação</strong> é
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \oint_C
+            \mathbf F\cdot d\mathbf r
+            =
+            \iint_D
+            \left(
+            Q_x-P_y
+            \right)dA
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Essa forma relaciona a circulação do campo ao longo da
+        fronteira com a rotação acumulada no interior.
+    </p>
+
+    <p>
+        A <strong>forma de fluxo</strong> é
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \oint_C
+            \mathbf F\cdot\mathbf n\,ds
+            =
+            \iint_D
+            \operatorname{div}\mathbf F\,dA
+            }.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        Aqui, \(\mathbf n\) representa o vetor normal unitário exterior
+        à curva.
+    </p>
+
+    <p>
+        Essa forma relaciona o fluxo líquido através da fronteira com o
+        divergente acumulado no interior da região.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. CONEXÃO ENTRE OS OPERADORES -->
+    <!-- ========================================================= -->
+
+    <h2>22. Como os conceitos se conectam?</h2>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Gradiente</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            f
+            \quad\longrightarrow\quad
+            \nabla f
+            \]
+        </div>
+
+        <p>
+            transforma um campo escalar em um campo vetorial.
+        </p>
+
+        <p>
+            <strong>Rotacional</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F
+            \quad\longrightarrow\quad
+            \nabla\times\mathbf F
+            \]
+        </div>
+
+        <p>
+            descreve a tendência local de rotação.
+        </p>
+
+        <p>
+            <strong>Divergente</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf F
+            \quad\longrightarrow\quad
+            \nabla\cdot\mathbf F
+            \]
+        </div>
+
+        <p>
+            descreve a tendência local de expansão ou convergência.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 23. GREEN E CAMPOS CONSERVATIVOS -->
+    <!-- ========================================================= -->
+
+    <h2>23. Green e os campos conservativos</h2>
+
+    <p>
+        O Teorema de Green ajuda a compreender a relação entre
+        derivadas cruzadas e campos conservativos.
+    </p>
+
+    <p>
+        Para
+    </p>
+
+    <div class="mathline">
+        \[
+        \mathbf F
+        =
+        P\mathbf i+Q\mathbf j,
+    \]
+    </div>
+
+    <p>
+        Green fornece
+    </p>
+
+    <div class="mathline">
+        \[
+        \oint_C
+        \mathbf F\cdot d\mathbf r
+        =
+        \iint_D
+        (Q_x-P_y)\,dA.
+    \]
+    </div>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        P_y=Q_x
+    \]
+    </div>
+
+    <p>
+        em toda a região, então
+    </p>
+
+    <div class="mathline">
+        \[
+        Q_x-P_y=0.
+    \]
+    </div>
+
+    <p>
+        Consequentemente,
+    </p>
+
+    <div class="mathline">
+        \[
+        \oint_C
+        \mathbf F\cdot d\mathbf r
+        =
+        0.
+    \]
+    </div>
+
+    <p>
+        Sob as hipóteses adequadas sobre o domínio, essa propriedade
+        está diretamente relacionada à existência de uma função
+        potencial.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 24. QUANDO USAR GREEN -->
+    <!-- ========================================================= -->
+
+    <h2>24. Quando utilizar o Teorema de Green?</h2>
+
+    <p>
+        O Teorema de Green é particularmente útil quando o cálculo
+        direto da integral de linha exige uma parametrização complicada
+        da fronteira, mas a integral dupla correspondente é simples.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Antes de aplicar Green, verifique:</strong>
+        </p>
+
+        <p>
+            1. A curva é fechada?
+        </p>
+
+        <p>
+            2. A orientação da fronteira está correta?
+        </p>
+
+        <p>
+            3. A região delimitada foi identificada corretamente?
+        </p>
+
+        <p>
+            4. \(P\) e \(Q\) possuem as derivadas parciais exigidas?
+        </p>
+
+        <p>
+            5. As hipóteses de continuidade são satisfeitas?
+        </p>
+
+        <p>
+            6. A integral dupla obtida é mais conveniente que o cálculo
+            direto da integral de linha?
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 25. ERROS COMUNS -->
+    <!-- ========================================================= -->
+
+    <h2>25. Cuidados importantes</h2>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Confundir campo conservativo com campo constante.</strong><br>
+            Um campo conservativo pode variar de ponto para ponto.
+            O que o caracteriza é a existência de uma função potencial.
+        </p>
+
+        <p>
+            <strong>Aplicar \(P_y=Q_x\) sem analisar o domínio.</strong><br>
+            As hipóteses sobre a região não podem ser ignoradas.
+        </p>
+
+        <p>
+            <strong>Aplicar Green a uma curva aberta.</strong><br>
+            Na forma estudada aqui, o Teorema de Green relaciona uma
+            região à sua fronteira fechada.
+        </p>
+
+        <p>
+            <strong>Ignorar a orientação.</strong><br>
+            Inverter a orientação de uma integral de linha troca o sinal
+            da integral.
+        </p>
+
+        <p>
+            <strong>Trocar a ordem das derivadas no integrando.</strong><br>
+            Na forma de circulação de Green aparece
+        </p>
+
+        <div class="mathline">
+            \[
+            Q_x-P_y.
+        \]
+        </div>
+
+        <p>
+            <strong>Confundir rotacional e divergente.</strong><br>
+            Em \(\mathbb R^3\), o rotacional é vetorial e o divergente é
+            escalar.
+        </p>
+
+        <p>
+            <strong>Interpretar divergente nulo como campo nulo.</strong><br>
+            Um campo pode ser não nulo e possuir divergente igual a zero.
+        </p>
+
+    </div>
+
+
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+            <strong>Visualização no GeoGebra 3D</strong>
+
+            <p>
+                Utilize o ambiente 3D para explorar campos vetoriais,
+                curvas e superfícies e relacionar geometricamente os
+                conceitos de gradiente, rotacional e divergente.
+            </p>
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/3d"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            Abrir GeoGebra 3D ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIA -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+
+        <strong>Referência principal.</strong>
+
+        <p>
+            STEWART, James.
+            <em>Cálculo</em>.
+            São Paulo: Cengage Learning, 2013.
+        </p>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+
+</html>
