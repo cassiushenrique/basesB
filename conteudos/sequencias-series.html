@@ -1,7 +1,1849 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Sequências e séries infinitas | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Sequências e séries infinitas</div><p class="eyebrow">PARTE 4 · AULAS 56–60</p><h1>Sequências e séries infinitas</h1><p class="lead">Limites de sequências, monotonicidade, limitação, somas parciais, série geométrica e série harmônica.</p><h2>1. Sequências</h2><div class="mathline">\[\{a_n\}_{n=1}^{\infty}=a_1,a_2,a_3,\ldots\]</div><figure class="figure"><img src="../assets/img/aulas/sequencia-grafico.png" alt="Representação gráfica dos termos de uma sequência."><figcaption>Representação gráfica dos termos de uma sequência. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>2. Convergência</h2><div class="mathline">\[\lim_{n\to\infty}a_n=L.\]</div><ul class="property-list"><li>Toda sequência convergente é limitada.</li><li>Uma sequência monótona e limitada converge.</li><li>As regras algébricas de limites permanecem válidas.</li></ul>
-<div class="example"><strong>Exemplo resolvido.</strong><p>Para</p><div class="mathline">\[a_n=\frac{2n+1}{n+3},\]</div><p>dividindo por \(n\),</p><div class="mathline">\[a_n=\frac{2+1/n}{1+3/n}\longrightarrow2.\]</div></div>
-<h2>3. Séries</h2><div class="mathbox"><div class="mathline">\[s_N=\sum_{n=1}^{N}a_n.\]</div><div class="mathline">\[\sum_{n=1}^{\infty}a_n=\lim_{N\to\infty}s_N.\]</div></div><div class="note"><strong>Condição necessária.</strong> Se a série converge, então \(a_n\to0\). A recíproca é falsa.</div>
-<h2>4. Série geométrica</h2><div class="mathbox"><div class="mathline">\[\sum_{n=0}^{\infty}ar^n=\frac{a}{1-r}.\]</div><div class="mathline">\[|r|&lt;1.\]</div></div><figure class="figure"><img src="../assets/img/aulas/serie-geometrica.png" alt="Interpretação geométrica de uma soma infinita."><figcaption>Interpretação geométrica de uma soma infinita. Figura do material das aulas da GCT054.</figcaption></figure>
-<div class="example"><strong>Exemplo.</strong><p>\(3+3/2+3/4+\cdots\) tem \(a=3\), \(r=1/2\), portanto sua soma é \(6\).</p></div>
-<h2>5. Série harmônica</h2><div class="mathline">\[\sum_{n=1}^{\infty}\frac1n\]</div><p>diverge, embora \(1/n\to0\).</p><figure class="figure"><img src="../assets/img/aulas/serie-harmonica.png" alt="Comportamento de somas parciais de uma série divergente de crescimento lento."><figcaption>Comportamento de somas parciais de uma série divergente de crescimento lento. Figura do material das aulas da GCT054.</figcaption></figure><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Sequências e séries infinitas | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a> / Sequências e séries infinitas
+    </div>
+
+    <p class="eyebrow">PARTE 4 · AULAS 56–60</p>
+
+    <h1>Sequências e séries infinitas</h1>
+
+    <p class="lead">
+        Sequências descrevem listas infinitas ordenadas de números.
+        Séries surgem quando somamos os termos dessas sequências.
+        Neste tópico, estudaremos limites de sequências, monotonicidade
+        e limitação, somas parciais, convergência e divergência de séries,
+        séries geométricas, séries telescópicas e a série harmônica.
+        Esses conceitos formam a base para os testes de convergência e
+        para o estudo posterior de séries de potências e séries de Taylor.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. SEQUÊNCIAS -->
+    <!-- ========================================================= -->
+
+    <h2>1. Sequências</h2>
+
+    <p>
+        Uma <strong>sequência</strong> é uma lista ordenada de números
+        definida de acordo com alguma regra. Escrevemos
+    </p>
+
+    <div class="mathline">
+        \[
+        \{a_n\}_{n=1}^{\infty}
+        =
+        a_1,a_2,a_3,\ldots,a_n,\ldots
+        \]
+    </div>
+
+    <p>
+        O número \(a_n\) é denominado <strong>termo geral</strong> ou
+        <strong>n-ésimo termo</strong> da sequência.
+    </p>
+
+    <p>
+        Formalmente, uma sequência pode ser entendida como uma função
+        cujo domínio é formado pelos números naturais:
+    </p>
+
+    <div class="mathline">
+        \[
+        a:\mathbb{N}\longrightarrow\mathbb{R},
+        \qquad
+        n\longmapsto a_n.
+        \]
+    </div>
+
+    <p>
+        A diferença em relação às funções estudadas anteriormente está,
+        portanto, principalmente no domínio: em uma sequência, a variável
+        independente assume valores discretos
+    </p>
+
+    <div class="mathline">
+        \[
+        n=1,2,3,\ldots
+        \]
+    </div>
+
+    <figure class="figure">
+        <img
+            src="../assets/img/aulas/sequencia-grafico.png"
+            alt="Representação gráfica dos termos de uma sequência."
+        >
+
+        <figcaption>
+            Representação gráfica dos termos de uma sequência.
+            Cada ponto corresponde a um par \((n,a_n)\).
+        </figcaption>
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. FORMAS DE DEFINIR UMA SEQUÊNCIA -->
+    <!-- ========================================================= -->
+
+    <h2>2. Formas de definir uma sequência</h2>
+
+    <p>
+        Uma sequência pode ser definida por uma fórmula explícita para
+        seu termo geral. Por exemplo,
+    </p>
+
+    <div class="mathline">
+        \[
+        a_n=\frac{1}{n}.
+        \]
+    </div>
+
+    <p>
+        Nesse caso,
+    </p>
+
+    <div class="mathline">
+        \[
+        1,\frac12,\frac13,\frac14,\ldots
+        \]
+    </div>
+
+    <p>
+        Outro exemplo é
+    </p>
+
+    <div class="mathline">
+        \[
+        a_n=(-1)^n,
+        \]
+    </div>
+
+    <p>
+        que produz a sequência
+    </p>
+
+    <div class="mathline">
+        \[
+        -1,1,-1,1,-1,1,\ldots
+        \]
+    </div>
+
+    <p>
+        Algumas sequências também podem ser definidas
+        <strong>recursivamente</strong>, isto é, um termo é determinado
+        a partir de termos anteriores.
+    </p>
+
+    <div class="mathbox">
+
+        <p>Por exemplo:</p>
+
+        <div class="mathline">
+            \[
+            a_1=1,
+            \qquad
+            a_{n+1}=a_n+2.
+            \]
+        </div>
+
+        <p>Assim,</p>
+
+        <div class="mathline">
+            \[
+            1,3,5,7,9,\ldots
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. LIMITE DE UMA SEQUÊNCIA -->
+    <!-- ========================================================= -->
+
+    <h2>3. Limite de uma sequência</h2>
+
+    <p>
+        O principal interesse no estudo de sequências infinitas é
+        compreender o comportamento de \(a_n\) quando \(n\) cresce
+        indefinidamente.
+    </p>
+
+    <p>
+        Dizemos que a sequência \(\{a_n\}\) <strong>converge</strong>
+        para o número \(L\) quando
+    </p>
+
+    <div class="mathline">
+        \[
+        \lim_{n\to\infty}a_n=L.
+        \]
+    </div>
+
+    <p>
+        Isso significa que os termos \(a_n\) podem ser tornados
+        arbitrariamente próximos de \(L\), desde que \(n\) seja
+        suficientemente grande.
+    </p>
+
+    <div class="mathbox">
+
+        <strong>Definição.</strong>
+
+        <p>
+            A sequência \(\{a_n\}\) converge para \(L\) se, para todo
+            \(\varepsilon&gt;0\), existir um número natural \(N\) tal que
+        </p>
+
+        <div class="mathline">
+            \[
+            n&gt;N
+            \quad\Longrightarrow\quad
+            |a_n-L|&lt;\varepsilon.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Se não existir um número real \(L\) satisfazendo essa condição,
+        a sequência é denominada <strong>divergente</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. EXEMPLO DE LIMITE -->
+    <!-- ========================================================= -->
+
+    <h2>4. Exemplo: cálculo do limite de uma sequência</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            a_n=\frac{2n+1}{n+3}.
+            \]
+        </div>
+
+        <p>
+            Para analisar o comportamento quando \(n\to\infty\),
+            dividimos numerador e denominador por \(n\):
+        </p>
+
+        <div class="mathline">
+            \[
+            a_n
+            =
+            \frac{2+\frac1n}
+                 {1+\frac3n}.
+            \]
+        </div>
+
+        <p>Como</p>
+
+        <div class="mathline">
+            \[
+            \frac1n\longrightarrow0
+            \qquad\text{e}\qquad
+            \frac3n\longrightarrow0,
+        \]
+        </div>
+
+        <p>obtemos</p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}
+            \frac{2n+1}{n+3}
+            =
+            \frac{2}{1}
+            =
+            2.
+            \]
+        </div>
+
+        <p>
+            Portanto, a sequência converge para \(2\).
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. MONOTONICIDADE -->
+    <!-- ========================================================= -->
+
+    <h2>5. Sequências monótonas</h2>
+
+    <p>
+        Uma sequência é <strong>crescente</strong> quando
+    </p>
+
+    <div class="mathline">
+        \[
+        a_{n+1}\geq a_n
+        \]
+    </div>
+
+    <p>
+        para todo \(n\) considerado.
+    </p>
+
+    <p>
+        Analogamente, ela é <strong>decrescente</strong> quando
+    </p>
+
+    <div class="mathline">
+        \[
+        a_{n+1}\leq a_n.
+        \]
+    </div>
+
+    <p>
+        Sequências crescentes ou decrescentes são chamadas
+        <strong>sequências monótonas</strong>.
+    </p>
+
+    <div class="example">
+
+        <strong>Exemplo.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            a_n=\frac{n}{n+1}.
+            \]
+        </div>
+
+        <p>Os primeiros termos são</p>
+
+        <div class="mathline">
+            \[
+            \frac12,\frac23,\frac34,\frac45,\ldots
+            \]
+        </div>
+
+        <p>
+            Os termos aumentam e se aproximam de \(1\). Portanto,
+            essa sequência é crescente e
+        </p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}\frac{n}{n+1}=1.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. SEQUÊNCIAS LIMITADAS -->
+    <!-- ========================================================= -->
+
+    <h2>6. Sequências limitadas</h2>
+
+    <p>
+        Uma sequência \(\{a_n\}\) é <strong>limitada superiormente</strong>
+        quando existe um número \(M\) tal que
+    </p>
+
+    <div class="mathline">
+        \[
+        a_n\leq M
+        \]
+    </div>
+
+    <p>
+        para todo \(n\).
+    </p>
+
+    <p>
+        Ela é <strong>limitada inferiormente</strong> quando existe
+        um número \(m\) tal que
+    </p>
+
+    <div class="mathline">
+        \[
+        a_n\geq m.
+        \]
+    </div>
+
+    <p>
+        Se for limitada superior e inferiormente, dizemos simplesmente
+        que a sequência é <strong>limitada</strong>.
+    </p>
+
+    <div class="note">
+
+        <strong>Resultado importante.</strong>
+
+        <p>
+            Toda sequência convergente é limitada.
+        </p>
+
+        <p>
+            Além disso, uma sequência monótona e limitada é convergente.
+            Esse resultado é particularmente útil quando não é simples
+            determinar diretamente uma fórmula para o limite.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. DE SEQUÊNCIAS PARA SÉRIES -->
+    <!-- ========================================================= -->
+
+    <h2>7. De sequências para séries</h2>
+
+    <p>
+        Até aqui estudamos o comportamento dos termos \(a_n\).
+        Agora surge uma pergunta diferente:
+    </p>
+
+    <p>
+        <strong>
+            o que significa somar infinitos termos de uma sequência?
+        </strong>
+    </p>
+
+    <p>
+        A expressão
+    </p>
+
+    <div class="mathline">
+        \[
+        a_1+a_2+a_3+\cdots+a_n+\cdots
+        \]
+    </div>
+
+    <p>
+        é denominada uma <strong>série infinita</strong> e é representada por
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}a_n.
+        \]
+    </div>
+
+    <div class="note">
+
+        <strong>Atenção à diferença.</strong>
+
+        <p>
+            \(\{a_n\}\) representa uma <strong>sequência</strong>:
+            estamos interessados no comportamento dos próprios termos.
+        </p>
+
+        <p>
+            \(\displaystyle\sum a_n\) representa uma
+            <strong>série</strong>: estamos interessados no comportamento
+            da soma dos termos.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. SOMAS PARCIAIS -->
+    <!-- ========================================================= -->
+
+    <h2>8. Somas parciais</h2>
+
+    <p>
+        Não podemos interpretar uma série infinita simplesmente como
+        uma soma realizada de uma única vez. Para atribuir significado
+        matemático a essa expressão, construímos uma nova sequência:
+        a sequência das <strong>somas parciais</strong>.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            s_1=a_1,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            s_2=a_1+a_2,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            s_3=a_1+a_2+a_3,
+            \]
+        </div>
+
+        <p>e, em geral,</p>
+
+        <div class="mathline">
+            \[
+            s_N
+            =
+            a_1+a_2+\cdots+a_N
+            =
+            \sum_{n=1}^{N}a_n.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Portanto, associamos à série
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}a_n
+        \]
+    </div>
+
+    <p>
+        a sequência
+    </p>
+
+    <div class="mathline">
+        \[
+        \{s_N\}.
+        \]
+    </div>
+
+    <p>
+        É o comportamento dessa sequência de somas parciais que determina
+        se a série converge ou diverge.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. CONVERGÊNCIA DE SÉRIES -->
+    <!-- ========================================================= -->
+
+    <h2>9. Convergência de uma série infinita</h2>
+
+    <div class="mathbox">
+
+        <strong>Definição.</strong>
+
+        <p>
+            A série
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}a_n
+            \]
+        </div>
+
+        <p>
+            é <strong>convergente</strong> se a sequência de suas somas
+            parciais \(\{s_N\}\) possuir limite finito.
+        </p>
+
+        <div class="mathline">
+            \[
+            \lim_{N\to\infty}s_N=s.
+            \]
+        </div>
+
+        <p>Nesse caso, escrevemos</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}a_n=s.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Assim,
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \sum_{n=1}^{\infty}a_n
+        =
+        \lim_{N\to\infty}
+        \sum_{n=1}^{N}a_n
+        }
+        \]
+    </div>
+
+    <p>
+        Se esse limite não existir como um número real finito,
+        a série é <strong>divergente</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. EXEMPLO DE SOMAS PARCIAIS -->
+    <!-- ========================================================= -->
+
+    <h2>10. Um primeiro exemplo</h2>
+
+    <p>Considere a série</p>
+
+    <div class="mathline">
+        \[
+        \frac12+\frac14+\frac18+\frac1{16}+\cdots
+        \]
+    </div>
+
+    <p>Suas primeiras somas parciais são</p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            s_1=\frac12=0{,}5,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            s_2=\frac12+\frac14=0{,}75,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            s_3=\frac12+\frac14+\frac18=0{,}875,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            s_4=0{,}9375.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        À medida que acrescentamos novos termos, as somas parciais
+        aproximam-se de \(1\):
+    </p>
+
+    <div class="mathline">
+        \[
+        s_N\longrightarrow1.
+        \]
+    </div>
+
+    <p>Portanto,</p>
+
+    <div class="mathline">
+        \[
+        \frac12+\frac14+\frac18+\frac1{16}+\cdots=1.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. SÉRIE GEOMÉTRICA -->
+    <!-- ========================================================= -->
+
+    <h2>11. Série geométrica</h2>
+
+    <p>
+        Uma das séries mais importantes é a
+        <strong>série geométrica</strong>:
+    </p>
+
+    <div class="mathline">
+        \[
+        a+ar+ar^2+ar^3+\cdots
+        \]
+    </div>
+
+    <p>
+        em que \(a\neq0\) é o primeiro termo e \(r\) é a
+        <strong>razão comum</strong>.
+    </p>
+
+    <p>
+        Em notação de somatório,
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}ar^{\,n-1}.
+        \]
+    </div>
+
+    <p>
+        Cada termo é obtido multiplicando o termo anterior por \(r\):
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{a_{n+1}}{a_n}=r.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. DEDUÇÃO DA SOMA GEOMÉTRICA -->
+    <!-- ========================================================= -->
+
+    <h2>12. Soma parcial de uma série geométrica</h2>
+
+    <p>
+        Considere a soma dos primeiros \(N\) termos:
+    </p>
+
+    <div class="mathline">
+        \[
+        s_N
+        =
+        a+ar+ar^2+\cdots+ar^{N-1}.
+        \]
+    </div>
+
+    <p>Multiplicando por \(r\),</p>
+
+    <div class="mathline">
+        \[
+        rs_N
+        =
+        ar+ar^2+\cdots+ar^{N-1}+ar^N.
+        \]
+    </div>
+
+    <p>Subtraindo as duas expressões,</p>
+
+    <div class="mathline">
+        \[
+        s_N-rs_N=a-ar^N.
+        \]
+    </div>
+
+    <p>Logo, para \(r\neq1\),</p>
+
+    <div class="mathline">
+        \[
+        s_N(1-r)=a(1-r^N),
+        \]
+    </div>
+
+    <p>e portanto</p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        s_N=
+        \frac{a(1-r^N)}{1-r}
+        }.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. CONVERGÊNCIA DA SÉRIE GEOMÉTRICA -->
+    <!-- ========================================================= -->
+
+    <h2>13. Quando a série geométrica converge?</h2>
+
+    <p>
+        Para obter a soma infinita, calculamos
+    </p>
+
+    <div class="mathline">
+        \[
+        \lim_{N\to\infty}s_N.
+        \]
+    </div>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        |r|&lt;1,
+        \]
+    </div>
+
+    <p>então</p>
+
+    <div class="mathline">
+        \[
+        r^N\longrightarrow0.
+        \]
+    </div>
+
+    <p>Consequentemente,</p>
+
+    <div class="mathline">
+        \[
+        \lim_{N\to\infty}
+        \frac{a(1-r^N)}{1-r}
+        =
+        \frac{a}{1-r}.
+        \]
+    </div>
+
+    <div class="mathbox">
+
+        <strong>Série geométrica.</strong>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \sum_{n=1}^{\infty}ar^{\,n-1}
+            =
+            \frac{a}{1-r}
+            }
+        \]
+        </div>
+
+        <p>desde que</p>
+
+        <div class="mathline">
+            \[
+            \boxed{|r|&lt;1}.
+            \]
+        </div>
+
+        <p>Se</p>
+
+        <div class="mathline">
+            \[
+            |r|\geq1,
+            \]
+        </div>
+
+        <p>a série geométrica diverge.</p>
+
+    </div>
+
+    <figure class="figure">
+        <img
+            src="../assets/img/aulas/serie-geometrica.png"
+            alt="Interpretação geométrica de uma soma infinita."
+        >
+
+        <figcaption>
+            Interpretação geométrica associada à série geométrica.
+            Quando \(|r|&lt;1\), os termos diminuem em magnitude e
+            as somas parciais aproximam-se de um limite finito.
+        </figcaption>
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. EXEMPLO GEOMÉTRICO -->
+    <!-- ========================================================= -->
+
+    <h2>14. Exemplo: identificando uma série geométrica</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            3+\frac32+\frac34+\frac38+\cdots
+            \]
+        </div>
+
+        <p>O primeiro termo é</p>
+
+        <div class="mathline">
+            \[
+            a=3,
+        \]
+        </div>
+
+        <p>e a razão comum é</p>
+
+        <div class="mathline">
+            \[
+            r=\frac12.
+        \]
+        </div>
+
+        <p>Como</p>
+
+        <div class="mathline">
+            \[
+            \left|\frac12\right|&lt;1,
+        \]
+        </div>
+
+        <p>a série converge. Sua soma é</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            3\left(\frac12\right)^{n-1}
+            =
+            \frac{3}{1-\frac12}
+            =
+            6.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. RAZÃO NEGATIVA -->
+    <!-- ========================================================= -->
+
+    <h2>15. Série geométrica com razão negativa</h2>
+
+    <p>
+        A razão de uma série geométrica não precisa ser positiva.
+        Considere
+    </p>
+
+    <div class="mathline">
+        \[
+        5-\frac{10}{3}
+        +\frac{20}{9}
+        -\frac{40}{27}
+        +\cdots
+        \]
+    </div>
+
+    <p>Nesse caso,</p>
+
+    <div class="mathline">
+        \[
+        a=5
+        \qquad\text{e}\qquad
+        r=-\frac23.
+        \]
+    </div>
+
+    <p>Como</p>
+
+    <div class="mathline">
+        \[
+        |r|=\frac23&lt;1,
+        \]
+    </div>
+
+    <p>a série converge e</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}
+        5\left(-\frac23\right)^{n-1}
+        =
+        \frac{5}{1+\frac23}
+        =
+        3.
+        \]
+    </div>
+
+    <p>
+        Nesse exemplo, as somas parciais oscilam em torno de \(3\),
+        mas a amplitude dessas oscilações diminui progressivamente.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. SÉRIES TELESCÓPICAS -->
+    <!-- ========================================================= -->
+
+    <h2>16. Séries telescópicas</h2>
+
+    <p>
+        Algumas séries podem ser estudadas diretamente por meio de
+        suas somas parciais, mesmo quando não são geométricas.
+    </p>
+
+    <p>Considere</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}
+        \frac{1}{n(n+1)}.
+        \]
+    </div>
+
+    <p>Usando frações parciais,</p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{n(n+1)}
+        =
+        \frac1n-\frac1{n+1}.
+        \]
+    </div>
+
+    <p>Logo, a soma parcial é</p>
+
+    <div class="mathline">
+        \[
+        s_N
+        =
+        \sum_{n=1}^{N}
+        \left(
+        \frac1n-\frac1{n+1}
+        \right).
+        \]
+    </div>
+
+    <p>Escrevendo os primeiros termos,</p>
+
+    <div class="mathline">
+        \[
+        s_N
+        =
+        \left(1-\frac12\right)
+        +
+        \left(\frac12-\frac13\right)
+        +
+        \left(\frac13-\frac14\right)
+        +
+        \cdots
+        +
+        \left(\frac1N-\frac1{N+1}\right).
+        \]
+    </div>
+
+    <p>
+        Os termos intermediários se cancelam:
+    </p>
+
+    <div class="mathline">
+        \[
+        s_N
+        =
+        1-\frac1{N+1}.
+        \]
+    </div>
+
+    <p>Portanto,</p>
+
+    <div class="mathline">
+        \[
+        \lim_{N\to\infty}s_N
+        =
+        1.
+        \]
+    </div>
+
+    <p>Assim,</p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \sum_{n=1}^{\infty}
+        \frac{1}{n(n+1)}
+        =
+        1
+        }.
+        \]
+    </div>
+
+    <div class="note">
+        <strong>Por que “telescópica”?</strong>
+        A expansão da soma parcial provoca cancelamentos sucessivos,
+        fazendo com que permaneçam apenas alguns termos.
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. SÉRIE HARMÔNICA -->
+    <!-- ========================================================= -->
+
+    <h2>17. Série harmônica</h2>
+
+    <p>
+        A <strong>série harmônica</strong> é
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}\frac1n
+        =
+        1+\frac12+\frac13+\frac14+\cdots.
+        \]
+    </div>
+
+    <p>
+        Observe que
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac1n\longrightarrow0.
+        \]
+    </div>
+
+    <p>
+        Entretanto, isso <strong>não</strong> é suficiente para garantir
+        a convergência da série.
+    </p>
+
+    <p>
+        Para demonstrar a divergência, podemos agrupar os termos:
+    </p>
+
+    <div class="mathline">
+        \[
+        1
+        +
+        \frac12
+        +
+        \left(
+        \frac13+\frac14
+        \right)
+        +
+        \left(
+        \frac15+\frac16+\frac17+\frac18
+        \right)
+        +\cdots
+        \]
+    </div>
+
+    <p>No primeiro grupo entre parênteses,</p>
+
+    <div class="mathline">
+        \[
+        \frac13+\frac14
+        &gt;
+        \frac14+\frac14
+        =
+        \frac12.
+        \]
+    </div>
+
+    <p>No grupo seguinte,</p>
+
+    <div class="mathline">
+        \[
+        \frac15+\frac16+\frac17+\frac18
+        &gt;
+        4\left(\frac18\right)
+        =
+        \frac12.
+        \]
+    </div>
+
+    <p>
+        O mesmo argumento pode ser repetido indefinidamente.
+        Cada novo bloco contribui com uma quantidade maior que ou igual
+        a aproximadamente \(1/2\).
+    </p>
+
+    <p>
+        Em particular, para determinadas somas parciais,
+    </p>
+
+    <div class="mathline">
+        \[
+        s_{2^k}
+        &gt;
+        1+\frac{k}{2}.
+        \]
+    </div>
+
+    <p>Como</p>
+
+    <div class="mathline">
+        \[
+        1+\frac{k}{2}\longrightarrow\infty,
+        \]
+    </div>
+
+    <p>
+        a sequência de somas parciais não possui limite finito.
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \sum_{n=1}^{\infty}\frac1n
+        \text{ diverge}.
+        }
+        \]
+    </div>
+
+    <figure class="figure">
+        <img
+            src="../assets/img/aulas/serie-harmonica.png"
+            alt="Comportamento de somas parciais da série harmônica."
+        >
+
+        <figcaption>
+            Comportamento das somas parciais da série harmônica.
+            O crescimento é lento, mas não se estabiliza em um valor
+            finito.
+        </figcaption>
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. CONDIÇÃO NECESSÁRIA -->
+    <!-- ========================================================= -->
+
+    <h2>18. Condição necessária para a convergência</h2>
+
+    <div class="mathbox">
+
+        <strong>Teorema.</strong>
+
+        <p>Se a série</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}a_n
+            \]
+        </div>
+
+        <p>converge, então necessariamente</p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \lim_{n\to\infty}a_n=0
+            }.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        A justificativa decorre diretamente das somas parciais.
+        Como
+    </p>
+
+    <div class="mathline">
+        \[
+        s_n=a_1+\cdots+a_n,
+        \]
+    </div>
+
+    <p>temos</p>
+
+    <div class="mathline">
+        \[
+        a_n=s_n-s_{n-1}.
+        \]
+    </div>
+
+    <p>
+        Se a série converge para \(s\), então
+    </p>
+
+    <div class="mathline">
+        \[
+        s_n\longrightarrow s
+        \qquad\text{e}\qquad
+        s_{n-1}\longrightarrow s.
+        \]
+    </div>
+
+    <p>Logo,</p>
+
+    <div class="mathline">
+        \[
+        \lim_{n\to\infty}a_n
+        =
+        s-s
+        =
+        0.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. A RECÍPROCA É FALSA -->
+    <!-- ========================================================= -->
+
+    <h2>19. Cuidado: a recíproca é falsa</h2>
+
+    <div class="note">
+
+        <strong>Erro conceitual importante.</strong>
+
+        <p>
+            A condição
+        </p>
+
+        <div class="mathline">
+            \[
+            a_n\longrightarrow0
+        \]
+        </div>
+
+        <p>
+            é <strong>necessária</strong> para a convergência de
+            \(\sum a_n\), mas não é suficiente.
+        </p>
+
+    </div>
+
+    <p>
+        A série harmônica fornece o contraexemplo fundamental:
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac1n\longrightarrow0,
+        \]
+    </div>
+
+    <p>mas</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}\frac1n
+    \]
+    </div>
+
+    <p>diverge.</p>
+
+    <p>
+        Portanto, a afirmação
+    </p>
+
+    <div class="mathline">
+        \[
+        a_n\to0
+        \quad\Longrightarrow\quad
+        \sum a_n\text{ converge}
+        \]
+    </div>
+
+    <p>
+        é <strong>falsa</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. TESTE DA DIVERGÊNCIA -->
+    <!-- ========================================================= -->
+
+    <h2>20. Teste da divergência</h2>
+
+    <p>
+        A condição necessária anterior fornece um teste simples
+        e extremamente útil.
+    </p>
+
+    <div class="mathbox">
+
+        <strong>Teste da divergência.</strong>
+
+        <p>Se</p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}a_n
+        \]
+        </div>
+
+        <p>não existir, ou se</p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}a_n\neq0,
+        \]
+        </div>
+
+        <p>então</p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \sum_{n=1}^{\infty}a_n
+            \text{ diverge}.
+            }
+            \]
+        </div>
+
+    </div>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{n^2}{5n^2+4}.
+            \]
+        </div>
+
+        <p>O termo geral satisfaz</p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}
+            \frac{n^2}{5n^2+4}
+            =
+            \lim_{n\to\infty}
+            \frac{1}{5+\frac4{n^2}}
+            =
+            \frac15.
+            \]
+        </div>
+
+        <p>Como</p>
+
+        <div class="mathline">
+            \[
+            \frac15\neq0,
+        \]
+        </div>
+
+        <p>
+            a série diverge pelo teste da divergência.
+        </p>
+
+    </div>
+
+    <div class="note">
+
+        <strong>Importante.</strong>
+
+        <p>
+            Se encontrarmos
+        </p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}a_n=0,
+        \]
+        </div>
+
+        <p>
+            o teste da divergência é <strong>inconclusivo</strong>.
+            Nesse caso, serão necessários outros testes de convergência.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. PROPRIEDADES DAS SÉRIES CONVERGENTES -->
+    <!-- ========================================================= -->
+
+    <h2>21. Propriedades algébricas das séries convergentes</h2>
+
+    <p>
+        Suponha que
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}a_n
+        \qquad\text{e}\qquad
+        \sum_{n=1}^{\infty}b_n
+    \]
+    </div>
+
+    <p>
+        sejam séries convergentes e que \(c\) seja uma constante.
+        Então:
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}ca_n
+            =
+            c
+            \sum_{n=1}^{\infty}a_n,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}(a_n+b_n)
+            =
+            \sum_{n=1}^{\infty}a_n
+            +
+            \sum_{n=1}^{\infty}b_n,
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}(a_n-b_n)
+            =
+            \sum_{n=1}^{\infty}a_n
+            -
+            \sum_{n=1}^{\infty}b_n.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Essas propriedades decorrem das propriedades algébricas dos
+        limites aplicadas às sequências de somas parciais.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. TERMOS INICIAIS -->
+    <!-- ========================================================= -->
+
+    <h2>22. Um número finito de termos não altera a convergência</h2>
+
+    <p>
+        Adicionar ou retirar uma quantidade finita de termos de uma
+        série não altera seu caráter de convergência ou divergência.
+    </p>
+
+    <p>Por exemplo,</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}a_n
+        =
+        a_1+a_2+\cdots+a_{13}
+        +
+        \sum_{n=14}^{\infty}a_n.
+        \]
+    </div>
+
+    <p>
+        A parcela
+    </p>
+
+    <div class="mathline">
+        \[
+        a_1+a_2+\cdots+a_{13}
+    \]
+    </div>
+
+    <p>
+        é apenas um número real finito. Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}a_n
+        \]
+    </div>
+
+    <p>e</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=14}^{\infty}a_n
+    \]
+    </div>
+
+    <p>
+        possuem o mesmo comportamento quanto à convergência ou divergência.
+    </p>
+
+    <div class="note">
+        <strong>Atenção.</strong>
+        Retirar termos iniciais pode alterar o <em>valor da soma</em>,
+        mas não altera o fato de a série convergir ou divergir.
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 23. SEQUÊNCIA X SÉRIE -->
+    <!-- ========================================================= -->
+
+    <h2>23. Sequência × série: não confunda</h2>
+
+    <p>
+        Essa distinção é fundamental para todo o estudo posterior.
+    </p>
+
+    <div class="mathbox">
+
+        <p><strong>Sequência:</strong></p>
+
+        <div class="mathline">
+            \[
+            \{a_n\}.
+            \]
+        </div>
+
+        <p>
+            Pergunta principal:
+            <em>para onde vai \(a_n\) quando \(n\to\infty\)?</em>
+        </p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}a_n.
+            \]
+        </div>
+
+        <p><strong>Série:</strong></p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}a_n.
+            \]
+        </div>
+
+        <p>
+            Pergunta principal:
+            <em>para onde vão as somas parciais?</em>
+        </p>
+
+        <div class="mathline">
+            \[
+            \lim_{N\to\infty}
+            \sum_{n=1}^{N}a_n.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Em outras palavras, a convergência de uma série é, na realidade,
+        um problema de convergência de uma sequência: a sequência
+        \(\{s_N\}\) das somas parciais.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 24. ROTEIRO DE ANÁLISE -->
+    <!-- ========================================================= -->
+
+    <h2>24. Como analisar os problemas deste tópico</h2>
+
+    <p>
+        Ao trabalhar com sequências e séries, é importante identificar
+        primeiro qual objeto matemático está sendo estudado.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Para uma sequência \(\{a_n\}\):</strong>
+        </p>
+
+        <p>
+            1. Identifique o termo geral \(a_n\).
+        </p>
+
+        <p>
+            2. Analise \(\displaystyle\lim_{n\to\infty}a_n\).
+        </p>
+
+        <p>
+            3. Quando necessário, investigue monotonicidade e limitação.
+        </p>
+
+        <p>
+            <strong>Para uma série \(\sum a_n\):</strong>
+        </p>
+
+        <p>
+            1. Identifique o termo geral \(a_n\).
+        </p>
+
+        <p>
+            2. Verifique imediatamente o limite de \(a_n\).
+        </p>
+
+        <p>
+            3. Se \(\lim a_n\neq0\), a série diverge.
+        </p>
+
+        <p>
+            4. Se \(\lim a_n=0\), não conclua convergência.
+        </p>
+
+        <p>
+            5. Verifique se a série possui uma estrutura conhecida,
+            como uma série geométrica ou telescópica.
+        </p>
+
+        <p>
+            6. Quando possível, determine a expressão das somas parciais
+            e calcule seu limite.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 25. ERROS COMUNS -->
+    <!-- ========================================================= -->
+
+    <h2>25. Erros conceituais comuns</h2>
+
+    <ul class="property-list">
+
+        <li>
+            Confundir a sequência \(\{a_n\}\) com a série
+            \(\sum a_n\).
+        </li>
+
+        <li>
+            Concluir que uma série converge apenas porque
+            \(a_n\to0\).
+        </li>
+
+        <li>
+            Aplicar a fórmula da série geométrica sem verificar
+            se \(|r|&lt;1\).
+        </li>
+
+        <li>
+            Confundir o termo geral \(a_n\) com a soma parcial \(s_n\).
+        </li>
+
+        <li>
+            Calcular apenas alguns valores numéricos de \(s_n\) e
+            considerar isso uma demonstração de convergência.
+        </li>
+
+        <li>
+            Esquecer que uma série convergente precisa ter uma
+            sequência de somas parciais com limite
+            <strong>finito</strong>.
+        </li>
+
+    </ul>
+
+
+
+
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+            <strong>Visualização no GeoGebra</strong>
+
+            <p>
+                Use o GeoGebra para representar os pontos
+                \((n,a_n)\) de uma sequência e os pontos
+                \((N,s_N)\) da sequência de somas parciais.
+                A visualização ajuda a distinguir o comportamento dos
+                termos da série do comportamento de suas somas parciais.
+            </p>
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/graphing"
+            target="_blank"
+            rel="noopener noreferrer">
+            Abrir GeoGebra ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIA -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+        <strong>Referência principal:</strong>
+        Stewart, J. (2013). <em>Cálculo</em>. Cengage Learning.
+        Conteúdo correspondente às Aulas 56–60 da disciplina
+        GCT054 — Bases Matemáticas para Ciência e Tecnologia B.
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
