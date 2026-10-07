@@ -1,5 +1,2033 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Funções como séries de potências | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Funções como séries de potências</div><p class="eyebrow">PARTE 4 · AULAS 72–73</p><h1>Funções como séries de potências</h1><p class="lead">Uso da série geométrica como geradora e operações de substituição, derivação e integração termo a termo.</p><h2>1. Série geométrica</h2><div class="mathbox"><div class="mathline">\[\frac1{1-x}=\sum_{n=0}^{\infty}x^n.\]</div><div class="mathline">\[|x|&lt;1.\]</div></div>
-<h2>2. Substituição</h2><div class="example"><strong>Exemplo resolvido.</strong><p>Substituindo \(x\) por \(-x^2\),</p><div class="mathline">\[\frac1{1+x^2}=\sum_{n=0}^{\infty}(-1)^nx^{2n}.\]</div><div class="mathline">\[|x|&lt;1.\]</div></div><figure class="figure"><img src="../assets/img/aulas/series-funcoes.png" alt="Somas parciais aproximando a função representada pela série."><figcaption>Somas parciais aproximando a função representada pela série. Figura do material das aulas da GCT054.</figcaption></figure>
-<h2>3. Derivação termo a termo</h2><div class="mathline">\[\frac{d}{dx}\left[\sum_{n=0}^{\infty}c_n(x-a)^n\right]=\sum_{n=1}^{\infty}nc_n(x-a)^{n-1}.\]</div>
-<h2>4. Integração termo a termo</h2><div class="mathline">\[\int\left[\sum_{n=0}^{\infty}c_n(x-a)^n\right]dx=C+\sum_{n=0}^{\infty}c_n\frac{(x-a)^{n+1}}{n+1}.\]</div>
-<div class="note"><strong>Importante.</strong> Derivação e integração preservam o raio de convergência, mas os extremos precisam ser novamente analisados.</div><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Funções como séries de potências | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a> /
+        Funções como séries de potências
+    </div>
+
+    <p class="eyebrow">PARTE 4 · AULAS 72–73</p>
+
+    <h1>Funções como séries de potências</h1>
+
+    <p class="lead">
+        Uma série de potências permite representar determinadas funções
+        por uma soma infinita de termos polinomiais. Partindo da série
+        geométrica, podemos obter novas representações por manipulações
+        algébricas, substituições, derivação e integração termo a termo.
+        Essas representações também permitem aproximar funções e calcular
+        integrais que podem ser difíceis de tratar diretamente.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. IDEIA CENTRAL -->
+    <!-- ========================================================= -->
+
+    <h2>1. A ideia de representar uma função por uma série</h2>
+
+    <p>
+        Uma função pode, em determinadas condições, ser escrita como uma
+        série de potências:
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n.
+        \]
+    </div>
+
+    <p>
+        Isso significa que, para os valores de \(x\) pertencentes ao
+        intervalo de convergência,
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        c_0
+        +
+        c_1(x-a)
+        +
+        c_2(x-a)^2
+        +
+        c_3(x-a)^3
+        +\cdots.
+        \]
+    </div>
+
+    <p>
+        Portanto, uma função que inicialmente pode ser racional,
+        logarítmica ou trigonométrica inversa passa a ser representada
+        por uma soma de potências de \(x-a\).
+    </p>
+
+    <div class="note">
+
+        <strong>Ideia central.</strong>
+
+        Representar uma função por uma série de potências significa
+        substituir, dentro do intervalo de convergência, a função por uma
+        soma infinita de termos polinomiais.
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. SÉRIE GEOMÉTRICA -->
+    <!-- ========================================================= -->
+
+    <h2>2. A série geométrica como ponto de partida</h2>
+
+    <p>
+        A principal série utilizada para construir novas representações
+        nas aulas é a série geométrica.
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{1}{1-x}
+            =
+            \sum_{n=0}^{\infty}x^n
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{|x|&lt;1}
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Desenvolvendo a soma,
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{1-x}
+        =
+        1+x+x^2+x^3+\cdots,
+        \qquad |x|&lt;1.
+        \]
+    </div>
+
+    <p>
+        A igualdade deve ser entendida juntamente com sua condição de
+        convergência. A representação por série é válida somente para
+    </p>
+
+    <div class="mathline">
+        \[
+        -1&lt;x&lt;1.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. SOMAS PARCIAIS -->
+    <!-- ========================================================= -->
+
+    <h2>3. Somas parciais e aproximação da função</h2>
+
+    <p>
+        A identidade
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{1-x}
+        =
+        1+x+x^2+x^3+\cdots
+    \]
+    </div>
+
+    <p>
+        pode ser interpretada em termos das somas parciais
+    </p>
+
+    <div class="mathline">
+        \[
+        s_N(x)
+        =
+        1+x+x^2+\cdots+x^N.
+        \]
+    </div>
+
+    <p>
+        Para cada \(x\) com \(|x|&lt;1\),
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{1-x}
+        =
+        \lim_{N\to\infty}s_N(x).
+        \]
+    </div>
+
+    <p>
+        Assim, os polinômios
+    </p>
+
+    <div class="mathline">
+        \[
+        s_0(x),\;
+        s_1(x),\;
+        s_2(x),\;
+        \ldots
+    \]
+    </div>
+
+    <p>
+        fornecem aproximações sucessivas da função
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)=\frac{1}{1-x}.
+        \]
+    </div>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/series-funcoes.png"
+            alt="Somas parciais aproximando a função representada pela série."
+        >
+
+        <figcaption>
+            Somas parciais aproximando a função representada pela série
+            de potências. À medida que mais termos são considerados,
+            obtêm-se novas aproximações da função dentro do intervalo
+            de convergência.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. ESTRATÉGIA -->
+    <!-- ========================================================= -->
+
+    <h2>4. Estratégia para obter novas séries</h2>
+
+    <p>
+        Muitas funções podem ser relacionadas à expressão
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{1-x}.
+        \]
+    </div>
+
+    <p>
+        A estratégia consiste em reescrever a função desejada na forma
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{1-u}
+    \]
+    </div>
+
+    <p>
+        para alguma expressão \(u=u(x)\). Então utilizamos
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{1-u}
+        =
+        \sum_{n=0}^{\infty}u^n,
+        \qquad |u|&lt;1.
+        \]
+    </div>
+
+    <div class="steps">
+
+        <strong>Procedimento.</strong>
+
+        <ol>
+
+            <li>
+                Reescreva a função de modo que apareça uma expressão
+                do tipo \(1/(1-u)\).
+            </li>
+
+            <li>
+                Identifique a expressão \(u\).
+            </li>
+
+            <li>
+                Substitua \(u\) na série geométrica.
+            </li>
+
+            <li>
+                Simplifique o termo geral.
+            </li>
+
+            <li>
+                Resolva a condição
+                \[
+                |u|&lt;1
+                \]
+                para determinar onde a representação é válida.
+            </li>
+
+        </ol>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. EXEMPLO 1 -->
+    <!-- ========================================================= -->
+
+    <h2>5. Exemplo: representação de \(\frac{1}{1+x^2}\)</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Queremos representar
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1+x^2}
+            \]
+        </div>
+
+        <p>
+            como uma série de potências.
+        </p>
+
+        <p>
+            Escrevemos
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1+x^2}
+            =
+            \frac{1}{1-(-x^2)}.
+            \]
+        </div>
+
+        <p>
+            Na série geométrica, fazemos
+        </p>
+
+        <div class="mathline">
+            \[
+            u=-x^2.
+            \]
+        </div>
+
+        <p>Logo,</p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1+x^2}
+            =
+            \sum_{n=0}^{\infty}
+            (-x^2)^n.
+            \]
+        </div>
+
+        <p>Portanto,</p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{1}{1+x^2}
+            =
+            \sum_{n=0}^{\infty}
+            (-1)^n x^{2n}
+            }
+        \]
+        </div>
+
+        <p>ou, explicitando os primeiros termos,</p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1+x^2}
+            =
+            1-x^2+x^4-x^6+x^8-\cdots.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. CONVERGÊNCIA EXEMPLO 1 -->
+    <!-- ========================================================= -->
+
+    <h2>6. Intervalo de convergência do exemplo anterior</h2>
+
+    <p>
+        Como utilizamos a série geométrica com razão
+    </p>
+
+    <div class="mathline">
+        \[
+        u=-x^2,
+    \]
+    </div>
+
+    <p>
+        precisamos impor
+    </p>
+
+    <div class="mathline">
+        \[
+        |-x^2|&lt;1.
+    \]
+    </div>
+
+    <p>Como</p>
+
+    <div class="mathline">
+        \[
+        |-x^2|=x^2,
+    \]
+    </div>
+
+    <p>temos</p>
+
+    <div class="mathline">
+        \[
+        x^2&lt;1.
+    \]
+    </div>
+
+    <p>Equivalentemente,</p>
+
+    <div class="mathline">
+        \[
+        |x|&lt;1.
+    \]
+    </div>
+
+    <p>Portanto,</p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{1}{1+x^2}
+            =
+            \sum_{n=0}^{\infty}
+            (-1)^n x^{2n},
+            \qquad |x|&lt;1
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{\text{Intervalo}=(-1,1)}
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. EXEMPLO 2 -->
+    <!-- ========================================================= -->
+
+    <h2>7. Exemplo: representação de \(\frac{1}{x+2}\)</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Para utilizar a série geométrica, primeiro fatoramos \(2\)
+            no denominador:
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{x+2}
+            =
+            \frac{1}{2\left(1+\frac{x}{2}\right)}.
+            \]
+        </div>
+
+        <p>Assim,</p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{x+2}
+            =
+            \frac12
+            \frac{1}{1-\left(-\frac{x}{2}\right)}.
+            \]
+        </div>
+
+        <p>
+            Aplicando a série geométrica com
+        </p>
+
+        <div class="mathline">
+            \[
+            u=-\frac{x}{2},
+        \]
+        </div>
+
+        <p>obtemos</p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{x+2}
+            =
+            \frac12
+            \sum_{n=0}^{\infty}
+            \left(-\frac{x}{2}\right)^n.
+            \]
+        </div>
+
+        <p>Portanto,</p>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{1}{x+2}
+            =
+            \sum_{n=0}^{\infty}
+            \frac{(-1)^n}{2^{n+1}}x^n
+            }
+            \]
+        </div>
+
+        <p>
+            A condição de convergência é
+        </p>
+
+        <div class="mathline">
+            \[
+            \left|-\frac{x}{2}\right|&lt;1,
+        \]
+        </div>
+
+        <p>isto é,</p>
+
+        <div class="mathline">
+            \[
+            |x|&lt;2.
+        \]
+        </div>
+
+        <p>Logo,</p>
+
+        <div class="mathline">
+            \[
+            \boxed{\text{Intervalo}=(-2,2)}.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. MULTIPLICAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>8. Multiplicando uma representação conhecida</h2>
+
+    <p>
+        Uma vez conhecida uma representação em série de potências,
+        podemos utilizá-la para obter outras representações.
+    </p>
+
+    <p>
+        Por exemplo, como
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{x+2}
+        =
+        \sum_{n=0}^{\infty}
+        \frac{(-1)^n}{2^{n+1}}x^n,
+        \qquad |x|&lt;2,
+    \]
+    </div>
+
+    <p>
+        podemos multiplicar ambos os lados por \(x^3\):
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{x^3}{x+2}
+        =
+        x^3
+        \sum_{n=0}^{\infty}
+        \frac{(-1)^n}{2^{n+1}}x^n.
+    \]
+    </div>
+
+    <p>Assim,</p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \frac{x^3}{x+2}
+        =
+        \sum_{n=0}^{\infty}
+        \frac{(-1)^n}{2^{n+1}}x^{n+3}
+        }
+    \]
+    </div>
+
+    <p>
+        e, desenvolvendo,
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{x^3}{x+2}
+        =
+        \frac12x^3
+        -
+        \frac14x^4
+        +
+        \frac18x^5
+        -
+        \frac1{16}x^6
+        +\cdots.
+    \]
+    </div>
+
+    <p>
+        O intervalo de convergência continua sendo
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{(-2,2)}.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. DERIVAÇÃO E INTEGRAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>9. Derivação e integração termo a termo</h2>
+
+    <p>
+        As séries de potências possuem uma propriedade particularmente
+        importante: no interior de seu intervalo de convergência, elas
+        podem ser derivadas e integradas termo a termo.
+    </p>
+
+    <p>
+        Considere
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n
+    \]
+    </div>
+
+    <p>
+        com raio de convergência
+    </p>
+
+    <div class="mathline">
+        \[
+        R&gt;0.
+    \]
+    </div>
+
+    <p>
+        Então \(f\) é diferenciável para
+    </p>
+
+    <div class="mathline">
+        \[
+        a-R&lt;x&lt;a+R.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. DERIVAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>10. Derivação termo a termo</h2>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        c_0
+        +
+        c_1(x-a)
+        +
+        c_2(x-a)^2
+        +
+        c_3(x-a)^3
+        +\cdots,
+    \]
+    </div>
+
+    <p>
+        então podemos derivar cada termo:
+    </p>
+
+    <div class="mathline">
+        \[
+        f'(x)
+        =
+        c_1
+        +
+        2c_2(x-a)
+        +
+        3c_3(x-a)^2
+        +\cdots.
+    \]
+    </div>
+
+    <p>
+        Em notação de somatório,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{d}{dx}
+            \left[
+            \sum_{n=0}^{\infty}
+            c_n(x-a)^n
+            \right]
+            =
+            \sum_{n=1}^{\infty}
+            nc_n(x-a)^{n-1}
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        De maneira compacta,
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{d}{dx}
+        \left[
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n
+        \right]
+        =
+        \sum_{n=0}^{\infty}
+        \frac{d}{dx}
+        \left[
+        c_n(x-a)^n
+        \right].
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. INTEGRAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>11. Integração termo a termo</h2>
+
+    <p>
+        Analogamente, podemos integrar cada termo da série:
+    </p>
+
+    <div class="mathline">
+        \[
+        \int f(x)\,dx
+        =
+        C
+        +
+        c_0(x-a)
+        +
+        c_1\frac{(x-a)^2}{2}
+        +
+        c_2\frac{(x-a)^3}{3}
+        +\cdots.
+    \]
+    </div>
+
+    <p>
+        Em notação de somatório,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int
+            \left[
+            \sum_{n=0}^{\infty}
+            c_n(x-a)^n
+            \right]dx
+            =
+            C+
+            \sum_{n=0}^{\infty}
+            c_n
+            \frac{(x-a)^{n+1}}{n+1}
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Ou, de forma compacta,
+    </p>
+
+    <div class="mathline">
+        \[
+        \int
+        \left[
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n
+        \right]dx
+        =
+        \sum_{n=0}^{\infty}
+        \int c_n(x-a)^n\,dx.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. RAIO -->
+    <!-- ========================================================= -->
+
+    <h2>12. O que acontece com o raio de convergência?</h2>
+
+    <p>
+        Um resultado fundamental é que a série original, sua derivada
+        termo a termo e sua integral termo a termo possuem o
+        <strong>mesmo raio de convergência</strong>.
+    </p>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n
+    \]
+    </div>
+
+    <p>
+        possui raio \(R\), então
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}
+        nc_n(x-a)^{n-1}
+    \]
+    </div>
+
+    <p>e</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=0}^{\infty}
+        c_n\frac{(x-a)^{n+1}}{n+1}
+    \]
+    </div>
+
+    <p>
+        também possuem raio
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{R}.
+    \]
+    </div>
+
+    <div class="note">
+
+        <strong>Importante.</strong>
+
+        Derivação e integração preservam o
+        <strong>raio de convergência</strong>, mas não necessariamente
+        preservam o <strong>intervalo de convergência</strong>.
+
+        O comportamento nos extremos pode mudar. Por isso, depois de
+        derivar ou integrar uma série, os extremos devem ser analisados
+        novamente.
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. EXEMPLO DERIVAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>13. Exemplo: obtendo \(\frac{1}{(1-x)^2}\)</h2>
+
+    <p>
+        Começamos novamente com
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{1-x}
+        =
+        1+x+x^2+x^3+\cdots,
+        \qquad |x|&lt;1.
+    \]
+    </div>
+
+    <p>
+        Derivando ambos os lados,
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{d}{dx}
+        \left(
+        \frac{1}{1-x}
+        \right)
+        =
+        \frac{d}{dx}
+        \left(
+        1+x+x^2+x^3+\cdots
+        \right).
+    \]
+    </div>
+
+    <p>Logo,</p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{(1-x)^2}
+        =
+        1+2x+3x^2+4x^3+\cdots.
+    \]
+    </div>
+
+    <p>
+        Em notação de somatório,
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{(1-x)^2}
+        =
+        \sum_{n=1}^{\infty}
+        nx^{n-1}.
+    \]
+    </div>
+
+    <p>
+        Fazendo uma mudança de índice, também podemos escrever
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{1}{(1-x)^2}
+            =
+            \sum_{n=0}^{\infty}
+            (n+1)x^n
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{R=1}
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        O raio continua sendo \(1\), pois a derivação preserva o raio
+        de convergência.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. INTEGRAÇÃO E LOG -->
+    <!-- ========================================================= -->
+
+    <h2>14. Exemplo: série para \(\ln(1+x)\)</h2>
+
+    <p>
+        Sabemos que
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{d}{dx}\ln(1+x)
+        =
+        \frac{1}{1+x}.
+    \]
+    </div>
+
+    <p>
+        Pela série geométrica,
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{1+x}
+        =
+        \frac{1}{1-(-x)}
+        =
+        1-x+x^2-x^3+\cdots,
+        \qquad |x|&lt;1.
+    \]
+    </div>
+
+    <p>
+        Integramos termo a termo:
+    </p>
+
+    <div class="mathline">
+        \[
+        \ln(1+x)
+        =
+        \int
+        \left(
+        1-x+x^2-x^3+\cdots
+        \right)dx.
+    \]
+    </div>
+
+    <p>Portanto,</p>
+
+    <div class="mathline">
+        \[
+        \ln(1+x)
+        =
+        C
+        +
+        x
+        -
+        \frac{x^2}{2}
+        +
+        \frac{x^3}{3}
+        -
+        \frac{x^4}{4}
+        +\cdots.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. CONSTANTE -->
+    <!-- ========================================================= -->
+
+    <h2>15. Determinação da constante de integração</h2>
+
+    <p>
+        Para determinar \(C\), fazemos
+    </p>
+
+    <div class="mathline">
+        \[
+        x=0.
+    \]
+    </div>
+
+    <p>Como</p>
+
+    <div class="mathline">
+        \[
+        \ln(1+0)=0,
+    \]
+    </div>
+
+    <p>temos</p>
+
+    <div class="mathline">
+        \[
+        C=0.
+    \]
+    </div>
+
+    <p>Assim,</p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \ln(1+x)
+            =
+            \sum_{n=1}^{\infty}
+            \frac{(-1)^{n-1}x^n}{n}
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            |x|&lt;1
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{R=1}
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. LN(1-X) -->
+    <!-- ========================================================= -->
+
+    <h2>16. Série para \(\ln(1-x)\)</h2>
+
+    <p>
+        Uma representação relacionada é
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \ln(1-x)
+            =
+            -x
+            -
+            \frac{x^2}{2}
+            -
+            \frac{x^3}{3}
+            -
+            \frac{x^4}{4}
+            -\cdots
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \ln(1-x)
+            =
+            -\sum_{n=1}^{\infty}
+            \frac{x^n}{n}
+            }
+        \]
+        </div>
+
+        <div class="mathline">
+            \[
+            |x|&lt;1.
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        O raio de convergência continua sendo
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{R=1}.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. ARCTAN -->
+    <!-- ========================================================= -->
+
+    <h2>17. Exemplo: série para \(\arctan x\)</h2>
+
+    <p>
+        Considere
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)=\arctan x.
+    \]
+    </div>
+
+    <p>Sua derivada é</p>
+
+    <div class="mathline">
+        \[
+        f'(x)
+        =
+        \frac{1}{1+x^2}.
+    \]
+    </div>
+
+    <p>
+        Já obtivemos anteriormente
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{1+x^2}
+        =
+        1-x^2+x^4-x^6+\cdots,
+        \qquad |x|&lt;1.
+    \]
+    </div>
+
+    <p>
+        Portanto,
+    </p>
+
+    <div class="mathline">
+        \[
+        \arctan x
+        =
+        \int
+        \left(
+        1-x^2+x^4-x^6+\cdots
+        \right)dx.
+    \]
+    </div>
+
+    <p>Integrando termo a termo,</p>
+
+    <div class="mathline">
+        \[
+        \arctan x
+        =
+        C
+        +
+        x
+        -
+        \frac{x^3}{3}
+        +
+        \frac{x^5}{5}
+        -
+        \frac{x^7}{7}
+        +\cdots.
+    \]
+    </div>
+
+    <p>
+        Como
+    </p>
+
+    <div class="mathline">
+        \[
+        \arctan(0)=0,
+    \]
+    </div>
+
+    <p>
+        segue que
+    </p>
+
+    <div class="mathline">
+        \[
+        C=0.
+    \]
+    </div>
+
+    <p>Logo,</p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \arctan x
+            =
+            \sum_{n=0}^{\infty}
+            \frac{(-1)^n x^{2n+1}}
+                 {2n+1}
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            |x|&lt;1
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{R=1}
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. POR QUE É ÚTIL -->
+    <!-- ========================================================= -->
+
+    <h2>18. Por que integrar uma série de potências?</h2>
+
+    <p>
+        Uma vantagem importante dessa técnica é transformar uma função
+        cuja integral pode não ser simples em uma soma de potências,
+        cujos termos podem ser integrados individualmente.
+    </p>
+
+    <p>
+        A estratégia geral é
+    </p>
+
+    <div class="mathline">
+        \[
+        f(x)
+        =
+        \sum_{n=0}^{\infty}c_nx^n
+    \]
+    </div>
+
+    <p>e, então,</p>
+
+    <div class="mathline">
+        \[
+        \int f(x)\,dx
+        =
+        C+
+        \sum_{n=0}^{\infty}
+        \frac{c_n}{n+1}x^{n+1}.
+    \]
+    </div>
+
+    <p>
+        Dessa maneira, problemas de integração podem ser convertidos em
+        problemas envolvendo séries.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. EXEMPLO 1/(1+x^7) -->
+    <!-- ========================================================= -->
+
+    <h2>19. Exemplo: integrando \(\frac{1}{1+x^7}\)</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>
+            Queremos escrever
+        </p>
+
+        <div class="mathline">
+            \[
+            \int
+            \frac{1}{1+x^7}\,dx
+        \]
+        </div>
+
+        <p>
+            como uma série de potências.
+        </p>
+
+        <p>
+            Primeiro escrevemos o integrando como
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1+x^7}
+            =
+            \frac{1}{1-(-x^7)}.
+        \]
+        </div>
+
+        <p>
+            Utilizando a série geométrica,
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1+x^7}
+            =
+            \sum_{n=0}^{\infty}
+            (-x^7)^n.
+        \]
+        </div>
+
+        <p>Portanto,</p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1+x^7}
+            =
+            \sum_{n=0}^{\infty}
+            (-1)^n x^{7n}.
+        \]
+        </div>
+
+        <p>Explicitando os primeiros termos,</p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1+x^7}
+            =
+            1-x^7+x^{14}-x^{21}+\cdots.
+        \]
+        </div>
+
+        <p>
+            A condição da série geométrica é
+        </p>
+
+        <div class="mathline">
+            \[
+            |-x^7|&lt;1,
+        \]
+        </div>
+
+        <p>isto é,</p>
+
+        <div class="mathline">
+            \[
+            |x|&lt;1.
+        \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. INTEGRANDO -->
+    <!-- ========================================================= -->
+
+    <h2>20. Integração da série</h2>
+
+    <p>
+        Integramos termo a termo:
+    </p>
+
+    <div class="mathline">
+        \[
+        \int
+        \frac{1}{1+x^7}\,dx
+        =
+        \int
+        \sum_{n=0}^{\infty}
+        (-1)^n x^{7n}\,dx.
+    \]
+    </div>
+
+    <p>Assim,</p>
+
+    <div class="mathline">
+        \[
+        \int
+        \frac{1}{1+x^7}\,dx
+        =
+        C+
+        \sum_{n=0}^{\infty}
+        \frac{(-1)^n x^{7n+1}}
+             {7n+1}.
+    \]
+    </div>
+
+    <p>
+        Em termos dos primeiros elementos,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int
+            \frac{1}{1+x^7}\,dx
+            =
+            C
+            +
+            x
+            -
+            \frac{x^8}{8}
+            +
+            \frac{x^{15}}{15}
+            -
+            \frac{x^{22}}{22}
+            +\cdots
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            |x|&lt;1.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. INTEGRAL DEFINIDA -->
+    <!-- ========================================================= -->
+
+    <h2>21. Aproximando uma integral definida</h2>
+
+    <p>
+        Nas aulas, a série anterior é utilizada para aproximar
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_0^{0,5}
+        \frac{1}{1+x^7}\,dx.
+    \]
+    </div>
+
+    <p>
+        Pelo Teorema Fundamental do Cálculo,
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_0^{0,5}
+        \frac{1}{1+x^7}\,dx
+        =
+        \left[
+        x
+        -
+        \frac{x^8}{8}
+        +
+        \frac{x^{15}}{15}
+        -
+        \frac{x^{22}}{22}
+        +\cdots
+        \right]_0^{1/2}.
+    \]
+    </div>
+
+    <p>Portanto,</p>
+
+    <div class="mathline">
+        \[
+        \int_0^{0,5}
+        \frac{1}{1+x^7}\,dx
+        =
+        \frac12
+        -
+        \frac{1}{8\cdot2^8}
+        +
+        \frac{1}{15\cdot2^{15}}
+        -
+        \frac{1}{22\cdot2^{22}}
+        +\cdots.
+    \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. ERRO -->
+    <!-- ========================================================= -->
+
+    <h2>22. Controle do erro da aproximação</h2>
+
+    <p>
+        A série numérica obtida no exemplo anterior é alternada.
+        Portanto, podemos utilizar o Teorema da Estimativa de Séries
+        Alternadas para controlar o erro.
+    </p>
+
+    <p>
+        Se interrompermos a soma após o termo correspondente a \(n=3\),
+        o módulo do erro é menor que o módulo do próximo termo:
+    </p>
+
+    <div class="mathline">
+        \[
+        |R_3|
+        &lt;
+        \frac{1}{29\cdot2^{29}}.
+    \]
+    </div>
+
+    <p>Numericamente,</p>
+
+    <div class="mathline">
+        \[
+        \frac{1}{29\cdot2^{29}}
+        \approx
+        6,4\times10^{-11}.
+    \]
+    </div>
+
+    <p>
+        Esse erro já é muito menor que a precisão solicitada de
+    </p>
+
+    <div class="mathline">
+        \[
+        10^{-7}.
+    \]
+    </div>
+
+    <p>Assim,</p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \int_0^{0,5}
+            \frac{1}{1+x^7}\,dx
+            \approx
+            \frac12
+            -
+            \frac{1}{8\cdot2^8}
+            +
+            \frac{1}{15\cdot2^{15}}
+            -
+            \frac{1}{22\cdot2^{22}}.
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_0^{0,5}
+            \frac{1}{1+x^7}\,dx
+            \approx
+            0,49951374
+            }
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 23. FLUXO DE RESOLUÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>23. Como escolher a estratégia?</h2>
+
+    <p>
+        Ao receber uma função e ser solicitado a representá-la como
+        série de potências, é útil seguir uma sequência de decisões.
+    </p>
+
+    <div class="steps">
+
+        <strong>Estratégia de resolução.</strong>
+
+        <ol>
+
+            <li>
+                Verifique se a função pode ser reescrita diretamente
+                a partir de
+                \[
+                \frac{1}{1-x}.
+                \]
+            </li>
+
+            <li>
+                Procure uma substituição que transforme o denominador
+                em \(1-u\).
+            </li>
+
+            <li>
+                Se já houver uma série conhecida para uma função relacionada,
+                considere multiplicá-la por uma potência de \(x\).
+            </li>
+
+            <li>
+                Se a função desejada for derivada de uma função cuja série
+                é conhecida, derive termo a termo.
+            </li>
+
+            <li>
+                Se a função desejada for uma primitiva de uma função cuja
+                série é conhecida, integre termo a termo.
+            </li>
+
+            <li>
+                Determine a constante de integração quando necessário.
+            </li>
+
+            <li>
+                Registre o raio de convergência.
+            </li>
+
+            <li>
+                Quando for necessário determinar o intervalo completo,
+                analise os extremos separadamente.
+            </li>
+
+        </ol>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 24. QUADRO DE REPRESENTAÇÕES -->
+    <!-- ========================================================= -->
+
+    <h2>24. Representações importantes obtidas nesta seção</h2>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Série geométrica</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1-x}
+            =
+            \sum_{n=0}^{\infty}x^n,
+            \qquad |x|&lt;1.
+            \]
+        </div>
+
+        <p>
+            <strong>Substituição \(x\mapsto -x^2\)</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{1+x^2}
+            =
+            \sum_{n=0}^{\infty}
+            (-1)^n x^{2n},
+            \qquad |x|&lt;1.
+            \]
+        </div>
+
+        <p>
+            <strong>Derivação</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{1}{(1-x)^2}
+            =
+            \sum_{n=0}^{\infty}
+            (n+1)x^n,
+            \qquad |x|&lt;1.
+            \]
+        </div>
+
+        <p>
+            <strong>Integração</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \ln(1+x)
+            =
+            \sum_{n=1}^{\infty}
+            \frac{(-1)^{n-1}x^n}{n},
+            \qquad |x|&lt;1.
+            \]
+        </div>
+
+        <p>
+            <strong>Integração da série de \(1/(1+x^2)\)</strong>
+        </p>
+
+        <div class="mathline">
+            \[
+            \arctan x
+            =
+            \sum_{n=0}^{\infty}
+            \frac{(-1)^n x^{2n+1}}
+                 {2n+1},
+            \qquad |x|&lt;1.
+            \]
+        </div>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 25. ERROS COMUNS -->
+    <!-- ========================================================= -->
+
+    <h2>25. Cuidados importantes</h2>
+
+    <ul class="property-list">
+
+        <li>
+            Não utilize
+            \[
+            \frac{1}{1-u}
+            =
+            \sum_{n=0}^{\infty}u^n
+            \]
+            sem verificar a condição
+            \[
+            |u|&lt;1.
+            \]
+        </li>
+
+        <li>
+            Depois de uma substituição, a condição de convergência deve
+            ser escrita novamente em termos de \(x\).
+        </li>
+
+        <li>
+            Não confunda a função com uma soma parcial. Uma soma parcial
+            possui um número finito de termos e apenas aproxima a soma
+            da série.
+        </li>
+
+        <li>
+            A derivação e a integração termo a termo são realizadas no
+            interior do intervalo de convergência.
+        </li>
+
+        <li>
+            Derivar ou integrar uma série não altera seu raio de
+            convergência.
+        </li>
+
+        <li>
+            Apesar de o raio permanecer o mesmo, o comportamento nos
+            extremos pode mudar.
+        </li>
+
+        <li>
+            Ao integrar uma série indefinidamente, não esqueça a constante
+            de integração \(C\).
+        </li>
+
+        <li>
+            Quando necessário, determine \(C\) utilizando um valor conhecido
+            da função, como foi feito em
+            \[
+            \ln(1+0)=0
+            \]
+            e
+            \[
+            \arctan(0)=0.
+            \]
+        </li>
+
+    </ul>
+
+
+    <!-- ========================================================= -->
+    <!-- 26. CONEXÃO COM SÉRIES DE TAYLOR E MACMaclaurin -->
+    <!-- ========================================================= -->
+
+    <h2>26. Das séries de potências às séries de Taylor</h2>
+
+    <p>
+        Nesta seção, partimos de uma série conhecida — principalmente a
+        série geométrica — e utilizamos operações algébricas, derivação e
+        integração para construir representações de outras funções.
+    </p>
+
+    <p>
+        Surge então uma questão natural:
+    </p>
+
+    <div class="note">
+
+        Se conhecemos uma função \(f\), existe uma maneira sistemática de
+        determinar diretamente os coeficientes
+        \[
+        c_0,c_1,c_2,\ldots
+        \]
+        de uma série
+        \[
+        f(x)
+        =
+        \sum_{n=0}^{\infty}
+        c_n(x-a)^n?
+        \]
+
+    </div>
+
+    <p>
+        Essa questão conduz ao estudo das
+        <strong>séries de Taylor e de Maclaurin</strong>.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+
+            <strong>Visualização no GeoGebra</strong>
+
+            <p>
+                Compare uma função com suas somas parciais. Por exemplo,
+                represente
+                \[
+                f(x)=\frac{1}{1-x}
+                \]
+                juntamente com
+                \[
+                s_N(x)=1+x+x^2+\cdots+x^N
+                \]
+                para diferentes valores de \(N\), observando a aproximação
+                no intervalo de convergência.
+            </p>
+
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/graphing"
+            target="_blank"
+            rel="noopener noreferrer">
+            Abrir GeoGebra ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIA -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+
+        <strong>Referência principal:</strong>
+        Stewart, J. (2013).
+        <em>Cálculo</em>, volume 1.
+        Cengage Learning, São Paulo.
+
+        <br><br>
+
+        Conteúdo correspondente às Aulas 72–73:
+        representações de funções como séries de potências,
+        manipulação da série geométrica, derivação e integração
+        termo a termo e aplicações.
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
