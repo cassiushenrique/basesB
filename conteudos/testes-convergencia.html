@@ -1,8 +1,2037 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12372A"><title>Testes de convergência | GCT054</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/style.css"><script src="../assets/mathjax.js"></script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script></head><body><header class="topbar"><a class="brand" href="../index.html"><span class="brand-mark">∫</span><span><strong>Bases Matemáticas B</strong><small>GCT054 · UFLA</small></span></a><button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button><nav class="nav"><a href="../index.html#multivariavel">Multivariável</a><a href="../index.html#integrais">Integrais</a><a href="../index.html#vetorial">Vetorial</a><a href="../index.html#series">Séries</a><a href="../conteudos/referencias.html">Referências</a></nav></header><main class="content"><div class="breadcrumbs"><a href="../index.html">Início</a> / Testes de convergência</div><p class="eyebrow">PARTE 4 · AULAS 61–68</p><h1>Testes de convergência</h1><p class="lead">Teste da integral, comparação, comparação pelo limite, séries alternadas, convergência absoluta, razão e raiz.</p><h2>1. Teste da integral</h2><p>Se \(f\) é contínua, positiva e decrescente e \(a_n=f(n)\), então a série e a integral imprópria têm o mesmo comportamento.</p><div class="mathline">\[\sum_{n=1}^{\infty}a_n\quad\longleftrightarrow\quad\int_1^\infty f(x)\,dx.\]</div><figure class="figure"><img src="../assets/img/aulas/teste-integral.png" alt="Comparação geométrica entre soma de termos e área sob uma curva."><figcaption>Comparação geométrica entre soma de termos e área sob uma curva. Figura do material das aulas da GCT054.</figcaption></figure>
-<div class="example"><strong>Exemplo — série \(p\).</strong><div class="mathline">\[\sum_{n=1}^{\infty}\frac1{n^p}\]</div><p>converge se \(p&gt;1\) e diverge se \(p\leq1\).</p></div>
-<h2>2. Comparação direta</h2><p>Se \(0\leq a_n\leq b_n\), uma série convergente maior força a menor a convergir; uma série divergente menor força a maior a divergir.</p>
-<h2>3. Comparação pelo limite</h2><div class="mathline">\[\lim_{n\to\infty}\frac{a_n}{b_n}=c,\qquad0&lt;c&lt;\infty.\]</div><p>As duas séries têm o mesmo comportamento.</p>
-<h2>4. Alternadas</h2><div class="mathline">\[\sum_{n=1}^{\infty}(-1)^{n-1}b_n.\]</div><p>Se \(b_n\) decresce e tende a zero, a série converge.</p>
-<h2>5. Convergência absoluta</h2><p>Se \(\sum|a_n|\) converge, então \(\sum a_n\) converge.</p>
-<h2>6. Razão</h2><div class="mathline">\[L=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|.\]</div><p>\(L&lt;1\): converge absolutamente; \(L&gt;1\): diverge; \(L=1\): inconclusivo.</p>
-<h2>7. Raiz</h2><div class="mathline">\[L=\lim_{n\to\infty}\sqrt[n]{|a_n|}.\]</div><p>As conclusões são as mesmas do Teste da Razão.</p><div class="geo-card"><div><strong>Visualização no GeoGebra 3D</strong><p>Abra o ambiente 3D para explorar geometricamente os objetos relacionados a este conteúdo.</p></div><a class="btn" href="https://www.geogebra.org/3d" target="_blank" rel="noopener noreferrer">Abrir GeoGebra 3D ↗</a></div><div class="refbox">Material organizado a partir das aulas da GCT054 e da bibliografia indicada no Plano de Ensino, especialmente Stewart (2014), Anton, Bivens e Davis (2014) e Thomas, Weir e Hass (2013).</div></main><footer><div><strong>Bases Matemáticas para Ciência e Tecnologia B</strong><br>Material de apoio · ICTIN/UFLA</div><div>Prof. Dr. Cássius Henrique Xavier Oliveira<br>© <span id="year"></span></div></footer><script src="../assets/script.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Testes de convergência | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script
+        defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+
+<body>
+
+<header class="topbar">
+
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">∫</span>
+
+        <span>
+            <strong>Bases Matemáticas B</strong>
+            <small>GCT054 · UFLA</small>
+        </span>
+    </a>
+
+    <button
+        class="menu-btn"
+        aria-label="Abrir menu"
+        aria-expanded="false">
+        ☰
+    </button>
+
+    <nav class="nav">
+        <a href="../index.html#multivariavel">Multivariável</a>
+        <a href="../index.html#integrais">Integrais</a>
+        <a href="../index.html#vetorial">Vetorial</a>
+        <a href="../index.html#series">Séries</a>
+        <a href="../conteudos/referencias.html">Referências</a>
+    </nav>
+
+</header>
+
+
+<main class="content">
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Início</a> / Testes de convergência
+    </div>
+
+    <p class="eyebrow">PARTE 4 · AULAS 61–68</p>
+
+    <h1>Testes de convergência</h1>
+
+    <p class="lead">
+        Nem sempre é possível determinar explicitamente a soma de uma
+        série infinita. Na maioria dos problemas, o objetivo inicial é
+        decidir se a série converge ou diverge. Para isso, estudaremos
+        o Teste da Integral, os testes de comparação, séries alternadas,
+        convergência absoluta e condicional, além dos Testes da Razão
+        e da Raiz. A escolha do teste depende principalmente da estrutura
+        do termo geral da série.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 1. O PROBLEMA DA CONVERGÊNCIA -->
+    <!-- ========================================================= -->
+
+    <h2>1. O problema da convergência</h2>
+
+    <p>
+        Considere uma série infinita
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}a_n.
+        \]
+    </div>
+
+    <p>
+        Pela definição de convergência, deveríamos analisar a sequência
+        de somas parciais
+    </p>
+
+    <div class="mathline">
+        \[
+        s_N=\sum_{n=1}^{N}a_n
+        \]
+    </div>
+
+    <p>e determinar se existe um número real \(s\) tal que</p>
+
+    <div class="mathline">
+        \[
+        \lim_{N\to\infty}s_N=s.
+        \]
+    </div>
+
+    <p>
+        Entretanto, em muitas séries não é possível obter uma expressão
+        simples para \(s_N\). Os testes de convergência permitem decidir
+        sobre a existência desse limite sem precisar calcular
+        explicitamente a soma da série.
+    </p>
+
+    <div class="note">
+        <strong>Antes de aplicar qualquer teste.</strong>
+        Verifique o termo geral \(a_n\). Se
+        \(\lim_{n\to\infty}a_n\neq0\), ou se esse limite não existir,
+        a série diverge imediatamente pelo Teste da Divergência.
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 2. TESTE DA INTEGRAL -->
+    <!-- ========================================================= -->
+
+    <h2>2. Teste da Integral</h2>
+
+    <p>
+        O Teste da Integral estabelece uma relação entre séries de
+        termos positivos e integrais impróprias.
+    </p>
+
+    <div class="mathbox">
+
+        <strong>Teste da Integral.</strong>
+
+        <p>
+            Suponha que
+        </p>
+
+        <div class="mathline">
+            \[
+            a_n=f(n),
+        \]
+        </div>
+
+        <p>
+            em que \(f\) é uma função contínua, positiva e decrescente
+            para \(x\geq1\).
+        </p>
+
+        <p>Então a série</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}a_n
+        \]
+        </div>
+
+        <p>e a integral imprópria</p>
+
+        <div class="mathline">
+            \[
+            \int_1^\infty f(x)\,dx
+        \]
+        </div>
+
+        <p>
+            possuem o mesmo comportamento: ambas convergem ou ambas
+            divergem.
+        </p>
+
+    </div>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}a_n
+        \quad\longleftrightarrow\quad
+        \int_1^\infty f(x)\,dx.
+        \]
+    </div>
+
+    <figure class="figure">
+
+        <img
+            src="../assets/img/aulas/teste-integral.png"
+            alt="Comparação geométrica entre soma de termos e área sob uma curva."
+        >
+
+        <figcaption>
+            Interpretação geométrica do Teste da Integral.
+            Os termos da série podem ser comparados com áreas de
+            retângulos associadas ao gráfico de uma função positiva
+            e decrescente.
+        </figcaption>
+
+    </figure>
+
+
+    <!-- ========================================================= -->
+    <!-- 3. HIPÓTESES -->
+    <!-- ========================================================= -->
+
+    <h2>3. Por que as hipóteses do Teste da Integral são necessárias?</h2>
+
+    <p>
+        Para aplicar o teste, não basta escrever \(a_n=f(n)\).
+        A função utilizada deve satisfazer três condições.
+    </p>
+
+    <ul class="property-list">
+
+        <li>
+            <strong>Continuidade:</strong> \(f\) deve ser contínua no
+            intervalo considerado.
+        </li>
+
+        <li>
+            <strong>Positividade:</strong>
+            \[
+            f(x)&gt;0.
+            \]
+        </li>
+
+        <li>
+            <strong>Decrescimento:</strong> à medida que \(x\) aumenta,
+            \(f(x)\) deve diminuir.
+        </li>
+
+    </ul>
+
+    <p>
+        Essas condições permitem comparar geometricamente a soma dos
+        termos da série com a área determinada pela integral imprópria.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 4. EXEMPLO TESTE INTEGRAL -->
+    <!-- ========================================================= -->
+
+    <h2>4. Exemplo: aplicação do Teste da Integral</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>Considere a série</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{1}{n^2+1}.
+            \]
+        </div>
+
+        <p>Definimos</p>
+
+        <div class="mathline">
+            \[
+            f(x)=\frac{1}{x^2+1}.
+            \]
+        </div>
+
+        <p>
+            Para \(x\geq1\), a função é contínua, positiva e decrescente.
+            Assim, podemos aplicar o Teste da Integral.
+        </p>
+
+        <div class="mathline">
+            \[
+            \int_1^\infty
+            \frac{1}{x^2+1}\,dx
+            =
+            \lim_{t\to\infty}
+            \int_1^t
+            \frac{1}{x^2+1}\,dx.
+            \]
+        </div>
+
+        <p>Como</p>
+
+        <div class="mathline">
+            \[
+            \int\frac{1}{x^2+1}\,dx
+            =
+            \arctan x,
+        \]
+        </div>
+
+        <p>temos</p>
+
+        <div class="mathline">
+            \[
+            \lim_{t\to\infty}
+            \left[
+            \arctan x
+            \right]_1^t
+            =
+            \frac{\pi}{2}-\frac{\pi}{4}
+            =
+            \frac{\pi}{4}.
+            \]
+        </div>
+
+        <p>
+            Como a integral imprópria converge, a série também converge.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 5. SÉRIES P -->
+    <!-- ========================================================= -->
+
+    <h2>5. Séries \(p\)</h2>
+
+    <p>
+        Uma consequência fundamental do Teste da Integral é a
+        classificação das séries da forma
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}\frac{1}{n^p}.
+        \]
+    </div>
+
+    <p>
+        Para estudá-las, consideramos
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_1^\infty\frac{1}{x^p}\,dx.
+        \]
+    </div>
+
+    <p>Se \(p\neq1\),</p>
+
+    <div class="mathline">
+        \[
+        \int_1^t x^{-p}\,dx
+        =
+        \frac{t^{1-p}-1}{1-p}.
+        \]
+    </div>
+
+    <p>
+        Quando \(p&gt;1\), temos \(1-p&lt;0\), de modo que
+    </p>
+
+    <div class="mathline">
+        \[
+        t^{1-p}\longrightarrow0.
+        \]
+    </div>
+
+    <p>
+        Portanto, a integral converge.
+    </p>
+
+    <p>
+        Se \(0&lt;p&lt;1\), então \(t^{1-p}\to\infty\), e a integral
+        diverge.
+    </p>
+
+    <p>
+        Para \(p=1\), obtemos
+    </p>
+
+    <div class="mathline">
+        \[
+        \int_1^\infty\frac1x\,dx,
+        \]
+    </div>
+
+    <p>
+        que também diverge.
+    </p>
+
+    <div class="mathbox">
+
+        <strong>Série \(p\).</strong>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \sum_{n=1}^{\infty}\frac{1}{n^p}
+            \text{ converge se }p&gt;1
+            }
+            \]
+        </div>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \sum_{n=1}^{\infty}\frac{1}{n^p}
+            \text{ diverge se }p\leq1
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        A série harmônica corresponde ao caso \(p=1\):
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}\frac1n.
+        \]
+    </div>
+
+    <p>
+        Portanto, sua divergência também pode ser obtida diretamente
+        pelo Teste da Integral.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 6. ESTIMATIVA DO RESTO -->
+    <!-- ========================================================= -->
+
+    <h2>6. Estimativa do resto pelo Teste da Integral</h2>
+
+    <p>
+        Quando uma série converge, pode ser necessário aproximar sua
+        soma utilizando apenas um número finito de termos.
+    </p>
+
+    <p>Se</p>
+
+    <div class="mathline">
+        \[
+        s=\sum_{n=1}^{\infty}a_n
+        \]
+    </div>
+
+    <p>e</p>
+
+    <div class="mathline">
+        \[
+        s_N=\sum_{n=1}^{N}a_n,
+        \]
+    </div>
+
+    <p>
+        definimos o <strong>resto</strong>
+    </p>
+
+    <div class="mathline">
+        \[
+        R_N=s-s_N.
+        \]
+    </div>
+
+    <p>
+        Sob as mesmas hipóteses do Teste da Integral,
+    </p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \int_{N+1}^{\infty}f(x)\,dx
+            \leq
+            R_N
+            \leq
+            \int_N^\infty f(x)\,dx
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Assim, mesmo quando não conhecemos exatamente a soma \(s\),
+        podemos controlar o erro produzido pela aproximação
+        \(s\approx s_N\).
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 7. COMPARAÇÃO DIRETA -->
+    <!-- ========================================================= -->
+
+    <h2>7. Teste da Comparação</h2>
+
+    <p>
+        Muitas séries não possuem uma integral conveniente, mas seus
+        termos podem ser comparados com os termos de uma série cujo
+        comportamento já conhecemos.
+    </p>
+
+    <div class="mathbox">
+
+        <strong>Teste da Comparação.</strong>
+
+        <p>Suponha que</p>
+
+        <div class="mathline">
+            \[
+            0\leq a_n\leq b_n.
+            \]
+        </div>
+
+        <p>Então:</p>
+
+        <p>
+            se
+            \[
+            \sum b_n
+            \]
+            converge, então
+            \[
+            \sum a_n
+            \]
+            também converge;
+        </p>
+
+        <p>
+            se
+            \[
+            \sum a_n
+            \]
+            diverge, então
+            \[
+            \sum b_n
+            \]
+            também diverge.
+        </p>
+
+    </div>
+
+    <p>
+        A direção da desigualdade é fundamental.
+    </p>
+
+    <p>
+        Para demonstrar <strong>convergência</strong>, procuramos uma
+        série convergente que seja maior.
+    </p>
+
+    <div class="mathline">
+        \[
+        0\leq a_n\leq b_n,
+        \qquad
+        \sum b_n\text{ converge}.
+        \]
+    </div>
+
+    <p>
+        Para demonstrar <strong>divergência</strong>, procuramos uma
+        série divergente que seja menor.
+    </p>
+
+    <div class="mathline">
+        \[
+        0\leq b_n\leq a_n,
+        \qquad
+        \sum b_n\text{ diverge}.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 8. EXEMPLO COMPARAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>8. Exemplo: comparação com uma série \(p\)</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{1}{n^3+1}.
+            \]
+        </div>
+
+        <p>Como</p>
+
+        <div class="mathline">
+            \[
+            n^3+1&gt;n^3,
+        \]
+        </div>
+
+        <p>temos</p>
+
+        <div class="mathline">
+            \[
+            0&lt;
+            \frac{1}{n^3+1}
+            &lt;
+            \frac{1}{n^3}.
+        \]
+        </div>
+
+        <p>A série</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}\frac1{n^3}
+        \]
+        </div>
+
+        <p>
+            é uma série \(p\) com \(p=3&gt;1\), portanto converge.
+        </p>
+
+        <p>
+            Pelo Teste da Comparação,
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{1}{n^3+1}
+        \]
+        </div>
+
+        <p>também converge.</p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 9. ESCOLHA DA COMPARAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>9. Como escolher uma série para comparação?</h2>
+
+    <p>
+        Em expressões envolvendo polinômios em \(n\), os termos de maior
+        grau geralmente determinam o comportamento quando
+        \(n\to\infty\).
+    </p>
+
+    <p>Por exemplo, para</p>
+
+    <div class="mathline">
+        \[
+        a_n=
+        \frac{3n^2+5}{n^4+2n+1},
+        \]
+    </div>
+
+    <p>
+        os termos dominantes são \(3n^2\) no numerador e \(n^4\)
+        no denominador. Assim,
+    </p>
+
+    <div class="mathline">
+        \[
+        a_n
+        \sim
+        \frac{3n^2}{n^4}
+        =
+        \frac3{n^2}.
+        \]
+    </div>
+
+    <p>
+        Isso sugere comparar a série com
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum\frac1{n^2},
+    \]
+    </div>
+
+    <p>
+        uma série \(p\) convergente.
+    </p>
+
+    <p>
+        Quando é difícil estabelecer diretamente uma desigualdade,
+        essa mesma ideia pode ser formalizada pelo Teste da Comparação
+        do Limite.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 10. COMPARAÇÃO PELO LIMITE -->
+    <!-- ========================================================= -->
+
+    <h2>10. Teste da Comparação do Limite</h2>
+
+    <div class="mathbox">
+
+        <strong>Teste da Comparação do Limite.</strong>
+
+        <p>
+            Suponha que
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum a_n
+            \qquad\text{e}\qquad
+            \sum b_n
+        \]
+        </div>
+
+        <p>
+            sejam séries com termos positivos. Se
+        </p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}
+            \frac{a_n}{b_n}
+            =
+            c,
+        \]
+        </div>
+
+        <p>em que</p>
+
+        <div class="mathline">
+            \[
+            0&lt;c&lt;\infty,
+        \]
+        </div>
+
+        <p>
+            então as duas séries possuem o mesmo comportamento:
+            ambas convergem ou ambas divergem.
+        </p>
+
+    </div>
+
+    <p>
+        A condição
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{a_n}{b_n}\longrightarrow c&gt;0
+    \]
+    </div>
+
+    <p>
+        significa que, para valores grandes de \(n\), os termos
+        \(a_n\) e \(b_n\) têm aproximadamente a mesma ordem de grandeza.
+    </p>
+
+    <p>
+        Esse teste é especialmente conveniente quando \(a_n\) contém
+        expressões algébricas que se comportam como uma série \(p\).
+    </p>
+
+    <p>
+        O resultado apresentado nas aulas afirma exatamente que, para
+        séries de termos positivos e limite \(c\) finito e positivo,
+        ambas convergem ou ambas divergem. :chatgpt-content-reference{index="1"}
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 11. EXEMPLO COMPARAÇÃO PELO LIMITE -->
+    <!-- ========================================================= -->
+
+    <h2>11. Exemplo: comparação pelo limite</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{3n+2}{n^3+4}.
+            \]
+        </div>
+
+        <p>
+            Para valores grandes de \(n\),
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{3n+2}{n^3+4}
+            \approx
+            \frac{3n}{n^3}
+            =
+            \frac3{n^2}.
+        \]
+        </div>
+
+        <p>
+            Escolhemos
+        </p>
+
+        <div class="mathline">
+            \[
+            b_n=\frac1{n^2}.
+        \]
+        </div>
+
+        <p>Então</p>
+
+        <div class="mathline">
+            \[
+            \frac{a_n}{b_n}
+            =
+            \frac{3n+2}{n^3+4}\,n^2.
+        \]
+        </div>
+
+        <p>Dividindo numerador e denominador por \(n^3\),</p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}
+            \frac{3+\frac2n}
+                 {1+\frac4{n^3}}
+            =
+            3.
+        \]
+        </div>
+
+        <p>
+            Como \(3\) é positivo e finito, as duas séries têm o mesmo
+            comportamento. Como
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum\frac1{n^2}
+        \]
+        </div>
+
+        <p>
+            converge, a série original também converge.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 12. ESTIMANDO SOMAS POR COMPARAÇÃO -->
+    <!-- ========================================================= -->
+
+    <h2>12. Estimando o erro por comparação</h2>
+
+    <p>
+        A comparação também pode ser utilizada para estimar o erro
+        cometido quando substituímos uma série infinita por uma soma
+        parcial.
+    </p>
+
+    <p>Se</p>
+
+    <div class="mathline">
+        \[
+        0\leq a_n\leq b_n
+    \]
+    </div>
+
+    <p>e definimos os restos</p>
+
+    <div class="mathline">
+        \[
+        R_N=
+        \sum_{n=N+1}^{\infty}a_n
+    \]
+    </div>
+
+    <p>e</p>
+
+    <div class="mathline">
+        \[
+        T_N=
+        \sum_{n=N+1}^{\infty}b_n,
+    \]
+    </div>
+
+    <p>então</p>
+
+    <div class="mathline">
+        \[
+        0\leq R_N\leq T_N.
+        \]
+    </div>
+
+    <p>
+        Se \(\sum b_n\) for uma série \(p\), podemos estimar
+        \(T_N\) pelo Teste da Integral. Se for geométrica, o resto
+        pode ser calculado diretamente.
+    </p>
+
+    <p>
+        Essa estratégia aparece nas aulas justamente como uma forma
+        de transformar a estimativa do resto de uma série mais
+        complicada na estimativa do resto de uma série conhecida.
+        :chatgpt-content-reference{index="2"}
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 13. SÉRIES ALTERNADAS -->
+    <!-- ========================================================= -->
+
+    <h2>13. Séries alternadas</h2>
+
+    <p>
+        Uma série é denominada <strong>alternada</strong> quando os
+        sinais de seus termos alternam entre positivo e negativo.
+    </p>
+
+    <p>Uma forma típica é</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}
+        (-1)^{n-1}b_n,
+        \qquad b_n&gt;0.
+        \]
+    </div>
+
+    <p>Explicitamente,</p>
+
+    <div class="mathline">
+        \[
+        b_1-b_2+b_3-b_4+\cdots.
+        \]
+    </div>
+
+    <p>Também podemos encontrar a forma</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}
+        (-1)^n b_n,
+    \]
+    </div>
+
+    <p>
+        que apenas começa com sinal negativo.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 14. TESTE DA SÉRIE ALTERNADA -->
+    <!-- ========================================================= -->
+
+    <h2>14. Teste da Série Alternada</h2>
+
+    <div class="mathbox">
+
+        <strong>Teste da Série Alternada.</strong>
+
+        <p>
+            A série
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            (-1)^{n-1}b_n
+        \]
+        </div>
+
+        <p>converge se forem satisfeitas as condições</p>
+
+        <div class="mathline">
+            \[
+            b_{n+1}\leq b_n
+        \]
+        </div>
+
+        <p>e</p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}b_n=0.
+        \]
+        </div>
+
+    </div>
+
+    <p>
+        A primeira condição estabelece que as magnitudes dos termos
+        diminuem. A segunda garante que essas magnitudes se aproximem
+        de zero.
+    </p>
+
+    <p>
+        Geometricamente, as somas parciais ficam alternadamente acima
+        e abaixo do valor da soma, com oscilações progressivamente
+        menores.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 15. EXEMPLO ALTERNADA -->
+    <!-- ========================================================= -->
+
+    <h2>15. Exemplo: série harmônica alternada</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            1-\frac12+\frac13-\frac14+\frac15-\cdots
+        \]
+        </div>
+
+        <p>ou</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{(-1)^{n-1}}{n}.
+        \]
+        </div>
+
+        <p>Nesse caso,</p>
+
+        <div class="mathline">
+            \[
+            b_n=\frac1n.
+        \]
+        </div>
+
+        <p>A sequência é decrescente, pois</p>
+
+        <div class="mathline">
+            \[
+            \frac1{n+1}&lt;\frac1n,
+        \]
+        </div>
+
+        <p>e</p>
+
+        <div class="mathline">
+            \[
+            \lim_{n\to\infty}\frac1n=0.
+        \]
+        </div>
+
+        <p>
+            Portanto, a série converge pelo Teste da Série Alternada.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 16. ESTIMATIVA PARA SÉRIES ALTERNADAS -->
+    <!-- ========================================================= -->
+
+    <h2>16. Estimativa do erro em séries alternadas</h2>
+
+    <p>
+        O Teste da Série Alternada fornece também uma forma simples de
+        controlar o erro de aproximação.
+    </p>
+
+    <p>
+        Se
+    </p>
+
+    <div class="mathline">
+        \[
+        s=
+        \sum_{n=1}^{\infty}
+        (-1)^{n-1}b_n
+    \]
+    </div>
+
+    <p>
+        satisfaz as hipóteses do teste e \(s_N\) representa a soma
+        dos primeiros \(N\) termos, então
+    </p>
+
+    <div class="mathline">
+        \[
+        R_N=s-s_N
+    \]
+    </div>
+
+    <p>satisfaz</p>
+
+    <div class="mathbox">
+
+        <div class="mathline">
+            \[
+            \boxed{
+            |R_N|
+            \leq
+            b_{N+1}
+            }
+            \]
+        </div>
+
+    </div>
+
+    <p>
+        Portanto, o erro cometido ao interromper a soma após \(N\)
+        termos é, no máximo, igual à magnitude do primeiro termo
+        desprezado.
+    </p>
+
+    <div class="example">
+
+        <strong>Exemplo.</strong>
+
+        <p>
+            Na série harmônica alternada, se utilizarmos os primeiros
+            \(100\) termos,
+        </p>
+
+        <div class="mathline">
+            \[
+            |R_{100}|
+            \leq
+            \frac1{101}.
+        \]
+        </div>
+
+        <p>
+            Assim, sem conhecer a soma exata, já podemos fornecer um
+            limite superior para o erro da aproximação.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 17. CONVERGÊNCIA ABSOLUTA -->
+    <!-- ========================================================= -->
+
+    <h2>17. Convergência absoluta</h2>
+
+    <p>
+        Para séries que contêm termos positivos e negativos, podemos
+        investigar primeiro a série formada pelos valores absolutos
+        dos termos.
+    </p>
+
+    <div class="mathbox">
+
+        <strong>Definição.</strong>
+
+        <p>
+            Dizemos que
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}a_n
+        \]
+        </div>
+
+        <p>
+            converge <strong>absolutamente</strong> quando
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}|a_n|
+        \]
+        </div>
+
+        <p>é convergente.</p>
+
+    </div>
+
+    <p>
+        Um resultado fundamental estabelece que
+    </p>
+
+    <div class="mathline">
+        \[
+        \boxed{
+        \sum |a_n|\text{ converge}
+        \quad\Longrightarrow\quad
+        \sum a_n\text{ converge}.
+        }
+        \]
+    </div>
+
+    <p>
+        Portanto, a convergência absoluta é uma condição suficientemente
+        forte para garantir a convergência da série original.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 18. CONVERGÊNCIA CONDICIONAL -->
+    <!-- ========================================================= -->
+
+    <h2>18. Convergência condicional</h2>
+
+    <p>
+        Uma série
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum a_n
+    \]
+    </div>
+
+    <p>
+        é denominada <strong>condicionalmente convergente</strong> quando
+        a própria série converge, mas a série dos valores absolutos
+        diverge:
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum a_n
+        \text{ converge}
+    \]
+    </div>
+
+    <p>e</p>
+
+    <div class="mathline">
+        \[
+        \sum |a_n|
+        \text{ diverge}.
+    \]
+    </div>
+
+    <p>
+        A série harmônica alternada fornece o exemplo clássico:
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}
+        \frac{(-1)^{n-1}}{n}
+    \]
+    </div>
+
+    <p>converge, enquanto</p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}
+        \left|
+        \frac{(-1)^{n-1}}{n}
+        \right|
+        =
+        \sum_{n=1}^{\infty}\frac1n
+    \]
+    </div>
+
+    <p>diverge.</p>
+
+    <p>
+        Logo, a série harmônica alternada converge condicionalmente.
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 19. TESTE DA RAZÃO -->
+    <!-- ========================================================= -->
+
+    <h2>19. Teste da Razão</h2>
+
+    <p>
+        O Teste da Razão é especialmente conveniente para séries cujos
+        termos envolvem fatoriais, produtos ou potências que dependem
+        de \(n\).
+    </p>
+
+    <p>Calculamos</p>
+
+    <div class="mathline">
+        \[
+        L=
+        \lim_{n\to\infty}
+        \left|
+        \frac{a_{n+1}}{a_n}
+        \right|.
+        \]
+    </div>
+
+    <div class="mathbox">
+
+        <strong>Teste da Razão.</strong>
+
+        <p>Se</p>
+
+        <div class="mathline">
+            \[
+            L&lt;1,
+        \]
+        </div>
+
+        <p>a série converge absolutamente.</p>
+
+        <p>Se</p>
+
+        <div class="mathline">
+            \[
+            L&gt;1
+        \]
+        </div>
+
+        <p>ou se</p>
+
+        <div class="mathline">
+            \[
+            L=\infty,
+        \]
+        </div>
+
+        <p>a série diverge.</p>
+
+        <p>Se</p>
+
+        <div class="mathline">
+            \[
+            L=1,
+        \]
+        </div>
+
+        <p>
+            o teste é inconclusivo.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 20. POR QUE O TESTE DA RAZÃO FUNCIONA -->
+    <!-- ========================================================= -->
+
+    <h2>20. Interpretação do Teste da Razão</h2>
+
+    <p>
+        A quantidade
+    </p>
+
+    <div class="mathline">
+        \[
+        \left|
+        \frac{a_{n+1}}{a_n}
+        \right|
+    \]
+    </div>
+
+    <p>
+        compara a magnitude de dois termos consecutivos.
+    </p>
+
+    <p>
+        Se esse quociente tende a um número \(L&lt;1\), os termos
+        passam a diminuir, em magnitude, aproximadamente como os termos
+        de uma série geométrica com razão menor que \(1\).
+    </p>
+
+    <p>
+        Essa relação com séries geométricas explica por que o Teste
+        da Razão é particularmente eficiente quando aparecem expressões
+        como
+    </p>
+
+    <div class="mathline">
+        \[
+        n!,
+        \qquad
+        a^n,
+        \qquad
+        n^n.
+        \]
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 21. EXEMPLO RAZÃO -->
+    <!-- ========================================================= -->
+
+    <h2>21. Exemplo: Teste da Razão</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{n!}{3^n}.
+            \]
+        </div>
+
+        <p>Temos</p>
+
+        <div class="mathline">
+            \[
+            a_n=\frac{n!}{3^n}
+        \]
+        </div>
+
+        <p>e</p>
+
+        <div class="mathline">
+            \[
+            a_{n+1}
+            =
+            \frac{(n+1)!}{3^{n+1}}.
+        \]
+        </div>
+
+        <p>Assim,</p>
+
+        <div class="mathline">
+            \[
+            \left|
+            \frac{a_{n+1}}{a_n}
+            \right|
+            =
+            \frac{(n+1)!}{3^{n+1}}
+            \frac{3^n}{n!}.
+        \]
+        </div>
+
+        <p>Simplificando,</p>
+
+        <div class="mathline">
+            \[
+            \left|
+            \frac{a_{n+1}}{a_n}
+            \right|
+            =
+            \frac{n+1}{3}.
+        \]
+        </div>
+
+        <p>Portanto,</p>
+
+        <div class="mathline">
+            \[
+            L=
+            \lim_{n\to\infty}
+            \frac{n+1}{3}
+            =
+            \infty.
+        \]
+        </div>
+
+        <p>
+            Logo, a série diverge.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 22. QUANDO A RAZÃO É INCONCLUSIVA -->
+    <!-- ========================================================= -->
+
+    <h2>22. Quando o Teste da Razão é inconclusivo</h2>
+
+    <p>
+        Considere a série \(p\)
+    </p>
+
+    <div class="mathline">
+        \[
+        \sum_{n=1}^{\infty}\frac1{n^p}.
+        \]
+    </div>
+
+    <p>Pelo Teste da Razão,</p>
+
+    <div class="mathline">
+        \[
+        \left|
+        \frac{a_{n+1}}{a_n}
+        \right|
+        =
+        \frac{n^p}{(n+1)^p}
+        =
+        \left(
+        \frac{n}{n+1}
+        \right)^p.
+        \]
+    </div>
+
+    <p>Consequentemente,</p>
+
+    <div class="mathline">
+        \[
+        L=1.
+        \]
+    </div>
+
+    <p>
+        O teste não permite concluir nada, embora saibamos que a série
+        converge para \(p&gt;1\) e diverge para \(p\leq1\).
+    </p>
+
+    <div class="note">
+        O caso \(L=1\) não significa que a série diverge. Significa
+        apenas que o Teste da Razão não decidiu o problema.
+    </div>
+
+    <p>
+        As próprias aulas destacam que o Teste da Razão tende a produzir
+        limite \(1\) para séries \(p\) e para muitas expressões racionais
+        ou algébricas em \(n\), razão pela qual não costuma ser a melhor
+        escolha nesses casos. :chatgpt-content-reference{index="3"}
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 23. TESTE DA RAIZ -->
+    <!-- ========================================================= -->
+
+    <h2>23. Teste da Raiz</h2>
+
+    <p>
+        O Teste da Raiz é particularmente conveniente quando o termo
+        geral possui uma expressão inteira elevada à potência \(n\).
+    </p>
+
+    <p>Calculamos</p>
+
+    <div class="mathline">
+        \[
+        L=
+        \lim_{n\to\infty}
+        \sqrt[n]{|a_n|}.
+        \]
+    </div>
+
+    <div class="mathbox">
+
+        <strong>Teste da Raiz.</strong>
+
+        <p>Se</p>
+
+        <div class="mathline">
+            \[
+            L&lt;1,
+        \]
+        </div>
+
+        <p>a série converge absolutamente.</p>
+
+        <p>Se</p>
+
+        <div class="mathline">
+            \[
+            L&gt;1
+        \]
+        </div>
+
+        <p>ou se</p>
+
+        <div class="mathline">
+            \[
+            L=\infty,
+        \]
+        </div>
+
+        <p>a série diverge.</p>
+
+        <p>Se</p>
+
+        <div class="mathline">
+            \[
+            L=1,
+        \]
+        </div>
+
+        <p>o teste é inconclusivo.</p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 24. EXEMPLO RAIZ -->
+    <!-- ========================================================= -->
+
+    <h2>24. Exemplo: Teste da Raiz</h2>
+
+    <div class="example">
+
+        <strong>Exemplo resolvido.</strong>
+
+        <p>Considere</p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \left(
+            \frac{2n}{3n+1}
+            \right)^n.
+            \]
+        </div>
+
+        <p>Temos</p>
+
+        <div class="mathline">
+            \[
+            a_n=
+            \left(
+            \frac{2n}{3n+1}
+            \right)^n.
+        \]
+        </div>
+
+        <p>Aplicando a raiz \(n\)-ésima,</p>
+
+        <div class="mathline">
+            \[
+            \sqrt[n]{|a_n|}
+            =
+            \frac{2n}{3n+1}.
+        \]
+        </div>
+
+        <p>Portanto,</p>
+
+        <div class="mathline">
+            \[
+            L=
+            \lim_{n\to\infty}
+            \frac{2n}{3n+1}
+            =
+            \frac23.
+        \]
+        </div>
+
+        <p>Como</p>
+
+        <div class="mathline">
+            \[
+            \frac23&lt;1,
+        \]
+        </div>
+
+        <p>
+            a série converge absolutamente.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 25. RAZÃO OU RAIZ -->
+    <!-- ========================================================= -->
+
+    <h2>25. Teste da Razão ou Teste da Raiz?</h2>
+
+    <p>
+        Os dois testes produzem conclusões semelhantes, mas a forma do
+        termo geral pode tornar um deles muito mais simples.
+    </p>
+
+    <p>
+        O <strong>Teste da Razão</strong> costuma ser conveniente quando
+        aparecem fatoriais ou produtos:
+    </p>
+
+    <div class="mathline">
+        \[
+        \frac{n!}{a^n},
+        \qquad
+        \frac{a^n}{n!},
+        \qquad
+        \frac{(2n)!}{(n!)^2}.
+        \]
+    </div>
+
+    <p>
+        O <strong>Teste da Raiz</strong> costuma ser conveniente quando
+        o termo tem a forma
+    </p>
+
+    <div class="mathline">
+        \[
+        a_n=(b_n)^n,
+    \]
+    </div>
+
+    <p>pois</p>
+
+    <div class="mathline">
+        \[
+        \sqrt[n]{|a_n|}
+        =
+        |b_n|.
+    \]
+    </div>
+
+    <p>
+        Essa distinção coincide com a estratégia apresentada nas aulas:
+        fatoriais e produtos sugerem o Teste da Razão, enquanto termos
+        da forma \((b_n)^n\) sugerem o Teste da Raiz.
+        :chatgpt-content-reference{index="4"}
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 26. COMO ESCOLHER O TESTE -->
+    <!-- ========================================================= -->
+
+    <h2>26. Como escolher um teste de convergência?</h2>
+
+    <p>
+        Não existe uma ordem universal de testes que funcione para
+        todas as séries. É mais eficiente observar a forma do termo
+        geral e identificar estruturas conhecidas.
+    </p>
+
+    <div class="mathbox">
+
+        <p>
+            <strong>Primeiro:</strong> calcule
+            \[
+            \lim_{n\to\infty}a_n.
+            \]
+            Se o resultado não for zero, a série diverge.
+        </p>
+
+        <p>
+            <strong>Série geométrica:</strong> procure uma expressão
+            da forma
+            \[
+            ar^n
+            \quad\text{ou}\quad
+            ar^{n-1}.
+            \]
+        </p>
+
+        <p>
+            <strong>Série \(p\):</strong> reconheça expressões da forma
+            \[
+            \frac1{n^p}.
+            \]
+        </p>
+
+        <p>
+            <strong>Termos positivos semelhantes a uma série conhecida:</strong>
+            considere o Teste da Comparação ou o Teste da Comparação
+            do Limite.
+        </p>
+
+        <p>
+            <strong>Função positiva, contínua e decrescente com integral
+            simples:</strong> considere o Teste da Integral.
+        </p>
+
+        <p>
+            <strong>Sinais alternados:</strong> examine primeiro o
+            Teste da Série Alternada e depois verifique se há
+            convergência absoluta.
+        </p>
+
+        <p>
+            <strong>Fatoriais, produtos ou potências exponenciais:</strong>
+            o Teste da Razão costuma simplificar a expressão.
+        </p>
+
+        <p>
+            <strong>Termo da forma \((b_n)^n\):</strong>
+            o Teste da Raiz costuma ser particularmente conveniente.
+        </p>
+
+    </div>
+
+    <p>
+        Essa escolha pela estrutura da série é a estratégia enfatizada
+        nas Aulas 64–68. O material observa explicitamente que não é
+        recomendável percorrer mecanicamente uma lista de testes até
+        encontrar algum que funcione. :chatgpt-content-reference{index="5"}
+    </p>
+
+
+    <!-- ========================================================= -->
+    <!-- 27. EXEMPLOS DE ESCOLHA -->
+    <!-- ========================================================= -->
+
+    <h2>27. Reconhecendo qual teste pode ser mais conveniente</h2>
+
+    <div class="example">
+
+        <p><strong>Exemplo 1.</strong></p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{5n+1}{n^3+7}.
+            \]
+        </div>
+
+        <p>
+            Para \(n\) grande, o termo se comporta como
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{5n}{n^3}
+            =
+            \frac5{n^2}.
+        \]
+        </div>
+
+        <p>
+            Uma escolha natural é o Teste da Comparação do Limite
+            com a série \(p\)
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum\frac1{n^2}.
+            \]
+        </div>
+
+    </div>
+
+    <div class="example">
+
+        <p><strong>Exemplo 2.</strong></p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{(-1)^{n-1}}{\sqrt{n}}.
+            \]
+        </div>
+
+        <p>
+            Os sinais alternam. Portanto, o Teste da Série Alternada
+            é uma escolha natural.
+        </p>
+
+        <p>
+            Além disso,
+        </p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \left|
+            \frac{(-1)^{n-1}}{\sqrt n}
+            \right|
+            =
+            \sum_{n=1}^{\infty}
+            \frac1{n^{1/2}}
+        \]
+        </div>
+
+        <p>
+            é uma série \(p\) divergente. Logo, a série original
+            converge condicionalmente.
+        </p>
+
+    </div>
+
+    <div class="example">
+
+        <p><strong>Exemplo 3.</strong></p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \frac{2^n}{n!}.
+        \]
+        </div>
+
+        <p>
+            A presença do fatorial sugere o Teste da Razão.
+        </p>
+
+    </div>
+
+    <div class="example">
+
+        <p><strong>Exemplo 4.</strong></p>
+
+        <div class="mathline">
+            \[
+            \sum_{n=1}^{\infty}
+            \left(
+            \frac{n}{2n+1}
+            \right)^n.
+        \]
+        </div>
+
+        <p>
+            Como todo o termo está elevado à potência \(n\), o
+            Teste da Raiz simplifica imediatamente a expressão.
+        </p>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- 28. OBSERVAÇÕES -->
+    <!-- ========================================================= -->
+
+    <h2>28. Observações para a resolução de exercícios</h2>
+
+    <ul class="property-list">
+
+        <li>
+            O fato de \(a_n\to0\) não garante que
+            \(\sum a_n\) seja convergente.
+        </li>
+
+        <li>
+            No Teste da Comparação, a direção da desigualdade deve ser
+            compatível com aquilo que se deseja provar.
+        </li>
+
+        <li>
+            No Teste da Comparação do Limite, a série de comparação
+            deve ter comportamento conhecido.
+        </li>
+
+        <li>
+            Antes de usar o Teste da Integral, verifique continuidade,
+            positividade e decrescimento.
+        </li>
+
+        <li>
+            No Teste da Série Alternada, é necessário verificar tanto
+            o decrescimento de \(b_n\) quanto o limite \(b_n\to0\).
+        </li>
+
+        <li>
+            Convergência absoluta implica convergência, mas uma série
+            também pode convergir apenas condicionalmente.
+        </li>
+
+        <li>
+            Nos Testes da Razão e da Raiz, o resultado \(L=1\) é
+            inconclusivo e exige outro argumento.
+        </li>
+
+        <li>
+            O melhor teste geralmente é aquele que aproveita diretamente
+            a estrutura algébrica do termo geral.
+        </li>
+
+    </ul>
+
+
+    <!-- ========================================================= -->
+    <!-- GEOGEBRA -->
+    <!-- ========================================================= -->
+
+    <div class="geo-card">
+
+        <div>
+            <strong>Visualização no GeoGebra</strong>
+
+            <p>
+                Use o GeoGebra para comparar funções positivas com
+                retângulos e áreas sob curvas, explorar a interpretação
+                geométrica do Teste da Integral e observar o comportamento
+                das somas parciais de diferentes séries.
+            </p>
+        </div>
+
+        <a
+            class="btn"
+            href="https://www.geogebra.org/graphing"
+            target="_blank"
+            rel="noopener noreferrer">
+            Abrir GeoGebra ↗
+        </a>
+
+    </div>
+
+
+    <!-- ========================================================= -->
+    <!-- REFERÊNCIA -->
+    <!-- ========================================================= -->
+
+    <div class="refbox">
+        <strong>Referência principal:</strong>
+        Stewart, J. (2013). <em>Cálculo</em>. Cengage Learning.
+        Conteúdo correspondente às Aulas 61–68 da disciplina
+        GCT054 — Bases Matemáticas para Ciência e Tecnologia B.
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div>
+        <strong>Bases Matemáticas para Ciência e Tecnologia B</strong>
+        <br>
+        Material de apoio · ICTIN/UFLA
+    </div>
+
+    <div>
+        Prof. Dr. Cássius Henrique Xavier Oliveira
+        <br>
+        © <span id="year"></span>
+    </div>
+
+</footer>
+
+<script src="../assets/script.js"></script>
+
+</body>
+</html>
