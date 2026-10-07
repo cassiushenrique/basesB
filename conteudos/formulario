@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#12372A">
+
+    <title>Formulário | GCT054</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="../assets/style.css">
+
+    <script src="../assets/mathjax.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         CABEÇALHO
+         ========================================================= -->
+
+    <header class="topbar">
+
+        <a
+            class="brand"
+            href="../index.html"
+        >
+
+            <span class="brand-mark">
+                ∫
+            </span>
+
+            <span>
+                <strong>Bases Matemáticas B</strong>
+                <small>GCT054 · UFLA</small>
+            </span>
+
+        </a>
+
+        <button
+            class="menu-btn"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+        <nav class="nav">
+            <a href="../index.html#multivariavel">Multivariável</a>
+            <a href="../index.html#integrais">Integrais</a>
+            <a href="../index.html#vetorial">Vetorial</a>
+            <a href="../index.html#series">Séries</a>
+            <a href="formulario.html">Formulário</a>
+            <a href="referencias.html">Referências</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         CONTEÚDO
+         ========================================================= -->
+
+    <main class="content">
+
+        <div class="breadcrumbs">
+            <a href="../index.html">Início</a>
+            /
+            Formulário
+        </div>
+
+        <p class="eyebrow">
+            MATERIAL DE APOIO · GCT054
+        </p>
+
+        <h1>
+            Formulário
+        </h1>
+
+        <p class="lead">
+            Fórmulas de derivação e integração, identidades
+            trigonométricas e formas canônicas das principais
+            superfícies utilizadas no cálculo multivariável.
+        </p>
+
+
+        <!-- =====================================================
+             DERIVADAS TRIGONOMÉTRICAS
+             ===================================================== -->
+
+        <h2>1. Derivadas trigonométricas</h2>
+
+        <p>
+            Considere \(u=f(x)\), com
+            \(u'=du/dx\). Quando o argumento da função
+            trigonométrica depende de \(x\), o fator \(u'\)
+            aparece em consequência da regra da cadeia.
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\sin u)
+                =
+                u'\cos u
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\cos u)
+                =
+                -u'\sin u
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\tan u)
+                =
+                u'\sec^2u
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\cot u)
+                =
+                -u'\csc^2u
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\sec u)
+                =
+                u'\sec u\tan u
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\csc u)
+                =
+                -u'\csc u\cot u
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             INVERSAS
+             ===================================================== -->
+
+        <h2>2. Derivadas das funções trigonométricas inversas</h2>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\arcsin u)
+                =
+                \frac{u'}{\sqrt{1-u^2}}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\arccos u)
+                =
+                -\frac{u'}{\sqrt{1-u^2}}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\arctan u)
+                =
+                \frac{u'}{1+u^2}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\operatorname{arccot}u)
+                =
+                -\frac{u'}{1+u^2}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\operatorname{arcsec}u)
+                =
+                \frac{u'}
+                {|u|\sqrt{u^2-1}},
+                \qquad |u|&gt;1
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \frac{d}{dx}(\operatorname{arccsc}u)
+                =
+                -\frac{u'}
+                {|u|\sqrt{u^2-1}},
+                \qquad |u|&gt;1
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             INTEGRAIS TRIGONOMÉTRICAS
+             ===================================================== -->
+
+        <h2>3. Integrais trigonométricas básicas</h2>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int\sin u\,du
+                =
+                -\cos u+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\cos u\,du
+                =
+                \sin u+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\tan u\,du
+                =
+                \ln|\sec u|+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\cot u\,du
+                =
+                \ln|\sin u|+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\sec u\,du
+                =
+                \ln|\sec u+\tan u|+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\csc u\,du
+                =
+                \ln|\csc u-\cot u|+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\sec u\tan u\,du
+                =
+                \sec u+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\csc u\cot u\,du
+                =
+                -\csc u+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\sec^2u\,du
+                =
+                \tan u+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\csc^2u\,du
+                =
+                -\cot u+C
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             QUADRADOS
+             ===================================================== -->
+
+        <h2>4. Integrais envolvendo \(\sin^2u\) e \(\cos^2u\)</h2>
+
+        <p>
+            Para integrar os quadrados do seno e do cosseno,
+            utilizamos as identidades de redução de potência:
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \sin^2u
+                =
+                \frac{1-\cos(2u)}{2}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \cos^2u
+                =
+                \frac{1+\cos(2u)}{2}
+                \]
+            </div>
+
+        </div>
+
+        <p>
+            Consequentemente,
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int\sin^2u\,du
+                =
+                \frac12
+                \left(
+                u-\sin u\cos u
+                \right)+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int\cos^2u\,du
+                =
+                \frac12
+                \left(
+                u+\sin u\cos u
+                \right)+C
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             INTEGRAIS ALGÉBRICAS
+             ===================================================== -->
+
+        <h2>5. Integrais algébricas recorrentes</h2>
+
+        <p>
+            Para \(a&gt;0\):
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \int
+                \frac{du}{u^2+a^2}
+                =
+                \frac1a
+                \arctan
+                \left(
+                \frac ua
+                \right)+C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int
+                \frac{du}{u^2-a^2}
+                =
+                \frac{1}{2a}
+                \ln
+                \left|
+                \frac{u-a}{u+a}
+                \right|
+                +C
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \int
+                \frac{du}{a^2-u^2}
+                =
+                \frac{1}{2a}
+                \ln
+                \left|
+                \frac{a+u}{a-u}
+                \right|
+                +C
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             IDENTIDADES FUNDAMENTAIS
+             ===================================================== -->
+
+        <h2>6. Identidades trigonométricas fundamentais</h2>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \tan x
+                =
+                \frac{\sin x}{\cos x}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \cot x
+                =
+                \frac{\cos x}{\sin x}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \sec x
+                =
+                \frac1{\cos x}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \csc x
+                =
+                \frac1{\sin x}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \sin^2x+\cos^2x=1
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \sec^2x-\tan^2x=1
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \csc^2x-\cot^2x=1
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             ÂNGULO DUPLO
+             ===================================================== -->
+
+        <h2>7. Ângulo duplo e redução de potência</h2>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \sin(2x)
+                =
+                2\sin x\cos x
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \cos(2x)
+                =
+                \cos^2x-\sin^2x
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \cos(2x)
+                =
+                2\cos^2x-1
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \cos(2x)
+                =
+                1-2\sin^2x
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \tan(2x)
+                =
+                \frac{2\tan x}
+                {1-\tan^2x}
+                \]
+            </div>
+
+        </div>
+
+        <p>
+            Isolando os quadrados nas expressões anteriores:
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \boxed{
+                \sin^2x
+                =
+                \frac{1-\cos(2x)}{2}
+                }
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \boxed{
+                \cos^2x
+                =
+                \frac{1+\cos(2x)}{2}
+                }
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \sin x\cos x
+                =
+                \frac12\sin(2x)
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             SOMA E DIFERENÇA
+             ===================================================== -->
+
+        <h2>8. Soma e diferença de ângulos</h2>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \sin(x\pm y)
+                =
+                \sin x\cos y
+                \pm
+                \cos x\sin y
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \cos(x\pm y)
+                =
+                \cos x\cos y
+                \mp
+                \sin x\sin y
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \tan(x+y)
+                =
+                \frac{\tan x+\tan y}
+                {1-\tan x\tan y}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \tan(x-y)
+                =
+                \frac{\tan x-\tan y}
+                {1+\tan x\tan y}
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             PRODUTO EM SOMA
+             ===================================================== -->
+
+        <h2>9. Produto em soma</h2>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                2\sin x\cos y
+                =
+                \sin(x-y)+\sin(x+y)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                2\cos x\sin y
+                =
+                \sin(x+y)-\sin(x-y)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                2\sin x\sin y
+                =
+                \cos(x-y)-\cos(x+y)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                2\cos x\cos y
+                =
+                \cos(x-y)+\cos(x+y)
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             MEIO ÂNGULO
+             ===================================================== -->
+
+        <h2>10. Meio ângulo</h2>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                1+\cos x
+                =
+                2\cos^2
+                \left(
+                \frac{x}{2}
+                \right)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                1-\cos x
+                =
+                2\sin^2
+                \left(
+                \frac{x}{2}
+                \right)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \tan
+                \left(
+                \frac{x}{2}
+                \right)
+                =
+                \frac{1-\cos x}{\sin x}
+                =
+                \frac{\sin x}{1+\cos x}
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             SOMA EM PRODUTO
+             ===================================================== -->
+
+        <h2>11. Soma em produto</h2>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                \sin x+\sin y
+                =
+                2
+                \sin
+                \left(
+                \frac{x+y}{2}
+                \right)
+                \cos
+                \left(
+                \frac{x-y}{2}
+                \right)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \sin x-\sin y
+                =
+                2
+                \cos
+                \left(
+                \frac{x+y}{2}
+                \right)
+                \sin
+                \left(
+                \frac{x-y}{2}
+                \right)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \cos x+\cos y
+                =
+                2
+                \cos
+                \left(
+                \frac{x+y}{2}
+                \right)
+                \cos
+                \left(
+                \frac{x-y}{2}
+                \right)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                \cos x-\cos y
+                =
+                -2
+                \sin
+                \left(
+                \frac{x+y}{2}
+                \right)
+                \sin
+                \left(
+                \frac{x-y}{2}
+                \right)
+                \]
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             SUPERFÍCIES
+             ===================================================== -->
+
+        <h2>12. Superfícies quádricas e planos</h2>
+
+        <p>
+            As superfícies a seguir aparecem frequentemente
+            em cálculo multivariável e na descrição das regiões
+            de integração. Considere \(a\), \(b\) e \(c\)
+            positivos.
+        </p>
+
+
+        <!-- PARABOLOIDE ELÍPTICO -->
+
+        <h3>12.1 Paraboloide elíptico</h3>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            z=
+            \frac{x^2}{a^2}
+            +
+            \frac{y^2}{b^2}
+            }
+            \]
+        </div>
+
+        <p>
+            O vértice está na origem e, nessa forma,
+            a superfície abre na direção positiva do eixo \(z\).
+            Para \(z=k&gt;0\), as curvas de nível são elipses:
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{x^2}{a^2}
+            +
+            \frac{y^2}{b^2}
+            =
+            k.
+            \]
+        </div>
+
+        <p>
+            Aumentar \(a\) produz maior abertura na direção \(x\);
+            aumentar \(b\) produz maior abertura na direção \(y\).
+            A troca de \(z\) por \(-z\) inverte a abertura.
+        </p>
+
+        <figure class="figure">
+
+            <img
+                src="../assets/img/quadricas/paraboloide-eliptico.png"
+                alt="Paraboloide elíptico."
+            >
+
+            <figcaption>
+                Exemplo:
+                \(z=x^2/4+y^2/2\).
+            </figcaption>
+
+        </figure>
+
+
+        <!-- PARABOLOIDE HIPERBÓLICO -->
+
+        <h3>12.2 Paraboloide hiperbólico</h3>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            z=
+            \frac{x^2}{a^2}
+            -
+            \frac{y^2}{b^2}
+            }
+            \]
+        </div>
+
+        <p>
+            O paraboloide hiperbólico possui forma de sela.
+            Seus cortes pelos planos coordenados evidenciam
+            comportamentos opostos.
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                y=0
+                \quad\Longrightarrow\quad
+                z=\frac{x^2}{a^2}
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                x=0
+                \quad\Longrightarrow\quad
+                z=-\frac{y^2}{b^2}
+                \]
+            </div>
+
+        </div>
+
+        <p>
+            Assim, em uma direção a parábola abre para cima
+            e, na direção perpendicular, abre para baixo.
+            Os parâmetros \(a\) e \(b\) controlam as respectivas
+            aberturas.
+        </p>
+
+        <figure class="figure">
+
+            <img
+                src="../assets/img/quadricas/paraboloide-hiperbolico.png"
+                alt="Paraboloide hiperbólico."
+            >
+
+            <figcaption>
+                Exemplo:
+                \(z=x^2/4-y^2/4\).
+            </figcaption>
+
+        </figure>
+
+
+        <!-- ELIPSOIDE -->
+
+        <h3>12.3 Elipsoide</h3>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{x^2}{a^2}
+            +
+            \frac{y^2}{b^2}
+            +
+            \frac{z^2}{c^2}
+            =
+            1
+            }
+            \]
+        </div>
+
+        <p>
+            O elipsoide é uma superfície fechada com semieixos
+            \(a\), \(b\) e \(c\). Seus interceptos com os eixos
+            coordenados são
+        </p>
+
+        <div class="mathbox">
+
+            <div class="mathline">
+                \[
+                (\pm a,0,0)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                (0,\pm b,0)
+                \]
+            </div>
+
+            <div class="mathline">
+                \[
+                (0,0,\pm c).
+                \]
+            </div>
+
+        </div>
+
+        <p>
+            Aumentar um dos parâmetros alonga a superfície
+            na direção correspondente. Quando
+            \(a=b=c\), obtém-se uma esfera.
+        </p>
+
+        <figure class="figure">
+
+            <img
+                src="../assets/img/quadricas/elipsoide.png"
+                alt="Elipsoide."
+            >
+
+            <figcaption>
+                Exemplo:
+                \(x^2/9+y^2/4+z^2=1\).
+            </figcaption>
+
+        </figure>
+
+
+        <!-- CILINDRO -->
+
+        <h3>12.4 Cilindro elíptico</h3>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{x^2}{a^2}
+            +
+            \frac{y^2}{b^2}
+            =
+            1
+            }
+            \]
+        </div>
+
+        <p>
+            A variável \(z\) não aparece na equação.
+            Portanto, a mesma elipse ocorre para qualquer
+            valor de \(z\), formando um cilindro paralelo
+            ao eixo \(z\).
+        </p>
+
+        <div class="note">
+            <strong>Reconhecimento.</strong>
+            Quando uma variável não aparece na equação de
+            uma superfície cilíndrica, a superfície se prolonga
+            paralelamente ao eixo associado a essa variável.
+        </div>
+
+        <figure class="figure">
+
+            <img
+                src="../assets/img/quadricas/cilindro-eliptico.png"
+                alt="Cilindro elíptico."
+            >
+
+            <figcaption>
+                Exemplo:
+                \(x^2/4+y^2=1\).
+            </figcaption>
+
+        </figure>
+
+
+        <!-- CONE -->
+
+        <h3>12.5 Cone elíptico</h3>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{x^2}{a^2}
+            +
+            \frac{y^2}{b^2}
+            =
+            \frac{z^2}{c^2}
+            }
+            \]
+        </div>
+
+        <p>
+            O cone possui vértice na origem e duas partes,
+            correspondentes a \(z&gt;0\) e \(z&lt;0\).
+            As seções horizontais \(z=k\) são elipses.
+        </p>
+
+        <p>
+            Os parâmetros \(a\) e \(b\) controlam os semieixos
+            dessas elipses, enquanto \(c\), relativamente a
+            \(a\) e \(b\), modifica a inclinação do cone.
+        </p>
+
+        <figure class="figure">
+
+            <img
+                src="../assets/img/quadricas/cone-eliptico.png"
+                alt="Cone elíptico."
+            >
+
+            <figcaption>
+                Cone elíptico com eixo paralelo ao eixo \(z\).
+            </figcaption>
+
+        </figure>
+
+
+        <!-- HIPERBOLOIDE UMA FOLHA -->
+
+        <h3>12.6 Hiperboloide de uma folha</h3>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            \frac{x^2}{a^2}
+            +
+            \frac{y^2}{b^2}
+            -
+            \frac{z^2}{c^2}
+            =
+            1
+            }
+            \]
+        </div>
+
+        <p>
+            O hiperboloide de uma folha é uma superfície
+            conectada. O termo quadrático com sinal negativo
+            determina seu eixo principal.
+        </p>
+
+        <p>
+            Na forma apresentada, o eixo principal é paralelo
+            ao eixo \(z\). Em \(z=0\), temos a seção mínima:
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{x^2}{a^2}
+            +
+            \frac{y^2}{b^2}
+            =
+            1.
+            \]
+        </div>
+
+        <p>
+            À medida que \(|z|\) aumenta, as seções elípticas
+            tornam-se maiores.
+        </p>
+
+        <figure class="figure">
+
+            <img
+                src="../assets/img/quadricas/hiperboloide-uma-folha.png"
+                alt="Hiperboloide de uma folha."
+            >
+
+            <figcaption>
+                Hiperboloide de uma folha com eixo principal
+                paralelo ao eixo \(z\).
+            </figcaption>
+
+        </figure>
+
+
+        <!-- HIPERBOLOIDE DUAS FOLHAS -->
+
+        <h3>12.7 Hiperboloide de duas folhas</h3>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            -\frac{x^2}{a^2}
+            -
+            \frac{y^2}{b^2}
+            +
+            \frac{z^2}{c^2}
+            =
+            1
+            }
+            \]
+        </div>
+
+        <p>
+            O hiperboloide de duas folhas possui duas
+            componentes desconectadas. O único termo
+            quadrático positivo determina o eixo principal.
+        </p>
+
+        <p>
+            Nesta forma, as folhas se desenvolvem ao longo
+            do eixo \(z\). Para \(x=y=0\),
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{z^2}{c^2}=1,
+            \]
+        </div>
+
+        <p>
+            de modo que os vértices são
+        </p>
+
+        <div class="mathline">
+            \[
+            (0,0,c)
+            \qquad\text{e}\qquad
+            (0,0,-c).
+            \]
+        </div>
+
+        <figure class="figure">
+
+            <img
+                src="../assets/img/quadricas/hiperboloide-duas-folhas.png"
+                alt="Hiperboloide de duas folhas."
+            >
+
+            <figcaption>
+                Hiperboloide de duas folhas orientado
+                ao longo do eixo \(z\).
+            </figcaption>
+
+        </figure>
+
+
+        <!-- PLANO -->
+
+        <h3>12.8 Plano</h3>
+
+        <div class="mathline">
+            \[
+            \boxed{
+            Ax+By+Cz=D
+            }
+            \]
+        </div>
+
+        <p>
+            Um vetor normal ao plano é
+        </p>
+
+        <div class="mathline">
+            \[
+            \mathbf n
+            =
+            \langle A,B,C\rangle.
+            \]
+        </div>
+
+        <p>
+            Se \(C\neq0\), podemos isolar \(z\):
+        </p>
+
+        <div class="mathline">
+            \[
+            z
+            =
+            \frac{D}{C}
+            -
+            \frac{A}{C}x
+            -
+            \frac{B}{C}y.
+            \]
+        </div>
+
+        <p>
+            Os coeficientes \(A\), \(B\) e \(C\)
+            determinam a orientação do plano.
+            Se apenas \(D\) for alterado, o plano é
+            deslocado paralelamente, mantendo a mesma orientação.
+        </p>
+
+        <figure class="figure">
+
+            <img
+                src="../assets/img/quadricas/plano.png"
+                alt="Plano em três dimensões."
+            >
+
+            <figcaption>
+                Exemplo:
+                \(z=1+x/2-y/3\).
+            </figcaption>
+
+        </figure>
+
+
+        <!-- =====================================================
+             RECONHECIMENTO
+             ===================================================== -->
+
+        <h2>13. Reconhecimento das superfícies pela equação</h2>
+
+        <div class="mathbox">
+
+            <p>
+                <strong>Elipsoide:</strong>
+                três termos quadráticos com o mesmo sinal,
+                com a expressão normalizada igual a \(1\).
+            </p>
+
+            <p>
+                <strong>Hiperboloide de uma folha:</strong>
+                dois termos quadráticos positivos e um negativo,
+                com lado direito igual a \(1\).
+            </p>
+
+            <p>
+                <strong>Hiperboloide de duas folhas:</strong>
+                um termo quadrático positivo e dois negativos,
+                com lado direito igual a \(1\).
+            </p>
+
+            <p>
+                <strong>Cone:</strong>
+                equação quadrática homogênea com termos
+                quadráticos de sinais opostos.
+            </p>
+
+            <p>
+                <strong>Paraboloide:</strong>
+                uma variável aparece em primeiro grau e
+                as demais aparecem quadraticamente.
+            </p>
+
+            <p>
+                <strong>Cilindro:</strong>
+                uma das variáveis não aparece na equação.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             TRANSLAÇÕES
+             ===================================================== -->
+
+        <h2>14. Translações</h2>
+
+        <p>
+            As formas anteriores estão centradas ou possuem
+            vértice na origem. A presença de expressões como
+        </p>
+
+        <div class="mathline">
+            \[
+            (x-h)^2,
+            \qquad
+            (y-k)^2,
+            \qquad
+            (z-\ell)^2
+            \]
+        </div>
+
+        <p>
+            produz uma translação da superfície.
+        </p>
+
+        <p>
+            Por exemplo,
+        </p>
+
+        <div class="mathline">
+            \[
+            \frac{(x-h)^2}{a^2}
+            +
+            \frac{(y-k)^2}{b^2}
+            +
+            \frac{(z-\ell)^2}{c^2}
+            =
+            1
+            \]
+        </div>
+
+        <p>
+            representa um elipsoide com centro em
+            \((h,k,\ell)\).
+        </p>
+
+
+        <!-- =====================================================
+             GEOGEBRA
+             ===================================================== -->
+
+        <div class="geo-card">
+
+            <div>
+
+                <strong>
+                    Visualização no GeoGebra 3D
+                </strong>
+
+                <p>
+                    Insira as equações das superfícies e altere
+                    os parâmetros \(a\), \(b\), \(c\), \(h\),
+                    \(k\) e \(\ell\) para observar mudanças
+                    de escala, abertura, orientação e posição.
+                </p>
+
+            </div>
+
+            <a
+                class="btn"
+                href="https://www.geogebra.org/3d"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Abrir GeoGebra 3D ↗
+            </a>
+
+        </div>
+
+
+        <!-- =====================================================
+             REFERÊNCIA
+             ===================================================== -->
+
+        <div class="refbox">
+
+            <strong>Referência:</strong>
+            fórmulas de derivação, integração e identidades
+            trigonométricas organizadas a partir de Stewart,
+            <em>Cálculo</em>, Vol. 1. As superfícies foram
+            incluídas como formulário geométrico complementar
+            para o estudo de cálculo multivariável.
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         RODAPÉ
+         ========================================================= -->
+
+    <footer>
+
+        <div>
+            <strong>
+                Bases Matemáticas para Ciência e Tecnologia B
+            </strong>
+            <br>
+            Material de apoio · ICTIN/UFLA
+        </div>
+
+        <div>
+            Prof. Dr. Cássius Henrique Xavier Oliveira
+            <br>
+            © <span id="year"></span>
+        </div>
+
+    </footer>
+
+
+    <script src="../assets/script.js"></script>
+
+</body>
+
+</html>
